@@ -25,9 +25,16 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="logo">
-                    <div class="logo-icon">
-                        <i data-lucide="tv-2"></i>
-                    </div>
+                    <svg class="logo-icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px; filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.4));">
+                        <defs>
+                            <linearGradient id="vortexGradSidebar" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#a855f7" />
+                                <stop offset="100%" stop-color="#6366f1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="40" stroke="url(#vortexGradSidebar)" stroke-width="12" stroke-dasharray="180 60" fill="none" stroke-linecap="round" />
+                        <circle cx="50" cy="50" r="20" fill="url(#vortexGradSidebar)" />
+                    </svg>
                     <span>VORTEX</span>
                 </div>
             </div>
