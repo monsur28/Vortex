@@ -644,31 +644,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     fullscreenBtn.addEventListener('click', async () => {
-        if (!document.fullscreenElement) {
+        const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        
+        if (!isFullscreen) {
             try {
-                await videoWrapper.requestFullscreen();
-                // Attempt to lock screen orientation to landscape on mobile devices
-                if (screen.orientation && typeof screen.orientation.lock === 'function') {
-                    await screen.orientation.lock('landscape').catch(err => {
-                        console.warn('Screen orientation lock is not supported or was ignored:', err);
-                    });
+                if (videoWrapper.requestFullscreen) {
+                    await videoWrapper.requestFullscreen();
+                    if (screen.orientation && typeof screen.orientation.lock === 'function') {
+                        await screen.orientation.lock('landscape').catch(err => {
+                            console.warn('Screen orientation lock is not supported or was ignored:', err);
+                        });
+                    }
+                } else if (video.webkitEnterFullscreen) {
+                    // Native iOS/Safari fallback
+                    video.webkitEnterFullscreen();
+                } else if (video.requestFullscreen) {
+                    await video.requestFullscreen();
+                } else {
+                    console.error('Fullscreen API is not supported on this device/browser');
                 }
             } catch (err) {
                 console.error(`Error enabling fullscreen: ${err.message}`);
+                // Fallback to native WebKit fullscreen if element-level fullscreen failed
+                if (video.webkitEnterFullscreen) {
+                    try {
+                        video.webkitEnterFullscreen();
+                    } catch (e) {
+                        console.error('WebKit fallback failed:', e);
+                    }
+                }
             }
         } else {
-            document.exitFullscreen();
+            const exitFS = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+            if (exitFS) {
+                exitFS.call(document);
+            }
         }
     });
 
     // Handle unlocking orientation when exiting fullscreen
-    document.addEventListener('fullscreenchange', () => {
-        if (!document.fullscreenElement) {
+    const onFullscreenChange = () => {
+        const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        if (!isFullscreen) {
             if (screen.orientation && typeof screen.orientation.unlock === 'function') {
                 screen.orientation.unlock();
             }
         }
-    });
+    };
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+    document.addEventListener('mozfullscreenchange', onFullscreenChange);
+    document.addEventListener('MSFullscreenChange', onFullscreenChange);
 
     theaterBtn.addEventListener('click', () => {
         const appContainer = document.querySelector('.app-container');
