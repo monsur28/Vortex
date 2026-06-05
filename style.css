@@ -1970,7 +1970,7 @@ video.aspect-fill {
 
 .group-btn {
     background: rgba(255, 255, 255, 0.05);
-    border: none;
+    border: 1px solid transparent;
     border-radius: 6px;
     padding: 5px 10px;
     font-size: 10px;
@@ -1984,7 +1984,7 @@ video.aspect-fill {
 .group-btn.active {
     background: rgba(0, 223, 137, 0.15);
     color: var(--wc-green);
-    border: 1px solid rgba(0, 223, 137, 0.3);
+    border-color: rgba(0, 223, 137, 0.3);
 }
 
 .wc-table-wrapper {
