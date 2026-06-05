@@ -1846,9 +1846,9 @@ video.aspect-fill {
 }
 
 .wc-match-card:hover {
-    background: rgba(15, 23, 42, 0.7);
-    border-color: rgba(0, 223, 137, 0.3);
-    transform: translateX(4px);
+    background: rgba(22, 27, 53, 0.7);
+    border-color: rgba(0, 223, 137, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
 }
 
 .wc-match-card.live {
