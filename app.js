@@ -876,30 +876,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="wc-matches-section">
                     <h3 class="wc-section-header"><i data-lucide="play-circle"></i> MATCH SCHEDULE & STREAMING</h3>
                     <div class="wc-matches-list">
-                        <!-- Match 1 (LIVE) -->
-                        <div class="wc-match-card live">
+                        <!-- Match 1 -->
+                        <div class="wc-match-card">
                             <div class="match-teams">
                                 <div class="team home">
                                     <span>Mexico</span>
                                     <img src="https://flagcdn.com/w40/mx.png" class="team-flag" alt="Mexico">
                                 </div>
-                                <span class="match-vs live-badge">LIVE</span>
+                                <span class="match-vs">VS</span>
                                 <div class="team away">
                                     <img src="https://flagcdn.com/w40/us.png" class="team-flag" alt="USA">
                                     <span>USA</span>
                                 </div>
                             </div>
-                            <div class="match-time-info" style="align-items: center; margin-right: 12px;">
-                                <span style="font-weight: 700; color: var(--wc-green); font-size: 10px;">WARM-UP</span>
+                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
+                                <span style="font-weight: 700; color: var(--wc-green);">June 11</span>
+                                <span>08:30 PM</span>
                             </div>
-                            <div class="match-action">
-                                <button class="wc-watch-btn" data-channel="T Sports HD">
-                                    <i data-lucide="tv"></i> Watch Live
-                                </button>
+                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
+                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
+                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
                             </div>
                         </div>
 
-                        <!-- Match 2 (UPCOMING) -->
+                        <!-- Match 2 -->
                         <div class="wc-match-card">
                             <div class="match-teams">
                                 <div class="team home">
@@ -912,13 +913,18 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <span>Argentina</span>
                                 </div>
                             </div>
-                            <div class="match-time-info">
+                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
                                 <span style="font-weight: 700; color: var(--text-primary);">June 12</span>
                                 <span>06:00 PM</span>
                             </div>
+                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
+                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
+                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
+                            </div>
                         </div>
 
-                        <!-- Match 3 (UPCOMING) -->
+                        <!-- Match 3 -->
                         <div class="wc-match-card">
                             <div class="match-teams">
                                 <div class="team home">
@@ -931,9 +937,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <span>Spain</span>
                                 </div>
                             </div>
-                            <div class="match-time-info">
+                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
                                 <span style="font-weight: 700; color: var(--text-primary);">June 13</span>
                                 <span>09:00 PM</span>
+                            </div>
+                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
+                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
+                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
                             </div>
                         </div>
                     </div>
