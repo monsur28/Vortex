@@ -901,6 +901,30 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Expanded Matches Data for dynamic rendering
+        const wcMatchesData = [
+            { home: 'Mexico', homeFlag: 'mx', away: 'USA', awayFlag: 'us', date: 'June 11', time: '08:30 PM', primary: true },
+            { home: 'Canada', homeFlag: 'ca', away: 'Argentina', awayFlag: 'ar', date: 'June 11', time: '11:00 PM' },
+            { home: 'Brazil', homeFlag: 'br', away: 'Spain', awayFlag: 'es', date: 'June 12', time: '06:00 PM' },
+            { home: 'France', homeFlag: 'fr', away: 'Germany', awayFlag: 'de', date: 'June 12', time: '09:00 PM' },
+            { home: 'England', homeFlag: 'gb', away: 'Italy', awayFlag: 'it', date: 'June 13', time: '03:00 PM' },
+            { home: 'Portugal', homeFlag: 'pt', away: 'Netherlands', awayFlag: 'nl', date: 'June 13', time: '06:00 PM' },
+            { home: 'Uruguay', homeFlag: 'uy', away: 'Japan', awayFlag: 'jp', date: 'June 14', time: '06:00 PM' },
+            { home: 'Belgium', homeFlag: 'be', away: 'Morocco', awayFlag: 'ma', date: 'June 14', time: '09:00 PM' },
+            { home: 'Senegal', homeFlag: 'sn', away: 'Colombia', awayFlag: 'co', date: 'June 15', time: '06:00 PM' },
+            { home: 'South Korea', homeFlag: 'kr', away: 'Croatia', awayFlag: 'hr', date: 'June 15', time: '09:00 PM' },
+            { home: 'Germany', homeFlag: 'de', away: 'Japan', awayFlag: 'jp', date: 'June 16', time: '06:00 PM' },
+            { home: 'Spain', homeFlag: 'es', away: 'Canada', awayFlag: 'ca', date: 'June 16', time: '09:00 PM' },
+            { home: 'Argentina', homeFlag: 'ar', away: 'Chile', awayFlag: 'cl', date: 'June 17', time: '06:00 PM' },
+            { home: 'USA', homeFlag: 'us', away: 'Colombia', awayFlag: 'co', date: 'June 17', time: '09:00 PM' },
+            { home: 'England', homeFlag: 'gb', away: 'USA', awayFlag: 'us', date: 'June 18', time: '03:00 PM' },
+            { home: 'France', homeFlag: 'fr', away: 'Denmark', awayFlag: 'dk', date: 'June 18', time: '06:00 PM' },
+            { home: 'Brazil', homeFlag: 'br', away: 'Portugal', awayFlag: 'pt', date: 'June 19', time: '06:00 PM' },
+            { home: 'Netherlands', homeFlag: 'nl', away: 'Italy', awayFlag: 'it', date: 'June 19', time: '09:00 PM' },
+            { home: 'Spain', homeFlag: 'es', away: 'Germany', awayFlag: 'de', date: 'June 20', time: '06:00 PM' },
+            { home: 'Argentina', homeFlag: 'ar', away: 'France', awayFlag: 'fr', date: 'June 20', time: '09:00 PM' }
+        ];
+
         // Render full HTML
         worldCupHub.innerHTML = `
             <div class="wc-header">
@@ -924,485 +948,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="wc-matches-section">
                     <h3 class="wc-section-header"><i data-lucide="play-circle"></i> MATCH SCHEDULE & STREAMING</h3>
                     <div class="wc-matches-list">
-                        <!-- Match 1 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Mexico</span>
-                                    <img src="https://flagcdn.com/w40/mx.png" class="team-flag" alt="Mexico">
+                        ${wcMatchesData.map((match, index) => `
+                            <div class="wc-match-card">
+                                <!-- Row 1: Teams playing -->
+                                <div class="match-teams" style="justify-content: center; width: 100%; gap: 12px; margin-bottom: 8px;">
+                                    <div class="team home" style="font-size: 13px; font-weight: 700; flex: 1; justify-content: flex-end; display: flex; align-items: center; gap: 8px;">
+                                        <span>${match.home}</span>
+                                        <img src="https://flagcdn.com/w40/${match.homeFlag}.png" class="team-flag" alt="${match.home}" style="width: 22px; height: 14px; object-fit: cover; border-radius: 2px;">
+                                    </div>
+                                    <span class="match-vs" style="font-size: 10px; font-weight: 800; color: var(--text-muted); background: rgba(255, 255, 255, 0.05); padding: 2px 6px; border-radius: 10px;">VS</span>
+                                    <div class="team away" style="font-size: 13px; font-weight: 700; flex: 1; justify-content: flex-start; display: flex; align-items: center; gap: 8px;">
+                                        <img src="https://flagcdn.com/w40/${match.awayFlag}.png" class="team-flag" alt="${match.away}" style="width: 22px; height: 14px; object-fit: cover; border-radius: 2px;">
+                                        <span>${match.away}</span>
+                                    </div>
                                 </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/us.png" class="team-flag" alt="USA">
-                                    <span>USA</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--wc-green);">June 11</span>
-                                <span>08:30 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 2 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Canada</span>
-                                    <img src="https://flagcdn.com/w40/ca.png" class="team-flag" alt="Canada">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/ar.png" class="team-flag" alt="Argentina">
-                                    <span>Argentina</span>
+                                <!-- Row 2: Date/Time and Action links -->
+                                <div class="match-info-action" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 8px; flex-wrap: wrap; gap: 8px;">
+                                    <div class="match-time-info" style="display: flex; flex-direction: column; align-items: flex-start; gap: 1px;">
+                                        <span style="font-weight: 800; color: ${match.primary ? 'var(--wc-green)' : 'var(--text-primary)'}; font-size: 11px;">${match.date}</span>
+                                        <span style="font-size: 10px; color: var(--text-secondary);">${match.time}</span>
+                                    </div>
+                                    <div class="match-action" style="display: flex; gap: 4px; align-items: center;">
+                                        <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px; height: 26px; border-radius: 4px;">T Sports</button>
+                                        <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; height: 26px; border-radius: 4px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
+                                        <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; height: 26px; border-radius: 4px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 11</span>
-                                <span>11:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 3 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Brazil</span>
-                                    <img src="https://flagcdn.com/w40/br.png" class="team-flag" alt="Brazil">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/es.png" class="team-flag" alt="Spain">
-                                    <span>Spain</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 12</span>
-                                <span>06:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 4 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>France</span>
-                                    <img src="https://flagcdn.com/w40/fr.png" class="team-flag" alt="France">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/de.png" class="team-flag" alt="Germany">
-                                    <span>Germany</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 12</span>
-                                <span>09:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 5 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>England</span>
-                                    <img src="https://flagcdn.com/w40/gb.png" class="team-flag" alt="England">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/it.png" class="team-flag" alt="Italy">
-                                    <span>Italy</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 13</span>
-                                <span>03:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 6 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Portugal</span>
-                                    <img src="https://flagcdn.com/w40/pt.png" class="team-flag" alt="Portugal">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/nl.png" class="team-flag" alt="Netherlands">
-                                    <span>Netherlands</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 13</span>
-                                <span>06:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 7 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Uruguay</span>
-                                    <img src="https://flagcdn.com/w40/uy.png" class="team-flag" alt="Uruguay">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/jp.png" class="team-flag" alt="Japan">
-                                    <span>Japan</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 14</span>
-                                <span>06:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 8 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Belgium</span>
-                                    <img src="https://flagcdn.com/w40/be.png" class="team-flag" alt="Belgium">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/ma.png" class="team-flag" alt="Morocco">
-                                    <span>Morocco</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 14</span>
-                                <span>09:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 9 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Senegal</span>
-                                    <img src="https://flagcdn.com/w40/sn.png" class="team-flag" alt="Senegal">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/co.png" class="team-flag" alt="Colombia">
-                                    <span>Colombia</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 15</span>
-                                <span>06:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 10 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>South Korea</span>
-                                    <img src="https://flagcdn.com/w40/kr.png" class="team-flag" alt="South Korea">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/hr.png" class="team-flag" alt="Croatia">
-                                    <span>Croatia</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 15</span>
-                                <span>09:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 11 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Germany</span>
-                                    <img src="https://flagcdn.com/w40/de.png" class="team-flag" alt="Germany">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/jp.png" class="team-flag" alt="Japan">
-                                    <span>Japan</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 16</span>
-                                <span>06:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 12 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Spain</span>
-                                    <img src="https://flagcdn.com/w40/es.png" class="team-flag" alt="Spain">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/ca.png" class="team-flag" alt="Canada">
-                                    <span>Canada</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 16</span>
-                                <span>09:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 13 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Argentina</span>
-                                    <img src="https://flagcdn.com/w40/ar.png" class="team-flag" alt="Argentina">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/cl.png" class="team-flag" alt="Chile">
-                                    <span>Chile</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 17</span>
-                                <span>06:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 14 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>USA</span>
-                                    <img src="https://flagcdn.com/w40/us.png" class="team-flag" alt="USA">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/co.png" class="team-flag" alt="Colombia">
-                                    <span>Colombia</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 17</span>
-                                <span>09:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 15 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>England</span>
-                                    <img src="https://flagcdn.com/w40/gb.png" class="team-flag" alt="England">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/us.png" class="team-flag" alt="USA">
-                                    <span>USA</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 18</span>
-                                <span>03:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 16 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>France</span>
-                                    <img src="https://flagcdn.com/w40/fr.png" class="team-flag" alt="France">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/dk.png" class="team-flag" alt="Denmark">
-                                    <span>Denmark</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 18</span>
-                                <span>06:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 17 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Brazil</span>
-                                    <img src="https://flagcdn.com/w40/br.png" class="team-flag" alt="Brazil">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/pt.png" class="team-flag" alt="Portugal">
-                                    <span>Portugal</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 19</span>
-                                <span>06:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 18 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Netherlands</span>
-                                    <img src="https://flagcdn.com/w40/nl.png" class="team-flag" alt="Netherlands">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/it.png" class="team-flag" alt="Italy">
-                                    <span>Italy</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 19</span>
-                                <span>09:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 19 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Spain</span>
-                                    <img src="https://flagcdn.com/w40/es.png" class="team-flag" alt="Spain">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/de.png" class="team-flag" alt="Germany">
-                                    <span>Germany</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 20</span>
-                                <span>06:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
-
-                        <!-- Match 20 -->
-                        <div class="wc-match-card">
-                            <div class="match-teams">
-                                <div class="team home">
-                                    <span>Argentina</span>
-                                    <img src="https://flagcdn.com/w40/ar.png" class="team-flag" alt="Argentina">
-                                </div>
-                                <span class="match-vs">VS</span>
-                                <div class="team away">
-                                    <img src="https://flagcdn.com/w40/fr.png" class="team-flag" alt="France">
-                                    <span>France</span>
-                                </div>
-                            </div>
-                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 20</span>
-                                <span>09:00 PM</span>
-                            </div>
-                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
-                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
-                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
-                            </div>
-                        </div>
+                        `).join('')}
                     </div>
                 </div>
 
