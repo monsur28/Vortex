@@ -1792,28 +1792,30 @@ video.aspect-fill {
     text-align: center;
 }
 
-/* WC Layout Split: Live/Matches + Group Standings */
-.wc-grid {
+/* Matches Feed - Responsive Grid for Desktop */
+.wc-matches-list {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 20px;
-    position: relative;
-    z-index: 2;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 16px;
+    max-height: 480px;
+    overflow-y: auto;
+    padding-right: 6px;
 }
 
 /* Fallback to single column layout if the sidebar player panel is open */
-.player-panel.open ~ .feed-section .wc-grid {
+.player-panel.open ~ .feed-section .wc-matches-list {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
 }
 
 @media (max-width: 900px) {
-    .wc-grid {
+    .wc-matches-list {
         grid-template-columns: 1fr;
+        gap: 12px;
     }
 }
 
-/* Matches Feed */
+/* Matches Feed Header */
 .wc-section-header {
     font-size: 13px;
     font-weight: 700;
@@ -1829,15 +1831,6 @@ video.aspect-fill {
     color: var(--wc-green);
     width: 16px;
     height: 16px;
-}
-
-.wc-matches-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 330px;
-    overflow-y: auto;
-    padding-right: 6px;
 }
 
 .wc-match-card {
@@ -1919,8 +1912,24 @@ video.aspect-fill {
     100% { opacity: 0.6; }
 }
 
+.match-info-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 8px;
+    gap: 8px;
+    width: 100%;
+}
+
 .match-action {
-    margin-left: 20px;
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+    max-width: 280px;
 }
 
 .wc-watch-btn {
@@ -1928,12 +1937,13 @@ video.aspect-fill {
     color: #022c22;
     border: none;
     border-radius: var(--radius-sm);
-    padding: 6px 12px;
-    font-size: 11px;
+    padding: 6px 2px;
+    font-size: 10px;
     font-weight: 700;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     box-shadow: 0 4px 10px var(--wc-green-glow);
     transition: all var(--transition-fast);
@@ -1949,7 +1959,8 @@ video.aspect-fill {
     color: var(--text-secondary);
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
+    text-align: center;
 }
 
 /* Standings / Group Section */
