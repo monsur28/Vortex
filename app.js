@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let showFavoritesOnly = false;
     let activeChannel = null;
     let hlsInstance = null;
+    let visibleCount = 80;
 
     // DOM Elements
     const video = document.getElementById('video-player');
@@ -227,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     searchInput.value = '';
                     clearSearchBtn.style.display = 'none';
                     headerSearchBox.classList.remove('open');
+                    visibleCount = 80;
 
                     // Close layouts
                     sidebar.classList.remove('open');
@@ -259,8 +261,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderChannels() {
         let filtered = channels;
 
-        // Apply category filter
-        if (showFavoritesOnly) {
+        // Apply search query filter or category filter
+        if (searchQuery.trim() !== '') {
+            const query = searchQuery.toLowerCase().trim();
+            filtered = channels.filter(ch =>
+                ch.name.toLowerCase().includes(query) ||
+                (ch.group && ch.group.toLowerCase().includes(query))
+            );
+            currentCategoryTitle.textContent = `Search results for "${searchQuery}"`;
+        } else if (showFavoritesOnly) {
             filtered = channels.filter(ch => favorites.includes(ch.name));
             currentCategoryTitle.textContent = 'Bookmarks';
         } else if (currentCategory !== 'All') {
@@ -268,15 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currentCategoryTitle.textContent = currentCategory;
         } else {
             currentCategoryTitle.textContent = 'All Channels';
-        }
-
-        // Apply search query filter
-        if (searchQuery.trim() !== '') {
-            const query = searchQuery.toLowerCase().trim();
-            filtered = filtered.filter(ch =>
-                ch.name.toLowerCase().includes(query) ||
-                (ch.group && ch.group.toLowerCase().includes(query))
-            );
         }
 
         // Update active counts
@@ -290,8 +290,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         emptyState.style.display = 'none';
 
-        // Render card templates
-        channelsGrid.innerHTML = filtered.map((ch, i) => {
+        // Render card templates using inline SVGs for performance (sliced to visibleCount)
+        const sliceToRender = filtered.slice(0, visibleCount);
+        channelsGrid.innerHTML = sliceToRender.map((ch, i) => {
             const isFav = favorites.includes(ch.name);
             const favClass = isFav ? 'active' : '';
             const logoUrl = ch.logo && ch.logo.trim() !== '' ? ch.logo : null;
@@ -301,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return `
                 <div class="channel-card ${playingClass}" data-name="${ch.name}" style="animation-delay: ${Math.min(i * 0.03, 0.6)}s">
                     <button class="card-fav-btn ${favClass}" data-name="${ch.name}">
-                        <i data-lucide="star"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     </button>
                     <div class="card-logo-container">
                         ${logoUrl
@@ -312,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${ch.name.substring(0, 2).toUpperCase()}
                         </div>
                         <div class="card-play-overlay">
-                            <i data-lucide="play"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                         </div>
                     </div>
                     <div class="card-info">
@@ -340,14 +341,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (showFavoritesOnly) {
                     renderChannels();
-                    lucide.createIcons();
                 } else {
                     renderCategories(); // Re-render sidebar/bottom sheet counts
                 }
             });
         });
-
-        lucide.createIcons();
     }
 
     // Toggle items inside browser local storage favorites
@@ -482,21 +480,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Search bar listener
+    // Search bar listener (with debounce)
+    let searchTimeout = null;
     searchInput.addEventListener('input', (e) => {
-        searchQuery = e.target.value;
-        if (searchQuery.length > 0) {
+        const val = e.target.value;
+        if (val.length > 0) {
             clearSearchBtn.style.display = 'block';
         } else {
             clearSearchBtn.style.display = 'none';
         }
-        renderChannels();
+
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            searchQuery = val;
+            visibleCount = 80; // Reset visible count on new search query
+            renderChannels();
+        }, 250);
     });
 
     clearSearchBtn.addEventListener('click', () => {
         searchQuery = '';
         searchInput.value = '';
         clearSearchBtn.style.display = 'none';
+        visibleCount = 80;
         renderChannels();
     });
 
@@ -636,13 +642,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    fullscreenBtn.addEventListener('click', () => {
+    fullscreenBtn.addEventListener('click', async () => {
         if (!document.fullscreenElement) {
-            video.requestFullscreen().catch(err => {
+            try {
+                await video.requestFullscreen();
+                // Attempt to lock screen orientation to landscape on mobile devices
+                if (screen.orientation && typeof screen.orientation.lock === 'function') {
+                    await screen.orientation.lock('landscape').catch(err => {
+                        console.warn('Screen orientation lock is not supported or was ignored:', err);
+                    });
+                }
+            } catch (err) {
                 console.error(`Error enabling fullscreen: ${err.message}`);
-            });
+            }
         } else {
             document.exitFullscreen();
+        }
+    });
+
+    // Handle unlocking orientation when exiting fullscreen
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+            if (screen.orientation && typeof screen.orientation.unlock === 'function') {
+                screen.orientation.unlock();
+            }
         }
     });
 
@@ -667,6 +690,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Infinite scroll for channel feed
+    let isLoadingMore = false;
+    const feedSection = document.getElementById('feed-section');
+    if (feedSection) {
+        feedSection.addEventListener('scroll', () => {
+            if (isLoadingMore) return;
+            // If scrolled near the bottom, increase visible count and re-render
+            if (feedSection.scrollTop + feedSection.clientHeight >= feedSection.scrollHeight - 150) {
+                let filteredLength = channels.length;
+                if (searchQuery.trim() !== '') {
+                    const query = searchQuery.toLowerCase().trim();
+                    filteredLength = channels.filter(ch =>
+                        ch.name.toLowerCase().includes(query) ||
+                        (ch.group && ch.group.toLowerCase().includes(query))
+                    ).length;
+                } else if (showFavoritesOnly) {
+                    filteredLength = channels.filter(ch => favorites.includes(ch.name)).length;
+                } else if (currentCategory !== 'All') {
+                    filteredLength = channels.filter(ch => ch.group === currentCategory).length;
+                }
+
+                if (visibleCount < filteredLength) {
+                    isLoadingMore = true;
+                    visibleCount += 80;
+                    renderChannels();
+                    // Clear the lock asynchronously once rendering is done
+                    setTimeout(() => {
+                        isLoadingMore = false;
+                    }, 100);
+                }
+            }
+        });
+    }
 
     // Start loading
     loadChannels();
