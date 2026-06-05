@@ -1829,6 +1829,9 @@ video.aspect-fill {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-height: 330px;
+    overflow-y: auto;
+    padding-right: 6px;
 }
 
 .wc-match-card {

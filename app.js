@@ -834,6 +834,54 @@ document.addEventListener('DOMContentLoaded', () => {
             { rank: 2, name: 'Belgium', flag: 'https://flagcdn.com/w40/be.png', p: 0, pts: 0 },
             { rank: 3, name: 'Uruguay', flag: 'https://flagcdn.com/w40/uy.png', p: 0, pts: 0 },
             { rank: 4, name: 'Morocco', flag: 'https://flagcdn.com/w40/ma.png', p: 0, pts: 0 }
+        ],
+        'Group E': [
+            { rank: 1, name: 'Croatia', flag: 'https://flagcdn.com/w40/hr.png', p: 0, pts: 0 },
+            { rank: 2, name: 'Senegal', flag: 'https://flagcdn.com/w40/sn.png', p: 0, pts: 0 },
+            { rank: 3, name: 'Iran', flag: 'https://flagcdn.com/w40/ir.png', p: 0, pts: 0 },
+            { rank: 4, name: 'Colombia', flag: 'https://flagcdn.com/w40/co.png', p: 0, pts: 0 }
+        ],
+        'Group F': [
+            { rank: 1, name: 'Switzerland', flag: 'https://flagcdn.com/w40/ch.png', p: 0, pts: 0 },
+            { rank: 2, name: 'Denmark', flag: 'https://flagcdn.com/w40/dk.png', p: 0, pts: 0 },
+            { rank: 3, name: 'South Korea', flag: 'https://flagcdn.com/w40/kr.png', p: 0, pts: 0 },
+            { rank: 4, name: 'Australia', flag: 'https://flagcdn.com/w40/au.png', p: 0, pts: 0 }
+        ],
+        'Group G': [
+            { rank: 1, name: 'Poland', flag: 'https://flagcdn.com/w40/pl.png', p: 0, pts: 0 },
+            { rank: 2, name: 'Ukraine', flag: 'https://flagcdn.com/w40/ua.png', p: 0, pts: 0 },
+            { rank: 3, name: 'Egypt', flag: 'https://flagcdn.com/w40/eg.png', p: 0, pts: 0 },
+            { rank: 4, name: 'Cameroon', flag: 'https://flagcdn.com/w40/cm.png', p: 0, pts: 0 }
+        ],
+        'Group H': [
+            { rank: 1, name: 'Sweden', flag: 'https://flagcdn.com/w40/se.png', p: 0, pts: 0 },
+            { rank: 2, name: 'Chile', flag: 'https://flagcdn.com/w40/cl.png', p: 0, pts: 0 },
+            { rank: 3, name: 'Ecuador', flag: 'https://flagcdn.com/w40/ec.png', p: 0, pts: 0 },
+            { rank: 4, name: 'Saudi Arabia', flag: 'https://flagcdn.com/w40/sa.png', p: 0, pts: 0 }
+        ],
+        'Group I': [
+            { rank: 1, name: 'Turkey', flag: 'https://flagcdn.com/w40/tr.png', p: 0, pts: 0 },
+            { rank: 2, name: 'Austria', flag: 'https://flagcdn.com/w40/at.png', p: 0, pts: 0 },
+            { rank: 3, name: 'Peru', flag: 'https://flagcdn.com/w40/pe.png', p: 0, pts: 0 },
+            { rank: 4, name: 'Nigeria', flag: 'https://flagcdn.com/w40/ng.png', p: 0, pts: 0 }
+        ],
+        'Group J': [
+            { rank: 1, name: 'Wales', flag: 'https://flagcdn.com/w40/gb.png', p: 0, pts: 0 },
+            { rank: 2, name: 'Hungary', flag: 'https://flagcdn.com/w40/hu.png', p: 0, pts: 0 },
+            { rank: 3, name: 'Algeria', flag: 'https://flagcdn.com/w40/dz.png', p: 0, pts: 0 },
+            { rank: 4, name: 'Costa Rica', flag: 'https://flagcdn.com/w40/cr.png', p: 0, pts: 0 }
+        ],
+        'Group K': [
+            { rank: 1, name: 'Scotland', flag: 'https://flagcdn.com/w40/gb.png', p: 0, pts: 0 },
+            { rank: 2, name: 'Serbia', flag: 'https://flagcdn.com/w40/rs.png', p: 0, pts: 0 },
+            { rank: 3, name: 'Ghana', flag: 'https://flagcdn.com/w40/gh.png', p: 0, pts: 0 },
+            { rank: 4, name: 'Qatar', flag: 'https://flagcdn.com/w40/qa.png', p: 0, pts: 0 }
+        ],
+        'Group L': [
+            { rank: 1, name: 'Czechia', flag: 'https://flagcdn.com/w40/cz.png', p: 0, pts: 0 },
+            { rank: 2, name: 'Norway', flag: 'https://flagcdn.com/w40/no.png', p: 0, pts: 0 },
+            { rank: 3, name: 'Tunisia', flag: 'https://flagcdn.com/w40/tn.png', p: 0, pts: 0 },
+            { rank: 4, name: 'New Zealand', flag: 'https://flagcdn.com/w40/nz.png', p: 0, pts: 0 }
         ]
     };
 
@@ -914,8 +962,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                             </div>
                             <div class="match-time-info" style="margin-right: 15px; text-align: center;">
-                                <span style="font-weight: 700; color: var(--text-primary);">June 12</span>
-                                <span>06:00 PM</span>
+                                <span style="font-weight: 700; color: var(--text-primary);">June 11</span>
+                                <span>11:00 PM</span>
                             </div>
                             <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
                                 <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
@@ -938,7 +986,175 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                             </div>
                             <div class="match-time-info" style="margin-right: 15px; text-align: center;">
+                                <span style="font-weight: 700; color: var(--text-primary);">June 12</span>
+                                <span>06:00 PM</span>
+                            </div>
+                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
+                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
+                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
+                            </div>
+                        </div>
+
+                        <!-- Match 4 -->
+                        <div class="wc-match-card">
+                            <div class="match-teams">
+                                <div class="team home">
+                                    <span>France</span>
+                                    <img src="https://flagcdn.com/w40/fr.png" class="team-flag" alt="France">
+                                </div>
+                                <span class="match-vs">VS</span>
+                                <div class="team away">
+                                    <img src="https://flagcdn.com/w40/de.png" class="team-flag" alt="Germany">
+                                    <span>Germany</span>
+                                </div>
+                            </div>
+                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
+                                <span style="font-weight: 700; color: var(--text-primary);">June 12</span>
+                                <span>09:00 PM</span>
+                            </div>
+                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
+                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
+                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
+                            </div>
+                        </div>
+
+                        <!-- Match 5 -->
+                        <div class="wc-match-card">
+                            <div class="match-teams">
+                                <div class="team home">
+                                    <span>England</span>
+                                    <img src="https://flagcdn.com/w40/gb.png" class="team-flag" alt="England">
+                                </div>
+                                <span class="match-vs">VS</span>
+                                <div class="team away">
+                                    <img src="https://flagcdn.com/w40/it.png" class="team-flag" alt="Italy">
+                                    <span>Italy</span>
+                                </div>
+                            </div>
+                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
                                 <span style="font-weight: 700; color: var(--text-primary);">June 13</span>
+                                <span>03:00 PM</span>
+                            </div>
+                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
+                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
+                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
+                            </div>
+                        </div>
+
+                        <!-- Match 6 -->
+                        <div class="wc-match-card">
+                            <div class="match-teams">
+                                <div class="team home">
+                                    <span>Portugal</span>
+                                    <img src="https://flagcdn.com/w40/pt.png" class="team-flag" alt="Portugal">
+                                </div>
+                                <span class="match-vs">VS</span>
+                                <div class="team away">
+                                    <img src="https://flagcdn.com/w40/nl.png" class="team-flag" alt="Netherlands">
+                                    <span>Netherlands</span>
+                                </div>
+                            </div>
+                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
+                                <span style="font-weight: 700; color: var(--text-primary);">June 13</span>
+                                <span>06:00 PM</span>
+                            </div>
+                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
+                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
+                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
+                            </div>
+                        </div>
+
+                        <!-- Match 7 -->
+                        <div class="wc-match-card">
+                            <div class="match-teams">
+                                <div class="team home">
+                                    <span>Uruguay</span>
+                                    <img src="https://flagcdn.com/w40/uy.png" class="team-flag" alt="Uruguay">
+                                </div>
+                                <span class="match-vs">VS</span>
+                                <div class="team away">
+                                    <img src="https://flagcdn.com/w40/jp.png" class="team-flag" alt="Japan">
+                                    <span>Japan</span>
+                                </div>
+                            </div>
+                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
+                                <span style="font-weight: 700; color: var(--text-primary);">June 14</span>
+                                <span>06:00 PM</span>
+                            </div>
+                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
+                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
+                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
+                            </div>
+                        </div>
+
+                        <!-- Match 8 -->
+                        <div class="wc-match-card">
+                            <div class="match-teams">
+                                <div class="team home">
+                                    <span>Belgium</span>
+                                    <img src="https://flagcdn.com/w40/be.png" class="team-flag" alt="Belgium">
+                                </div>
+                                <span class="match-vs">VS</span>
+                                <div class="team away">
+                                    <img src="https://flagcdn.com/w40/ma.png" class="team-flag" alt="Morocco">
+                                    <span>Morocco</span>
+                                </div>
+                            </div>
+                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
+                                <span style="font-weight: 700; color: var(--text-primary);">June 14</span>
+                                <span>09:00 PM</span>
+                            </div>
+                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
+                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
+                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
+                            </div>
+                        </div>
+
+                        <!-- Match 9 -->
+                        <div class="wc-match-card">
+                            <div class="match-teams">
+                                <div class="team home">
+                                    <span>Senegal</span>
+                                    <img src="https://flagcdn.com/w40/sn.png" class="team-flag" alt="Senegal">
+                                </div>
+                                <span class="match-vs">VS</span>
+                                <div class="team away">
+                                    <img src="https://flagcdn.com/w40/co.png" class="team-flag" alt="Colombia">
+                                    <span>Colombia</span>
+                                </div>
+                            </div>
+                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
+                                <span style="font-weight: 700; color: var(--text-primary);">June 15</span>
+                                <span>06:00 PM</span>
+                            </div>
+                            <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                                <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 8px; font-size: 10px;">T Sports</button>
+                                <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 8px; font-size: 10px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none;">A Sports</button>
+                                <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 8px; font-size: 10px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none;">PTV Sports</button>
+                            </div>
+                        </div>
+
+                        <!-- Match 10 -->
+                        <div class="wc-match-card">
+                            <div class="match-teams">
+                                <div class="team home">
+                                    <span>South Korea</span>
+                                    <img src="https://flagcdn.com/w40/kr.png" class="team-flag" alt="South Korea">
+                                </div>
+                                <span class="match-vs">VS</span>
+                                <div class="team away">
+                                    <img src="https://flagcdn.com/w40/hr.png" class="team-flag" alt="Croatia">
+                                    <span>Croatia</span>
+                                </div>
+                            </div>
+                            <div class="match-time-info" style="margin-right: 15px; text-align: center;">
+                                <span style="font-weight: 700; color: var(--text-primary);">June 15</span>
                                 <span>09:00 PM</span>
                             </div>
                             <div class="match-action" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
@@ -954,10 +1170,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="wc-groups-panel">
                     <h3 class="wc-section-header"><i data-lucide="list"></i> GROUP STANDINGS</h3>
                     <div class="wc-groups-selector">
-                        <button class="group-btn ${activeWcGroup === 'Group A' ? 'active' : ''}" data-group="Group A">Grp A</button>
-                        <button class="group-btn ${activeWcGroup === 'Group B' ? 'active' : ''}" data-group="Group B">Grp B</button>
-                        <button class="group-btn ${activeWcGroup === 'Group C' ? 'active' : ''}" data-group="Group C">Grp C</button>
-                        <button class="group-btn ${activeWcGroup === 'Group D' ? 'active' : ''}" data-group="Group D">Grp D</button>
+                        ${Object.keys(wcGroupsData).map(group => `
+                            <button class="group-btn ${activeWcGroup === group ? 'active' : ''}" data-group="${group}">
+                                ${group.replace('Group ', 'Grp ')}
+                            </button>
+                        `).join('')}
                     </div>
                     <div class="wc-table-wrapper" id="wc-standings-table-container">
                         <!-- Dynamic Standings table -->
