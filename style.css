@@ -2161,3 +2161,17 @@ video.aspect-fill {
 .player-panel.open ~ .feed-section .wc-table th {
     padding: 6px 4px;
 }
+
+/* =============================
+   PLAYLIST MANAGER PRESENTS
+   ============================= */
+.preset-btn:hover {
+    border-color: var(--color-accent) !important;
+    background: rgba(6, 182, 212, 0.08) !important;
+}
+
+.preset-btn.active {
+    border-color: var(--color-primary) !important;
+    background: rgba(124, 58, 237, 0.12) !important;
+    font-weight: 600;
+}

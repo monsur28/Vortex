@@ -1099,6 +1099,154 @@ document.addEventListener('DOMContentLoaded', () => {
         countdownInterval = setInterval(updateTimer, 1000);
     }
 
+    // ==========================================
+    // Playlist Manager Logic
+    // ==========================================
+    const playlistBtn = document.getElementById('playlist-btn');
+    const playlistsModal = document.getElementById('playlists-modal');
+    const closePlaylistModal = document.getElementById('close-playlist-modal');
+    const playlistBackdrop = document.getElementById('playlist-backdrop');
+    const presetBtns = document.querySelectorAll('.preset-btn');
+    const customM3uUrlInput = document.getElementById('custom-m3u-url');
+    const loadCustomM3uBtn = document.getElementById('load-custom-m3u');
+    const playlistStatus = document.getElementById('playlist-status');
+    const playlistStatusText = document.getElementById('playlist-status-text');
+
+    // Toggle Modal
+    if (playlistBtn) {
+        playlistBtn.addEventListener('click', () => {
+            playlistsModal.style.display = 'flex';
+        });
+    }
+
+    const hidePlaylistModal = () => {
+        playlistsModal.style.display = 'none';
+        playlistStatus.style.display = 'none';
+    };
+
+    if (closePlaylistModal) closePlaylistModal.addEventListener('click', hidePlaylistModal);
+    if (playlistBackdrop) playlistBackdrop.addEventListener('click', hidePlaylistModal);
+
+    // M3U Playlist Parser
+    function parseM3U(m3uText) {
+        const lines = m3uText.split('\n');
+        const parsed = [];
+        let current = null;
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (!line) continue;
+
+            if (line.startsWith('#EXTINF:')) {
+                current = {};
+                // Extract logo
+                const logoMatch = line.match(/tvg-logo="([^"]+)"/);
+                if (logoMatch) current.logo = logoMatch[1];
+
+                // Extract group
+                const groupMatch = line.match(/group-title="([^"]+)"/);
+                current.group = groupMatch ? groupMatch[1] : 'Other';
+
+                // Extract name
+                const commaIndex = line.lastIndexOf(',');
+                if (commaIndex > -1) {
+                    current.name = line.substring(commaIndex + 1).trim();
+                } else {
+                    current.name = 'Unknown Channel';
+                }
+            } else if (!line.startsWith('#') && current) {
+                current.url = line;
+                parsed.push(current);
+                current = null;
+            }
+        }
+        return parsed;
+    }
+
+    // Load selected playlist
+    async function loadPlaylistSource(url) {
+        playlistStatus.style.display = 'flex';
+        playlistStatusText.textContent = 'Connecting and downloading playlist...';
+
+        try {
+            let fetchedChannels = [];
+
+            if (url === 'local') {
+                const response = await fetch('channels.json');
+                if (!response.ok) throw new Error('Failed to load local channels database');
+                fetchedChannels = await response.json();
+            } else {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Failed to fetch M3U playlist from URL');
+                const m3uText = await response.text();
+                playlistStatusText.textContent = 'Parsing M3U channels...';
+                fetchedChannels = parseM3U(m3uText);
+            }
+
+            if (fetchedChannels.length === 0) {
+                throw new Error('No valid channels found in the playlist.');
+            }
+
+            // Successfully loaded
+            channels = fetchedChannels;
+            
+            // Set starting defaults
+            const hasWcSports = channels.some(ch => ch.group === 'Sports');
+            if (url === 'local' && hasWcSports) {
+                currentCategory = 'FIFA World Cup 2026';
+            } else {
+                currentCategory = channels[0].group || 'All';
+            }
+            
+            showFavoritesOnly = false;
+            searchQuery = '';
+            visibleCount = 80;
+
+            initApp();
+            showToast(`Loaded ${channels.length} channels successfully!`);
+            hidePlaylistModal();
+        } catch (err) {
+            console.error('Playlist load error:', err);
+            playlistStatusText.textContent = 'Error: ' + err.message;
+            showToast('Failed to load playlist: ' + err.message);
+        }
+    }
+
+    // Helper toast popup creator
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'player-toast';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.classList.add('fade-out');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // Preset button click events
+    presetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            presetBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const targetUrl = btn.getAttribute('data-url');
+            loadPlaylistSource(targetUrl);
+        });
+    });
+
+    // Custom M3U URL click event
+    if (loadCustomM3uBtn) {
+        loadCustomM3uBtn.addEventListener('click', () => {
+            const url = customM3uUrlInput.value.trim();
+            if (!url) {
+                alert('Please enter a valid M3U playlist URL.');
+                return;
+            }
+            presetBtns.forEach(b => b.classList.remove('active'));
+            loadPlaylistSource(url);
+        });
+    }
+
     // Start loading
     loadChannels();
 });

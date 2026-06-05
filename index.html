@@ -76,6 +76,11 @@
                         </button>
                     </div>
 
+                    <button class="playlist-btn" id="playlist-btn" title="Manage Playlists" style="display: flex; align-items: center; gap: 6px; height: 38px; padding: 0 14px; background-color: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); cursor: pointer; font-weight: 500; font-size: 13px; transition: all var(--transition-fast);">
+                        <i data-lucide="folder-open" style="width: 15px; height: 15px; color: var(--text-secondary);"></i>
+                        <span>Playlists</span>
+                    </button>
+
                     <button class="fav-toggle-btn" id="fav-toggle-btn" title="Show Bookmarked">
                         <i data-lucide="star"></i>
                         <span>Favorites</span>
@@ -219,6 +224,54 @@
                     <ul class="categories-list-mobile" id="categories-list-mobile">
                         <!-- Dynamic list of categories with counts -->
                     </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Playlists Modal -->
+        <div class="playlists-modal" id="playlists-modal" style="display: none; position: fixed; inset: 0; z-index: 3000; align-items: center; justify-content: center; padding: 20px;">
+            <div class="modal-backdrop" id="playlist-backdrop" style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
+            <div class="modal-content" style="position: relative; width: 100%; max-width: 480px; background-color: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); z-index: 2; animation: fadeInUp 0.3s ease both;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 12px;">
+                    <h3 style="font-family: 'Outfit'; font-size: 18px; display: flex; align-items: center; gap: 8px;"><i data-lucide="folder-open" style="color: var(--color-accent);"></i> Playlist Manager</h3>
+                    <button id="close-playlist-modal" style="background: none; border: none; cursor: pointer; color: var(--text-muted);"><i data-lucide="x"></i></button>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div>
+                        <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 8px; letter-spacing: 0.5px;">SELECT PRESET PLAYLIST</label>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <button class="preset-btn active" data-url="local" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); text-align: left; cursor: pointer; transition: all var(--transition-fast);">
+                                <span>Default Vortex Playlist (World Cup / Bangla)</span>
+                                <span style="font-size: 10px; background: rgba(0, 223, 137, 0.15); color: var(--wc-green); padding: 2px 6px; border-radius: 10px; font-weight: 700;">DEFAULT</span>
+                            </button>
+                            <button class="preset-btn" data-url="https://iptv-org.github.io/iptv/index.category.m3u" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); text-align: left; cursor: pointer; transition: all var(--transition-fast);">
+                                <span>Grouped by Category (iptv-org)</span>
+                                <span style="font-size: 10px; color: var(--text-secondary);">M3U URL</span>
+                            </button>
+                            <button class="preset-btn" data-url="https://iptv-org.github.io/iptv/index.language.m3u" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); text-align: left; cursor: pointer; transition: all var(--transition-fast);">
+                                <span>Grouped by Language (iptv-org)</span>
+                                <span style="font-size: 10px; color: var(--text-secondary);">M3U URL</span>
+                            </button>
+                            <button class="preset-btn" data-url="https://iptv-org.github.io/iptv/index.country.m3u" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); text-align: left; cursor: pointer; transition: all var(--transition-fast);">
+                                <span>Grouped by Country (iptv-org)</span>
+                                <span style="font-size: 10px; color: var(--text-secondary);">M3U URL</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div style="border-top: 1px solid var(--glass-border); padding-top: 16px;">
+                        <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 8px; letter-spacing: 0.5px;">OR LOAD CUSTOM M3U URL</label>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="text" id="custom-m3u-url" placeholder="https://example.com/playlist.m3u" style="flex: 1; height: 38px; background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); padding: 0 12px; font-size: 13px; outline: none; transition: all var(--transition-fast);">
+                            <button id="load-custom-m3u" style="height: 38px; padding: 0 16px; background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); border: none; border-radius: var(--radius-sm); font-weight: 600; font-size: 13px; cursor: pointer; transition: all var(--transition-fast);">Load</button>
+                        </div>
+                    </div>
+
+                    <!-- Loader / Info State -->
+                    <div id="playlist-status" style="display: none; align-items: center; gap: 10px; padding: 10px 14px; background: rgba(255, 255, 255, 0.03); border-radius: var(--radius-sm); border: 1px solid var(--glass-border); font-size: 12px;">
+                        <div class="spinner" style="width: 16px; height: 16px; border-width: 2px; border-top-color: var(--color-accent);"></div>
+                        <span id="playlist-status-text">Fetching playlist...</span>
+                    </div>
                 </div>
             </div>
         </div>
