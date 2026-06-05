@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // DOM Elements
     const video = document.getElementById('video-player');
+    const videoWrapper = document.querySelector('.video-wrapper');
     const channelsGrid = document.getElementById('channels-grid');
     const categoriesList = document.getElementById('categories-list');
     const categoriesListMobile = document.getElementById('categories-list-mobile');
@@ -645,7 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fullscreenBtn.addEventListener('click', async () => {
         if (!document.fullscreenElement) {
             try {
-                await video.requestFullscreen();
+                await videoWrapper.requestFullscreen();
                 // Attempt to lock screen orientation to landscape on mobile devices
                 if (screen.orientation && typeof screen.orientation.lock === 'function') {
                     await screen.orientation.lock('landscape').catch(err => {

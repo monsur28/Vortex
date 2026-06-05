@@ -549,6 +549,20 @@ video.aspect-fill {
     object-fit: fill;
 }
 
+.video-wrapper:fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    aspect-ratio: auto !important;
+}
+
+.video-wrapper:fullscreen video {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 /* Player Overlays */
 .player-overlay {
     position: absolute;
