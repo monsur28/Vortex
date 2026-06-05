@@ -643,6 +643,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    let isOrientationLocked = false;
     fullscreenBtn.addEventListener('click', async () => {
         const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
         
@@ -650,10 +651,18 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 if (videoWrapper.requestFullscreen) {
                     await videoWrapper.requestFullscreen();
+                    isOrientationLocked = false;
                     if (screen.orientation && typeof screen.orientation.lock === 'function') {
-                        await screen.orientation.lock('landscape').catch(err => {
+                        await screen.orientation.lock('landscape').then(() => {
+                            isOrientationLocked = true;
+                        }).catch(err => {
                             console.warn('Screen orientation lock is not supported or was ignored:', err);
                         });
+                    }
+                    
+                    // Fallback to CSS landscape rotation if orientation lock failed/ignored and we are in portrait
+                    if (!isOrientationLocked && window.innerHeight > window.innerWidth) {
+                        videoWrapper.classList.add('rotate-landscape');
                     }
                 } else if (video.webkitEnterFullscreen) {
                     // Native iOS/Safari fallback
@@ -686,6 +695,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const onFullscreenChange = () => {
         const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
         if (!isFullscreen) {
+            videoWrapper.classList.remove('rotate-landscape');
             if (screen.orientation && typeof screen.orientation.unlock === 'function') {
                 screen.orientation.unlock();
             }
@@ -695,6 +705,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('webkitfullscreenchange', onFullscreenChange);
     document.addEventListener('mozfullscreenchange', onFullscreenChange);
     document.addEventListener('MSFullscreenChange', onFullscreenChange);
+
+    // Watch for physical device rotation to dynamically toggle CSS rotation
+    window.addEventListener('resize', () => {
+        const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        if (isFullscreen && !isOrientationLocked) {
+            if (window.innerWidth > window.innerHeight) {
+                videoWrapper.classList.remove('rotate-landscape');
+            } else {
+                videoWrapper.classList.add('rotate-landscape');
+            }
+        }
+    });
 
     theaterBtn.addEventListener('click', () => {
         const appContainer = document.querySelector('.app-container');

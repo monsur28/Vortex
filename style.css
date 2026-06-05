@@ -563,6 +563,29 @@ video.aspect-fill {
     height: 100% !important;
 }
 
+/* Fallback landscape rotation when orientation lock is unsupported/ignored */
+.video-wrapper.rotate-landscape:fullscreen,
+.video-wrapper.rotate-landscape {
+    width: 100vh !important;
+    height: 100vw !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) rotate(90deg) !important;
+    transform-origin: center !important;
+    z-index: 99999 !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    aspect-ratio: auto !important;
+}
+
+.video-wrapper.rotate-landscape:fullscreen video,
+.video-wrapper.rotate-landscape video {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 /* Player Overlays */
 .player-overlay {
     position: absolute;
