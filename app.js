@@ -88,20 +88,49 @@ document.addEventListener('DOMContentLoaded', () => {
         'other': 'help-circle'
     };
 
-    // Load Channels from Local JSON file
+    // Load Channels from Local JSON file and merge with Global M3U index
     async function loadChannels() {
         try {
+            // 1. Load local channels (World Cup + Bangla) instantly
             const response = await fetch('channels.json');
             if (!response.ok) throw new Error('Failed to load channels dataset');
             channels = await response.json();
 
-            // Re-render
+            // Render local channels immediately for fast page load
             initApp();
+
+            // 2. Fetch and merge global Category M3U playlist in the background
+            fetchGlobalPlaylistBackground();
         } catch (err) {
             console.error('Error loading IPTV channels:', err);
             emptyState.style.display = 'flex';
             emptyState.querySelector('h3').textContent = 'Database offline';
             emptyState.querySelector('p').textContent = 'Check configuration or ensure channels.json is in workspace.';
+        }
+    }
+
+    async function fetchGlobalPlaylistBackground() {
+        try {
+            const globalM3uUrl = 'https://iptv-org.github.io/iptv/index.category.m3u';
+            const res = await fetch(globalM3uUrl);
+            if (!res.ok) throw new Error('Failed to fetch global playlist');
+            const m3uText = await res.text();
+            
+            const parsedGlobal = parseM3U(m3uText);
+            if (parsedGlobal.length > 0) {
+                // Merge without duplicates (by URL)
+                const existingUrls = new Set(channels.map(ch => ch.url));
+                const uniqueGlobal = parsedGlobal.filter(ch => !existingUrls.has(ch.url));
+                
+                channels = [...channels, ...uniqueGlobal];
+                
+                // Re-render categories and channels dynamically
+                renderCategories();
+                renderChannels();
+                showToast(`Combined ${uniqueGlobal.length} global channels automatically!`);
+            }
+        } catch (err) {
+            console.warn('Background global playlist load failed:', err);
         }
     }
 
