@@ -1801,6 +1801,12 @@ video.aspect-fill {
     z-index: 2;
 }
 
+/* Fallback to single column layout if the sidebar player panel is open */
+.player-panel.open ~ .feed-section .wc-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
 @media (max-width: 900px) {
     .wc-grid {
         grid-template-columns: 1fr;
@@ -2057,7 +2063,64 @@ video.aspect-fill {
         margin-right: 0 !important;
     }
     .match-action {
-        justify-content: center;
         margin-left: 0 !important;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        width: 100%;
     }
+    .wc-watch-btn {
+        justify-content: center;
+        padding: 6px 2px;
+        font-size: 10px;
+        text-align: center;
+    }
+}
+
+/* =============================
+   ADAPTIVE STYLES WHEN PLAYER IS OPEN
+   ============================= */
+.player-panel.open ~ .feed-section {
+    padding: 12px;
+}
+
+.player-panel.open ~ .feed-section .world-cup-hub {
+    padding: 16px;
+}
+
+.player-panel.open ~ .feed-section .wc-match-card {
+    padding: 12px 10px;
+}
+
+.player-panel.open ~ .feed-section .wc-match-card .match-info-action {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.player-panel.open ~ .feed-section .wc-match-card .match-time-info {
+    align-items: center;
+    text-align: center;
+}
+
+.player-panel.open ~ .feed-section .wc-match-card .match-action {
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+}
+
+.player-panel.open ~ .feed-section .wc-match-card .wc-watch-btn {
+    justify-content: center;
+    padding: 6px 2px;
+    font-size: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.player-panel.open ~ .feed-section .wc-table td,
+.player-panel.open ~ .feed-section .wc-table th {
+    padding: 6px 4px;
 }
