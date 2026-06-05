@@ -943,38 +943,55 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
 
-            <!-- Live & Upcoming Matches (Now spans full width) -->
-            <div class="wc-matches-section">
-                <h3 class="wc-section-header"><i data-lucide="play-circle"></i> MATCH SCHEDULE & STREAMING</h3>
-                <div class="wc-matches-list">
-                    ${wcMatchesData.map((match, index) => `
-                        <div class="wc-match-card">
-                            <!-- Row 1: Teams playing -->
-                            <div class="match-teams" style="justify-content: center; width: 100%; gap: 12px; margin-bottom: 8px;">
-                                <div class="team home" style="font-size: 13px; font-weight: 700; flex: 1; justify-content: flex-end; display: flex; align-items: center; gap: 8px;">
-                                    <span>${match.home}</span>
-                                    <img src="https://flagcdn.com/w40/${match.homeFlag}.png" class="team-flag" alt="${match.home}" style="width: 22px; height: 14px; object-fit: cover; border-radius: 2px;">
+            <div class="wc-grid">
+                <!-- Live & Upcoming Matches -->
+                <div class="wc-matches-section">
+                    <h3 class="wc-section-header"><i data-lucide="play-circle"></i> MATCH SCHEDULE & STREAMING</h3>
+                    <div class="wc-matches-list">
+                        ${wcMatchesData.map((match, index) => `
+                            <div class="wc-match-card">
+                                <!-- Row 1: Teams playing -->
+                                <div class="match-teams" style="justify-content: center; width: 100%; gap: 12px; margin-bottom: 8px;">
+                                    <div class="team home" style="font-size: 13px; font-weight: 700; flex: 1; justify-content: flex-end; display: flex; align-items: center; gap: 8px;">
+                                        <span>${match.home}</span>
+                                        <img src="https://flagcdn.com/w40/${match.homeFlag}.png" class="team-flag" alt="${match.home}" style="width: 22px; height: 14px; object-fit: cover; border-radius: 2px;">
+                                    </div>
+                                    <span class="match-vs" style="font-size: 10px; font-weight: 800; color: var(--text-muted); background: rgba(255, 255, 255, 0.05); padding: 2px 6px; border-radius: 10px;">VS</span>
+                                    <div class="team away" style="font-size: 13px; font-weight: 700; flex: 1; justify-content: flex-start; display: flex; align-items: center; gap: 8px;">
+                                        <img src="https://flagcdn.com/w40/${match.awayFlag}.png" class="team-flag" alt="${match.away}" style="width: 22px; height: 14px; object-fit: cover; border-radius: 2px;">
+                                        <span>${match.away}</span>
+                                    </div>
                                 </div>
-                                <span class="match-vs" style="font-size: 10px; font-weight: 800; color: var(--text-muted); background: rgba(255, 255, 255, 0.05); padding: 2px 6px; border-radius: 10px;">VS</span>
-                                <div class="team away" style="font-size: 13px; font-weight: 700; flex: 1; justify-content: flex-start; display: flex; align-items: center; gap: 8px;">
-                                    <img src="https://flagcdn.com/w40/${match.awayFlag}.png" class="team-flag" alt="${match.away}" style="width: 22px; height: 14px; object-fit: cover; border-radius: 2px;">
-                                    <span>${match.away}</span>
+                                <!-- Row 2: Date/Time and Action links (centered) -->
+                                <div class="match-info-action" style="display: flex; flex-direction: column; align-items: center; justify-content: center; border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 8px; gap: 8px; width: 100%;">
+                                    <div class="match-time-info" style="display: flex; flex-direction: column; align-items: center; gap: 1px;">
+                                        <span style="font-weight: 800; color: ${match.primary ? 'var(--wc-green)' : 'var(--text-primary)'}; font-size: 11px;">${match.date}</span>
+                                        <span style="font-size: 10px; color: var(--text-secondary);">${match.time}</span>
+                                    </div>
+                                    <div class="match-action" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; width: 100%; max-width: 280px; margin-left: 0; justify-content: center;">
+                                        <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 2px; font-size: 9px; height: 26px; border-radius: 4px; justify-content: center;">T Sports</button>
+                                        <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 2px; font-size: 9px; height: 26px; border-radius: 4px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none; justify-content: center;">A Sports</button>
+                                        <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 2px; font-size: 9px; height: 26px; border-radius: 4px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none; justify-content: center;">PTV Sports</button>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- Row 2: Date/Time and Action links (centered) -->
-                            <div class="match-info-action" style="display: flex; flex-direction: column; align-items: center; justify-content: center; border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 8px; gap: 8px; width: 100%;">
-                                <div class="match-time-info" style="display: flex; flex-direction: column; align-items: center; gap: 1px;">
-                                    <span style="font-weight: 800; color: ${match.primary ? 'var(--wc-green)' : 'var(--text-primary)'}; font-size: 11px;">${match.date}</span>
-                                    <span style="font-size: 10px; color: var(--text-secondary);">${match.time}</span>
-                                </div>
-                                <div class="match-action" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; width: 100%; max-width: 280px; margin-left: 0; justify-content: center;">
-                                    <button class="wc-watch-btn" data-channel="T Sports HD" title="Watch on T Sports" style="padding: 4px 2px; font-size: 9px; height: 26px; border-radius: 4px; justify-content: center;">T Sports</button>
-                                    <button class="wc-watch-btn" data-channel="A sports" title="Watch on A Sports" style="padding: 4px 2px; font-size: 9px; height: 26px; border-radius: 4px; background: linear-gradient(135deg, var(--color-primary), #4f46e5); color: white; box-shadow: none; justify-content: center;">A Sports</button>
-                                    <button class="wc-watch-btn" data-channel="PTV Sports" title="Watch on PTV Sports" style="padding: 4px 2px; font-size: 9px; height: 26px; border-radius: 4px; background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border: 1px solid var(--glass-border); box-shadow: none; justify-content: center;">PTV Sports</button>
-                                </div>
-                            </div>
-                        </div>
-                    `).join('')}
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Group Standings Panel -->
+                <div class="wc-groups-panel">
+                    <h3 class="wc-section-header"><i data-lucide="list"></i> GROUP STANDINGS</h3>
+                    <div class="wc-groups-selector">
+                        ${Object.keys(wcGroupsData).map(group => `
+                            <button class="group-btn ${activeWcGroup === group ? 'active' : ''}" data-group="${group}">
+                                ${group.replace('Group ', 'Grp ')}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div class="wc-table-wrapper" id="wc-standings-table-container">
+                        <!-- Dynamic Standings table -->
+                    </div>
                 </div>
             </div>
         `;
@@ -994,6 +1011,17 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Register group button click events
+        worldCupHub.querySelectorAll('.group-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                worldCupHub.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeWcGroup = btn.getAttribute('data-group');
+                renderWcStandingsOnly();
+            });
+        });
+
+        renderWcStandingsOnly();
         initCountdown();
         lucide.createIcons();
     }

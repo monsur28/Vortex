@@ -1792,6 +1792,32 @@ video.aspect-fill {
     text-align: center;
 }
 
+/* WC Layout Split: Live/Matches + Group Standings */
+.wc-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Fallback to single column layout if the sidebar player panel is open */
+.player-panel.open ~ .feed-section .wc-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+/* Hide Group Standings when media player is open */
+.player-panel.open ~ .feed-section .wc-groups-panel {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .wc-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Matches Feed - Responsive Grid for Desktop */
 .wc-matches-list {
     display: grid;
