@@ -6,12 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // State management
     let channels = [];
     let favorites = JSON.parse(localStorage.getItem('vortex_favorites')) || [];
-    let currentCategory = 'Bangla'; // Default starting group
+    let currentCategory = 'FIFA World Cup 2026'; // Default starting group
     let searchQuery = '';
     let showFavoritesOnly = false;
     let activeChannel = null;
     let hlsInstance = null;
     let visibleCount = 80;
+
+    const worldCupHub = document.getElementById('world-cup-hub');
+    let activeWcGroup = 'Group A';
+    let countdownInterval = null;
 
     // DOM Elements
     const video = document.getElementById('video-player');
@@ -63,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mappings for pretty icons per category
     const categoryIcons = {
+        'fifa world cup 2026': 'trophy',
         'all': 'layers',
         'favorites': 'star',
         'bangla': 'tv',
@@ -104,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initApp() {
         renderCategories();
         renderChannels();
+        renderWorldCupHub();
         lucide.createIcons();
     }
 
@@ -125,7 +131,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalCount = channels.length;
         const favCount = favorites.length;
 
+        const isWcActive = currentCategory === 'FIFA World Cup 2026' && !showFavoritesOnly;
+
         // Render Desktop Sidebar Categories List
+        sidebarHtml += `
+            <li class="category-item ${isWcActive ? 'active' : ''}" data-category="FIFA World Cup 2026" style="border-left: 3px solid var(--wc-green); background: ${isWcActive ? 'linear-gradient(90deg, rgba(0, 223, 137, 0.15) 0%, transparent 100%)' : 'transparent'};">
+                <div class="category-item-left" style="color: var(--wc-green); font-weight: 700;">
+                    <i data-lucide="trophy"></i>
+                    <span>World Cup 2026</span>
+                </div>
+                <span class="category-count" style="background-color: rgba(0, 223, 137, 0.15); color: var(--wc-green); font-weight: 700;">LIVE</span>
+            </li>
+        `;
         sidebarHtml += `
             <li class="category-item ${currentCategory === 'All' && !showFavoritesOnly ? 'active' : ''}" data-category="All">
                 <div class="category-item-left">
@@ -147,6 +164,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Render Mobile Bottom Sheet Categories List
         mobileSheetHtml += `
+            <li class="category-item ${isWcActive ? 'active' : ''}" data-category="FIFA World Cup 2026">
+                <div class="category-item-left" style="color: var(--wc-green); font-weight: 700;">
+                    <i data-lucide="trophy"></i>
+                    <span>World Cup 2026</span>
+                </div>
+                <span class="category-count" style="background-color: rgba(0, 223, 137, 0.15); color: var(--wc-green); font-weight: 700;">LIVE</span>
+            </li>
+        `;
+        mobileSheetHtml += `
             <li class="category-item ${currentCategory === 'All' && !showFavoritesOnly ? 'active' : ''}" data-category="All">
                 <div class="category-item-left">
                     <i data-lucide="layers"></i>
@@ -167,6 +193,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Render Mobile Top Chips List (All & Bookmarks)
         chipsHtml += `
+            <div class="category-chip ${isWcActive ? 'active' : ''}" data-category="FIFA World Cup 2026" style="border-color: rgba(0, 223, 137, 0.4);">
+                <i data-lucide="trophy" style="width: 14px; height: 14px; color: var(--wc-green);"></i>
+                <span style="color: var(--wc-green); font-weight: 600;">World Cup</span>
+            </div>
             <div class="category-chip ${currentCategory === 'All' && !showFavoritesOnly ? 'active' : ''}" data-category="All">
                 <i data-lucide="layers" style="width: 14px; height: 14px;"></i>
                 <span>All</span>
@@ -273,6 +303,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (showFavoritesOnly) {
             filtered = channels.filter(ch => favorites.includes(ch.name));
             currentCategoryTitle.textContent = 'Bookmarks';
+        } else if (currentCategory === 'FIFA World Cup 2026') {
+            filtered = channels.filter(ch => ch.group === 'Sports');
+            currentCategoryTitle.textContent = 'FIFA World Cup 2026';
         } else if (currentCategory !== 'All') {
             filtered = channels.filter(ch => ch.group === currentCategory);
             currentCategoryTitle.textContent = currentCategory;
@@ -347,6 +380,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+
+        renderWorldCupHub();
     }
 
     // Toggle items inside browser local storage favorites
@@ -521,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Navigation Controls Event Listeners
     navHome.addEventListener('click', () => {
         showFavoritesOnly = false;
-        currentCategory = 'Bangla'; // Reset to default group
+        currentCategory = 'FIFA World Cup 2026'; // Reset to default group
         headerSearchBox.classList.remove('open');
         categoriesSheet.classList.remove('open');
         renderCategories();
@@ -772,6 +807,252 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    }
+
+    // FIFA World Cup Standings Data
+    const wcGroupsData = {
+        'Group A': [
+            { rank: 1, name: 'Mexico', flag: 'https://flagcdn.com/w40/mx.png', p: 0, pts: 0 },
+            { rank: 2, name: 'USA', flag: 'https://flagcdn.com/w40/us.png', p: 0, pts: 0 },
+            { rank: 3, name: 'Canada', flag: 'https://flagcdn.com/w40/ca.png', p: 0, pts: 0 },
+            { rank: 4, name: 'Argentina', flag: 'https://flagcdn.com/w40/ar.png', p: 0, pts: 0 }
+        ],
+        'Group B': [
+            { rank: 1, name: 'France', flag: 'https://flagcdn.com/w40/fr.png', p: 0, pts: 0 },
+            { rank: 2, name: 'Spain', flag: 'https://flagcdn.com/w40/es.png', p: 0, pts: 0 },
+            { rank: 3, name: 'England', flag: 'https://flagcdn.com/w40/gb.png', p: 0, pts: 0 },
+            { rank: 4, name: 'Netherlands', flag: 'https://flagcdn.com/w40/nl.png', p: 0, pts: 0 }
+        ],
+        'Group C': [
+            { rank: 1, name: 'Brazil', flag: 'https://flagcdn.com/w40/br.png', p: 0, pts: 0 },
+            { rank: 2, name: 'Germany', flag: 'https://flagcdn.com/w40/de.png', p: 0, pts: 0 },
+            { rank: 3, name: 'Portugal', flag: 'https://flagcdn.com/w40/pt.png', p: 0, pts: 0 },
+            { rank: 4, name: 'Japan', flag: 'https://flagcdn.com/w40/jp.png', p: 0, pts: 0 }
+        ],
+        'Group D': [
+            { rank: 1, name: 'Italy', flag: 'https://flagcdn.com/w40/it.png', p: 0, pts: 0 },
+            { rank: 2, name: 'Belgium', flag: 'https://flagcdn.com/w40/be.png', p: 0, pts: 0 },
+            { rank: 3, name: 'Uruguay', flag: 'https://flagcdn.com/w40/uy.png', p: 0, pts: 0 },
+            { rank: 4, name: 'Morocco', flag: 'https://flagcdn.com/w40/ma.png', p: 0, pts: 0 }
+        ]
+    };
+
+    function renderWorldCupHub() {
+        if (!worldCupHub) return;
+
+        // Only show hub on "FIFA World Cup 2026", "Bangla", or "Sports"
+        if ((currentCategory === 'FIFA World Cup 2026' || currentCategory === 'Bangla' || currentCategory === 'Sports') && searchQuery.trim() === '' && !showFavoritesOnly) {
+            worldCupHub.style.display = 'block';
+        } else {
+            worldCupHub.style.display = 'none';
+            return;
+        }
+
+        if (worldCupHub.innerHTML !== '') {
+            renderWcStandingsOnly();
+            return;
+        }
+
+        // Render full HTML
+        worldCupHub.innerHTML = `
+            <div class="wc-header">
+                <div class="wc-title-area">
+                    <span class="wc-logo-badge"><i data-lucide="trophy" style="width: 14px; height: 14px;"></i> FIFA 2026</span>
+                    <h2>FIFA WORLD CUP HUB</h2>
+                </div>
+                <div class="wc-countdown">
+                    <span class="countdown-label">KICKOFF IN</span>
+                    <div class="countdown-timer" id="wc-timer">
+                        <span id="timer-days">00</span>d
+                        <span id="timer-hours">00</span>h
+                        <span id="timer-mins">00</span>m
+                        <span id="timer-secs">00</span>s
+                    </div>
+                </div>
+            </div>
+
+            <div class="wc-grid">
+                <!-- Live & Upcoming Matches -->
+                <div class="wc-matches-section">
+                    <h3 class="wc-section-header"><i data-lucide="play-circle"></i> MATCH SCHEDULE & STREAMING</h3>
+                    <div class="wc-matches-list">
+                        <!-- Match 1 (LIVE) -->
+                        <div class="wc-match-card live">
+                            <div class="match-teams">
+                                <div class="team home">
+                                    <span>Mexico</span>
+                                    <img src="https://flagcdn.com/w40/mx.png" class="team-flag" alt="Mexico">
+                                </div>
+                                <span class="match-vs live-badge">LIVE</span>
+                                <div class="team away">
+                                    <img src="https://flagcdn.com/w40/us.png" class="team-flag" alt="USA">
+                                    <span>USA</span>
+                                </div>
+                            </div>
+                            <div class="match-action">
+                                <button class="wc-watch-btn" data-channel="T Sports HD">
+                                    <i data-lucide="tv"></i> Watch Live
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Match 2 (UPCOMING) -->
+                        <div class="wc-match-card">
+                            <div class="match-teams">
+                                <div class="team home">
+                                    <span>Canada</span>
+                                    <img src="https://flagcdn.com/w40/ca.png" class="team-flag" alt="Canada">
+                                </div>
+                                <span class="match-vs">VS</span>
+                                <div class="team away">
+                                    <img src="https://flagcdn.com/w40/ar.png" class="team-flag" alt="Argentina">
+                                    <span>Argentina</span>
+                                </div>
+                            </div>
+                            <div class="match-time-info">
+                                <span style="font-weight: 700; color: var(--text-primary);">Tomorrow</span>
+                                <span>06:00 PM</span>
+                            </div>
+                        </div>
+
+                        <!-- Match 3 (UPCOMING) -->
+                        <div class="wc-match-card">
+                            <div class="match-teams">
+                                <div class="team home">
+                                    <span>Brazil</span>
+                                    <img src="https://flagcdn.com/w40/br.png" class="team-flag" alt="Brazil">
+                                </div>
+                                <span class="match-vs">VS</span>
+                                <div class="team away">
+                                    <img src="https://flagcdn.com/w40/es.png" class="team-flag" alt="Spain">
+                                    <span>Spain</span>
+                                </div>
+                            </div>
+                            <div class="match-time-info">
+                                <span style="font-weight: 700; color: var(--text-primary);">June 13</span>
+                                <span>09:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group Standings Panel -->
+                <div class="wc-groups-panel">
+                    <h3 class="wc-section-header"><i data-lucide="list"></i> GROUP STANDINGS</h3>
+                    <div class="wc-groups-selector">
+                        <button class="group-btn ${activeWcGroup === 'Group A' ? 'active' : ''}" data-group="Group A">Grp A</button>
+                        <button class="group-btn ${activeWcGroup === 'Group B' ? 'active' : ''}" data-group="Group B">Grp B</button>
+                        <button class="group-btn ${activeWcGroup === 'Group C' ? 'active' : ''}" data-group="Group C">Grp C</button>
+                        <button class="group-btn ${activeWcGroup === 'Group D' ? 'active' : ''}" data-group="Group D">Grp D</button>
+                    </div>
+                    <div class="wc-table-wrapper" id="wc-standings-table-container">
+                        <!-- Dynamic Standings table -->
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Register watch live click events
+        worldCupHub.querySelectorAll('.wc-watch-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetChannelName = btn.getAttribute('data-channel');
+                const channel = channels.find(c => c.name.toLowerCase().includes(targetChannelName.toLowerCase()));
+                if (channel) {
+                    playChannel(channel);
+                } else {
+                    // Fallback to first Sports channel
+                    const fallback = channels.find(c => c.group === 'Sports');
+                    if (fallback) playChannel(fallback);
+                }
+            });
+        });
+
+        // Register group button click events
+        worldCupHub.querySelectorAll('.group-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                worldCupHub.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeWcGroup = btn.getAttribute('data-group');
+                renderWcStandingsOnly();
+            });
+        });
+
+        renderWcStandingsOnly();
+        initCountdown();
+        lucide.createIcons();
+    }
+
+    function renderWcStandingsOnly() {
+        const container = document.getElementById('wc-standings-table-container');
+        if (!container) return;
+
+        const data = wcGroupsData[activeWcGroup] || [];
+        container.innerHTML = `
+            <table class="wc-table">
+                <thead>
+                    <tr>
+                        <th class="rank">#</th>
+                        <th>Team</th>
+                        <th class="stats">P</th>
+                        <th class="stats">PTS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${data.map(team => `
+                        <tr>
+                            <td class="rank">${team.rank}</td>
+                            <td class="team-name">
+                                <img src="${team.flag}" class="team-flag" alt="${team.name}">
+                                <span>${team.name}</span>
+                            </td>
+                            <td class="stats">${team.p}</td>
+                            <td class="stats pts">${team.pts}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+    }
+
+    function initCountdown() {
+        if (countdownInterval) clearInterval(countdownInterval);
+
+        // FIFA World Cup 2026 kickoff is June 11, 2026
+        const kickoffDate = new Date('2026-06-11T18:00:00+06:00').getTime();
+
+        const updateTimer = () => {
+            const now = new Date().getTime();
+            const distance = kickoffDate - now;
+
+            const daysSpan = document.getElementById('timer-days');
+            const hoursSpan = document.getElementById('timer-hours');
+            const minsSpan = document.getElementById('timer-mins');
+            const secsSpan = document.getElementById('timer-secs');
+
+            if (!daysSpan) {
+                clearInterval(countdownInterval);
+                return;
+            }
+
+            if (distance < 0) {
+                document.querySelector('.wc-countdown').innerHTML = `<span class="countdown-label" style="color: var(--wc-gold)">TOURNAMENT LIVE</span>`;
+                clearInterval(countdownInterval);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            daysSpan.textContent = String(days).padStart(2, '0');
+            hoursSpan.textContent = String(hours).padStart(2, '0');
+            minsSpan.textContent = String(minutes).padStart(2, '0');
+            secsSpan.textContent = String(seconds).padStart(2, '0');
+        };
+
+        updateTimer();
+        countdownInterval = setInterval(updateTimer, 1000);
     }
 
     // Start loading
