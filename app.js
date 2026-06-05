@@ -889,6 +889,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <span>USA</span>
                                 </div>
                             </div>
+                            <div class="match-time-info" style="align-items: center; margin-right: 12px;">
+                                <span style="font-weight: 700; color: var(--wc-green); font-size: 10px;">WARM-UP</span>
+                            </div>
                             <div class="match-action">
                                 <button class="wc-watch-btn" data-channel="T Sports HD">
                                     <i data-lucide="tv"></i> Watch Live
@@ -910,7 +913,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                             </div>
                             <div class="match-time-info">
-                                <span style="font-weight: 700; color: var(--text-primary);">Tomorrow</span>
+                                <span style="font-weight: 700; color: var(--text-primary);">June 12</span>
                                 <span>06:00 PM</span>
                             </div>
                         </div>
