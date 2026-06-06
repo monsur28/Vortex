@@ -2084,10 +2084,17 @@ video.aspect-fill {
 }
 
 @media (max-width: 768px) {
+    .feed-section {
+        padding: 8px !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
     .world-cup-hub {
         padding: 10px 6px !important;
         margin-bottom: 12px !important;
         border-radius: var(--radius-md);
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
     .wc-header {
         flex-direction: column;
@@ -2174,18 +2181,18 @@ video.aspect-fill {
 
 @media (max-width: 480px) {
     .match-teams {
-        flex-direction: column !important;
-        gap: 6px !important;
+        flex-direction: column;
+        gap: 6px;
     }
     .team.home, .team.away {
-        justify-content: center !important;
-        width: 100% !important;
+        justify-content: center;
+        width: 100%;
     }
     .team.home {
-        flex-direction: row !important;
+        flex-direction: row;
     }
     .team.away {
-        flex-direction: row-reverse !important;
+        flex-direction: row-reverse;
     }
 }
 

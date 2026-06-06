@@ -186,13 +186,13 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
             {wcMatchesData.map((match, index) => (
               <div key={index} className="wc-match-card">
                 {/* Row 1: Teams playing */}
-                <div className="match-teams" style={{ justifyContent: 'center', width: 100 + '%', gap: '12px', marginBottom: '8px' }}>
-                  <div className="team home" style={{ fontSize: '13px', fontWeight: 700, flex: 1, justifyContent: 'flex-end', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div className="match-teams">
+                  <div className="team home">
                     <span>{match.home}</span>
                     <img src={`https://flagcdn.com/w40/${match.homeFlag}.png`} className="team-flag" alt={match.home} style={{ width: '22px', height: '14px', objectFit: 'cover', borderRadius: '2px' }} />
                   </div>
-                  <span className="match-vs" style={{ fontSize: '10px', fontWeight: 800, color: 'var(--text-muted)', background: 'rgba(255, 255, 255, 0.05)', padding: '2px 6px', borderRadius: '10px' }}>VS</span>
-                  <div className="team away" style={{ fontSize: '13px', fontWeight: 700, flex: 1, justifyContent: 'flex-start', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span className="match-vs">VS</span>
+                  <div className="team away">
                     <img src={`https://flagcdn.com/w40/${match.awayFlag}.png`} className="team-flag" alt={match.away} style={{ width: '22px', height: '14px', objectFit: 'cover', borderRadius: '2px' }} />
                     <span>{match.away}</span>
                   </div>
