@@ -2083,7 +2083,7 @@ video.aspect-fill {
     color: var(--wc-green);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .wc-header {
         flex-direction: column;
         align-items: center;
@@ -2105,11 +2105,27 @@ video.aspect-fill {
         gap: 12px;
         align-items: stretch;
         text-align: center;
-        padding: 16px 12px;
+        padding: 14px 12px;
     }
     .match-teams {
+        flex-direction: row;
         justify-content: center;
+        align-items: center;
         width: 100%;
+        gap: 8px;
+    }
+    .team {
+        flex: 1;
+        font-size: 11px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .team.home {
+        justify-content: flex-end;
+    }
+    .team.away {
+        justify-content: flex-start;
     }
     .match-time-info {
         align-items: center;
@@ -2127,6 +2143,23 @@ video.aspect-fill {
         padding: 6px 2px;
         font-size: 10px;
         text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .match-teams {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .team.home, .team.away {
+        justify-content: center;
+        width: 100%;
+    }
+    .team.home {
+        flex-direction: row;
+    }
+    .team.away {
+        flex-direction: row-reverse;
     }
 }
 
