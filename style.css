@@ -2085,94 +2085,106 @@ video.aspect-fill {
 
 @media (max-width: 768px) {
     .world-cup-hub {
-        padding: 14px 12px !important;
+        padding: 10px 8px !important;
         border-radius: var(--radius-md);
     }
     .wc-header {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 10px;
+        gap: 6px;
+        margin-bottom: 12px;
     }
     .wc-title-area {
         flex-direction: column;
-        gap: 6px;
+        gap: 4px;
+    }
+    .wc-title-area h2 {
+        font-size: 16px;
+    }
+    .wc-logo-badge {
+        padding: 3px 8px;
+        font-size: 9px;
     }
     .wc-countdown {
         width: 100%;
         flex-direction: column;
-        gap: 8px;
+        gap: 4px;
         justify-content: center;
-        padding: 8px 12px;
+        padding: 6px 10px;
         box-sizing: border-box;
     }
     .countdown-label {
-        font-size: 10px;
+        font-size: 9px;
     }
     .countdown-timer {
-        font-size: 13px;
-        gap: 6px;
+        font-size: 12px;
+        gap: 4px;
+    }
+    .wc-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+    .wc-matches-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        grid-template-columns: none !important;
+        width: 100% !important;
     }
     .wc-match-card {
-        flex-direction: column;
-        gap: 12px;
-        align-items: stretch;
-        text-align: center;
-        padding: 12px 10px;
+        padding: 8px 10px;
+        gap: 6px;
+        border-radius: var(--radius-sm);
     }
     .match-teams {
+        display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
-        gap: 8px;
+        gap: 4px;
     }
     .team {
         flex: 1;
-        font-size: 11px !important;
+        font-size: 11px;
+        gap: 4px;
+        min-width: 0;
+    }
+    .team span {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    .team.home {
-        justify-content: flex-end;
+    .team-flag {
+        width: 18px;
+        height: 12px;
+        flex-shrink: 0;
     }
-    .team.away {
-        justify-content: flex-start;
+    .match-vs {
+        font-size: 9px;
+        padding: 1px 4px;
+        flex-shrink: 0;
     }
     .match-time-info {
-        align-items: center;
-        margin-right: 0 !important;
-    }
-    .match-action {
-        margin-left: 0 !important;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
-        width: 100%;
-    }
-    .wc-watch-btn {
-        justify-content: center;
-        padding: 6px 2px;
         font-size: 10px;
-        text-align: center;
     }
 }
 
 @media (max-width: 480px) {
     .match-teams {
-        flex-direction: column;
-        gap: 6px;
+        flex-direction: column !important;
+        gap: 6px !important;
     }
     .team.home, .team.away {
-        justify-content: center;
-        width: 100%;
+        justify-content: center !important;
+        width: 100% !important;
     }
     .team.home {
-        flex-direction: row;
+        flex-direction: row !important;
     }
     .team.away {
-        flex-direction: row-reverse;
+        flex-direction: row-reverse !important;
     }
 }
 
