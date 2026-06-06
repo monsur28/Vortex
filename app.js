@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Render local channels immediately for fast page load
             initApp();
 
-            // 2. Fetch and merge global Category M3U playlist in the background
-            fetchGlobalPlaylistBackground();
+            // 2. Fetch and merge global Category M3U playlist in the background (disabled because we verified and saved them locally in channels.json)
+            // fetchGlobalPlaylistBackground();
         } catch (err) {
             console.error('Error loading IPTV channels:', err);
             emptyState.style.display = 'flex';

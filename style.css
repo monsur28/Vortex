@@ -2084,6 +2084,22 @@ video.aspect-fill {
 }
 
 @media (max-width: 600px) {
+    .wc-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 14px;
+    }
+    .wc-title-area {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .wc-countdown {
+        width: 100%;
+        justify-content: center;
+        padding: 8px 12px;
+        box-sizing: border-box;
+    }
     .wc-match-card {
         flex-direction: column;
         gap: 12px;

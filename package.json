@@ -2,14 +2,20 @@
   "name": "vortex-iptv-player",
   "version": "1.0.0",
   "description": "Premium IPTV Web Player with HLS.js",
+  "type": "module",
   "main": "index.html",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lucide-react": "^1.17.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
   "devDependencies": {
-    "vite": "^5.0.0"
+    "@vitejs/plugin-react": "^6.0.2",
+    "vite": "^8.0.16"
   }
 }
