@@ -76,28 +76,6 @@ const wcGroupsData = {
   ]
 };
 
-const wcMatchesData = [
-  { home: 'Mexico', homeFlag: 'mx', away: 'USA', awayFlag: 'us', date: 'June 11', time: '08:30 PM', primary: true },
-  { home: 'Canada', homeFlag: 'ca', away: 'Argentina', awayFlag: 'ar', date: 'June 11', time: '11:00 PM' },
-  { home: 'Brazil', homeFlag: 'br', away: 'Spain', awayFlag: 'es', date: 'June 12', time: '06:00 PM' },
-  { home: 'France', homeFlag: 'fr', away: 'Germany', awayFlag: 'de', date: 'June 12', time: '09:00 PM' },
-  { home: 'England', homeFlag: 'gb', away: 'Italy', awayFlag: 'it', date: 'June 13', time: '03:00 PM' },
-  { home: 'Portugal', homeFlag: 'pt', away: 'Netherlands', awayFlag: 'nl', date: 'June 13', time: '06:00 PM' },
-  { home: 'Uruguay', homeFlag: 'uy', away: 'Japan', awayFlag: 'jp', date: 'June 14', time: '06:00 PM' },
-  { home: 'Belgium', homeFlag: 'be', away: 'Morocco', awayFlag: 'ma', date: 'June 14', time: '09:00 PM' },
-  { home: 'Senegal', homeFlag: 'sn', away: 'Colombia', awayFlag: 'co', date: 'June 15', time: '06:00 PM' },
-  { home: 'South Korea', homeFlag: 'kr', away: 'Croatia', awayFlag: 'hr', date: 'June 15', time: '09:00 PM' },
-  { home: 'Germany', homeFlag: 'de', away: 'Japan', awayFlag: 'jp', date: 'June 16', time: '06:00 PM' },
-  { home: 'Spain', homeFlag: 'es', away: 'Canada', awayFlag: 'ca', date: 'June 16', time: '09:00 PM' },
-  { home: 'Argentina', homeFlag: 'ar', away: 'Chile', awayFlag: 'cl', date: 'June 17', time: '06:00 PM' },
-  { home: 'USA', homeFlag: 'us', away: 'Colombia', awayFlag: 'co', date: 'June 17', time: '09:00 PM' },
-  { home: 'England', homeFlag: 'gb', away: 'USA', awayFlag: 'us', date: 'June 18', time: '03:00 PM' },
-  { home: 'France', homeFlag: 'fr', away: 'Denmark', awayFlag: 'dk', date: 'June 18', time: '06:00 PM' },
-  { home: 'Brazil', homeFlag: 'br', away: 'Portugal', awayFlag: 'pt', date: 'June 19', time: '06:00 PM' },
-  { home: 'Netherlands', homeFlag: 'nl', away: 'Italy', awayFlag: 'it', date: 'June 19', time: '09:00 PM' },
-  { home: 'Spain', homeFlag: 'es', away: 'Germany', awayFlag: 'de', date: 'June 20', time: '06:00 PM' },
-  { home: 'Argentina', homeFlag: 'ar', away: 'France', awayFlag: 'fr', date: 'June 20', time: '09:00 PM' }
-];
 
 export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
   const [activeGroup, setActiveGroup] = useState('Group A');
@@ -164,14 +142,14 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
       </div>
 
       <div className="wc-grid">
-        {/* Live & Upcoming Matches */}
+        {/* Live Stream Channels */}
         <div className="wc-matches-section">
           <h3 className="wc-section-header">
             <PlayCircle size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '6px' }} /> 
-            MATCH SCHEDULE & STREAMING
+            LIVE STREAM CHANNELS
           </h3>
           <div className="wc-channels-header" style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap', alignItems: 'center', background: 'rgba(15, 23, 42, 0.3)', padding: '10px 14px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-            <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Live Channels:</span>
+            <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Select to Watch:</span>
             <button className="wc-watch-btn" onClick={() => onWatchLive("FIFA+")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>FIFA+</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("T Sports HD")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>T Sports</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("A sports")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>A Sports</button>
@@ -180,32 +158,6 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
             <button className="wc-watch-btn" onClick={() => onWatchLive("STAR SPORTS SELECT1 HD")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255, 255, 255, 0.08)', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>Star Sports</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("Fox Sports 1")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255, 255, 255, 0.08)', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>Fox Sports</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("Telemundo")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255, 255, 255, 0.08)', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>Telemundo</button>
-          </div>
-
-          <div className="wc-matches-list" style={isPlayerOpen ? { gridTemplateColumns: '1fr' } : {}}>
-            {wcMatchesData.map((match, index) => (
-              <div key={index} className="wc-match-card">
-                {/* Row 1: Teams playing */}
-                <div className="match-teams">
-                  <div className="team home">
-                    <span>{match.home}</span>
-                    <img src={`https://flagcdn.com/w40/${match.homeFlag}.png`} className="team-flag" alt={match.home} style={{ width: '22px', height: '14px', objectFit: 'cover', borderRadius: '2px' }} />
-                  </div>
-                  <span className="match-vs">VS</span>
-                  <div className="team away">
-                    <img src={`https://flagcdn.com/w40/${match.awayFlag}.png`} className="team-flag" alt={match.away} style={{ width: '22px', height: '14px', objectFit: 'cover', borderRadius: '2px' }} />
-                    <span>{match.away}</span>
-                  </div>
-                </div>
-                {/* Row 2: Date/Time */}
-                <div className="match-info-action" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderTop: 'none', paddingTop: '2px', gap: '2px', width: '100%' }}>
-                  <div className="match-time-info" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1px' }}>
-                    <span style={{ fontWeight: 800, color: match.primary ? 'var(--wc-green)' : 'var(--text-primary)', fontSize: '11px' }}>{match.date}</span>
-                    <span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>{match.time}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
 
