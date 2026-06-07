@@ -44,104 +44,138 @@ export default function PlayerPanel({
     if (!video) return;
 
     let newHls = null;
-    const m3u8Url = activeChannel.url;
+    const urls = Array.isArray(activeChannel.url) ? activeChannel.url : [activeChannel.url];
+    let currentUrlIndex = 0;
 
-    if (window.Hls && window.Hls.isSupported()) {
-      newHls = new window.Hls({
-        enableWorker: true,
-        lowLatencyMode: true,
-        backBufferLength: 90
-      });
-      newHls.loadSource(m3u8Url);
-      newHls.attachMedia(video);
+    const initPlayer = (index) => {
+      const m3u8Url = urls[index];
 
-      newHls.on(window.Hls.Events.LEVEL_SWITCHED, (event, data) => {
-        // Track ABR dynamic quality changes
-        const activeLvl = newHls.levels[data.level];
-        if (activeLvl) {
-          setAutoHeight(activeLvl.height ? `${activeLvl.height}p` : '');
+      if (window.Hls && window.Hls.isSupported()) {
+        if (newHls) {
+          newHls.destroy();
         }
-      });
+        newHls = new window.Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+          backBufferLength: 90
+        });
+        newHls.loadSource(m3u8Url);
+        newHls.attachMedia(video);
 
-      newHls.on(window.Hls.Events.MANIFEST_PARSED, () => {
-        // Retrieve levels from HLS.js
-        if (newHls.levels && newHls.levels.length > 0) {
-          const lvls = newHls.levels.map((lvl, idx) => ({
-            index: idx,
-            height: lvl.height,
-            name: lvl.height ? `${lvl.height}p` : `Level ${idx + 1}`
-          }));
-          // Sort descending by height
-          lvls.sort((a, b) => b.height - a.height);
-          setLevels(lvls);
-        }
-
-        video.play()
-          .then(() => setIsPlaying(true))
-          .catch(err => console.log('Autoplay blocked or play action required:', err));
-      });
-
-      newHls.on(window.Hls.Events.ERROR, (event, data) => {
-        if (data.fatal) {
-          switch (data.type) {
-            case window.Hls.ErrorTypes.NETWORK_ERROR:
-              setErrorMsg('Server Offline — auto-removing...');
-              setBuffering(false);
-              // Auto-hide broken channel after a brief delay
-              setTimeout(() => onHideChannel(activeChannel.name), 1500);
-              break;
-            case window.Hls.ErrorTypes.MEDIA_ERROR:
-              newHls.recoverMediaError();
-              break;
-            default:
-              setErrorMsg('Feed Unavailable — auto-removing...');
-              setBuffering(false);
-              newHls.destroy();
-              // Auto-hide broken channel after a brief delay
-              setTimeout(() => onHideChannel(activeChannel.name), 1500);
-              break;
+        newHls.on(window.Hls.Events.LEVEL_SWITCHED, (event, data) => {
+          // Track ABR dynamic quality changes
+          const activeLvl = newHls.levels[data.level];
+          if (activeLvl) {
+            setAutoHeight(activeLvl.height ? `${activeLvl.height}p` : '');
           }
-        }
-      });
+        });
 
-      setHlsInstance(newHls);
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = m3u8Url;
-      const onLoadedMetadata = () => {
-        video.play()
-          .then(() => setIsPlaying(true))
-          .catch(err => console.log('Autoplay blocked:', err));
-      };
-      const onError = () => {
-        setErrorMsg('Load stream failed');
+        newHls.on(window.Hls.Events.MANIFEST_PARSED, () => {
+          // Retrieve levels from HLS.js
+          if (newHls.levels && newHls.levels.length > 0) {
+            const lvls = newHls.levels.map((lvl, idx) => ({
+              index: idx,
+              height: lvl.height,
+              name: lvl.height ? `${lvl.height}p` : `Level ${idx + 1}`
+            }));
+            // Sort descending by height
+            lvls.sort((a, b) => b.height - a.height);
+            setLevels(lvls);
+          }
+
+          video.play()
+            .then(() => setIsPlaying(true))
+            .catch(err => console.log('Autoplay blocked or play action required:', err));
+        });
+
+        newHls.on(window.Hls.Events.ERROR, (event, data) => {
+          if (data.fatal) {
+            if (currentUrlIndex < urls.length - 1) {
+              currentUrlIndex++;
+              initPlayer(currentUrlIndex);
+              return;
+            }
+            switch (data.type) {
+              case window.Hls.ErrorTypes.NETWORK_ERROR:
+                setErrorMsg('Server Offline — auto-removing...');
+                setBuffering(false);
+                setTimeout(() => onHideChannel(activeChannel.name), 1500);
+                break;
+              case window.Hls.ErrorTypes.MEDIA_ERROR:
+                newHls.recoverMediaError();
+                break;
+              default:
+                setErrorMsg('Feed Unavailable — auto-removing...');
+                setBuffering(false);
+                newHls.destroy();
+                setTimeout(() => onHideChannel(activeChannel.name), 1500);
+                break;
+            }
+          }
+        });
+
+        setHlsInstance(newHls);
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = m3u8Url;
+        const onLoadedMetadata = () => {
+          video.play()
+            .then(() => setIsPlaying(true))
+            .catch(err => console.log('Autoplay blocked:', err));
+        };
+        const onError = () => {
+          if (currentUrlIndex < urls.length - 1) {
+            currentUrlIndex++;
+            initPlayer(currentUrlIndex);
+            return;
+          }
+          setErrorMsg('Load stream failed');
+          setBuffering(false);
+        };
+        
+        // Remove previous listeners if retrying
+        video.onloadedmetadata = onLoadedMetadata;
+        video.onerror = onError;
+      } else {
+        setErrorMsg('HLS streaming not supported');
         setBuffering(false);
-      };
-      video.addEventListener('loadedmetadata', onLoadedMetadata);
-      video.addEventListener('error', onError);
+      }
+    };
 
-      return () => {
-        video.removeEventListener('loadedmetadata', onLoadedMetadata);
-        video.removeEventListener('error', onError);
-      };
-    } else {
-      setErrorMsg('HLS streaming not supported');
-      setBuffering(false);
-    }
+    initPlayer(0);
 
     // Event listeners on video for buffering / playing state sync
-    const onWaiting = () => setBuffering(true);
+    let lagTimeout = null;
+
+    const onWaiting = () => {
+      setBuffering(true);
+      if (urls.length > 1) {
+        // If buffering takes more than 6 seconds, auto-switch to next link
+        lagTimeout = setTimeout(() => {
+          console.log("Stream lagging, auto-switching to next link...");
+          currentUrlIndex = (currentUrlIndex + 1) % urls.length;
+          initPlayer(currentUrlIndex);
+        }, 6000);
+      }
+    };
+
     const onPlaying = () => {
       setBuffering(false);
       setErrorMsg('');
       setIsPlaying(true);
+      if (lagTimeout) clearTimeout(lagTimeout);
     };
-    const onPause = () => setIsPlaying(false);
+
+    const onPause = () => {
+      setIsPlaying(false);
+      if (lagTimeout) clearTimeout(lagTimeout);
+    };
 
     video.addEventListener('waiting', onWaiting);
     video.addEventListener('playing', onPlaying);
     video.addEventListener('pause', onPause);
 
     return () => {
+      if (lagTimeout) clearTimeout(lagTimeout);
       if (newHls) {
         newHls.destroy();
       }

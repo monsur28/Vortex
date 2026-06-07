@@ -80,6 +80,58 @@ const wcGroupsData = {
 export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
   const [activeGroup, setActiveGroup] = useState('Group A');
   const [countdown, setCountdown] = useState({ days: '00', hours: '00', mins: '00', secs: '00', live: false });
+  const [groupsData, setGroupsData] = useState(wcGroupsData);
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    const fetchStandingsAndMatches = async () => {
+      try {
+        const [standingsRes, matchesRes] = await Promise.all([
+          fetch('/api/football-data/v4/competitions/WC/standings', {
+            headers: { 'X-Auth-Token': 'bd0f7d0fac114a1db71f6548cafeb32d' }
+          }),
+          fetch('/api/football-data/v4/competitions/WC/matches', {
+            headers: { 'X-Auth-Token': 'bd0f7d0fac114a1db71f6548cafeb32d' }
+          })
+        ]);
+
+        if (standingsRes.ok) {
+          const data = await standingsRes.json();
+          const newGroupsData = {};
+          
+          if (data && data.standings) {
+            data.standings.forEach(standing => {
+              if (standing.type === 'TOTAL') {
+                const groupName = standing.group;
+                newGroupsData[groupName] = standing.table.map(row => ({
+                  rank: row.position,
+                  name: row.team.name,
+                  flag: row.team.crest,
+                  p: row.playedGames,
+                  pts: row.points
+                }));
+              }
+            });
+            
+            if (Object.keys(newGroupsData).length > 0) {
+              setGroupsData(newGroupsData);
+            }
+          }
+        }
+
+        if (matchesRes.ok) {
+          const mData = await matchesRes.json();
+          if (mData && mData.matches) {
+            setMatches(mData.matches);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch dynamic data, falling back to static data", err);
+      }
+    };
+    
+    fetchStandingsAndMatches();
+  }, []);
 
   useEffect(() => {
     const kickoffDate = new Date('2026-06-11T18:00:00+06:00').getTime();
@@ -112,7 +164,9 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
     return () => clearInterval(interval);
   }, []);
 
-  const standingsData = wcGroupsData[activeGroup] || [];
+  const standingsData = groupsData[activeGroup] || [];
+  const activeGroupCode = activeGroup.toUpperCase().replace(' ', '_');
+  const groupMatches = matches.filter(m => m.group === activeGroupCode);
 
   return (
     <div id="world-cup-hub" className="world-cup-hub" style={{ display: 'block' }}>
@@ -152,12 +206,62 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
             <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Select to Watch:</span>
             <button className="wc-watch-btn" onClick={() => onWatchLive("FIFA+")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>FIFA+</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("T Sports HD")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>T Sports</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("Somoy News TV")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255, 255, 255, 0.08)', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>Somoy TV</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("A sports")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>A Sports</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("PTV Sports")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>PTV Sports</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("SONY SPORTS 2 HD")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>Sony Sports</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("STAR SPORTS SELECT1 HD")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255, 255, 255, 0.08)', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>Star Sports</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("Fox Sports 1")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255, 255, 255, 0.08)', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>Fox Sports</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("Telemundo")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255, 255, 255, 0.08)', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>Telemundo</button>
+          </div>
+
+          {/* Schedule Section */}
+          <div className="wc-schedule-section" style={{ marginTop: '24px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+              <h4 style={{ fontSize: '12px', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>
+                {activeGroup} Schedule
+              </h4>
+              {isPlayerOpen && (
+                 <select 
+                   value={activeGroup} 
+                   onChange={(e) => setActiveGroup(e.target.value)}
+                   style={{ background: 'rgba(0,0,0,0.3)', color: 'white', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '4px', padding: '2px 6px', fontSize: '10px' }}
+                 >
+                   {Object.keys(groupsData).map(grp => (
+                     <option key={grp} value={grp}>{grp}</option>
+                   ))}
+                 </select>
+              )}
+            </div>
+            
+            {groupMatches.length > 0 ? (
+              <div className="wc-matches-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: isPlayerOpen ? '300px' : 'none', overflowY: 'auto', paddingRight: '4px' }}>
+                {groupMatches.map(match => {
+                  const date = new Date(match.utcDate);
+                  return (
+                    <div key={match.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '10px 14px', borderRadius: '6px', fontSize: '12px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, justifyContent: 'flex-end' }}>
+                        <span style={{ fontWeight: '600' }}>{match.homeTeam?.name || 'TBD'}</span>
+                        {match.homeTeam?.crest && <img src={match.homeTeam.crest} alt="" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />}
+                      </div>
+                      <div style={{ padding: '0 16px', color: 'var(--wc-gold)', fontWeight: '800', textAlign: 'center', fontSize: '10px' }}>
+                        {date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}<br/>
+                        {date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, justifyContent: 'flex-start' }}>
+                        {match.awayTeam?.crest && <img src={match.awayTeam.crest} alt="" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />}
+                        <span style={{ fontWeight: '600' }}>{match.awayTeam?.name || 'TBD'}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div style={{ padding: '20px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '6px', fontSize: '12px', color: 'var(--text-secondary)' }}>
+                No schedule data found for this group right now.<br/>
+                <span style={{ fontSize: '10px', opacity: 0.7 }}>(If the API is loading or rate-limited, please check again shortly.)</span>
+              </div>
+            )}
           </div>
         </div>
 
@@ -169,7 +273,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
               GROUP STANDINGS
             </h3>
             <div className="wc-groups-selector">
-              {Object.keys(wcGroupsData).map(group => (
+              {Object.keys(groupsData).map(group => (
                 <button 
                   key={group} 
                   className={`group-btn ${activeGroup === group ? 'active' : ''}`} 
@@ -198,7 +302,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
                         <span>{team.name}</span>
                       </td>
                       <td className="stats">{team.p}</td>
-                      <td className="stats pts">{team.pts}</td>
+                      <td className="stats pts-col">{team.pts}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -1329,6 +1329,14 @@ video.aspect-fill {
         display: block;
     }
 
+    .search-icon {
+        left: 26px; /* 14px container padding + 12px left offset */
+    }
+
+    .clear-search {
+        right: 26px;
+    }
+
     .fav-toggle-btn {
         display: none;
     }
@@ -2084,6 +2092,9 @@ video.aspect-fill {
 }
 
 @media (max-width: 768px) {
+    .wc-groups-panel {
+        display: none !important;
+    }
     .feed-section {
         padding: 8px !important;
         max-width: 100% !important;

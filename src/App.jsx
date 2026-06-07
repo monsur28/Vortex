@@ -10,6 +10,7 @@ import Header from './components/Header';
 import PlayerPanel from './components/PlayerPanel';
 import WorldCupHub from './components/WorldCupHub';
 import ChannelGrid from './components/ChannelGrid';
+import { database, ref, onValue, onDisconnect, set, push } from './firebase';
 
 const categoryIcons = {
   'fifa world cup 2026': Trophy,
@@ -48,6 +49,44 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState('');
   const [toastFade, setToastFade] = useState(false);
   const [isTheaterMode, setIsTheaterMode] = useState(false);
+  const [liveVisitors, setLiveVisitors] = useState(1); // Default to 1 (the current user)
+
+  // Firebase Presence Tracking
+  useEffect(() => {
+    if (!database) return; // Wait until firebase is configured
+
+    const connectedRef = ref(database, '.info/connected');
+    const myConnectionsRef = ref(database, 'visitors');
+    let newConnectionRef = null;
+
+    const unsubscribeConnected = onValue(connectedRef, (snap) => {
+      if (snap.val() === true) {
+        // We're connected (or reconnected)!
+        newConnectionRef = push(myConnectionsRef);
+        // When I disconnect, remove this device
+        onDisconnect(newConnectionRef).remove().then(() => {
+          // Add this device to my connections list
+          set(newConnectionRef, true);
+        });
+      }
+    });
+
+    const unsubscribeVisitors = onValue(myConnectionsRef, (snap) => {
+      if (snap.exists()) {
+        setLiveVisitors(Object.keys(snap.val()).length);
+      } else {
+        setLiveVisitors(0);
+      }
+    });
+
+    return () => {
+      unsubscribeConnected();
+      unsubscribeVisitors();
+      if (newConnectionRef) {
+        set(newConnectionRef, null); // Remove on unmount
+      }
+    };
+  }, []);
   const [hiddenChannels, setHiddenChannels] = useState(() => {
     return JSON.parse(localStorage.getItem('vortex_hidden_channels')) || [];
   });
@@ -232,7 +271,8 @@ export default function App() {
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
 
-          return fetch(ch.url, { 
+          const urlToScan = Array.isArray(ch.url) ? ch.url[0] : ch.url;
+          return fetch(urlToScan, { 
             method: 'HEAD', 
             mode: 'no-cors',
             signal: controller.signal 
@@ -426,6 +466,7 @@ export default function App() {
           showFavoritesOnly={showFavoritesOnly}
           onToggleFavorites={handleToggleFavoritesHeader}
           onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+          liveVisitors={liveVisitors}
         />
 
         {/* Mobile horizontal categories bar */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Search, X, Star } from 'lucide-react';
+import { Menu, Search, X, Star, Users } from 'lucide-react';
 
 export default function Header({
   currentCategoryTitle,
@@ -8,7 +8,8 @@ export default function Header({
   setSearchQuery,
   showFavoritesOnly,
   onToggleFavorites,
-  onToggleSidebar
+  onToggleSidebar,
+  liveVisitors
 }) {
   return (
     <header className="app-header">
@@ -19,6 +20,11 @@ export default function Header({
         <div className="current-view-info">
           <h1 id="current-category-title">{currentCategoryTitle}</h1>
           <span className="badge" id="channel-count-badge">{channelCountText}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(0, 255, 128, 0.1)', padding: '2px 8px', borderRadius: '12px', border: '1px solid rgba(0, 255, 128, 0.2)' }}>
+            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#00ff80', boxShadow: '0 0 8px #00ff80', animation: 'pulse 2s infinite' }}></div>
+            <Users size={12} color="#00ff80" />
+            <span style={{ fontSize: '11px', color: '#00ff80', fontWeight: '800' }}>{liveVisitors || 1} LIVE</span>
+          </div>
         </div>
       </div>
 
