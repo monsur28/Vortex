@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   Trophy, Layers, Star, Tv, Globe, Smile, 
   BookOpen, Music, LayoutGrid, Languages, Film, 
-  CloudSun, Compass, Sparkles, HelpCircle 
+  CloudSun, Compass, Sparkles, HelpCircle, Download 
 } from 'lucide-react';
 
 const categoryIcons = {

@@ -10,6 +10,7 @@ import Header from './components/Header';
 import PlayerPanel from './components/PlayerPanel';
 import WorldCupHub from './components/WorldCupHub';
 import ChannelGrid from './components/ChannelGrid';
+import DownloadApp from './components/DownloadApp';
 import { database, ref, onValue, onDisconnect, set, push } from './firebase';
 
 const categoryIcons = {
@@ -479,6 +480,8 @@ export default function App() {
           onToggleFavorites={handleToggleFavoritesHeader}
           onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
           liveVisitors={liveVisitors}
+          currentCategory={currentCategory}
+          onSelectCategory={handleSelectCategory}
         />
 
         {/* Mobile horizontal categories bar */}
@@ -536,28 +539,34 @@ export default function App() {
 
           {/* Channels Feed (Matches + Channels Grid) */}
           <section className="feed-section" ref={feedRef} onScroll={handleScroll}>
-            {/* World Cup Hub */}
-            {currentCategory === 'FIFA World Cup 2026' && searchQuery.trim() === '' && !showFavoritesOnly && (
-              <WorldCupHub 
-                isPlayerOpen={activeChannel !== null}
-                onWatchLive={handleWatchLiveHub}
-              />
-            )}
-
-            {filteredChannels.length > 0 ? (
-              <ChannelGrid 
-                channels={slicedChannels}
-                favorites={favorites}
-                activeChannel={activeChannel}
-                onSelectChannel={handleSelectChannel}
-                onToggleFavorite={handleToggleFavoriteChannel}
-              />
+            {currentCategory === 'Download App' ? (
+              <DownloadApp />
             ) : (
-              <div className="empty-state" style={{ display: 'flex' }}>
-                <AlertCircle className="empty-icon" size={48} />
-                <h3>No channels found</h3>
-                <p>Try refining your search query or choosing another category.</p>
-              </div>
+              <>
+                {/* World Cup Hub */}
+                {currentCategory === 'FIFA World Cup 2026' && searchQuery.trim() === '' && !showFavoritesOnly && (
+                  <WorldCupHub 
+                    isPlayerOpen={activeChannel !== null}
+                    onWatchLive={handleWatchLiveHub}
+                  />
+                )}
+
+                {filteredChannels.length > 0 ? (
+                  <ChannelGrid 
+                    channels={slicedChannels}
+                    favorites={favorites}
+                    activeChannel={activeChannel}
+                    onSelectChannel={handleSelectChannel}
+                    onToggleFavorite={handleToggleFavoriteChannel}
+                  />
+                ) : (
+                  <div className="empty-state" style={{ display: 'flex' }}>
+                    <AlertCircle className="empty-icon" size={48} />
+                    <h3>No channels found</h3>
+                    <p>Try refining your search query or choosing another category.</p>
+                  </div>
+                )}
+              </>
             )}
           </section>
         </div>

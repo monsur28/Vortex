@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Search, X, Star, Users } from 'lucide-react';
+import { Menu, Search, X, Star, Users, Download } from 'lucide-react';
 
 export default function Header({
   currentCategoryTitle,
@@ -9,7 +9,9 @@ export default function Header({
   showFavoritesOnly,
   onToggleFavorites,
   onToggleSidebar,
-  liveVisitors
+  liveVisitors,
+  onSelectCategory,
+  currentCategory
 }) {
   return (
     <header className="app-header">
@@ -45,6 +47,16 @@ export default function Header({
             </button>
           )}
         </div>
+
+        <button 
+          className={`fav-toggle-btn ${currentCategory === 'Download App' ? 'active' : ''}`} 
+          title="Download App"
+          onClick={() => onSelectCategory('Download App')}
+          style={{ background: 'rgba(0, 223, 137, 0.15)', color: 'var(--wc-green)', border: '1px solid rgba(0, 223, 137, 0.3)' }}
+        >
+          <Download size={16} />
+          <span>App</span>
+        </button>
 
         <button 
           className={`fav-toggle-btn ${showFavoritesOnly ? 'active' : ''}`} 

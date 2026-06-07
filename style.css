@@ -1436,12 +1436,13 @@ video.aspect-fill {
 /* Small phones */
 @media (max-width: 420px) {
     .channels-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 6px;
     }
 
     .channel-card {
         padding: 8px 4px 6px;
+        min-width: 0;
     }
 
     .card-logo-container {
@@ -1452,6 +1453,10 @@ video.aspect-fill {
 
     .card-name {
         font-size: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
     }
 
     .card-group {
