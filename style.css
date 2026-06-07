@@ -2265,4 +2265,55 @@ video.aspect-fill {
 .player-panel.open ~ .feed-section .wc-table th {
     padding: 6px 4px;
 }
+
+/* Mobile World Cup Group Selector Carousel */
+.wc-mobile-carousel-container {
+    display: none;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 2px 0;
+}
+
+.wc-groups-carousel {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    padding: 4px;
+    width: 100%;
+}
+
+.wc-groups-carousel::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+.group-carousel-item {
+    flex: 0 0 auto;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.group-carousel-item:hover,
+.group-carousel-item.active {
+    background: linear-gradient(135deg, rgba(0, 223, 137, 0.2), rgba(0, 223, 137, 0.05));
+    color: var(--wc-green);
+    border-color: rgba(0, 223, 137, 0.4);
+    box-shadow: 0 0 12px rgba(0, 223, 137, 0.15);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .wc-mobile-carousel-container {
+        display: block;
+    }
+}
 

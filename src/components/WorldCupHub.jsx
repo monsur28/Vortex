@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Trophy, PlayCircle, List } from 'lucide-react';
 
 const wcGroupsData = {
@@ -82,6 +82,16 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
   const [countdown, setCountdown] = useState({ days: '00', hours: '00', mins: '00', secs: '00', live: false });
   const [groupsData, setGroupsData] = useState(wcGroupsData);
   const [matches, setMatches] = useState([]);
+  const carouselRef = useRef(null);
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      const activeEl = carouselRef.current.querySelector('.active');
+      if (activeEl) {
+        activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  }, [activeGroup]);
 
   useEffect(() => {
     const fetchStandingsAndMatches = async () => {
@@ -192,6 +202,21 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
               </div>
             </>
           )}
+        </div>
+      </div>
+
+      {/* Mobile Group Carousel */}
+      <div className="wc-mobile-carousel-container">
+        <div className="wc-groups-carousel" ref={carouselRef}>
+          {Object.keys(groupsData).map(group => (
+            <button 
+              key={group} 
+              className={`group-carousel-item ${activeGroup === group ? 'active' : ''}`} 
+              onClick={() => setActiveGroup(group)}
+            >
+              {group.replace('Group ', 'Grp ')}
+            </button>
+          ))}
         </div>
       </div>
 
