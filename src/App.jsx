@@ -87,6 +87,18 @@ export default function App() {
       }
     };
   }, []);
+
+  // Disable right-click globally
+  useEffect(() => {
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+    };
+    document.addEventListener('contextmenu', handleContextMenu);
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+    };
+  }, []);
+
   const [hiddenChannels, setHiddenChannels] = useState(() => {
     return JSON.parse(localStorage.getItem('vortex_hidden_channels')) || [];
   });
