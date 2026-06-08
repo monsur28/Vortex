@@ -29,12 +29,7 @@ export default function Sidebar({
   currentCategory, 
   showFavoritesOnly, 
   onSelectCategory,
-  isOpen,
-  hiddenChannelsCount = 0,
-  onResetHidden,
-  scanProgress,
-  onScanChannels,
-  onStopScan
+  isOpen
 }) {
   // Calculate counts per group
   const groupsMap = {};
@@ -55,7 +50,7 @@ export default function Sidebar({
     return <IconComponent size={18} />;
   };
 
-  const scanPercent = scanProgress ? Math.round((scanProgress.checked / scanProgress.total) * 100) : 0;
+
 
   return (
     <aside className={`sidebar ${isOpen ? 'open' : ''}`} id="sidebar">

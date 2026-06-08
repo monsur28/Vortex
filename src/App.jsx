@@ -100,16 +100,11 @@ export default function App() {
     };
   }, []);
 
-  const [hiddenChannels, setHiddenChannels] = useState(() => {
-    return JSON.parse(localStorage.getItem('vortex_hidden_channels')) || [];
-  });
+
 
   const feedRef = useRef(null);
 
-  // Sync hiddenChannels with localStorage
-  useEffect(() => {
-    localStorage.setItem('vortex_hidden_channels', JSON.stringify(hiddenChannels));
-  }, [hiddenChannels]);
+
 
   // Parse M3U playlist content
   const parseM3U = (m3uText) => {
@@ -220,8 +215,7 @@ export default function App() {
 
   // Filter channels
   const getFilteredChannels = () => {
-    // Filter out hidden channels first
-    let filtered = channels.filter(ch => !hiddenChannels.includes(ch.name));
+    let filtered = [...channels];
 
     if (searchQuery.trim() !== '') {
       const query = searchQuery.toLowerCase().trim();
@@ -240,96 +234,7 @@ export default function App() {
     return filtered;
   };
 
-  const handleHideChannel = (name) => {
-    setHiddenChannels(prev => {
-      if (prev.includes(name)) return prev; // avoid duplicates
-      return [...prev, name];
-    });
-    setActiveChannel(null); // Close player
-    triggerToast(`"${name}" removed (broken).`);
-  };
 
-  const handleResetHidden = () => {
-    setHiddenChannels([]);
-    triggerToast('All hidden channels have been restored.');
-  };
-
-  // Background Scanner State
-  const [scanProgress, setScanProgress] = useState(null); // { checked, total, dead }
-  const scanAbortRef = useRef(false);
-
-  const handleScanChannels = async () => {
-    if (scanProgress) return; // already scanning
-
-    // Get visible channels (non-hidden) to scan
-    const toScan = channels.filter(ch => !hiddenChannels.includes(ch.name));
-    const totalToScan = toScan.length;
-    let checked = 0;
-    let deadCount = 0;
-    const newDead = [];
-    scanAbortRef.current = false;
-
-    setScanProgress({ checked: 0, total: totalToScan, dead: 0 });
-    triggerToast(`Scanning ${totalToScan} channels for broken streams...`);
-
-    const BATCH_SIZE = 10;
-    const TIMEOUT_MS = 6000;
-
-    for (let i = 0; i < toScan.length; i += BATCH_SIZE) {
-      if (scanAbortRef.current) break;
-
-      const batch = toScan.slice(i, i + BATCH_SIZE);
-      const results = await Promise.allSettled(
-        batch.map(ch => {
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
-
-          const urlToScan = Array.isArray(ch.url) ? ch.url[0] : ch.url;
-          return fetch(urlToScan, { 
-            method: 'HEAD', 
-            mode: 'no-cors',
-            signal: controller.signal 
-          })
-            .then(res => {
-              clearTimeout(timeoutId);
-              return { name: ch.name, alive: true };
-            })
-            .catch(err => {
-              clearTimeout(timeoutId);
-              return { name: ch.name, alive: false };
-            });
-        })
-      );
-
-      results.forEach(result => {
-        const val = result.status === 'fulfilled' ? result.value : { name: '', alive: false };
-        if (!val.alive && val.name) {
-          newDead.push(val.name);
-          deadCount++;
-        }
-        checked++;
-      });
-
-      setScanProgress({ checked, total: totalToScan, dead: deadCount });
-    }
-
-    // Apply all dead channels
-    if (newDead.length > 0) {
-      setHiddenChannels(prev => {
-        const combined = new Set([...prev, ...newDead]);
-        return Array.from(combined);
-      });
-    }
-
-    triggerToast(`Scan complete! Removed ${deadCount} dead channels out of ${totalToScan}.`);
-    setScanProgress(null);
-  };
-
-  const handleStopScan = () => {
-    scanAbortRef.current = true;
-    setScanProgress(null);
-    triggerToast('Scan stopped.');
-  };
 
   const filteredChannels = getFilteredChannels();
   const slicedChannels = filteredChannels.slice(0, visibleCount);
@@ -463,11 +368,6 @@ export default function App() {
         showFavoritesOnly={showFavoritesOnly}
         onSelectCategory={handleSelectCategory}
         isOpen={isSidebarOpen}
-        hiddenChannelsCount={hiddenChannels.length}
-        onResetHidden={handleResetHidden}
-        scanProgress={scanProgress}
-        onScanChannels={handleScanChannels}
-        onStopScan={handleStopScan}
       />
 
       <main className="main-content">
@@ -533,7 +433,6 @@ export default function App() {
               onClose={() => setActiveChannel(null)}
               isTheaterMode={isTheaterMode}
               onToggleTheaterMode={() => setIsTheaterMode(!isTheaterMode)}
-              onHideChannel={handleHideChannel}
             />
           )}
 

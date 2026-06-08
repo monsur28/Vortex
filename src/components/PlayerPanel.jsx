@@ -7,8 +7,7 @@ export default function PlayerPanel({
   onToggleFavorite, 
   onClose,
   isTheaterMode,
-  onToggleTheaterMode,
-  onHideChannel
+  onToggleTheaterMode
 }) {
   const videoRef = useRef(null);
   const videoWrapperRef = useRef(null);
@@ -97,18 +96,16 @@ export default function PlayerPanel({
             }
             switch (data.type) {
               case window.Hls.ErrorTypes.NETWORK_ERROR:
-                setErrorMsg('Server Offline — auto-removing...');
+                setErrorMsg('Server Offline');
                 setBuffering(false);
-                setTimeout(() => onHideChannel(activeChannel.name), 1500);
                 break;
               case window.Hls.ErrorTypes.MEDIA_ERROR:
                 newHls.recoverMediaError();
                 break;
               default:
-                setErrorMsg('Feed Unavailable — auto-removing...');
+                setErrorMsg('Feed Unavailable');
                 setBuffering(false);
                 newHls.destroy();
-                setTimeout(() => onHideChannel(activeChannel.name), 1500);
                 break;
             }
           }
@@ -447,25 +444,7 @@ export default function PlayerPanel({
             <div className="player-overlay error-overlay" id="player-error" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
               <WifiOff size={40} style={{ color: 'var(--wc-red)', marginBottom: '12px' }} />
               <p id="player-error-text" style={{ marginBottom: '16px' }}>{errorMsg}</p>
-              <button 
-                onClick={() => onHideChannel(activeChannel.name)}
-                style={{
-                  background: 'rgba(239, 68, 68, 0.2)',
-                  border: '1px solid rgba(239, 68, 68, 0.5)',
-                  color: '#ef4444',
-                  padding: '8px 16px',
-                  borderRadius: '6px',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}
-              >
-                Hide Broken Channel
-              </button>
+
             </div>
           )}
         </div>
