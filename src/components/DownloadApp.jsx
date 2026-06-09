@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { Download, AlertTriangle, ShieldCheck, Smartphone } from 'lucide-react';
 

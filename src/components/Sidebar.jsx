@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { 
   Trophy, Layers, Star, Tv, Globe, Smile, 

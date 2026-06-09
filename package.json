@@ -5,22 +5,17 @@
   "type": "module",
   "main": "index.html",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "firebase": "^12.14.0",
     "lucide-react": "^1.17.0",
+    "next": "^16.2.7",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
-  },
-  "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.40.0",
-    "@vitejs/plugin-react": "^6.0.2",
-    "vite": "^8.0.16",
-    "wrangler": "^4.98.0"
   }
 }

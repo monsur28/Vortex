@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { Menu, Search, X, Star, Users, Download } from 'lucide-react';
 

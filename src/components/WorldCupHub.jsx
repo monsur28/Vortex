@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { Trophy, PlayCircle, List } from 'lucide-react';
 
@@ -98,10 +99,10 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
       try {
         const [standingsRes, matchesRes] = await Promise.all([
           fetch('/api/football-data/v4/competitions/WC/standings', {
-            headers: { 'X-Auth-Token': import.meta.env.VITE_FOOTBALL_DATA_API_KEY }
+            headers: { 'X-Auth-Token': process.env.NEXT_PUBLIC_FOOTBALL_DATA_API_KEY }
           }),
           fetch('/api/football-data/v4/competitions/WC/matches', {
-            headers: { 'X-Auth-Token': import.meta.env.VITE_FOOTBALL_DATA_API_KEY }
+            headers: { 'X-Auth-Token': process.env.NEXT_PUBLIC_FOOTBALL_DATA_API_KEY }
           })
         ]);
 

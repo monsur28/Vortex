@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Home, Grid, Search, Star, AlertCircle, 
@@ -37,9 +38,14 @@ const categoryIcons = {
 
 export default function App() {
   const [channels, setChannels] = useState([]);
-  const [favorites, setFavorites] = useState(() => {
-    return JSON.parse(localStorage.getItem('vortex_favorites')) || [];
-  });
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = JSON.parse(localStorage.getItem('vortex_favorites')) || [];
+      setFavorites(stored);
+    }
+  }, []);
   const [currentCategory, setCurrentCategory] = useState('FIFA World Cup 2026');
   const [searchQuery, setSearchQuery] = useState('');
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
