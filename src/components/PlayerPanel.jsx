@@ -57,9 +57,25 @@ export default function PlayerPanel({
         newHls = new window.Hls({
           enableWorker: true,
           lowLatencyMode: true,
-          backBufferLength: 90
+          backBufferLength: 90,
+          xhrSetup: function(xhr, url) {
+            if (url.startsWith('http://') || url.startsWith('https://')) {
+              // Ensure we don't accidentally proxy local paths or already proxied endpoints
+              if (!url.includes('/api/proxy') && !url.includes('/api/football-data') && !url.includes(window.location.host)) {
+                const targetUrl = '/api/proxy?url=' + encodeURIComponent(url);
+                xhr.open('GET', targetUrl, true);
+              }
+            }
+          }
         });
-        newHls.loadSource(m3u8Url);
+        
+        // Rewrite initial URL
+        let proxyUrl = m3u8Url;
+        if (!proxyUrl.startsWith('/stream-proxy/') && (proxyUrl.startsWith('http://') || proxyUrl.startsWith('https://'))) {
+          proxyUrl = '/api/proxy?url=' + encodeURIComponent(proxyUrl);
+        }
+        
+        newHls.loadSource(proxyUrl);
         newHls.attachMedia(video);
 
         newHls.on(window.Hls.Events.LEVEL_SWITCHED, (event, data) => {
