@@ -18,12 +18,30 @@ export default function PlayerPanel({
   const [buffering, setBuffering] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [hlsInstance, setHlsInstance] = useState(null);
+  const [dashInstance, setDashInstance] = useState(null);
   const [levels, setLevels] = useState([]);
   const [currentLevel, setCurrentLevel] = useState(-1); // -1 means Auto
   const [autoHeight, setAutoHeight] = useState('');
   const [showQualityMenu, setShowQualityMenu] = useState(false);
 
-  // Initialize and attach HLS
+  // Helper for converting hex DRM keys to base64url
+  const hexToBase64Url = (hexString) => {
+    if (hexString.length % 2 !== 0) return hexString;
+    try {
+      const hexArray = hexString.match(/.{1,2}/g).map(byte => parseInt(byte, 16));
+      const bytes = new Uint8Array(hexArray);
+      let binaryString = '';
+      for (let i = 0; i < bytes.length; i++) {
+        binaryString += String.fromCharCode(bytes[i]);
+      }
+      const base64 = btoa(binaryString);
+      return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    } catch(e) {
+      return hexString;
+    }
+  };
+
+  // Initialize and attach Player (HLS or DASH)
   useEffect(() => {
     if (!activeChannel) return;
 
@@ -36,137 +54,219 @@ export default function PlayerPanel({
     setAutoHeight('');
     setShowQualityMenu(false);
 
-    if (hlsInstance) {
-      hlsInstance.destroy();
-    }
+    if (hlsInstance) hlsInstance.destroy();
+    if (dashInstance) dashInstance.reset();
 
     const video = videoRef.current;
     if (!video) return;
 
     let newHls = null;
-    const urls = Array.isArray(activeChannel.url) ? activeChannel.url : [activeChannel.url];
+    let newDash = null;
     let currentUrlIndex = 0;
+    const urlCount = activeChannel.urlCount || 1;
 
-    const initPlayer = (index) => {
-      const m3u8Url = urls[index];
+    const initPlayer = async (index) => {
 
-      if (window.Hls && window.Hls.isSupported()) {
-        if (newHls) {
-          newHls.destroy();
+      const streamUrl = `/api/proxy?id=${activeChannel.id}&idx=${index}&t=${Date.now()}`;
+
+      // Reset previous dash instance if we are retrying
+      if (newDash) {
+        newDash.reset();
+        newDash = null;
+      }
+      if (newHls) {
+        newHls.destroy();
+        newHls = null;
+      }
+
+      if (activeChannel.isDash || (activeChannel.drm && activeChannel.drm.type)) {
+        // Initialize Dash.js for MPEG-DASH streams (with or without DRM)
+        try {
+          const dashjsModule = await import('dashjs');
+          const dashjs = dashjsModule.default || dashjsModule;
+          newDash = dashjs.MediaPlayer().create();
+          
+          // Route dashjs requests through our proxy
+          newDash.extend("RequestModifier", function () {
+            return {
+              modifyRequestURL: function (request) {
+                let url = request.url;
+                if (url.startsWith('http://') || url.startsWith('https://')) {
+                  if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
+                    // Note: We don't have client-side encryption, but since we are replacing URLs here,
+                    // we'll just proxy it with the raw URL. To fix the exposed URL, we would need 
+                    // an API endpoint to encrypt it or just let dash.js fetch relative URLs.
+                    return window.location.origin + '/api/proxy?url=' + encodeURIComponent(url);
+                  }
+                }
+                return url;
+              }
+            };
+          });
+
+          // Setup DRM Protection Data
+          let protectionData = null;
+          if (activeChannel.drm && activeChannel.drm.key) {
+            let keyStr = activeChannel.drm.key;
+            if (keyStr.startsWith('{')) {
+              try {
+                let parsed = JSON.parse(keyStr);
+                if (parsed.keys && parsed.keys.length > 0) {
+                  let clearkeys = {};
+                  parsed.keys.forEach(k => { clearkeys[k.kid] = k.k; });
+                  protectionData = { 'org.w3.clearkey': { clearkeys } };
+                }
+              } catch (e) {
+                console.error("Invalid DRM JSON key", e);
+              }
+            } else if (keyStr.includes(':')) {
+              let [kidHex, keyHex] = keyStr.split(':');
+              protectionData = {
+                'org.w3.clearkey': {
+                  clearkeys: {
+                    [hexToBase64Url(kidHex)]: hexToBase64Url(keyHex)
+                  }
+                }
+              };
+            }
+          }
+
+          newDash.initialize(video, streamUrl, true);
+          if (protectionData) {
+            newDash.setProtectionData(protectionData);
+            newDash.updateSettings({
+              streaming: {
+                protection: {
+                  ignoreDrmInfo: true,
+                  keepProtectionMediaKeys: true
+                }
+              }
+            });
+          }
+
+          newDash.on(dashjs.MediaPlayer.events.ERROR, (e) => {
+            if (e.error === 'download') {
+              if (currentUrlIndex < urlCount - 1) {
+                currentUrlIndex++;
+                initPlayer(currentUrlIndex);
+                return;
+              }
+              setErrorMsg('Dash Stream Error');
+              setBuffering(false);
+            }
+          });
+
+          newDash.on(dashjs.MediaPlayer.events.PLAYBACK_PLAYING, () => {
+             setIsPlaying(true);
+             setBuffering(false);
+          });
+
+          setDashInstance(newDash);
+
+        } catch (err) {
+          console.error("Dash.js load failed", err);
+          setErrorMsg('Failed to load Dash player');
+          setBuffering(false);
         }
-        newHls = new window.Hls({
-          enableWorker: true,
-          lowLatencyMode: true,
-          backBufferLength: 90,
-          xhrSetup: function(xhr, url) {
-            if (url.startsWith('http://') || url.startsWith('https://')) {
-              // Ensure we don't accidentally proxy the football-data API or local paths
-              if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
-                const targetUrl = '/api/proxy?url=' + encodeURIComponent(url);
-                xhr.open('GET', targetUrl, true);
+
+      } else {
+        // Initialize HLS.js for .m3u8 streams
+        if (window.Hls && window.Hls.isSupported()) {
+          newHls = new window.Hls({
+            enableWorker: true,
+            lowLatencyMode: true,
+            backBufferLength: 90,
+            xhrSetup: function(xhr, url) {
+              if (url.startsWith('http://') || url.startsWith('https://')) {
+                if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
+                  // Actually the proxy is handling this directly through the initial m3u8 token replacement.
+                  // But just in case any stray URLs are fetched, we let the proxy encrypt them.
+                  // Wait, we don't have `encryptUrl` on the client, so we can't encrypt here!
+                  // Luckily, the proxy already encrypted all links inside the m3u8.
+                  // Any absolute URL here should have already been encrypted by the proxy.
+                  // If it wasn't, we can't proxy it correctly without exposing it.
+                  // We'll leave it as is, or use a fallback if needed.
+                }
               }
             }
-          }
-        });
-        
-        // Rewrite initial URL
-        let proxyUrl = m3u8Url;
-        if (!proxyUrl.startsWith('/stream-proxy/') && (proxyUrl.startsWith('http://') || proxyUrl.startsWith('https://'))) {
-          proxyUrl = '/api/proxy?url=' + encodeURIComponent(proxyUrl);
-        }
-        
-        newHls.loadSource(proxyUrl);
-        newHls.attachMedia(video);
+          });
+          
+          newHls.loadSource(streamUrl);
+          newHls.attachMedia(video);
 
-        newHls.on(window.Hls.Events.LEVEL_SWITCHED, (event, data) => {
-          // Track ABR dynamic quality changes
-          const activeLvl = newHls.levels[data.level];
-          if (activeLvl) {
-            setAutoHeight(activeLvl.height ? `${activeLvl.height}p` : '');
-          }
-        });
-
-        newHls.on(window.Hls.Events.MANIFEST_PARSED, () => {
-          // Retrieve levels from HLS.js
-          if (newHls.levels && newHls.levels.length > 0) {
-            const lvls = newHls.levels.map((lvl, idx) => ({
-              index: idx,
-              height: lvl.height,
-              name: lvl.height ? `${lvl.height}p` : `Level ${idx + 1}`
-            }));
-            // Sort descending by height
-            lvls.sort((a, b) => b.height - a.height);
-            setLevels(lvls);
-          }
-
-          video.play()
-            .then(() => setIsPlaying(true))
-            .catch(err => console.log('Autoplay blocked or play action required:', err));
-        });
-
-        newHls.on(window.Hls.Events.ERROR, (event, data) => {
-          if (data.fatal) {
-            if (currentUrlIndex < urls.length - 1) {
-              currentUrlIndex++;
-              initPlayer(currentUrlIndex);
-              return;
+          newHls.on(window.Hls.Events.LEVEL_SWITCHED, (event, data) => {
+            const activeLvl = newHls.levels[data.level];
+            if (activeLvl) {
+              setAutoHeight(activeLvl.height ? `${activeLvl.height}p` : '');
             }
-            switch (data.type) {
-              case window.Hls.ErrorTypes.NETWORK_ERROR:
-                setErrorMsg('Server Offline');
-                setBuffering(false);
-                break;
-              case window.Hls.ErrorTypes.MEDIA_ERROR:
-                newHls.recoverMediaError();
-                break;
-              default:
-                setErrorMsg('Feed Unavailable');
-                setBuffering(false);
-                newHls.destroy();
-                break;
-            }
-          }
-        });
+          });
 
-        setHlsInstance(newHls);
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = m3u8Url;
-        const onLoadedMetadata = () => {
-          video.play()
-            .then(() => setIsPlaying(true))
-            .catch(err => console.log('Autoplay blocked:', err));
-        };
-        const onError = () => {
-          if (currentUrlIndex < urls.length - 1) {
-            currentUrlIndex++;
-            initPlayer(currentUrlIndex);
-            return;
-          }
-          setErrorMsg('Load stream failed');
+          newHls.on(window.Hls.Events.MANIFEST_PARSED, () => {
+            if (newHls.levels && newHls.levels.length > 0) {
+              const lvls = newHls.levels.map((lvl, idx) => ({
+                index: idx,
+                height: lvl.height,
+                name: lvl.height ? `${lvl.height}p` : `Level ${idx + 1}`
+              }));
+              lvls.sort((a, b) => b.height - a.height);
+              setLevels(lvls);
+            }
+
+            video.play()
+              .then(() => setIsPlaying(true))
+              .catch(err => console.log('Autoplay blocked:', err));
+          });
+
+          newHls.on(window.Hls.Events.ERROR, (event, data) => {
+            if (data.fatal) {
+              switch (data.type) {
+                case window.Hls.ErrorTypes.NETWORK_ERROR:
+                  if (currentUrlIndex < urlCount - 1) {
+                    currentUrlIndex++;
+                    initPlayer(currentUrlIndex);
+                  } else {
+                    setErrorMsg('Server Offline');
+                    setBuffering(false);
+                  }
+                  break;
+                case window.Hls.ErrorTypes.MEDIA_ERROR:
+                  newHls.recoverMediaError();
+                  break;
+                default:
+                  setErrorMsg('Feed Unavailable');
+                  setBuffering(false);
+                  newHls.destroy();
+                  break;
+              }
+            }
+          });
+
+          setHlsInstance(newHls);
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = streamUrl;
+          video.onloadedmetadata = () => {
+            video.play().catch(e => console.log(e));
+          };
+          video.onerror = () => {
+            setErrorMsg('Load stream failed');
+            setBuffering(false);
+          };
+        } else {
+          setErrorMsg('HLS streaming not supported');
           setBuffering(false);
-        };
-        
-        // Remove previous listeners if retrying
-        video.onloadedmetadata = onLoadedMetadata;
-        video.onerror = onError;
-      } else {
-        setErrorMsg('HLS streaming not supported');
-        setBuffering(false);
+        }
       }
     };
 
     initPlayer(0);
 
-    // Event listeners on video for buffering / playing state sync
     let lagTimeout = null;
 
     const onWaiting = () => {
       setBuffering(true);
-      if (urls.length > 1) {
-        // If buffering takes more than 6 seconds, auto-switch to next link
+      if (urlCount > 1) {
         lagTimeout = setTimeout(() => {
-          console.log("Stream lagging, auto-switching to next link...");
-          currentUrlIndex = (currentUrlIndex + 1) % urls.length;
+          currentUrlIndex = (currentUrlIndex + 1) % urlCount;
           initPlayer(currentUrlIndex);
         }, 6000);
       }
@@ -190,9 +290,8 @@ export default function PlayerPanel({
 
     return () => {
       if (lagTimeout) clearTimeout(lagTimeout);
-      if (newHls) {
-        newHls.destroy();
-      }
+      if (newHls) newHls.destroy();
+      if (newDash) newDash.reset();
       video.removeEventListener('waiting', onWaiting);
       video.removeEventListener('playing', onPlaying);
       video.removeEventListener('pause', onPause);

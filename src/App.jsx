@@ -36,8 +36,8 @@ const categoryIcons = {
   'other': HelpCircle
 };
 
-export default function App() {
-  const [channels, setChannels] = useState([]);
+export default function App({ initialChannels = [] }) {
+  const [channels, setChannels] = useState(initialChannels);
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
@@ -95,16 +95,6 @@ export default function App() {
     };
   }, []);
 
-  // Disable right-click globally
-  useEffect(() => {
-    const handleContextMenu = (e) => {
-      e.preventDefault();
-    };
-    document.addEventListener('contextmenu', handleContextMenu);
-    return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
-    };
-  }, []);
 
 
 
@@ -160,64 +150,7 @@ export default function App() {
     localStorage.setItem('vortex_favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  // Load Channels on init
-  useEffect(() => {
-    const loadChannelsData = async () => {
-      try {
-        const response = await fetch('/channels.json');
-        if (!response.ok) throw new Error('Failed to load local channels');
-        const localData = await response.json();
-        setChannels(localData);
 
-        // Fetch global playlists disabled because we verified and saved them locally in channels.json
-        /*
-        const globalCategoryUrl = 'https://iptv-org.github.io/iptv/index.category.m3u';
-        const globalCountryUrl = 'https://iptv-org.github.io/iptv/index.country.m3u';
-
-        const [resCat, resCountry] = await Promise.allSettled([
-          fetch(globalCategoryUrl).then(r => r.ok ? r.text() : Promise.reject()),
-          fetch(globalCountryUrl).then(r => r.ok ? r.text() : Promise.reject())
-        ]);
-
-        let combinedGlobal = [];
-        const seenUrls = new Set(localData.map(ch => ch.url));
-
-        if (resCat.status === 'fulfilled') {
-          const parsedCat = parseM3U(resCat.value);
-          parsedCat.forEach(ch => {
-            if (!seenUrls.has(ch.url)) {
-              seenUrls.add(ch.url);
-              combinedGlobal.push(ch);
-            }
-          });
-        }
-
-        if (resCountry.status === 'fulfilled') {
-          const parsedCountry = parseM3U(resCountry.value);
-          parsedCountry.forEach(ch => {
-            if (!seenUrls.has(ch.url)) {
-              seenUrls.add(ch.url);
-              combinedGlobal.push(ch);
-            }
-          });
-        }
-
-        if (combinedGlobal.length > 0) {
-          setChannels(prev => {
-            const prevUrls = new Set(prev.map(ch => ch.url));
-            const uniqueNew = combinedGlobal.filter(ch => !prevUrls.has(ch.url));
-            triggerToast(`Combined ${uniqueNew.length} global channels automatically!`);
-            return [...prev, ...uniqueNew];
-          });
-        }
-        */
-      } catch (err) {
-        console.error('Error fetching global playlists:', err);
-      }
-    };
-
-    loadChannelsData();
-  }, []);
 
   // Filter channels
   const getFilteredChannels = () => {

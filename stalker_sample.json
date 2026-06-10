@@ -1,0 +1,27 @@
+[
+  {
+    "name": "(TR) TRT 1 4K+",
+    "url": "http://prm.worldip.nl:80/play/live.php?mac=00:1A:79:C1:92:55&stream=14759&extension=ts&play_token=TQj5KErIdy",
+    "logo": "https://picons.iptvservicenijmegen.nl/satlogo/turkey/trt1_hd.png"
+  },
+  {
+    "name": "(TR) ATV 4K+",
+    "url": "http://prm.worldip.nl:80/play/live.php?mac=00:1A:79:C1:92:55&stream=14748&extension=ts&play_token=IgGPYMVAlV",
+    "logo": "https://picons.iptvservicenijmegen.nl/satlogo/turkey/atv_tr.png"
+  },
+  {
+    "name": "(TR) Kanal D 4K+",
+    "url": "http://prm.worldip.nl:80/play/live.php?mac=00:1A:79:C1:92:55&stream=14749&extension=ts&play_token=lAIG006N5h",
+    "logo": "https://picons.iptvservicenijmegen.nl/satlogo/turkey/kanal_d_tr.png"
+  },
+  {
+    "name": "(TR) Show TV 4K+",
+    "url": "http://prm.worldip.nl:80/play/live.php?mac=00:1A:79:C1:92:55&stream=14756&extension=ts&play_token=WiLe4dEH5L",
+    "logo": "http://62.210.222.188/MOVIE/darklogo/DarkTVLogo/TVLOGOLAR/Turkiye/show_tv_tr.png"
+  },
+  {
+    "name": "(TR) Star TV 4K+",
+    "url": "http://prm.worldip.nl:80/play/live.php?mac=00:1A:79:C1:92:55&stream=14753&extension=ts&play_token=JjmHUMsXs9",
+    "logo": "https://picons.iptvservicenijmegen.nl/satlogo/turkey/star_tv_tr.png"
+  }
+]

@@ -1,30 +1,99 @@
 import { NextResponse } from 'next/server';
+import { encryptUrl, decryptUrl } from '../../../lib/encryption';
+import fs from 'fs';
+import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(request) {
   const url = new URL(request.url);
-  const targetUrl = url.searchParams.get('url');
+  let targetUrl = url.searchParams.get('url'); // keep for backward compatibility temporarily if needed, but we will rely on token or id
+  const id = url.searchParams.get('id');
+  const idx = parseInt(url.searchParams.get('idx') || '0', 10);
+  const token = url.searchParams.get('token');
+  const isStalker = url.searchParams.get('stalker') === 'true';
 
-  if (!targetUrl) {
-    return new NextResponse('Missing url parameter', { status: 400 });
+  if (id !== null) {
+    try {
+      const filePath = path.join(process.cwd(), 'data', 'channels.json');
+      const channels = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      const channel = channels[parseInt(id, 10)];
+      let channelUrl = channel ? (channel.url || channel.stream_url) : null;
+      if (channelUrl) {
+        if (Array.isArray(channelUrl)) {
+          targetUrl = channelUrl[idx] || channelUrl[0];
+        } else {
+          targetUrl = channelUrl;
+        }
+      }
+    } catch (e) {
+      return new NextResponse('Error loading channel data', { status: 500 });
+    }
+  } else if (token) {
+    targetUrl = decryptUrl(token);
   }
 
+  // Handle relative targetUrls (e.g. starting with /stream-proxy/)
+  if (targetUrl && targetUrl.startsWith('/')) {
+    targetUrl = new URL(targetUrl, `http://localhost:${process.env.PORT || 3000}`).href;
+  }
+
+  if (!targetUrl) {
+    return new NextResponse('Missing valid id or token parameter', { status: 400 });
+  }
+
+  // Always use VLC User-Agent for non-Stalker URLs to bypass Cloudflare JS challenges
+  const userAgent = isStalker 
+    ? 'Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3'
+    : 'VLC/3.0.18 LibVLC/3.0.18';
+
+  const fetchHeaders = {
+    'User-Agent': userAgent,
+    'Accept': '*/*'
+  };
+
+  if (isStalker) {
+    const targetUrlObj = new URL(targetUrl);
+    const mac = targetUrlObj.searchParams.get('mac');
+    if (mac) {
+      fetchHeaders['Cookie'] = `mac=${mac}; stb_lang=en; timezone=Europe/London;`;
+    }
+  }
+
+  const isDevALive = targetUrl.includes('dev-a-live.pantheonsite.io');
+
+  const fetchOptions = {
+    method: 'GET',
+    headers: fetchHeaders,
+    redirect: isDevALive ? 'manual' : 'follow'
+  };
+
   try {
-    const response = await fetch(targetUrl, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': '*/*'
+    const response = await fetch(targetUrl, fetchOptions);
+
+    if (isDevALive && response.status >= 300 && response.status < 400) {
+      const location = response.headers.get('location');
+      if (location) {
+        const absoluteLocation = new URL(location, targetUrl).href;
+        const redirectHeaders = new Headers(response.headers);
+        redirectHeaders.set('location', absoluteLocation);
+        redirectHeaders.set('Access-Control-Allow-Origin', '*');
+        
+        return new NextResponse(null, {
+          status: response.status,
+          headers: redirectHeaders
+        });
       }
-    });
+    }
 
     const headers = new Headers(response.headers);
     headers.delete('content-encoding');
     headers.delete('content-length');
     headers.set('Access-Control-Allow-Origin', '*');
     
-    const contentType = headers.get('content-type') || '';
-    if (contentType.includes('mpegurl') || targetUrl.includes('.m3u8')) {
+    const contentType = (headers.get('content-type') || '').toLowerCase();
+    if (contentType.includes('mpegurl') || targetUrl.includes('.m3u8') || targetUrl.includes('extension=m3u8')) {
+      headers.delete('content-length');
       const bodyText = await response.text();
       const baseUrl = new URL(targetUrl);
       
@@ -38,7 +107,8 @@ export async function GET(request) {
             return line.replace(/URI="([^"]+)"/, (match, uri) => {
               if (uri.startsWith('data:')) return match;
               const absoluteUrl = new URL(uri, baseUrl.href).href;
-              const proxiedUrl = `/api/proxy?url=${encodeURIComponent(absoluteUrl)}`;
+              const tokenStr = encryptUrl(absoluteUrl);
+              const proxiedUrl = `/api/proxy?token=${encodeURIComponent(tokenStr)}${isStalker ? '&stalker=true' : ''}`;
               return `URI="${proxiedUrl}"`;
             });
           }
@@ -46,10 +116,26 @@ export async function GET(request) {
         }
         
         const absoluteUrl = new URL(trimmed, baseUrl.href).href;
-        return `/api/proxy?url=${encodeURIComponent(absoluteUrl)}`;
+        const tokenStr = encryptUrl(absoluteUrl);
+        return `/api/proxy?token=${encodeURIComponent(tokenStr)}${isStalker ? '&stalker=true' : ''}`;
       });
       
       return new NextResponse(rewrittenLines.join('\n'), {
+        status: response.status,
+        headers
+      });
+    } else if (contentType.includes('dash+xml') || targetUrl.includes('.mpd')) {
+      headers.delete('content-length');
+      let bodyText = await response.text();
+      
+      // Strip Widevine and PlayReady ContentProtection tags so dash.js falls back to ClearKey.
+      const widevineUuid = 'edef8ba9-79d6-4ace-a3c8-27dcd51d21ed';
+      const playreadyUuid = '9a04f079-9840-4286-ab92-e65be0885f95';
+      const regex = new RegExp(`<ContentProtection[^>]*schemeIdUri=["']urn:uuid:(${widevineUuid}|${playreadyUuid})["'][^>]*>(.*?)<\\/ContentProtection>|<ContentProtection[^>]*schemeIdUri=["']urn:uuid:(${widevineUuid}|${playreadyUuid})["'][^>]*\\/>`, 'gis');
+      
+      bodyText = bodyText.replace(regex, '');
+
+      return new NextResponse(bodyText, {
         status: response.status,
         headers
       });
@@ -63,3 +149,4 @@ export async function GET(request) {
     return new NextResponse('Proxy error: ' + error.message, { status: 500 });
   }
 }
+
