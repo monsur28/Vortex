@@ -60,8 +60,8 @@ export default function PlayerPanel({
           backBufferLength: 90,
           xhrSetup: function(xhr, url) {
             if (url.startsWith('http://') || url.startsWith('https://')) {
-              // Ensure we don't accidentally proxy local paths or already proxied endpoints
-              if (!url.includes('/api/proxy') && !url.includes('/api/football-data') && !url.includes(window.location.host)) {
+              // Ensure we don't accidentally proxy the football-data API or local paths
+              if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
                 const targetUrl = '/api/proxy?url=' + encodeURIComponent(url);
                 xhr.open('GET', targetUrl, true);
               }

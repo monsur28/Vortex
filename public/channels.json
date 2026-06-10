@@ -319,7 +319,6 @@
     "logo": "https://s3.aynaott.com/storage/dbc585f70a60b9855b6e13a8ce4cb6f4",
     "group": "Sports",
     "url": [
-      "/stream-proxy/Tsports/index.m3u8",
       "https://tvsen7.aynaott.com/tsports-hd/tracks-v1a1/mono.ts.m3u8",
       "https://tvsen7.aynaott.com/tsports-hd/index.m3u8?e=1779283784&u=78be6644-0a65-48ec-81a4-089ac65a2619&token=3b4c5a2cfa872fa7f91ffbfb4aa0f658"
     ]
@@ -796,25 +795,25 @@
     "name": "TSports HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/Tsports/index.m3u8"
+    "url": "http://198.195.239.50:8095/Tsports/index.m3u8"
   },
   {
     "name": "STAR SPORTS SELECT2 HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/StarSportsSelect2/index.m3u8"
+    "url": "http://198.195.239.50:8095/StarSportsSelect2/index.m3u8"
   },
   {
     "name": "SONY SPORTS 5 HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/SonyTenSports5/index.m3u8"
+    "url": "http://198.195.239.50:8095/SonyTenSports5/index.m3u8"
   },
   {
     "name": "SONY SPORTS 2 HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/SonyTenSports2/index.m3u8"
+    "url": "http://198.195.239.50:8095/SonyTenSports2/index.m3u8"
   },
   {
     "name": "MADANI TV",
@@ -856,13 +855,13 @@
     "name": "STAR SPORTS SELECT1 HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/StarSportsSelect1/index.m3u8"
+    "url": "http://198.195.239.50:8095/StarSportsSelect1/index.m3u8"
   },
   {
     "name": "EURO SPORTS HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/Eurosport/index.m3u8"
+    "url": "http://198.195.239.50:8095/Eurosport/index.m3u8"
   },
   {
     "name": "speed sports 1",
@@ -904,97 +903,97 @@
     "name": "STAR SPORTS2",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/StarSports2/index.m3u8"
+    "url": "http://198.195.239.50:8095/StarSports2/index.m3u8"
   },
   {
     "name": "NAGORIK",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/nagorik/index.m3u8"
+    "url": "http://198.195.239.50:8095/nagorik/index.m3u8"
   },
   {
     "name": "ZEE BANGLA CHINEMA HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/ZeeBanglaCinema/index.m3u8"
+    "url": "http://198.195.239.50:8095/ZeeBanglaCinema/index.m3u8"
   },
   {
     "name": "Jalsha Movies HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/JalshaMovies/index.m3u8"
+    "url": "http://198.195.239.50:8095/JalshaMovies/index.m3u8"
   },
   {
     "name": "NEWS24 HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/News24/index.m3u8"
+    "url": "http://198.195.239.50:8095/News24/index.m3u8"
   },
   {
     "name": "SONY AATH",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/SonyAath/index.m3u8"
+    "url": "http://198.195.239.50:8095/SonyAath/index.m3u8"
   },
   {
     "name": "COLOR BANGLA",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/ColorsBanglaChinema/index.m3u8"
+    "url": "http://198.195.239.50:8095/ColorsBanglaChinema/index.m3u8"
   },
   {
     "name": "SONY TV HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/SonyTv/index.m3u8"
+    "url": "http://198.195.239.50:8095/SonyTv/index.m3u8"
   },
   {
     "name": "STAR GOLD HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/StarGold/index.m3u8"
+    "url": "http://198.195.239.50:8095/StarGold/index.m3u8"
   },
   {
     "name": "STAR MOVIES HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/StarMovies/index.m3u8"
+    "url": "http://198.195.239.50:8095/StarMovies/index.m3u8"
   },
   {
     "name": "SONY MAX HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/SonyMAX/index.m3u8"
+    "url": "http://198.195.239.50:8095/SonyMAX/index.m3u8"
   },
   {
     "name": "STAR PLUS HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/StarPlus/index.m3u8"
+    "url": "http://198.195.239.50:8095/StarPlus/index.m3u8"
   },
   {
     "name": "DISCOVERY HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/Discovery/index.m3u8"
+    "url": "http://198.195.239.50:8095/Discovery/index.m3u8"
   },
   {
     "name": "NATIONAL GEOGRAPHIC HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/NationalGeographic/index.m3u8"
+    "url": "http://198.195.239.50:8095/NationalGeographic/index.m3u8"
   },
   {
     "name": "DISCOVERY KIDS HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/DiscoveryKids/index.m3u8"
+    "url": "http://198.195.239.50:8095/DiscoveryKids/index.m3u8"
   },
   {
     "name": "CARTOON NETWORK HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/CartoonNetwork/index.m3u8"
+    "url": "http://198.195.239.50:8095/CartoonNetwork/index.m3u8"
   },
   {
     "name": "Persiana Kore",
@@ -5487,7 +5486,7 @@
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Sony_Aath_logo.svg/1200px-Sony_Aath_logo.svg.png",
     "group": "Indian-Bangla",
     "name": "Sony Aath",
-    "url": "/stream-proxy/SonyAath/tracks-v1a1/mono.m3u8"
+    "url": "http://198.195.239.50:8095/SonyAath/tracks-v1a1/mono.m3u8"
   },
   {
     "group": "MUSIC",
@@ -5540,19 +5539,19 @@
     "logo": "https://upload.wikimedia.org/wikipedia/en/1/11/T_Sports_logo.png",
     "group": "SPORTS",
     "name": "T-Sports [1]",
-    "url": "/stream-proxy/Tsports/tracks-v1a1/mono.m3u8"
+    "url": "http://198.195.239.50:8095/Tsports/tracks-v1a1/mono.m3u8"
   },
   {
     "logo": "https://i.ytimg.com/vi/CXTxw-69Ch8/maxresdefault.jpg",
     "group": "SPORTS",
     "name": "Star Sports 1-[2]",
-    "url": "/stream-proxy/SonyTenSports5/tracks-v1a1/mono.m3u8"
+    "url": "http://198.195.239.50:8095/SonyTenSports5/tracks-v1a1/mono.m3u8"
   },
   {
     "logo": "https://imgur.com/ZTxVYed.png",
     "group": "SPORTS",
     "name": "Star Sports Select 1",
-    "url": "/stream-proxy/StarSportsSelect1/tracks-v1a1/mono.m3u8"
+    "url": "http://198.195.239.50:8095/StarSportsSelect1/tracks-v1a1/mono.m3u8"
   },
   {
     "logo": "https://imgur.com/pFgUCZF.png",
@@ -5564,13 +5563,13 @@
     "logo": "https://imgur.com/pFgUCZF.png",
     "group": "SPORTS",
     "name": "Star Sports Select 2",
-    "url": "/stream-proxy/StarSportsSelect2/tracks-v1a1/mono.m3u8"
+    "url": "http://198.195.239.50:8095/StarSportsSelect2/tracks-v1a1/mono.m3u8"
   },
   {
     "logo": "https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen2_HD.png",
     "group": "SPORTS",
     "name": "Sony Sports-2 HD",
-    "url": "/stream-proxy/SonyTenSports2/tracks-v1a1/mono.m3u8"
+    "url": "http://198.195.239.50:8095/SonyTenSports2/tracks-v1a1/mono.m3u8"
   },
   {
     "logo": "https://upload.wikimedia.org/wikipedia/en/e/e4/PTV_Sports.png",
@@ -5579,3 +5578,4 @@
     "url": "http://119.156.228.231:9983/stream/channelid/679185749?ticket=DED82FB8AE85893524A1035AAE7CD187020FFA04&profile=pass"
   }
 ]
+
