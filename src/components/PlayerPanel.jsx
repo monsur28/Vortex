@@ -104,25 +104,42 @@ export default function PlayerPanel({
 
         // Configure DRM
         let clearKeys = {};
-        if (activeChannel.drm && activeChannel.drm.key) {
-          let keyStr = activeChannel.drm.key;
-          if (keyStr.startsWith('{')) {
-            try {
-              let parsed = JSON.parse(keyStr);
-              if (parsed.keys && parsed.keys.length > 0) {
-                parsed.keys.forEach(k => { clearKeys[hexToBase64Url(k.kid)] = hexToBase64Url(k.k); });
-              }
-            } catch(e){}
-          } else if (keyStr.includes(':')) {
-            let [kidHex, keyHex] = keyStr.split(':');
-            clearKeys[hexToBase64Url(kidHex)] = hexToBase64Url(keyHex);
+        let drmServers = {};
+        
+        if (activeChannel.drm) {
+          if (activeChannel.drm.key) {
+            let keyStr = activeChannel.drm.key;
+            if (keyStr.startsWith('{')) {
+              try {
+                let parsed = JSON.parse(keyStr);
+                if (parsed.keys && parsed.keys.length > 0) {
+                  parsed.keys.forEach(k => { clearKeys[hexToBase64Url(k.kid)] = hexToBase64Url(k.k); });
+                }
+              } catch(e){}
+            } else if (keyStr.includes(':')) {
+              let [kidHex, keyHex] = keyStr.split(':');
+              clearKeys[hexToBase64Url(kidHex)] = hexToBase64Url(keyHex);
+            }
+          }
+          
+          if (activeChannel.drm.licenseUrl) {
+            drmServers = {
+              'com.widevine.alpha': activeChannel.drm.licenseUrl,
+              'com.microsoft.playready': activeChannel.drm.licenseUrl
+            };
           }
         }
 
+        const drmConfig = {};
         if (Object.keys(clearKeys).length > 0) {
-          newShaka.configure({
-            drm: { clearKeys }
-          });
+          drmConfig.clearKeys = clearKeys;
+        }
+        if (Object.keys(drmServers).length > 0) {
+          drmConfig.servers = drmServers;
+        }
+        
+        if (Object.keys(drmConfig).length > 0) {
+          newShaka.configure({ drm: drmConfig });
         }
 
         // Add error event listener

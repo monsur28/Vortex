@@ -166,11 +166,8 @@ export async function GET(request) {
       headers.delete('content-length');
       let bodyText = await response.text();
       
-      // Strip ALL ContentProtection tags and PSSH elements so dash.js doesn't detect DRM from manifest.
-      // ClearKey decryption is configured programmatically via setProtectionData on the client.
-      bodyText = bodyText.replace(/<ContentProtection[^>]*>(.*?)<\/ContentProtection>/gis, '');
-      bodyText = bodyText.replace(/<ContentProtection[^>]*\/>/gi, '');
-      bodyText = bodyText.replace(/<cenc:pssh[^>]*>[^<]*<\/cenc:pssh>/gi, '');
+      // We no longer strip ContentProtection tags because Shaka Player handles them robustly
+      // and needs them to identify the DRM system properly.
 
       // Fix BaseURL so relative segments resolve to the original CDN, not the proxy
       const urlObj = new URL(targetUrl);
