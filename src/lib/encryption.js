@@ -1,8 +1,11 @@
 import crypto from 'crypto';
 
-// Generate a random key and IV at startup. 
-// This keeps tokens secure and automatically invalidates them on server restart.
-const ENCRYPTION_KEY = crypto.randomBytes(32); // 256-bit key
+// Use a stable key from environment variables or generate a deterministic one
+// This keeps tokens secure but prevents them from invalidating across serverless function instances
+const fallbackKey = crypto.scryptSync(process.env.PROXY_SECRET || 'default_stable_secret', 'salt', 32);
+const ENCRYPTION_KEY = process.env.PROXY_ENCRYPTION_KEY 
+  ? Buffer.from(process.env.PROXY_ENCRYPTION_KEY, 'hex') 
+  : fallbackKey;
 const IV_LENGTH = 16; // AES block size
 
 export function encryptUrl(text) {

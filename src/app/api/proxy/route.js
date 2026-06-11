@@ -35,7 +35,8 @@ export async function GET(request) {
 
   // Handle relative targetUrls (e.g. starting with /stream-proxy/)
   if (targetUrl && targetUrl.startsWith('/')) {
-    targetUrl = new URL(targetUrl, `http://localhost:${process.env.PORT || 3000}`).href;
+    const origin = url.origin;
+    targetUrl = new URL(targetUrl, origin).href;
   }
 
   if (!targetUrl) {
