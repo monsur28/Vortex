@@ -54,7 +54,7 @@ export async function GET(request) {
       if (match) {
         targetUrl = match[1].replace(/['"]$/, '');
       } else {
-        return new NextResponse('Failed to extract RoarZone token', { status: 500 });
+        return new NextResponse('Failed to extract RoarZone token. HTML: ' + roarHtml.substring(0, 500), { status: 500 });
       }
     } catch (e) {
       return new NextResponse('Error fetching RoarZone token: ' + e.message, { status: 500 });
