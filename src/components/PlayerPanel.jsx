@@ -137,20 +137,23 @@ export default function PlayerPanel({
             }
           }
 
-          newDash.initialize(video, streamUrl, true);
+          // Configure settings BEFORE initialize so dash.js knows about ClearKey upfront
+          newDash.updateSettings({
+            streaming: {
+              protection: {
+                keepProtectionMediaKeys: true
+              },
+              cmcd: {
+                enabled: false
+              }
+            }
+          });
+
           if (protectionData) {
             newDash.setProtectionData(protectionData);
-            newDash.updateSettings({
-              streaming: {
-                protection: {
-                  keepProtectionMediaKeys: true
-                },
-                cmcd: {
-                  enabled: false
-                }
-              }
-            });
           }
+
+          newDash.initialize(video, streamUrl, true);
 
           newDash.on(dashjs.MediaPlayer.events.ERROR, (e) => {
             if (e.error === 'download') {

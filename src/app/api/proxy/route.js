@@ -147,14 +147,10 @@ export async function GET(request) {
       headers.delete('content-length');
       let bodyText = await response.text();
       
-      // Strip Widevine and PlayReady ContentProtection tags so dash.js falls back to ClearKey.
-      const widevineUuid = 'edef8ba9-79d6-4ace-a3c8-27dcd51d21ed';
-      const playreadyUuid = '9a04f079-9840-4286-ab92-e65be0885f95';
-      const regex = new RegExp(`<ContentProtection[^>]*schemeIdUri=["']urn:uuid:(${widevineUuid}|${playreadyUuid})["'][^>]*>(.*?)<\\/ContentProtection>|<ContentProtection[^>]*schemeIdUri=["']urn:uuid:(${widevineUuid}|${playreadyUuid})["'][^>]*\\/>`, 'gis');
-      
-      bodyText = bodyText.replace(regex, '');
-
-      // Also strip cenc:pssh elements to fully prevent DRM detection
+      // Strip ALL ContentProtection tags and PSSH elements so dash.js doesn't detect DRM from manifest.
+      // ClearKey decryption is configured programmatically via setProtectionData on the client.
+      bodyText = bodyText.replace(/<ContentProtection[^>]*>(.*?)<\/ContentProtection>/gis, '');
+      bodyText = bodyText.replace(/<ContentProtection[^>]*\/>/gi, '');
       bodyText = bodyText.replace(/<cenc:pssh[^>]*>[^<]*<\/cenc:pssh>/gi, '');
 
       // Fix BaseURL so relative segments resolve to the original CDN, not the proxy
