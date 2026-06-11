@@ -66,7 +66,7 @@ export default function PlayerPanel({
     const urlCount = activeChannel.urlCount || 1;
 
     const initPlayer = async (index) => {
-      if (activeChannel.iframeUrl) {
+      if (activeChannel.url && !Array.isArray(activeChannel.url) && activeChannel.url.startsWith('roarzone://')) {
         setBuffering(false);
         setIsPlaying(true);
         return;
@@ -418,11 +418,11 @@ export default function PlayerPanel({
 
       <div className="player-container">
         <div className="video-wrapper" ref={videoWrapperRef}>
-          {activeChannel.iframeUrl ? (
+          {(activeChannel.url && !Array.isArray(activeChannel.url) && activeChannel.url.startsWith('roarzone://')) ? (
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center', justifyContent: 'center', backgroundColor: '#000', color: 'white' }}>
               <p style={{ marginBottom: '20px', fontSize: '14px', color: 'var(--text-secondary)' }}>This channel requires opening in a separate window due to network security.</p>
               <button 
-                onClick={() => window.open(`https://tv.roarzone.net/player.php?stream=${activeChannel.iframeUrl.replace('roarzone://', '')}`, '_blank', 'width=800,height=600')}
+                onClick={() => window.open(`https://tv.roarzone.net/player.php?stream=${activeChannel.url.replace('roarzone://', '')}`, '_blank', 'width=800,height=600')}
                 style={{ padding: '10px 20px', borderRadius: '6px', background: 'var(--color-accent)', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
               >
                 Open Stream Window
@@ -433,7 +433,7 @@ export default function PlayerPanel({
           )}
           
           {/* Custom Controls */}
-          {!activeChannel.iframeUrl && (
+          {!(activeChannel.url && !Array.isArray(activeChannel.url) && activeChannel.url.startsWith('roarzone://')) && (
             <div className="player-controls" id="player-controls">
               <div className="controls-progress">
                 <div className="progress-bar">
