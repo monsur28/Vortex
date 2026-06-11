@@ -143,8 +143,10 @@ export default function PlayerPanel({
             newDash.updateSettings({
               streaming: {
                 protection: {
-                  ignoreDrmInfo: true,
                   keepProtectionMediaKeys: true
+                },
+                cmcd: {
+                  enabled: false
                 }
               }
             });

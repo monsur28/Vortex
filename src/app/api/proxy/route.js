@@ -154,12 +154,28 @@ export async function GET(request) {
       
       bodyText = bodyText.replace(regex, '');
 
-      // Inject BaseURL so relative segments resolve correctly to the original CDN
-      if (!bodyText.includes('<BaseURL>')) {
-        const urlObj = new URL(targetUrl);
-        const mpdBaseUrl = urlObj.search ? targetUrl.substring(0, targetUrl.indexOf(urlObj.search)) : targetUrl;
-        const finalBaseUrl = mpdBaseUrl.substring(0, mpdBaseUrl.lastIndexOf('/') + 1);
-        bodyText = bodyText.replace(/(<MPD[^>]*>)/i, `$1\n  <BaseURL>${finalBaseUrl}</BaseURL>\n`);
+      // Also strip cenc:pssh elements to fully prevent DRM detection
+      bodyText = bodyText.replace(/<cenc:pssh[^>]*>[^<]*<\/cenc:pssh>/gi, '');
+
+      // Fix BaseURL so relative segments resolve to the original CDN, not the proxy
+      const urlObj = new URL(targetUrl);
+      const mpdBaseUrl = urlObj.search ? targetUrl.substring(0, targetUrl.indexOf(urlObj.search)) : targetUrl;
+      const absoluteBaseUrl = mpdBaseUrl.substring(0, mpdBaseUrl.lastIndexOf('/') + 1);
+      
+      if (bodyText.includes('<BaseURL>')) {
+        // Replace any existing BaseURL (could be relative like "dash/") with absolute CDN URL
+        bodyText = bodyText.replace(/<BaseURL>[^<]*<\/BaseURL>/gi, (match) => {
+          const existingUrl = match.replace(/<\/?BaseURL>/g, '');
+          // If it's already absolute, leave it alone
+          if (existingUrl.startsWith('http://') || existingUrl.startsWith('https://')) {
+            return match;
+          }
+          // Convert relative BaseURL to absolute
+          return `<BaseURL>${absoluteBaseUrl}${existingUrl}</BaseURL>`;
+        });
+      } else {
+        // Inject a new absolute BaseURL after the <MPD> tag
+        bodyText = bodyText.replace(/(<MPD[^>]*>)/i, `$1\n  <BaseURL>${absoluteBaseUrl}</BaseURL>`);
       }
 
 
