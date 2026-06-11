@@ -338,7 +338,11 @@
     "name": "T Sports HD",
     "logo": "https://s3.aynaott.com/storage/dbc585f70a60b9855b6e13a8ce4cb6f4",
     "group": "Sports",
-    "url": "roarzone://edge1/1"
+    "url": [
+      "/stream-proxy/Tsports/index.m3u8",
+      "https://tvsen7.aynaott.com/tsports-hd/tracks-v1a1/mono.ts.m3u8",
+      "https://tvsen7.aynaott.com/tsports-hd/index.m3u8?e=1779283784&u=78be6644-0a65-48ec-81a4-089ac65a2619&token=3b4c5a2cfa872fa7f91ffbfb4aa0f658"
+    ]
   },
   {
     "name": "Bloomberg TV",
@@ -800,7 +804,7 @@
     "name": "TSports HD",
     "logo": "",
     "group": "Other",
-    "url": "roarzone://edge1/1"
+    "url": "/stream-proxy/Tsports/index.m3u8"
   },
   {
     "name": "STAR SPORTS SELECT2 HD",
@@ -3812,7 +3816,7 @@
     "name": "T-SPORTS",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/T_Sports_logo.svg/500px-T_Sports_logo.svg.png",
     "group": "Sports",
-    "url": "roarzone://edge1/1"
+    "url": "https://tvsen7.aynaott.com/tsports-hd/index.m3u8"
   },
   {
     "name": "Somoy Tv",
@@ -9102,19 +9106,19 @@
     "logo": "https://upload.wikimedia.org/wikipedia/en/1/11/T_Sports_logo.png",
     "group": "SPORTS",
     "name": "T-Sports [1]",
-    "url": "roarzone://edge1/1"
+    "url": "/stream-proxy/Tsports/tracks-v1a1/mono.m3u8"
   },
   {
     "logo": "https://upload.wikimedia.org/wikipedia/en/1/11/T_Sports_logo.png",
     "group": "SPORTS",
     "name": "T-Sports [2]",
-    "url": "roarzone://edge1/1"
+    "url": "http://103.204.43.87:8080/live/1/1/284.m3u8"
   },
   {
     "logo": "https://upload.wikimedia.org/wikipedia/en/1/11/T_Sports_logo.png",
     "group": "SPORTS",
     "name": "T-Sports [3]",
-    "url": "roarzone://edge1/1"
+    "url": "https://tvsen7.aynaott.com/tsports-hd/tracks-v1a1/mono.ts.m3u8"
   },
   {
     "logo": "https://i.ytimg.com/vi/CXTxw-69Ch8/maxresdefault.jpg",
@@ -9562,7 +9566,7 @@
     "logo": "https://s3.aynaott.com/storage/dbc585f70a60b9855b6e13a8ce4cb6f4",
     "group": "Sports",
     "name": "T Sports HD",
-    "url": "roarzone://edge1/1"
+    "url": "https://tvsen7.aynaott.com/tsports-hd/index.m3u8?e=1780847978&u=78be6644-0a65-48ec-81a4-089ac65a2619&token=c7f48b6e9caf378b39a5d5d79e01f87e"
   },
   {
     "logo": "https://s3.aynaott.com/storage/9d9d7cbfba5a8ceea648bbd963ad1014",
@@ -10111,7 +10115,10 @@
     "logo": "http://aptvpix.net/pubs/december2020/12-20-2020/bsfr.png",
     "group": "SPORT FR",
     "name": "FR | BEIN SPORT 1 HD",
-    "url": ""
+    "url": [
+      "http://116.202.165.211:8181/live/FbIKnEXo42qyPkK/8beWk1aoWZy/2401.ts",
+      "https://dev-a-live.pantheonsite.io/A/popcdn.php?id=BEINSPORT1FR"
+    ]
   },
   {
     "logo": "http://aptvpix.net/pubs/december2020/12-20-2020/bsfr.png",
