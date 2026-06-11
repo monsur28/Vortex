@@ -66,6 +66,11 @@ export default function PlayerPanel({
     const urlCount = activeChannel.urlCount || 1;
 
     const initPlayer = async (index) => {
+      if (activeChannel.url && activeChannel.url.startsWith('roarzone://')) {
+        setBuffering(false);
+        setIsPlaying(true);
+        return;
+      }
 
       const streamUrl = `/api/proxy?id=${activeChannel.id}&idx=${index}&t=${Date.now()}`;
 
@@ -413,20 +418,30 @@ export default function PlayerPanel({
 
       <div className="player-container">
         <div className="video-wrapper" ref={videoWrapperRef}>
-          <video id="video-player" playsInline ref={videoRef}></video>
+          {activeChannel.url && activeChannel.url.startsWith('roarzone://') ? (
+            <iframe 
+              src={`https://tv.roarzone.net/player.php?stream=${activeChannel.url.replace('roarzone://', '')}`} 
+              style={{ width: '100%', height: '100%', border: 'none', backgroundColor: '#000' }}
+              allow="fullscreen; autoplay; encrypted-media"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <video id="video-player" playsInline ref={videoRef}></video>
+          )}
           
           {/* Custom Controls */}
-          <div className="player-controls" id="player-controls">
-            <div className="controls-progress">
-              <div className="progress-bar">
-                <div className="progress-filled" style={{ width: '100%' }}></div>
+          {(!activeChannel.url || !activeChannel.url.startsWith('roarzone://')) && (
+            <div className="player-controls" id="player-controls">
+              <div className="controls-progress">
+                <div className="progress-bar">
+                  <div className="progress-filled" style={{ width: '100%' }}></div>
+                </div>
               </div>
-            </div>
-            <div className="controls-row">
-              <div className="controls-left">
-                <button className="play-btn" onClick={togglePlay}>
-                  {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                </button>
+              <div className="controls-row">
+                <div className="controls-left">
+                  <button className="play-btn" onClick={togglePlay}>
+                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+                  </button>
                 <div className="volume-container">
                   <button className="volume-btn" onClick={toggleMute}>
                     {isMuted || volume === 0 ? <VolumeX size={16} /> : <Volume2 size={16} />}
@@ -549,7 +564,7 @@ export default function PlayerPanel({
                 </button>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Buffering Indicator Overlay */}
           {buffering && !errorMsg && (
