@@ -178,7 +178,6 @@ export default function PlayerPanel({
             backBufferLength: 15,
             liveSyncDurationCount: 1,
             liveMaxLatencyDurationCount: 2,
-            maxLiveSyncPlaybackRate: 1.5,
             maxBufferLength: 10,
             liveDurationIntersectionY: 0,
             xhrSetup: function(xhr, url) {
