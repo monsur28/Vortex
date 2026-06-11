@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 
 export const dynamic = 'force-dynamic';
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 export async function GET(request) {
   const url = new URL(request.url);
