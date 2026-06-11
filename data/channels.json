@@ -19,12 +19,13 @@
     }
   },
   {
-    "name": "MHDTV Sport CH299",
+    "name": "TSN Sports",
     "logo": "",
     "group": "Sports",
-    "url": "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/ch299/default/index.mpd?",
-    "headers": {
-      "Referer": "https://mhdtvsport.site/"
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/h9urpo3cwb/out/v1/fde190f369484bc6b6117cc16cd82a9f/cenc.mpd",
+    "drm": {
+      "type": "clearkey",
+      "key": "c4088f5f265f9de50cffd80bf89308b7:2c4d2239d96d532b4ec2050653611003"
     }
   },
   {
