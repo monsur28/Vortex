@@ -564,6 +564,7 @@ export default function PlayerPanel({
                 </button>
               </div>
             </div>
+          </div>
           )}
 
           {/* Buffering Indicator Overlay */}
