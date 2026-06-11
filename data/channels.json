@@ -10,23 +10,20 @@
     }
   },
   {
+    "name": "Fifa World Cup 2026",
+    "logo": "",
+    "group": "Sports",
+    "url": "https://live-oneapp-prd-news.akamaized.net/Content/CMAF_OL2-CTR-4s-v2/Live/channel(kvea)/master.mpd",
+    "drm": {
+      "type": "clearkey",
+      "key": "ce7ab3022e753307997f58afe001bac4:72d631a66e635c60829a0fe7705516c1"
+    }
+  },
+  {
     "name": "T Sports",
     "logo": "https://s3.aynaott.com/storage/dbc585f70a60b9855b6e13a8ce4cb6f4",
     "group": "Sports",
-    "url": "http://103.151.61.12/T-Sports.kutta/video.m3u8"
-  },
-  {
-    "name": "MHDTV Sport Amazon",
-    "logo": "",
-    "group": "Sports",
-    "url": "https://abfjk4haaaaaaaampv6ofhkihi4r6.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/inpyms8ezu/out/v1/1084d5c9a97a4c5b9f9554c88f486646/cenc.mpd?m=1742278180",
-    "drm": {
-      "type": "clearkey",
-      "key": "065051b99bf5cf8d9a3bde5cbde6aaf9:214bd176832872339ce184338320f9a2"
-    },
-    "headers": {
-      "Referer": "https://mhdtvsport.site/"
-    }
+    "url": "https://amitomar.bdixbd.net/hoichoi.pro1/tracks-v1a1/index.m3u8"
   },
   {
     "name": "TSN Sports",
