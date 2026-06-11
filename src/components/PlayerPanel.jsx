@@ -85,7 +85,10 @@ export default function PlayerPanel({
         newHls = null;
       }
 
-      if (activeChannel.isDash || (activeChannel.drm && activeChannel.drm.type)) {
+      let actualUrl = Array.isArray(activeChannel.url) ? activeChannel.url[index] : activeChannel.url;
+      let isMpdUrl = typeof actualUrl === 'string' && actualUrl.includes('.mpd');
+
+      if (activeChannel.isDash || isMpdUrl || (activeChannel.drm && activeChannel.drm.type)) {
         // Initialize Dash.js for MPEG-DASH streams (with or without DRM)
         try {
           const dashjsModule = await import('dashjs');
