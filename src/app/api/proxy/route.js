@@ -206,3 +206,54 @@ export async function GET(request) {
   }
 }
 
+export async function POST(request) {
+  const url = new URL(request.url);
+  let targetUrl = url.searchParams.get('url');
+  const token = url.searchParams.get('token');
+
+  if (token) {
+    targetUrl = decryptUrl(token);
+  }
+
+  if (!targetUrl) {
+    return new NextResponse('Missing valid url or token parameter for POST', { status: 400 });
+  }
+
+  const bodyBuffer = await request.arrayBuffer();
+
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': request.headers.get('content-type') || 'application/octet-stream',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+    },
+    body: bodyBuffer
+  };
+
+  try {
+    const response = await fetch(targetUrl, fetchOptions);
+    const responseHeaders = new Headers(response.headers);
+    responseHeaders.set('Access-Control-Allow-Origin', '*');
+    responseHeaders.delete('content-encoding');
+    responseHeaders.delete('content-length');
+
+    return new NextResponse(response.body, {
+      status: response.status,
+      headers: responseHeaders
+    });
+  } catch (error) {
+    return new NextResponse('Proxy POST error: ' + error.message, { status: 500 });
+  }
+}
+
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
+    }
+  });
+}
+
