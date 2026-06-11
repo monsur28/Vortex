@@ -176,6 +176,9 @@ export default function PlayerPanel({
             enableWorker: true,
             lowLatencyMode: true,
             backBufferLength: 90,
+            liveSyncDurationCount: 2,
+            liveMaxLatencyDurationCount: 4,
+            maxLiveSyncPlaybackRate: 1.2,
             xhrSetup: function(xhr, url) {
               if (url.startsWith('http://') || url.startsWith('https://')) {
                 if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
