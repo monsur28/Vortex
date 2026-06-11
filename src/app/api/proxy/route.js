@@ -43,6 +43,26 @@ export async function GET(request) {
     return new NextResponse('Missing valid id or token parameter', { status: 400 });
   }
 
+  // Handle roarzone token generation dynamically
+  if (targetUrl.startsWith('roarzone://')) {
+    const streamName = targetUrl.replace('roarzone://', '');
+    try {
+      const roarHtml = await fetch(`https://tv.roarzone.net/player.php?stream=${streamName}`, {
+        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' }
+      }).then(r => r.text());
+      const match = roarHtml.match(/(http.*?roarzone.*?.m3u8.*?token=.*?['\"])/);
+      if (match) {
+        const tokenUrl = match[1].replace(/['"]$/, '');
+        // Replace with the direct track URL to bypass intermediate playlist
+        targetUrl = tokenUrl.replace('index.ll.m3u8', '1/tracks-v1/index.ll.m3u8');
+      } else {
+        return new NextResponse('Failed to extract RoarZone token', { status: 500 });
+      }
+    } catch (e) {
+      return new NextResponse('Error fetching RoarZone token: ' + e.message, { status: 500 });
+    }
+  }
+
   // Always use a standard Chrome User-Agent for non-Stalker URLs to bypass Cloudflare/403 blocks
   const userAgent = isStalker 
     ? 'Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3'
