@@ -73,7 +73,7 @@ export default function PlayerPanel({
     const urlCount = activeChannel.urlCount || 1;
 
     const initPlayer = async (index) => {
-      const streamUrl = `/api/proxy?id=${activeChannel.id}&idx=${index}&t=${Date.now()}`;
+      const streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&t=${Date.now()}`;
 
       // Reset previous dash instance if we are retrying
       if (newDash) {
@@ -102,11 +102,12 @@ export default function PlayerPanel({
                 let url = request.url;
                 if (url.startsWith('http://') || url.startsWith('https://')) {
                   if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
-                    // Note: We don't have client-side encryption, but since we are replacing URLs here,
-                    // we'll just proxy it with the raw URL. To fix the exposed URL, we would need 
-                    // an API endpoint to encrypt it or just let dash.js fetch relative URLs.
                     return window.location.origin + '/api/proxy?url=' + encodeURIComponent(url);
                   }
+                  return url;
+                }
+                if (url.startsWith('/')) {
+                  return window.location.origin + url;
                 }
                 return url;
               }
