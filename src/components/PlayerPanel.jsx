@@ -101,16 +101,14 @@ export default function PlayerPanel({
           
           if (url.startsWith('http://') || url.startsWith('https://')) {
             if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
-              // OPTIMIZATION: Do not proxy actual video/audio segments to eliminate server bottleneck!
-              // This makes the stream load in 1-2 seconds instead of 10+ seconds.
-              if (type === shaka.net.NetworkingEngine.RequestType.SEGMENT) {
-                return; 
-              }
               // BDIX BYPASS: BDIX servers block external proxy servers (like Vercel). 
               // We must fetch them directly using the user's local BD internet connection!
               if (url.includes('bdix')) {
                 return;
               }
+              // We CANNOT bypass proxy for regular segments because many IPTV CDNs (like Akamai) 
+              // bind the stream session to the IP address. If Vercel fetches the manifest, 
+              // Vercel MUST also fetch the segments, otherwise we get 403 Forbidden.
               request.uris[0] = window.location.origin + '/api/proxy?url=' + encodeURIComponent(url);
             }
           } else if (url.startsWith('/')) {
