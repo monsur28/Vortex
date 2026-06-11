@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from 'react';
-import { X, Play, Pause, Volume2, VolumeX, ExternalLink, Monitor, Maximize, WifiOff, Settings, Check } from 'lucide-react';
+import { X, Play, Pause, Volume2, VolumeX, ExternalLink, Monitor, Maximize, WifiOff, Settings, Check, Star } from 'lucide-react';
 
 export default function PlayerPanel({ 
   activeChannel, 
@@ -17,8 +17,7 @@ export default function PlayerPanel({
   const [volume, setVolume] = useState(1);
   const [buffering, setBuffering] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  const [hlsInstance, setHlsInstance] = useState(null);
-  const [dashInstance, setDashInstance] = useState(null);
+  const [shakaInstance, setShakaInstance] = useState(null);
   const [levels, setLevels] = useState([]);
   const [currentLevel, setCurrentLevel] = useState(-1); // -1 means Auto
   const [autoHeight, setAutoHeight] = useState('');
@@ -41,7 +40,7 @@ export default function PlayerPanel({
     }
   };
 
-  // Initialize and attach Player (HLS or DASH)
+  // Initialize and attach Shaka Player
   useEffect(() => {
     if (!activeChannel) return;
 
@@ -54,9 +53,6 @@ export default function PlayerPanel({
     setAutoHeight('');
     setShowQualityMenu(false);
 
-    if (hlsInstance) hlsInstance.destroy();
-    if (dashInstance) dashInstance.reset();
-
     // If it's a popup/iframe channel, just stop buffering and do nothing else
     if (activeChannel.iframeUrl) {
       setBuffering(false);
@@ -67,211 +63,128 @@ export default function PlayerPanel({
     const video = videoRef.current;
     if (!video) return;
 
-    let newHls = null;
-    let newDash = null;
+    let newShaka = null;
     let currentUrlIndex = 0;
     const urlCount = activeChannel.urlCount || 1;
 
     const initPlayer = async (index) => {
       const streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&t=${Date.now()}`;
 
-      // Reset previous dash instance if we are retrying
-      if (newDash) {
-        newDash.reset();
-        newDash = null;
-      }
-      if (newHls) {
-        newHls.destroy();
-        newHls = null;
+      if (newShaka) {
+        await newShaka.destroy();
+        newShaka = null;
       }
 
-      let actualUrl = Array.isArray(activeChannel.url) ? activeChannel.url[index] : activeChannel.url;
-      let isMpdUrl = typeof actualUrl === 'string' && actualUrl.includes('.mpd');
+      try {
+        const shaka = await import('shaka-player');
+        shaka.polyfill.installAll();
 
-      if (activeChannel.isDash || isMpdUrl || (activeChannel.drm && activeChannel.drm.type)) {
-        // Initialize Dash.js for MPEG-DASH streams (with or without DRM)
-        try {
-          const dashjsModule = await import('dashjs');
-          const dashjs = dashjsModule.default || dashjsModule;
-          newDash = dashjs.MediaPlayer().create();
-          
-          // Route dashjs requests through our proxy
-          newDash.extend("RequestModifier", function () {
-            return {
-              modifyRequestURL: function (request) {
-                let url = request.url;
-                if (url.startsWith('http://') || url.startsWith('https://')) {
-                  if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
-                    return window.location.origin + '/api/proxy?url=' + encodeURIComponent(url);
-                  }
-                  return url;
-                }
-                if (url.startsWith('/')) {
-                  return window.location.origin + url;
-                }
-                return url;
-              }
-            };
-          });
-
-          // Setup DRM Protection Data
-          let protectionData = null;
-          if (activeChannel.drm && activeChannel.drm.key) {
-            let keyStr = activeChannel.drm.key;
-            if (keyStr.startsWith('{')) {
-              try {
-                let parsed = JSON.parse(keyStr);
-                if (parsed.keys && parsed.keys.length > 0) {
-                  let clearkeys = {};
-                  parsed.keys.forEach(k => { clearkeys[k.kid] = k.k; });
-                  protectionData = { 'org.w3.clearkey': { clearkeys } };
-                }
-              } catch (e) {
-                console.error("Invalid DRM JSON key", e);
-              }
-            } else if (keyStr.includes(':')) {
-              let [kidHex, keyHex] = keyStr.split(':');
-              protectionData = {
-                'org.w3.clearkey': {
-                  clearkeys: {
-                    [hexToBase64Url(kidHex)]: hexToBase64Url(keyHex)
-                  }
-                }
-              };
-            }
-          }
-
-          // Configure settings BEFORE initialize so dash.js knows about ClearKey upfront
-          newDash.updateSettings({
-            streaming: {
-              protection: {
-                keepProtectionMediaKeys: true
-              },
-              cmcd: {
-                enabled: false
-              }
-            }
-          });
-
-          if (protectionData) {
-            newDash.setProtectionData(protectionData);
-          }
-
-          newDash.initialize(video, streamUrl, true);
-
-          newDash.on(dashjs.MediaPlayer.events.ERROR, (e) => {
-            if (e.error === 'download') {
-              if (currentUrlIndex < urlCount - 1) {
-                currentUrlIndex++;
-                initPlayer(currentUrlIndex);
-                return;
-              }
-              setErrorMsg('Dash Stream Error');
-              setBuffering(false);
-            }
-          });
-
-          newDash.on(dashjs.MediaPlayer.events.PLAYBACK_PLAYING, () => {
-             setIsPlaying(true);
-             setBuffering(false);
-          });
-
-          setDashInstance(newDash);
-
-        } catch (err) {
-          console.error("Dash.js load failed", err);
-          setErrorMsg('Failed to load Dash player');
+        if (!shaka.Player.isBrowserSupported()) {
+          setErrorMsg('Browser not supported');
           setBuffering(false);
+          return;
         }
 
-      } else {
-        // Initialize HLS.js for .m3u8 streams
-        if (window.Hls && window.Hls.isSupported()) {
-          newHls = new window.Hls({
-            enableWorker: true,
-            lowLatencyMode: true,
-            backBufferLength: 15,
-            liveSyncDurationCount: 1,
-            liveMaxLatencyDurationCount: 2,
-            maxBufferLength: 10,
-            liveDurationIntersectionY: 0,
-            xhrSetup: function(xhr, url) {
-              if (url.startsWith('http://') || url.startsWith('https://')) {
-                if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
-                  // Actually the proxy is handling this directly through the initial m3u8 token replacement.
-                  // But just in case any stray URLs are fetched, we let the proxy encrypt them.
-                  // Wait, we don't have `encryptUrl` on the client, so we can't encrypt here!
-                  // Luckily, the proxy already encrypted all links inside the m3u8.
-                  // Any absolute URL here should have already been encrypted by the proxy.
-                  // If it wasn't, we can't proxy it correctly without exposing it.
-                  // We'll leave it as is, or use a fallback if needed.
-                }
-              }
-            }
-          });
+        newShaka = new shaka.Player(video);
+
+        // Route requests through proxy
+        newShaka.getNetworkingEngine().registerRequestFilter(function(type, request) {
+          if (!request.uris || request.uris.length === 0) return;
+          let url = request.uris[0];
           
-          newHls.loadSource(streamUrl);
-          newHls.attachMedia(video);
-
-          newHls.on(window.Hls.Events.LEVEL_SWITCHED, (event, data) => {
-            const activeLvl = newHls.levels[data.level];
-            if (activeLvl) {
-              setAutoHeight(activeLvl.height ? `${activeLvl.height}p` : '');
+          if (url.startsWith('http://') || url.startsWith('https://')) {
+            if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
+              request.uris[0] = window.location.origin + '/api/proxy?url=' + encodeURIComponent(url);
             }
-          });
+          } else if (url.startsWith('/')) {
+            request.uris[0] = window.location.origin + url;
+          }
+        });
 
-          newHls.on(window.Hls.Events.MANIFEST_PARSED, () => {
-            if (newHls.levels && newHls.levels.length > 0) {
-              const lvls = newHls.levels.map((lvl, idx) => ({
-                index: idx,
-                height: lvl.height,
-                name: lvl.height ? `${lvl.height}p` : `Level ${idx + 1}`
-              }));
-              lvls.sort((a, b) => b.height - a.height);
-              setLevels(lvls);
-            }
-
-            video.play()
-              .then(() => setIsPlaying(true))
-              .catch(err => console.log('Autoplay blocked:', err));
-          });
-
-          newHls.on(window.Hls.Events.ERROR, (event, data) => {
-            if (data.fatal) {
-              switch (data.type) {
-                case window.Hls.ErrorTypes.NETWORK_ERROR:
-                  if (currentUrlIndex < urlCount - 1) {
-                    currentUrlIndex++;
-                    initPlayer(currentUrlIndex);
-                  } else {
-                    setErrorMsg('Server Offline');
-                    setBuffering(false);
-                  }
-                  break;
-                case window.Hls.ErrorTypes.MEDIA_ERROR:
-                  newHls.recoverMediaError();
-                  break;
-                default:
-                  setErrorMsg('Feed Unavailable');
-                  setBuffering(false);
-                  newHls.destroy();
-                  break;
+        // Configure DRM
+        let clearKeys = {};
+        if (activeChannel.drm && activeChannel.drm.key) {
+          let keyStr = activeChannel.drm.key;
+          if (keyStr.startsWith('{')) {
+            try {
+              let parsed = JSON.parse(keyStr);
+              if (parsed.keys && parsed.keys.length > 0) {
+                parsed.keys.forEach(k => { clearKeys[hexToBase64Url(k.kid)] = hexToBase64Url(k.k); });
               }
-            }
-          });
+            } catch(e){}
+          } else if (keyStr.includes(':')) {
+            let [kidHex, keyHex] = keyStr.split(':');
+            clearKeys[hexToBase64Url(kidHex)] = hexToBase64Url(keyHex);
+          }
+        }
 
-          setHlsInstance(newHls);
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-          video.src = streamUrl;
-          video.onloadedmetadata = () => {
-            video.play().catch(e => console.log(e));
-          };
-          video.onerror = () => {
-            setErrorMsg('Load stream failed');
+        if (Object.keys(clearKeys).length > 0) {
+          newShaka.configure({
+            drm: { clearKeys }
+          });
+        }
+
+        // Add error event listener
+        newShaka.addEventListener('error', (event) => {
+          console.error('Shaka Error', event.detail);
+          if (currentUrlIndex < urlCount - 1) {
+            currentUrlIndex++;
+            initPlayer(currentUrlIndex);
+          } else {
+            setErrorMsg('Stream Error: ' + (event.detail?.message || 'Playback failed'));
             setBuffering(false);
-          };
+          }
+        });
+        
+        // Listen to adaptation events to update autoHeight
+        newShaka.addEventListener('adaptation', () => {
+          if (newShaka) {
+            const tracks = newShaka.getVariantTracks();
+            const activeTrack = tracks.find(t => t.active);
+            if (activeTrack && activeTrack.height) {
+              setAutoHeight(`${activeTrack.height}p`);
+            }
+          }
+        });
+
+        await newShaka.load(streamUrl);
+        
+        // Load was successful
+        setBuffering(false);
+        setIsPlaying(true);
+        video.play().catch(e => console.log('Autoplay blocked:', e));
+
+        // Get video qualities
+        const tracks = newShaka.getVariantTracks();
+        if (tracks && tracks.length > 0) {
+          const lvls = tracks
+            .filter(t => t.type === 'variant' && t.height)
+            .map(t => ({
+              index: t.id,
+              height: t.height,
+              name: `${t.height}p`
+            }))
+            .filter((v, i, a) => a.findIndex(t => (t.height === v.height)) === i) // Keep unique heights
+            .sort((a, b) => b.height - a.height);
+          
+          setLevels(lvls);
+          
+          // Initial auto height
+          const activeTrack = tracks.find(t => t.active);
+          if (activeTrack && activeTrack.height) {
+            setAutoHeight(`${activeTrack.height}p`);
+          }
+        }
+
+        setShakaInstance(newShaka);
+
+      } catch (err) {
+        console.error('Error loading shaka', err);
+        if (currentUrlIndex < urlCount - 1) {
+          currentUrlIndex++;
+          initPlayer(currentUrlIndex);
         } else {
-          setErrorMsg('HLS streaming not supported');
+          setErrorMsg('Failed to load stream');
           setBuffering(false);
         }
       }
@@ -309,8 +222,12 @@ export default function PlayerPanel({
 
     return () => {
       if (lagTimeout) clearTimeout(lagTimeout);
-      if (newHls) newHls.destroy();
-      if (newDash) newDash.reset();
+      if (newShaka) {
+        newShaka.destroy().catch(() => {});
+      }
+      if (shakaInstance) {
+        shakaInstance.destroy().catch(() => {});
+      }
       video.removeEventListener('waiting', onWaiting);
       video.removeEventListener('playing', onPlaying);
       video.removeEventListener('pause', onPause);
@@ -507,8 +424,8 @@ export default function PlayerPanel({
                       }}>
                         <button 
                           onClick={() => {
-                            if (hlsInstance) {
-                              hlsInstance.currentLevel = -1;
+                            if (shakaInstance) {
+                              shakaInstance.configure({ abr: { enabled: true } });
                               setCurrentLevel(-1);
                             }
                             setShowQualityMenu(false);
@@ -536,8 +453,13 @@ export default function PlayerPanel({
                           <button 
                             key={level.index}
                             onClick={() => {
-                              if (hlsInstance) {
-                                hlsInstance.currentLevel = level.index;
+                              if (shakaInstance) {
+                                shakaInstance.configure({ abr: { enabled: false } });
+                                const tracks = shakaInstance.getVariantTracks();
+                                const targetTrack = tracks.find(t => t.height === level.height);
+                                if (targetTrack) {
+                                  shakaInstance.selectVariantTrack(targetTrack, true);
+                                }
                                 setCurrentLevel(level.index);
                               }
                               setShowQualityMenu(false);
@@ -626,14 +548,5 @@ export default function PlayerPanel({
         </div>
       </div>
     </aside>
-  );
-}
-
-// Inline Star Component for ease
-function Star({ size, style }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={style.fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-star">
-      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-    </svg>
   );
 }
