@@ -800,7 +800,7 @@
     "name": "TSports HD",
     "logo": "",
     "group": "Other",
-    "url": "/stream-proxy/Tsports/index.m3u8"
+    "url": "roarzone://edge1/1"
   },
   {
     "name": "STAR SPORTS SELECT2 HD",
@@ -3812,7 +3812,7 @@
     "name": "T-SPORTS",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/T_Sports_logo.svg/500px-T_Sports_logo.svg.png",
     "group": "Sports",
-    "url": "https://tvsen7.aynaott.com/tsports-hd/index.m3u8"
+    "url": "roarzone://edge1/1"
   },
   {
     "name": "Somoy Tv",
@@ -9102,19 +9102,19 @@
     "logo": "https://upload.wikimedia.org/wikipedia/en/1/11/T_Sports_logo.png",
     "group": "SPORTS",
     "name": "T-Sports [1]",
-    "url": "/stream-proxy/Tsports/tracks-v1a1/mono.m3u8"
+    "url": "roarzone://edge1/1"
   },
   {
     "logo": "https://upload.wikimedia.org/wikipedia/en/1/11/T_Sports_logo.png",
     "group": "SPORTS",
     "name": "T-Sports [2]",
-    "url": "http://103.204.43.87:8080/live/1/1/284.m3u8"
+    "url": "roarzone://edge1/1"
   },
   {
     "logo": "https://upload.wikimedia.org/wikipedia/en/1/11/T_Sports_logo.png",
     "group": "SPORTS",
     "name": "T-Sports [3]",
-    "url": "https://tvsen7.aynaott.com/tsports-hd/tracks-v1a1/mono.ts.m3u8"
+    "url": "roarzone://edge1/1"
   },
   {
     "logo": "https://i.ytimg.com/vi/CXTxw-69Ch8/maxresdefault.jpg",
