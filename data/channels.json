@@ -20,12 +20,6 @@
     }
   },
   {
-    "name": "T Sports",
-    "logo": "https://s3.aynaott.com/storage/dbc585f70a60b9855b6e13a8ce4cb6f4",
-    "group": "Sports",
-    "url": "https://amitomar.bdixbd.net/hoichoi.pro1/tracks-v1a1/index.m3u8"
-  },
-  {
     "name": "TSN Sports",
     "logo": "https://city-png.b-cdn.net/preview/preview_public/uploads/preview/hd-official-2026-fifa-world-cup-transparent-png-701751712076865bw3umpw9lk.png",
     "group": "Sports",
@@ -34,6 +28,15 @@
       "type": "clearkey",
       "key": "c4088f5f265f9de50cffd80bf89308b7:2c4d2239d96d532b4ec2050653611003"
     }
+  },
+  {
+    "name": "T Sports",
+    "logo": "https://s3.aynaott.com/storage/dbc585f70a60b9855b6e13a8ce4cb6f4",
+    "group": "Sports",
+    "url": [
+      "https://amitomar.bdixbd.net/hoichoi.pro1/tracks-v1a1/index.m3u8",
+      "http://103.151.61.12/T-Sports.kutta/video.m3u8"
+    ]
   },
   {
     "name": "Caze TV BR",

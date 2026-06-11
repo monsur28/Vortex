@@ -230,12 +230,10 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
           </h3>
           <div className="wc-channels-header" style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap', alignItems: 'center', background: 'rgba(15, 23, 42, 0.3)', padding: '10px 14px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
             <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Select to Watch:</span>
-            <button className="wc-watch-btn" onClick={() => onWatchLive("FIFA+")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>FIFA+</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("Fifa World Cup 2026")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>Fifa World Cup</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("TSN Sports")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>TSN Sports</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("T Sports")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>T Sports</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("Caze TV BR")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>Caze TV BR</button>
-            <button className="wc-watch-btn" onClick={() => onWatchLive("TELEMUNDO 🇲🇽")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>Telemundo</button>
-            <button className="wc-watch-btn" onClick={() => onWatchLive("TSN 1")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>TSN 1</button>
-            <button className="wc-watch-btn" onClick={() => onWatchLive("TSN 2")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>TSN 2</button>
-            <button className="wc-watch-btn" onClick={() => onWatchLive("BTV NATIONAL HD")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase', boxShadow: 'none' }}>BTV National</button>
           </div>
 
           {/* Schedule Section */}
@@ -259,17 +257,26 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
             
             {groupMatches.length > 0 ? (
               <div className="wc-matches-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: isPlayerOpen ? '300px' : 'none', overflowY: 'auto', paddingRight: '4px' }}>
-                {groupMatches.map(match => {
+                {groupMatches.filter(m => m.status !== 'FINISHED' && m.status !== 'AWARDED').map(match => {
                   const date = new Date(match.utcDate);
+                  const isLive = match.status === 'IN_PLAY' || match.status === 'PAUSED';
+                  const statusText = isLive ? 'LIVE' : 'UPCOMING';
+                  const statusColor = isLive ? '#ef4444' : 'var(--wc-gold)';
+                  
                   return (
-                    <div key={match.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '10px 14px', borderRadius: '6px', fontSize: '12px' }}>
+                    <div key={match.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '10px 14px', borderRadius: '6px', fontSize: '12px', borderLeft: isLive ? '3px solid #ef4444' : 'none' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, justifyContent: 'flex-end' }}>
                         <span style={{ fontWeight: '600' }}>{match.homeTeam?.name || 'TBD'}</span>
                         {match.homeTeam?.crest && <img src={match.homeTeam.crest} alt="" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />}
                       </div>
-                      <div style={{ padding: '0 16px', color: 'var(--wc-gold)', fontWeight: '800', textAlign: 'center', fontSize: '10px' }}>
-                        {date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}<br/>
-                        {date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                      <div style={{ padding: '0 16px', color: statusColor, fontWeight: '800', textAlign: 'center', fontSize: '10px' }}>
+                        <div style={{ marginBottom: '4px', display: 'inline-block', padding: '2px 6px', background: isLive ? 'rgba(239,68,68,0.2)' : 'rgba(255,255,255,0.1)', borderRadius: '4px' }}>
+                          {isLive && <span style={{ display: 'inline-block', width: '6px', height: '6px', background: '#ef4444', borderRadius: '50%', marginRight: '4px' }}></span>}
+                          {statusText}
+                        </div><br/>
+                        <span style={{ color: 'var(--text-secondary)' }}>
+                          {date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} • {date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                        </span>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, justifyContent: 'flex-start' }}>
                         {match.awayTeam?.crest && <img src={match.awayTeam.crest} alt="" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />}

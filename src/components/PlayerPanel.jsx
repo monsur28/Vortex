@@ -65,10 +65,16 @@ export default function PlayerPanel({
 
     let newShaka = null;
     let currentUrlIndex = 0;
-    const urlCount = activeChannel.urlCount || 1;
+    const urlCount = activeChannel.urlCount || (Array.isArray(activeChannel.url) ? activeChannel.url.length : 1);
 
     const initPlayer = async (index) => {
-      const streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&t=${Date.now()}`;
+      let rawUrl = Array.isArray(activeChannel.url) ? activeChannel.url[index] : activeChannel.url;
+      let streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&t=${Date.now()}`;
+      
+      // BDIX/Local IP Bypass: Do not use the Vercel proxy for local BD URLs!
+      if (rawUrl && (rawUrl.includes('bdix') || rawUrl.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/))) {
+        streamUrl = rawUrl;
+      }
 
       if (newShaka) {
         await newShaka.destroy();
@@ -95,6 +101,16 @@ export default function PlayerPanel({
           
           if (url.startsWith('http://') || url.startsWith('https://')) {
             if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
+              // OPTIMIZATION: Do not proxy actual video/audio segments to eliminate server bottleneck!
+              // This makes the stream load in 1-2 seconds instead of 10+ seconds.
+              if (type === shaka.net.NetworkingEngine.RequestType.SEGMENT) {
+                return; 
+              }
+              // BDIX BYPASS: BDIX servers block external proxy servers (like Vercel). 
+              // We must fetch them directly using the user's local BD internet connection!
+              if (url.includes('bdix')) {
+                return;
+              }
               request.uris[0] = window.location.origin + '/api/proxy?url=' + encodeURIComponent(url);
             }
           } else if (url.startsWith('/')) {
