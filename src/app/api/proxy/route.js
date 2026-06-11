@@ -123,6 +123,12 @@ export async function GET(request) {
     headers.delete('content-length');
     headers.set('Access-Control-Allow-Origin', '*');
     
+    if (!response.ok) {
+      console.warn(`Proxy upstream returned ${response.status} for ${targetUrl}`);
+      headers.set('X-Debug-Upstream-Status', response.status.toString());
+      headers.set('X-Debug-Target-Url', targetUrl);
+    }
+    
     const contentType = (headers.get('content-type') || '').toLowerCase();
     if (contentType.includes('mpegurl') || targetUrl.includes('.m3u8') || targetUrl.includes('extension=m3u8')) {
       headers.delete('content-length');

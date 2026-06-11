@@ -85,7 +85,8 @@ export default function PlayerPanel({
           return;
         }
 
-        newShaka = new shaka.Player(video);
+        newShaka = new shaka.Player();
+        await newShaka.attach(video);
 
         // Route requests through proxy
         newShaka.getNetworkingEngine().registerRequestFilter(function(type, request) {
