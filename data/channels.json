@@ -6,7 +6,7 @@
     "url": "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/ch299/default/index.mpd",
     "drm": {
       "type": "clearkey",
-      "key": "{\"keys\":[{\"kty\":\"oct\",\"k\":\"gpeZ7VNNEfyt60sZJGfgUA\",\"kid\":\"VJq3zTWmS7a7R57OrQTWnQ\"}],\"type\":\"temporary\"}"
+      "key": "549ab7cd35a64bb6bb479ecead04d69d:829799ed534d11fcadeb4b192467e050"
     }
   },
   {
