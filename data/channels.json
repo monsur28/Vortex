@@ -1,5 +1,15 @@
 [
   {
+    "name": "Fifa World Cup 2026",
+    "logo": "",
+    "group": "Sports",
+    "url": "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/ch299/default/index.mpd",
+    "drm": {
+      "type": "clearkey",
+      "key": "{\"keys\":[{\"kty\":\"oct\",\"k\":\"gpeZ7VNNEfyt60sZJGfgUA\",\"kid\":\"VJq3zTWmS7a7R57OrQTWnQ\"}],\"type\":\"temporary\"}"
+    }
+  },
+  {
     "name": "T Sports",
     "logo": "https://s3.aynaott.com/storage/dbc585f70a60b9855b6e13a8ce4cb6f4",
     "group": "Sports",
