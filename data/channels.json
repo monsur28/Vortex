@@ -338,11 +338,7 @@
     "name": "T Sports HD",
     "logo": "https://s3.aynaott.com/storage/dbc585f70a60b9855b6e13a8ce4cb6f4",
     "group": "Sports",
-    "url": [
-      "/stream-proxy/Tsports/index.m3u8",
-      "https://tvsen7.aynaott.com/tsports-hd/tracks-v1a1/mono.ts.m3u8",
-      "https://tvsen7.aynaott.com/tsports-hd/index.m3u8?e=1779283784&u=78be6644-0a65-48ec-81a4-089ac65a2619&token=3b4c5a2cfa872fa7f91ffbfb4aa0f658"
-    ]
+    "url": "roarzone://edge1/1"
   },
   {
     "name": "Bloomberg TV",
@@ -9566,7 +9562,7 @@
     "logo": "https://s3.aynaott.com/storage/dbc585f70a60b9855b6e13a8ce4cb6f4",
     "group": "Sports",
     "name": "T Sports HD",
-    "url": "https://tvsen7.aynaott.com/tsports-hd/index.m3u8?e=1780847978&u=78be6644-0a65-48ec-81a4-089ac65a2619&token=c7f48b6e9caf378b39a5d5d79e01f87e"
+    "url": "roarzone://edge1/1"
   },
   {
     "logo": "https://s3.aynaott.com/storage/9d9d7cbfba5a8ceea648bbd963ad1014",
@@ -10115,10 +10111,7 @@
     "logo": "http://aptvpix.net/pubs/december2020/12-20-2020/bsfr.png",
     "group": "SPORT FR",
     "name": "FR | BEIN SPORT 1 HD",
-    "url": [
-      "http://116.202.165.211:8181/live/FbIKnEXo42qyPkK/8beWk1aoWZy/2401.ts",
-      "https://dev-a-live.pantheonsite.io/A/popcdn.php?id=BEINSPORT1FR"
-    ]
+    "url": ""
   },
   {
     "logo": "http://aptvpix.net/pubs/december2020/12-20-2020/bsfr.png",
