@@ -43,10 +43,10 @@ export async function GET(request) {
     return new NextResponse('Missing valid id or token parameter', { status: 400 });
   }
 
-  // Always use VLC User-Agent for non-Stalker URLs to bypass Cloudflare JS challenges
+  // Always use a standard Chrome User-Agent for non-Stalker URLs to bypass Cloudflare/403 blocks
   const userAgent = isStalker 
     ? 'Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3'
-    : 'VLC/3.0.18 LibVLC/3.0.18';
+    : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36';
 
   const fetchHeaders = {
     'User-Agent': userAgent,
