@@ -52,9 +52,7 @@ export async function GET(request) {
       }).then(r => r.text());
       const match = roarHtml.match(/(http.*?roarzone.*?.m3u8.*?token=.*?['\"])/);
       if (match) {
-        const tokenUrl = match[1].replace(/['"]$/, '');
-        // Replace with the direct track URL to bypass intermediate playlist
-        targetUrl = tokenUrl.replace('index.ll.m3u8', '1/tracks-v1/index.ll.m3u8');
+        targetUrl = match[1].replace(/['"]$/, '');
       } else {
         return new NextResponse('Failed to extract RoarZone token', { status: 500 });
       }
