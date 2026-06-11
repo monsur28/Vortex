@@ -154,6 +154,15 @@ export async function GET(request) {
       
       bodyText = bodyText.replace(regex, '');
 
+      // Inject BaseURL so relative segments resolve correctly to the original CDN
+      if (!bodyText.includes('<BaseURL>')) {
+        const urlObj = new URL(targetUrl);
+        const mpdBaseUrl = urlObj.search ? targetUrl.substring(0, targetUrl.indexOf(urlObj.search)) : targetUrl;
+        const finalBaseUrl = mpdBaseUrl.substring(0, mpdBaseUrl.lastIndexOf('/') + 1);
+        bodyText = bodyText.replace(/(<MPD[^>]*>)/i, `$1\n  <BaseURL>${finalBaseUrl}</BaseURL>\n`);
+      }
+
+
       return new NextResponse(bodyText, {
         status: response.status,
         headers
