@@ -71,6 +71,18 @@ export async function GET(request) {
     'Accept': '*/*'
   };
 
+  // Apply custom headers from channel config (e.g. Referer, Origin)
+  if (id !== null) {
+    try {
+      const filePath = path.join(process.cwd(), 'data', 'channels.json');
+      const channels = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      const channel = channels[parseInt(id, 10)];
+      if (channel && channel.headers) {
+        Object.assign(fetchHeaders, channel.headers);
+      }
+    } catch (e) { /* ignore */ }
+  }
+
   if (isStalker) {
     const targetUrlObj = new URL(targetUrl);
     const mac = targetUrlObj.searchParams.get('mac');
