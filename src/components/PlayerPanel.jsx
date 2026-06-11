@@ -66,7 +66,7 @@ export default function PlayerPanel({
     const urlCount = activeChannel.urlCount || 1;
 
     const initPlayer = async (index) => {
-      if (activeChannel.url && activeChannel.url.startsWith('roarzone://')) {
+      if (activeChannel.iframeUrl) {
         setBuffering(false);
         setIsPlaying(true);
         return;
@@ -418,9 +418,9 @@ export default function PlayerPanel({
 
       <div className="player-container">
         <div className="video-wrapper" ref={videoWrapperRef}>
-          {activeChannel.url && activeChannel.url.startsWith('roarzone://') ? (
+          {activeChannel.iframeUrl ? (
             <iframe 
-              src={`https://tv.roarzone.net/player.php?stream=${activeChannel.url.replace('roarzone://', '')}`} 
+              src={`https://tv.roarzone.net/player.php?stream=${activeChannel.iframeUrl.replace('roarzone://', '')}`} 
               style={{ width: '100%', height: '100%', border: 'none', backgroundColor: '#000' }}
               allow="fullscreen; autoplay; encrypted-media"
               allowFullScreen
@@ -430,7 +430,7 @@ export default function PlayerPanel({
           )}
           
           {/* Custom Controls */}
-          {(!activeChannel.url || !activeChannel.url.startsWith('roarzone://')) && (
+          {!activeChannel.iframeUrl && (
             <div className="player-controls" id="player-controls">
               <div className="controls-progress">
                 <div className="progress-bar">

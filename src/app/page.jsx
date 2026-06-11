@@ -25,7 +25,8 @@ export default function Home() {
         id: index,
         isDash: targetUrl.includes('.mpd') || (channel.drm && channel.drm.type) ? true : false,
         drm: channel.drm || null,
-        urlCount: originalUrls.length
+        urlCount: originalUrls.length,
+        iframeUrl: targetUrl.startsWith('roarzone://') ? targetUrl : undefined
       };
     });
   } catch (error) {
