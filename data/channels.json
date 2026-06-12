@@ -1,5 +1,11 @@
 [
   {
+    "name": "T SPORTS",
+    "logo": "http://starapk1.com/logo/football.png",
+    "group": "FOOTBALL",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/52500.ts"
+  },
+  {
     "name": "TUDN",
     "logo": "https://i.ibb.co/GfMp5MTJ/Chat-GPT-Image-Jun-5-2026-07-28-11-PM.png",
     "group": "Sports",
