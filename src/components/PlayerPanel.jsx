@@ -26,6 +26,25 @@ export default function PlayerPanel({
   const [currentLevel, setCurrentLevel] = useState(-1); // -1 means Auto
   const [autoHeight, setAutoHeight] = useState('');
   const [showQualityMenu, setShowQualityMenu] = useState(false);
+  const [showControls, setShowControls] = useState(true);
+  const controlsTimeoutRef = useRef(null);
+
+  const resetControlsTimeout = () => {
+    setShowControls(true);
+    if (controlsTimeoutRef.current) {
+      clearTimeout(controlsTimeoutRef.current);
+    }
+    controlsTimeoutRef.current = setTimeout(() => {
+      setShowControls(false);
+    }, 3000);
+  };
+
+  useEffect(() => {
+    resetControlsTimeout();
+    return () => {
+      if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
+    };
+  }, [isPlaying]);
 
   // Helper for converting hex DRM keys to base64url
   const hexToBase64Url = (hexString) => {
@@ -430,7 +449,12 @@ export default function PlayerPanel({
 
   return (
     <div className="fullscreen-player-overlay" id="player-panel">
-      <div className="player-container">
+      <div 
+        className={`player-container ${!showControls && isPlaying ? 'controls-hidden' : ''}`}
+        onMouseMove={resetControlsTimeout}
+        onClick={resetControlsTimeout}
+        onMouseLeave={() => isPlaying && setShowControls(false)}
+      >
         <div className="video-wrapper" ref={videoWrapperRef}>
           {activeChannel.iframeUrl ? (
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center', justifyContent: 'center', backgroundColor: '#000', color: 'white' }}>

@@ -2338,6 +2338,21 @@ video.aspect-fill {
     padding: 0;
 }
 
+.player-container.controls-hidden .player-top-overlay,
+.player-container.controls-hidden .center-controls-overlay,
+.player-container.controls-hidden .player-controls {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.player-container.controls-hidden {
+    cursor: none;
+}
+
+.player-top-overlay, .center-controls-overlay, .player-controls {
+    transition: opacity 0.3s ease;
+}
+
 .fullscreen-player-overlay .video-wrapper {
     flex: 1;
     position: relative;
