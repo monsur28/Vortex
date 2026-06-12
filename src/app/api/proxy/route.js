@@ -20,7 +20,7 @@ export async function GET(request) {
       const channels = JSON.parse(fs.readFileSync(filePath, 'utf8'));
       const channel = channels[parseInt(id, 10)];
       let channelUrl = channel ? (channel.url || channel.stream_url) : null;
-      if (channelUrl) {
+      if (channelUrl && !targetUrl) {
         if (Array.isArray(channelUrl)) {
           targetUrl = channelUrl[idx] || channelUrl[0];
         } else {
@@ -41,8 +41,11 @@ export async function GET(request) {
   }
 
   if (!targetUrl) {
+    console.error('Target URL missing!', { id, targetUrl: url.searchParams.get('url'), token });
     return new NextResponse('Missing valid id or token parameter', { status: 400 });
   }
+
+  console.log(`PROXY REQUEST: targetUrl=${targetUrl}, method=${request.method}`);
 
   // Handle roarzone token generation dynamically
   if (targetUrl.startsWith('roarzone://')) {
@@ -71,6 +74,7 @@ export async function GET(request) {
     'User-Agent': userAgent,
     'Accept': '*/*'
   };
+
 
   // Apply custom headers from channel config (e.g. Referer, Origin)
   if (id !== null) {
@@ -251,9 +255,13 @@ export async function OPTIONS() {
     status: 200,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Methods': 'GET, POST, HEAD, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
     }
   });
+}
+
+export async function HEAD(request) {
+  return GET(request);
 }
 

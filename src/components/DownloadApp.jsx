@@ -7,12 +7,12 @@ export default function DownloadApp() {
     <div className="download-app-container" style={{ padding: '24px', maxWidth: '800px', margin: '0 auto', color: 'var(--text-primary)' }}>
       <div className="download-header" style={{ textAlign: 'center', marginBottom: '40px' }}>
         <Smartphone size={64} color="var(--wc-green)" style={{ margin: '0 auto 16px' }} />
-        <h1 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '8px' }}>Get the Vortex App</h1>
+        <h1 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '8px' }}>Get the World Cup App</h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: '16px' }}>Take your streaming experience on the go with our dedicated Android app.</p>
       </div>
 
       <div className="download-card" style={{ background: 'var(--bg-card)', borderRadius: 'var(--radius-lg)', padding: '32px', textAlign: 'center', border: '1px solid var(--border-color)', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}>
-        <h2 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '24px' }}>Vortex Player for Android</h2>
+        <h2 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '24px' }}>World Cup Player for Android</h2>
         
         <a 
           href="/Vortex.apk" 

@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import App from '../App';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   // Load and sanitize channels on the server to prevent network tab fetching
   const filePath = path.join(process.cwd(), 'data', 'channels.json');
@@ -23,8 +25,12 @@ export default function Home() {
         logo: channel.logo || '',
         group: channel.group || 'Other',
         id: index,
+        url: targetUrl,
         isDash: targetUrl.includes('.mpd') || (channel.drm && channel.drm.type) ? true : false,
-        drm: channel.drm || null,
+        hasDrm: !!channel.drm,
+        drm: channel.drm,
+        useProxy: !!channel.proxy,
+        proxySegments: !!channel.proxySegments,
         urlCount: originalUrls.length,
         iframeUrl: targetUrl.startsWith('roarzone://') ? targetUrl : undefined
       };

@@ -1,0 +1,4166 @@
+[
+  {
+    "name": "SS World Cup Central",
+    "logo": "https://i.ibb.co/GfMp5MTJ/Chat-GPT-Image-Jun-5-2026-07-28-11-PM.png",
+    "group": "FIFA World Cup 2026",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/745149.ts"
+  },
+  {
+    "name": "SS World Cup Pass",
+    "logo": "https://i.ibb.co/GfMp5MTJ/Chat-GPT-Image-Jun-5-2026-07-28-11-PM.png",
+    "group": "FIFA World Cup 2026",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/745195.ts"
+  },
+  {
+    "name": "SS World Cup Extra",
+    "logo": "https://i.ibb.co/GfMp5MTJ/Chat-GPT-Image-Jun-5-2026-07-28-11-PM.png",
+    "group": "FIFA World Cup 2026",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/745211.ts"
+  },
+  {
+    "name": "SUPER SPORTS FIFA",
+    "logo": "https://i.ibb.co/GfMp5MTJ/Chat-GPT-Image-Jun-5-2026-07-28-11-PM.png",
+    "group": "FIFA World Cup 2026",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/741566.ts"
+  },
+  {
+    "name": "DE | Fusball TV 1 World Cup 2026 [HD]",
+    "logo": "https://i.ibb.co/GfMp5MTJ/Chat-GPT-Image-Jun-5-2026-07-28-11-PM.png",
+    "group": "FIFA World Cup 2026",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/742610.ts"
+  },
+  {
+    "name": "DSTV: Super Sport OTT 7 (FHD)",
+    "logo": "https://supersport-cms-prod.azureedge.net/media/q24jrjac/supersport-ott-7.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157967.ts"
+  },
+  {
+    "name": "DSTV: Ginxe Sports TV (FHD)",
+    "logo": "https://03mcdecdnimagerepository.blob.core.windows.net/epguideimage/channel/M30.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/158079.ts"
+  },
+  {
+    "name": "Rugby Pass",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/143132.ts"
+  },
+  {
+    "name": "|AU| FOX Sports 502 HD",
+    "logo": "",
+    "group": "SPORTS | FOX AUSTRALIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/415535.ts"
+  },
+  {
+    "name": "Optus 1 HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/4/47/Optus_Sport_logo.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277942.ts"
+  },
+  {
+    "name": "Optus 2 HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/4/47/Optus_Sport_logo.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277943.ts"
+  },
+  {
+    "name": "Optus 3 HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/4/47/Optus_Sport_logo.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277944.ts"
+  },
+  {
+    "name": "Optus 4  HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/4/47/Optus_Sport_logo.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277945.ts"
+  },
+  {
+    "name": "Optus 5  HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/4/47/Optus_Sport_logo.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277946.ts"
+  },
+  {
+    "name": "Optus 6 HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/4/47/Optus_Sport_logo.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277947.ts"
+  },
+  {
+    "name": "Optus 7 HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/4/47/Optus_Sport_logo.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277948.ts"
+  },
+  {
+    "name": "Optus 8 HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/4/47/Optus_Sport_logo.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277949.ts"
+  },
+  {
+    "name": "Optus 9 HD",
+    "logo": "https://1.cdn.optusdigital.com/content/dam/optus/images/for-you/entertainment/general/apps-optussport.png/renditions/version-1517799475969/original.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277950.ts"
+  },
+  {
+    "name": "Optus 10 HD",
+    "logo": "https://1.cdn.optusdigital.com/content/dam/optus/images/for-you/entertainment/general/apps-optussport.png/renditions/version-1517799475969/original.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277951.ts"
+  },
+  {
+    "name": "Optus 11 HD",
+    "logo": "https://1.cdn.optusdigital.com/content/dam/optus/images/for-you/entertainment/general/apps-optussport.png/renditions/version-1517799475969/original.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277952.ts"
+  },
+  {
+    "name": "Optus 12 HD",
+    "logo": "https://1.cdn.optusdigital.com/content/dam/optus/images/for-you/entertainment/general/apps-optussport.png/renditions/version-1517799475969/original.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277953.ts"
+  },
+  {
+    "name": "Optus 13 HD",
+    "logo": "https://1.cdn.optusdigital.com/content/dam/optus/images/for-you/entertainment/general/apps-optussport.png/renditions/version-1517799475969/original.png",
+    "group": "SPORTS | OPTUS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277954.ts"
+  },
+  {
+    "name": "Spark Sports Event 1",
+    "logo": "https://s3.amazonaws.com/arc-authors/nzme/2de6f7db-58c0-425c-bb73-775d4dd243c6.png",
+    "group": "SPORTS | SPARK",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277955.ts"
+  },
+  {
+    "name": "Spark Sports Event 2",
+    "logo": "https://s3.amazonaws.com/arc-authors/nzme/2de6f7db-58c0-425c-bb73-775d4dd243c6.png",
+    "group": "SPORTS | SPARK",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277956.ts"
+  },
+  {
+    "name": "Spark Sports Event 3",
+    "logo": "https://s3.amazonaws.com/arc-authors/nzme/2de6f7db-58c0-425c-bb73-775d4dd243c6.png",
+    "group": "SPORTS | SPARK",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277957.ts"
+  },
+  {
+    "name": "Spark Sports Event 4",
+    "logo": "https://s3.amazonaws.com/arc-authors/nzme/2de6f7db-58c0-425c-bb73-775d4dd243c6.png",
+    "group": "SPORTS | SPARK",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277958.ts"
+  },
+  {
+    "name": "Spark Sports Event 5",
+    "logo": "https://s3.amazonaws.com/arc-authors/nzme/2de6f7db-58c0-425c-bb73-775d4dd243c6.png",
+    "group": "SPORTS | SPARK",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277959.ts"
+  },
+  {
+    "name": "Spark Sports Event 6",
+    "logo": "https://s3.amazonaws.com/arc-authors/nzme/2de6f7db-58c0-425c-bb73-775d4dd243c6.png",
+    "group": "SPORTS | SPARK",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277960.ts"
+  },
+  {
+    "name": "Spark Sports Event 7",
+    "logo": "https://s3.amazonaws.com/arc-authors/nzme/2de6f7db-58c0-425c-bb73-775d4dd243c6.png",
+    "group": "SPORTS | SPARK",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277961.ts"
+  },
+  {
+    "name": "Spark Sports Event 8",
+    "logo": "https://s3.amazonaws.com/arc-authors/nzme/2de6f7db-58c0-425c-bb73-775d4dd243c6.png",
+    "group": "SPORTS | SPARK",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277962.ts"
+  },
+  {
+    "name": "Spark Sports Event 9",
+    "logo": "https://s3.amazonaws.com/arc-authors/nzme/2de6f7db-58c0-425c-bb73-775d4dd243c6.png",
+    "group": "SPORTS | SPARK",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277963.ts"
+  },
+  {
+    "name": "Spark Sports Event 10",
+    "logo": "https://s3.amazonaws.com/arc-authors/nzme/2de6f7db-58c0-425c-bb73-775d4dd243c6.png",
+    "group": "SPORTS | SPARK",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/277964.ts"
+  },
+  {
+    "name": "TNT SPORT 1 HD.",
+    "logo": "http://stariptv.fun/logos/btsport1hd.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/199487.ts"
+  },
+  {
+    "name": "US (MLS 001) | MLS: MLS Countdown (English) (2025-10-18 16:25:00)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613032.ts"
+  },
+  {
+    "name": "US (MLS 002) | MLS: MLS La Previa (Spanish) (2025-10-18 16:25:10)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613033.ts"
+  },
+  {
+    "name": "US (MLS 001) | MLS: Nashville vs. Miami (English) (2025-10-18 17:55:00)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613034.ts"
+  },
+  {
+    "name": "US (MLS 002) | MLS: Nashville vs. Miami (Spanish) (2025-10-18 17:55:05)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613035.ts"
+  },
+  {
+    "name": "US (MLS 003) | MLS: Charlotte vs. Philadelphia (English) (2025-10-18 17:55:10)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613036.ts"
+  },
+  {
+    "name": "US (MLS 004) | MLS: Charlotte vs. Philadelphia (Spanish) (2025-10-18 17:55:15)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613037.ts"
+  },
+  {
+    "name": "US (MLS 005) | MLS: MLS 360 (English) (2025-10-18 17:55:16)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613038.ts"
+  },
+  {
+    "name": "US (MLS 006) | MLS: New York City vs. Seattle (English) (2025-10-18 17:55:20)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613039.ts"
+  },
+  {
+    "name": "US (MLS 007) | MLS: New York City vs. Seattle (Spanish) (2025-10-18 17:55:25)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613040.ts"
+  },
+  {
+    "name": "US (MLS 009) | MLS: Columbus vs. New York (English) (2025-10-18 17:55:30)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613041.ts"
+  },
+  {
+    "name": "US (MLS 010) | MLS: Columbus vs. New York (Spanish) (2025-10-18 17:55:35)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613042.ts"
+  },
+  {
+    "name": "US (MLS 011) | MLS: New England vs. Chicago (English) (2025-10-18 17:55:40)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613043.ts"
+  },
+  {
+    "name": "US (MLS 012) | MLS: New England vs. Chicago (Spanish) (2025-10-18 17:55:45)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613044.ts"
+  },
+  {
+    "name": "US (MLS 013) | MLS: Toronto vs. Orlando (English) (2025-10-18 17:55:50)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613045.ts"
+  },
+  {
+    "name": "US (MLS 014) | MLS: Toronto vs. Orlando (Spanish) (2025-10-18 17:55:55)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613046.ts"
+  },
+  {
+    "name": "US (MLS 015) | MLS: Cincinnati vs. Montréal (English) (2025-10-18 17:56:00)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613047.ts"
+  },
+  {
+    "name": "US (MLS 016) | MLS: Cincinnati vs. Montréal (Spanish) (2025-10-18 17:56:05)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613048.ts"
+  },
+  {
+    "name": "US (MLS 017) | MLS: Cincinnati vs. Montréal (French) (2025-10-18 17:56:10)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613049.ts"
+  },
+  {
+    "name": "US (MLS 018) | MLS: Atlanta vs. D.C. (English) (2025-10-18 17:56:15)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613050.ts"
+  },
+  {
+    "name": "US (MLS 019) | MLS: Atlanta vs. D.C. (Spanish) (2025-10-18 17:56:20)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613051.ts"
+  },
+  {
+    "name": "US (MLS 020) | MLS: Vancouver vs. Dallas (English) (2025-10-18 20:55:00)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613052.ts"
+  },
+  {
+    "name": "US (MLS 021) | MLS: Vancouver vs. Dallas (Spanish) (2025-10-18 20:55:05)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613053.ts"
+  },
+  {
+    "name": "US (MLS 022) | MLS: Colorado vs. LAFC (English) (2025-10-18 20:55:10)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613054.ts"
+  },
+  {
+    "name": "US (MLS 023) | MLS: Colorado vs. LAFC (Spanish) (2025-10-18 20:55:15)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613055.ts"
+  },
+  {
+    "name": "US (MLS 024) | MLS: Portland vs. San Diego (English) (2025-10-18 20:55:20)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613056.ts"
+  },
+  {
+    "name": "US (MLS 025) | MLS: Portland vs. San Diego (Spanish) (2025-10-18 20:55:25)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613057.ts"
+  },
+  {
+    "name": "US (MLS 026) | MLS: St. Louis vs. Salt Lake (English) (2025-10-18 20:55:30)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613058.ts"
+  },
+  {
+    "name": "US (MLS 027) | MLS: St. Louis vs. Salt Lake (Spanish) (2025-10-18 20:55:35)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613059.ts"
+  },
+  {
+    "name": "US (MLS 028) | MLS: San Jose vs. Austin (English) (2025-10-18 20:55:40)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613060.ts"
+  },
+  {
+    "name": "US (MLS 029) | MLS: San Jose vs. Austin (Spanish) (2025-10-18 20:55:45)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613061.ts"
+  },
+  {
+    "name": "US (MLS 030) | MLS: LA vs. Minnesota (English) (2025-10-18 20:55:50)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613062.ts"
+  },
+  {
+    "name": "US (MLS 031) | MLS: LA vs. Minnesota (Spanish) (2025-10-18 20:55:55)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613063.ts"
+  },
+  {
+    "name": "US (MLS 032) | MLS: Kansas City vs. Houston (English) (2025-10-18 20:56:00)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613064.ts"
+  },
+  {
+    "name": "US (MLS 033) | MLS: Kansas City vs. Houston (Spanish) (2025-10-18 20:56:05)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613065.ts"
+  },
+  {
+    "name": "US (MLS 034) | MLS: MLS Wrap_Up (English) (2025-10-18 23:40:00)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613066.ts"
+  },
+  {
+    "name": "US (MLS 035) | MLS: MLS El Resumen (Spanish) (2025-10-18 23:40:10)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613067.ts"
+  },
+  {
+    "name": "US (MLS 038) |  (2098-12-31 08:00:03)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613068.ts"
+  },
+  {
+    "name": "US (MLS 039) |  (2098-12-31 08:00:04)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613069.ts"
+  },
+  {
+    "name": "US (MLS 040) |  (2098-12-31 08:00:05)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613070.ts"
+  },
+  {
+    "name": "US (MLS 041) |  (2098-12-31 08:00:06)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613071.ts"
+  },
+  {
+    "name": "US (MLS 042) |  (2098-12-31 08:00:07)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613072.ts"
+  },
+  {
+    "name": "US (MLS 043) |  (2098-12-31 08:00:08)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613073.ts"
+  },
+  {
+    "name": "US (MLS 044) |  (2098-12-31 08:00:09)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613074.ts"
+  },
+  {
+    "name": "US (MLS 045) |  (2098-12-31 08:00:10)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613075.ts"
+  },
+  {
+    "name": "US (MLS 046) |  (2098-12-31 08:00:11)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613076.ts"
+  },
+  {
+    "name": "US (MLS 047) |  (2098-12-31 08:00:12)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613077.ts"
+  },
+  {
+    "name": "US (MLS 048) |  (2098-12-31 08:00:13)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613078.ts"
+  },
+  {
+    "name": "US (MLS 049) |  (2098-12-31 08:00:14)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613079.ts"
+  },
+  {
+    "name": "US (MLS 050) |  (2098-12-31 08:00:15)",
+    "logo": "",
+    "group": "SPORTS | MLS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/613080.ts"
+  },
+  {
+    "name": "AZAM |Azam Sports 1",
+    "logo": "",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/647773.ts"
+  },
+  {
+    "name": "AZAM |Azam Sports 2",
+    "logo": "",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/647775.ts"
+  },
+  {
+    "name": "AZAM |Azam Sports 3",
+    "logo": "",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/647790.ts"
+  },
+  {
+    "name": "DE | Fusball TV 2 World Cup 2026 [HD] ",
+    "logo": "https://i.ibb.co/GfMp5MTJ/Chat-GPT-Image-Jun-5-2026-07-28-11-PM.png",
+    "group": "FIFA World Cup 2026",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/742611.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 1 HD",
+    "logo": "https://i.ibb.co/M5WCX8XS/MAX-SPORTS-1-HD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744517.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 2 HD",
+    "logo": "https://i.ibb.co/jkJXrgfz/MAX-SPORTS-2-HD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744518.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 3 HD",
+    "logo": "https://i.ibb.co/Y727k2cZ/MAX-SPORTS-3-HD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744519.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 4 HD",
+    "logo": "https://i.ibb.co/nqJGGmCK/MAX-SPORTS-4-HD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744520.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 5 HD",
+    "logo": "https://i.ibb.co/0V8rVK3s/MAX-SPORTS-5-HD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744521.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 6 HD",
+    "logo": "https://i.ibb.co/n84Yg4Hp/MAX-SPORTS-6-HD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744522.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 1 FHD",
+    "logo": "https://i.ibb.co/YB6ZyftG/MAX-SPORTS-1-FHD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744523.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 2 FHD",
+    "logo": "https://i.ibb.co/rRNLQq24/MAX-SPORTS-2-FHD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744524.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 3 FHD",
+    "logo": "https://i.ibb.co/S74Cr4Qp/MAX-SPORTS-3-FHD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744525.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 4 FHD",
+    "logo": "https://i.ibb.co/4nF75VxL/MAX-SPORTS-4-FHD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744526.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 5 FHD",
+    "logo": "https://i.ibb.co/Y7vntPyV/MAX-SPORTS-5-FHD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744527.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 6 FHD",
+    "logo": "https://i.ibb.co/Mkg6zW45/MAX-SPORTS-6-FHD.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744528.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 1 4K",
+    "logo": "https://i.ibb.co/gFwwwdf7/MAX-SPORTS-1-4-K.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744529.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 2 4K",
+    "logo": "https://i.ibb.co/0yRnNDvs/MAX-SPORTS-2-4-K.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744530.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 3 4K",
+    "logo": "https://i.ibb.co/VW52CPRF/MAX-SPORTS-3-4-K.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744531.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 4 4K",
+    "logo": "https://i.ibb.co/M5gntknw/MAX-SPORTS-4-4-K.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744532.ts"
+  },
+  {
+    "name": "BEIN SPORTS MAX 5 4K",
+    "logo": "https://i.ibb.co/8g63MbJn/MAX-SPORTS-5-4-K.png",
+    "group": "BEIN SPORTS MAX (FIFA)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/744533.ts"
+  },
+  {
+    "name": "TNT SPORT 4 FHD",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/255259.ts"
+  },
+  {
+    "name": "Sky Sport 5 FHD.",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/343019.ts"
+  },
+  {
+    "name": "Sky Sport 6 FHD.",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/343020.ts"
+  },
+  {
+    "name": "Sky Sport 7 FHD.",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/343021.ts"
+  },
+  {
+    "name": "Sky Sport 9 FHD.",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/343023.ts"
+  },
+  {
+    "name": "SKY SPORTS 1",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/514389.ts"
+  },
+  {
+    "name": "Fox Sports 502",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4749.ts"
+  },
+  {
+    "name": "AU: Fox Sports 503",
+    "logo": "https://media.info/i/lf/0/1489224386/6551.png",
+    "group": "SPORTS | FOX AUSTRALIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4750.ts"
+  },
+  {
+    "name": "AU: Fox Sports 504",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/Fox_Footy_logo_%282015%29.svg/1200px-Fox_Footy_logo_%282015%29.svg.png",
+    "group": "SPORTS | FOX AUSTRALIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4751.ts"
+  },
+  {
+    "name": "AU: Fox Sports 505",
+    "logo": "",
+    "group": "SPORTS | FOX AUSTRALIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4752.ts"
+  },
+  {
+    "name": "AU: Fox Sports News",
+    "logo": "",
+    "group": "SPORTS | FOX AUSTRALIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/5442.ts"
+  },
+  {
+    "name": "UK || SKY SPORTS NEWS",
+    "logo": "https://i.ibb.co/YBWQ2XMg/sky-news.png",
+    "group": "SPORTS | SKY UK (4K)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/122408.ts"
+  },
+  {
+    "name": "UK || SKY SPORTS MAIN EVENT",
+    "logo": "https://i.ibb.co/hFqWZn8V/sky-mainevent.png",
+    "group": "SPORTS | SKY UK (4K)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/122409.ts"
+  },
+  {
+    "name": "UK || SKY SPORTS PREMIER LEAGUE",
+    "logo": "https://i.ibb.co/yFfm6BsT/sky-pl.png",
+    "group": "SPORTS | SKY UK (4K)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/122410.ts"
+  },
+  {
+    "name": "UK || SKY SPORTS FOOTBALL",
+    "logo": "https://i.ibb.co/BH2Y4Rhj/sky-football.png",
+    "group": "SPORTS | SKY UK (4K)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/122411.ts"
+  },
+  {
+    "name": "UK || SKY SPORTS CRICKET",
+    "logo": "https://i.ibb.co/GvnHGbtm/sky-cricket.png",
+    "group": "SPORTS | SKY UK (4K)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/122412.ts"
+  },
+  {
+    "name": "UK || SKY SPORTS ACTION",
+    "logo": "https://i.ibb.co/whnZLzHs/sky-action.png",
+    "group": "SPORTS | SKY UK (4K)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/122413.ts"
+  },
+  {
+    "name": "UK || SKY SPORTS PLUS",
+    "logo": "https://i.ibb.co/xq8cn9zX/sky-arena.png",
+    "group": "SPORTS | SKY UK (4K)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/122414.ts"
+  },
+  {
+    "name": "UK || SKY SPORTS RACING",
+    "logo": "https://i.ibb.co/sv3x4KtD/sky-racing.png",
+    "group": "SPORTS | SKY UK (4K)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/122415.ts"
+  },
+  {
+    "name": "UK || SKY SPORTS MIX",
+    "logo": "https://i.ibb.co/qMJs58BY/sky-mix.png",
+    "group": "SPORTS | SKY UK (4K)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/122416.ts"
+  },
+  {
+    "name": "UK || SKY SPORTS GOLF",
+    "logo": "https://i.ibb.co/R4C5VJFZ/sky-golf.png",
+    "group": "SPORTS | SKY UK (4K)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/122417.ts"
+  },
+  {
+    "name": "SKY SPORTS BOX OFFICE FHD",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Sky_Sports_Box_Office.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/201548.ts"
+  },
+  {
+    "name": "UK | LA LIGA TV (4K)",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": "SPORTS | UK MIX",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/148270.ts"
+  },
+  {
+    "name": "UK SD : TNT Sport 3",
+    "logo": "https://i.ibb.co/6mwHTJh/download-6.png",
+    "group": "SPORTS | UK MIX",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/148559.ts"
+  },
+  {
+    "name": "UK SD : TNT Sport 2",
+    "logo": "https://i.ibb.co/6mwHTJh/download-6.png",
+    "group": "SPORTS | UK MIX",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/148560.ts"
+  },
+  {
+    "name": "UK SD : TNT Sport 1",
+    "logo": "https://i.ibb.co/6mwHTJh/download-6.png",
+    "group": "SPORTS | UK MIX",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/148561.ts"
+  },
+  {
+    "name": "UK SD : Euronews",
+    "logo": "https://i.ibb.co/5Ky6FnH/download-8.png",
+    "group": "SPORTS | UK MIX",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/148676.ts"
+  },
+  {
+    "name": "Sky Sports Plus SD Hevc",
+    "logo": "",
+    "group": "SPORTS | UK MIX",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/148678.ts"
+  },
+  {
+    "name": "Sky Sports Cricket SD Hevc",
+    "logo": "https://i.ibb.co/JC19xwB/download-3-1.png",
+    "group": "SPORTS | UK MIX",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/148679.ts"
+  },
+  {
+    "name": "Sky Sports F1 SD Hevc",
+    "logo": "https://i.ibb.co/DfwjcDT/download-4.png",
+    "group": "SPORTS | UK MIX",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/148680.ts"
+  },
+  {
+    "name": "Sky Sports Golf SD Hevc",
+    "logo": "https://i.ibb.co/QKzqNG8/golf-wallpaper-preview.png",
+    "group": "SPORTS | UK MIX",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/148682.ts"
+  },
+  {
+    "name": "Sky Sports mix SD Hevc",
+    "logo": "https://i.ibb.co/JkhXm3S/download-8.png",
+    "group": "SPORTS | UK MIX",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/148684.ts"
+  },
+  {
+    "name": "PT: SPORT TV1 HD",
+    "logo": "http://hellosky.live:8080/images/37a141fd1959d8404d85eddaf9db6b8b.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/314.ts"
+  },
+  {
+    "name": "PT: SPORT TV 2 HD",
+    "logo": "http://hellosky.live:8080/images/50b680d733869a2d534e49f9b69e1dca.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/315.ts"
+  },
+  {
+    "name": "PT: SPORT TV3 HD",
+    "logo": "http://hellosky.live:8080/images/d9f75d9bba2e1efe718dd51f9289c360.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/316.ts"
+  },
+  {
+    "name": "PT: Sport TV 5 HD",
+    "logo": "http://hellosky.live:8080/images/5b984b54505ed991ae890e50533ed85d.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/318.ts"
+  },
+  {
+    "name": "PT: EUROSPORT 1 HD",
+    "logo": "http://hellosky.live:8080/images/0f77ba9607690aff0aa1307469f24dcb.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/324.ts"
+  },
+  {
+    "name": "PT: EUROSPORT 2 HD",
+    "logo": "http://hellosky.live:8080/images/828c2456cb98214830e000ff03fedaba.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/325.ts"
+  },
+  {
+    "name": "PT: ELEVEN SPORT 1 HD",
+    "logo": "http://hellosky.live:8080/images/0cd889734dd9fc56dae353d0e54cc4e1.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/327.ts"
+  },
+  {
+    "name": "PT: ELEVEN SPORT 3 HD",
+    "logo": "http://hellosky.live:8080/images/6ced2656769ce3dee1c045d694a81524.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/329.ts"
+  },
+  {
+    "name": "NL : ESPN SPORTS 1 HD",
+    "logo": "http://s3.i3ns.net:2052/portal/picon/2021-07/fba7aa6abb3a938d6d2da99a29f57a8c.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/503.ts"
+  },
+  {
+    "name": "NL : ESPN SPORTS 3 HD",
+    "logo": "http://hellosky.live:8080/images/227dacbe84acf0df2b21279e1f75d2c2.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/505.ts"
+  },
+  {
+    "name": "NL : EUROSPORT 1 HD",
+    "logo": "http://hellosky.live:8080/images/758d4f77d176cdd7a7a3f22af54c820b.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/509.ts"
+  },
+  {
+    "name": "NL : ZIGGO SPORT VOETBAL HD",
+    "logo": "http://hellosky.live:8080/images/2daed7bb7d517d2e1b21da50a4084d64.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/511.ts"
+  },
+  {
+    "name": "DE: DAZN Sport 2 HD",
+    "logo": "http://hellosky.live:8080/images/6e09ff7f947e483e9e32676d3273c681.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/564.ts"
+  },
+  {
+    "name": "FR: RMC SPORTS 3",
+    "logo": "http://hellosky.live:8080/images/f6a14d2f69932ef18b77ea880dde4c61.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615.ts"
+  },
+  {
+    "name": "AL: KUJTESA SPORT 4 HD",
+    "logo": "",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/1138.ts"
+  },
+  {
+    "name": "IT: EURO SPORTS 1 | UHD",
+    "logo": "http://hellosky.fun:8080/images/6607c3d1dabdb81c383bef2d39fa6b16.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/1684.ts"
+  },
+  {
+    "name": "PL: POLSAT SPORT FIGHT FHD",
+    "logo": "http://hellosky.fun:8080/images/824760ef21abaa0e884336d92ea63136.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/1971.ts"
+  },
+  {
+    "name": "PL: POLSAT SPORT PREMIUM 1 HD",
+    "logo": "http://hellosky.fun:8080/images/ac3dd06a315ccc5a7040a7b275e44d55.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/1973.ts"
+  },
+  {
+    "name": "PL: CANAL+ SPORT 4 FHD",
+    "logo": "http://hellosky.fun:8080/images/e654671f90c96a57bac51fc233fbf526.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/1980.ts"
+  },
+  {
+    "name": "US: Olympic Channel 1 (UHD)",
+    "logo": "",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/2197.ts"
+  },
+  {
+    "name": "UK: Fight Network",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Fight_network_logo.svg/1200px-Fight_network_logo.svg.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/149.ts"
+  },
+  {
+    "name": "USA : BeIN SPORTS HD",
+    "logo": "https://i.ibb.co/JxV7Hwm/adobestock-281129069-2048x1367-jpeg-1070x600-1-1.png",
+    "group": "SPORTS | SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/18451.ts"
+  },
+  {
+    "name": "|FR| GOLF+",
+    "logo": "https://i.ibb.co/QKzqNG8/golf-wallpaper-preview.png",
+    "group": "SPORTS | GOLF",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/3072.ts"
+  },
+  {
+    "name": "GOLF FHD",
+    "logo": "https://i.ibb.co/QKzqNG8/golf-wallpaper-preview.png",
+    "group": "SPORTS | GOLF",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/3294.ts"
+  },
+  {
+    "name": "MY: GOLF CHANNEL HD",
+    "logo": "https://i.ibb.co/QKzqNG8/golf-wallpaper-preview.png",
+    "group": "SPORTS | GOLF",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/5712.ts"
+  },
+  {
+    "name": "UK: Sky Sports Golf (FHD)",
+    "logo": "https://i.ibb.co/QKzqNG8/golf-wallpaper-preview.png",
+    "group": "SPORTS | GOLF",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/23338.ts"
+  },
+  {
+    "name": "Tennis Channel Plus 5 HD ( LIVE EVENT )",
+    "logo": "https://i.ibb.co/HnLmKMZ/metelsky220700146.png",
+    "group": "SPORTS | TENNIS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/40516.ts"
+  },
+  {
+    "name": "UK FHD : SKY SPORTS TENNIS FHD",
+    "logo": "https://i.ibb.co/HnLmKMZ/metelsky220700146.png",
+    "group": "SPORTS | TENNIS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/428098.ts"
+  },
+  {
+    "name": "DSTV : SUPERSPORT CRICKET (FHD)",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-cricket-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157939.ts"
+  },
+  {
+    "name": "DSTV : SUPERSPORTS PREMIER LEAGUE (FHD).",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-premier-league-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157940.ts"
+  },
+  {
+    "name": "DSTV : SUPERSPORTS LALIGA (FHD).",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-la-liga-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157941.ts"
+  },
+  {
+    "name": "DSTV : SUPERSPORTS FOOTBALL (FHD).",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-football-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157942.ts"
+  },
+  {
+    "name": "DSTV : SUPERSPORTS FOOTBALL PLUS (FHD)",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-football-plus-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157943.ts"
+  },
+  {
+    "name": "DSTV : SUPERSPORTS PSL (FHD).",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-psl-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157944.ts"
+  },
+  {
+    "name": "DSTV : SUPER MOTORSPORT (FHD.)",
+    "logo": "https://archive.org/download/racinguk-01_202011/supersport-motorsport.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157947.ts"
+  },
+  {
+    "name": "DSTV : SuperSport Action (FHD).",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-action-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157948.ts"
+  },
+  {
+    "name": "DSTV : SuperSport Tennis (FHD).",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-tennis-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157949.ts"
+  },
+  {
+    "name": "DSTV: SUPER SPORT LIYU (FHD)",
+    "logo": "https://e7.pngegg.com/pngimages/97/609/png-clipart-supersport-dstv-television-channel-others-miscellaneous-television-thumbnail.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157950.ts"
+  },
+  {
+    "name": "DSTV : SUPERSPORTS VARIETY 1  (FHD).",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-variety-1-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157951.ts"
+  },
+  {
+    "name": "DSTV : SUPERSPORTS VARIETY 2 (FHD).",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-variety-2-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157952.ts"
+  },
+  {
+    "name": "DSTV : SUPERSPORTS VARIETY 3  (FHD)",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-variety-3-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157953.ts"
+  },
+  {
+    "name": "DSTV : Supersport blitz (FHD)",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-blitz-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157955.ts"
+  },
+  {
+    "name": "DSTV: Maximo 1 Champions (FHD)",
+    "logo": "https://supersport-cms-prod.azureedge.net/media/m3ldhapr/maximo-1.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157956.ts"
+  },
+  {
+    "name": "DSTV: ESPN (FHD)",
+    "logo": "https://03mcdecdnimagerepository.blob.core.windows.net/epguideimage/channel/I26.png?width=50",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157959.ts"
+  },
+  {
+    "name": "DSTV: ESPN 2 (FHD)",
+    "logo": "https://03mcdecdnimagerepository.blob.core.windows.net/epguideimage/channel/SDN.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157960.ts"
+  },
+  {
+    "name": "DSTV: Super Sport OTT (FHD)",
+    "logo": "https://supersport-cms-prod.azureedge.net/media/m1tnc4h4/supersport-ott-1.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157961.ts"
+  },
+  {
+    "name": "DSTV: Super Sport OTT 2 (FHD)",
+    "logo": "https://supersport-cms-prod.azureedge.net/media/ofwjhfg4/supersport-ott-2.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157962.ts"
+  },
+  {
+    "name": "DSTV: Super Sport OTT 3 (FHD)",
+    "logo": "https://supersport-cms-prod.azureedge.net/media/j4zgc2cs/supersport-ott-3.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157963.ts"
+  },
+  {
+    "name": "DSTV: Super Sport OTT 4 (FHD)",
+    "logo": "https://supersport-cms-prod.azureedge.net/media/scofujew/supersport-ott-4.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157964.ts"
+  },
+  {
+    "name": "DSTV: Super Sport OTT 5 (FHD)",
+    "logo": "https://supersport-cms-prod.azureedge.net/media/qwlihdeu/supersport-ott-5.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157965.ts"
+  },
+  {
+    "name": "DSTV: Super Sport OTT 6 (FHD)",
+    "logo": "https://supersport-cms-prod.azureedge.net/media/upgdtlsi/supersport-ott-6.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157966.ts"
+  },
+  {
+    "name": "DSTV: Super Sport OTT 8 (FHD)",
+    "logo": "https://supersport-cms-prod.azureedge.net/media/1rydpzl5/supersport-ott-8.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157968.ts"
+  },
+  {
+    "name": "DSTV: Supersport Schools (FHD)",
+    "logo": "https://supersportschools.com/wp-content/uploads/2021/04/SSS_Logo_Big_sml.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157969.ts"
+  },
+  {
+    "name": "DSTV: WWE Channel (FHD)",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/WWE_Network_logo.svg/1315px-WWE_Network_logo.svg.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157970.ts"
+  },
+  {
+    "name": "DSTV: Racing 240.",
+    "logo": "https://www.lyngsat.com/logo/tv/rr/racing-240-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/158053.ts"
+  },
+  {
+    "name": "SuperSport Grandstand (FHD).",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/158441.ts"
+  },
+  {
+    "name": "DSTV : SuperSport Golf (FHD).",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-golf-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157946.ts"
+  },
+  {
+    "name": "DSTV : SUPERSPORTS VARIETY 4 (FHD).",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/supersport-variety-4-za.png",
+    "group": "SPORTS | DSTV SUPER (FHD)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/157954.ts"
+  },
+  {
+    "name": "AR:  Dubai Racing HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/902.ts"
+  },
+  {
+    "name": "AR:  ON Time Sports HD+",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4598.ts"
+  },
+  {
+    "name": "AR:  ON Time Sports HD+",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4620.ts"
+  },
+  {
+    "name": "AR:  Dubai Racing 1 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4623.ts"
+  },
+  {
+    "name": "AR:  Dubai Racing 2 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4624.ts"
+  },
+  {
+    "name": "AR:  Dubai Racing 3 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4625.ts"
+  },
+  {
+    "name": "AR:  Libya Sports  2HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4637.ts"
+  },
+  {
+    "name": "AR:  Libya Sport Channel",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4640.ts"
+  },
+  {
+    "name": "AR:  Dubai Sport 1 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4651.ts"
+  },
+  {
+    "name": "AR:  Dubai Sport 2 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4652.ts"
+  },
+  {
+    "name": "AR:  Dubai Sport 3 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4653.ts"
+  },
+  {
+    "name": "AR:  KSA Sport 3 HD+",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4656.ts"
+  },
+  {
+    "name": "AR: Bahrain_Sport_1_HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/30105.ts"
+  },
+  {
+    "name": "AR: Bahrain_Sport_2_HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/30106.ts"
+  },
+  {
+    "name": "AR: IRAQIA SPORT HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/30107.ts"
+  },
+  {
+    "name": "Sport | Ar: Abu Dhabi Sports 1 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309006.ts"
+  },
+  {
+    "name": "Sport | Ar: Abu Dhabi Sports 2 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309007.ts"
+  },
+  {
+    "name": "Sport | Ar: KSA Sport 1 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309008.ts"
+  },
+  {
+    "name": "Sport | Ar: KSA Sport 2 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309009.ts"
+  },
+  {
+    "name": "Sport | Ar: KSA Sport 3 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309010.ts"
+  },
+  {
+    "name": "Sport | Ar: Dubai Sport 1 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309011.ts"
+  },
+  {
+    "name": "Sport | Ar: Dubai Sport 2 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309012.ts"
+  },
+  {
+    "name": "Sport | Ar: Dubai Sport 3 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309013.ts"
+  },
+  {
+    "name": "Sport | Ar: On Time Sport HD 1",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309014.ts"
+  },
+  {
+    "name": "Sport | Ar: On Time Sport HD 2",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309015.ts"
+  },
+  {
+    "name": "Sport | Ar: Dubai Racing 1 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309016.ts"
+  },
+  {
+    "name": "Sport | Ar: Dubai Racing 2 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309017.ts"
+  },
+  {
+    "name": "Sport | Ar: Dubai Racing 3 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309018.ts"
+  },
+  {
+    "name": "Sport | Ar: Saudi 24 Sport",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309023.ts"
+  },
+  {
+    "name": "Sport | Ar: Bahrain Sport 1 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309024.ts"
+  },
+  {
+    "name": "Sport | Ar: Bahrain Sport 2 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309025.ts"
+  },
+  {
+    "name": "Sport | Ar: Oman Sport HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309026.ts"
+  },
+  {
+    "name": "Sport | Ar: Iraqia Sport HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309027.ts"
+  },
+  {
+    "name": "Sport | Ar: Zamalek Sports",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309029.ts"
+  },
+  {
+    "name": "Sport | Ar: Nile Sport",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309030.ts"
+  },
+  {
+    "name": "Sport | Ar: Al Ahly TV",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309031.ts"
+  },
+  {
+    "name": "Sport | Ar: Al Heddaf TV",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309032.ts"
+  },
+  {
+    "name": "Sport | Ar: Libya Sport 1",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309033.ts"
+  },
+  {
+    "name": "Sport | Ar: Libya Sport 2",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309034.ts"
+  },
+  {
+    "name": "Sport | Ar: Jordan Sport HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309035.ts"
+  },
+  {
+    "name": "Sport | Ar: Kuwait Sport HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309036.ts"
+  },
+  {
+    "name": "Sport | Ar: Palestine Sport",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309037.ts"
+  },
+  {
+    "name": "Sport | Ar: Sharjah Sport HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309038.ts"
+  },
+  {
+    "name": "Sport | Ar: Arryadia HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309039.ts"
+  },
+  {
+    "name": "Sport | Ar: Kuwait Sport Plus",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309040.ts"
+  },
+  {
+    "name": "Sport | Ar: Yas Sport",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309041.ts"
+  },
+  {
+    "name": "Sport: RealMadrid TV",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/309043.ts"
+  },
+  {
+    "name": "Iq| Al Rabiaa Iraq ✦",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605085.ts"
+  },
+  {
+    "name": "IQ| Al Rabiaa Sport 1",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605086.ts"
+  },
+  {
+    "name": "IQ| Al Rabiaa Sport +1",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605087.ts"
+  },
+  {
+    "name": "IQ| Al Rabiaa Sport 2",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605088.ts"
+  },
+  {
+    "name": "IQ| Al Rabiaa Sport +2",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605089.ts"
+  },
+  {
+    "name": "IQ| Al Rabiaa Geo",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605090.ts"
+  },
+  {
+    "name": "IQ| Al Rabiaa Movies",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605091.ts"
+  },
+  {
+    "name": "IQ| Al Rabiaa Quran",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605092.ts"
+  },
+  {
+    "name": "IQ| Al Rabiaa Series",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605093.ts"
+  },
+  {
+    "name": "IQ| Al Rabiaa variety",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605094.ts"
+  },
+  {
+    "name": "IQ| Al Rabiaa Musica",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605095.ts"
+  },
+  {
+    "name": "IQ| Njoom Al Rabiaa",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605096.ts"
+  },
+  {
+    "name": "Thamanya 1 Sport 4K",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605097.ts"
+  },
+  {
+    "name": "Thamanya 2 Sport 4K",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605098.ts"
+  },
+  {
+    "name": "Thamanya 3 Sport 4K",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605099.ts"
+  },
+  {
+    "name": "Thamanya 1 Sport HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605100.ts"
+  },
+  {
+    "name": "Thamanya 2 Sport HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605101.ts"
+  },
+  {
+    "name": "Thamanya 3 Sport HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605102.ts"
+  },
+  {
+    "name": "Thamanya 1 Sport SD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605103.ts"
+  },
+  {
+    "name": "Thamanya 2 Sport SD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605104.ts"
+  },
+  {
+    "name": "Thamanya 3 Sport SD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605105.ts"
+  },
+  {
+    "name": "Shasha TV 4k",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605106.ts"
+  },
+  {
+    "name": "Shasha TV 2 4K",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605107.ts"
+  },
+  {
+    "name": "Shasha TV 2 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605108.ts"
+  },
+  {
+    "name": "Shasha TV HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605109.ts"
+  },
+  {
+    "name": "Shasha TV 2 SD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605110.ts"
+  },
+  {
+    "name": "Shasha TV SD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605111.ts"
+  },
+  {
+    "name": "Shahid Sport 1 4k",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605112.ts"
+  },
+  {
+    "name": "Shahid Sport 1 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605113.ts"
+  },
+  {
+    "name": "Shahid Sport 1 SD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605114.ts"
+  },
+  {
+    "name": "Shahid Sport 2 4K",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605115.ts"
+  },
+  {
+    "name": "Shahid Sport 2 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605116.ts"
+  },
+  {
+    "name": "Shahid Sport 2 SD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605117.ts"
+  },
+  {
+    "name": "StarzPlay Sports 1 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605119.ts"
+  },
+  {
+    "name": "StarzPlay Sports 1 SD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605120.ts"
+  },
+  {
+    "name": "StarzPlay Sports 2 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605122.ts"
+  },
+  {
+    "name": "StarzPlay Sports 2 SD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605123.ts"
+  },
+  {
+    "name": "StarzPlay Sports 3 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605125.ts"
+  },
+  {
+    "name": "AD Sport Asia 1 4K",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605126.ts"
+  },
+  {
+    "name": "AD Sport Asia 2 4K",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605127.ts"
+  },
+  {
+    "name": "AD Sport Asia 1 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605128.ts"
+  },
+  {
+    "name": "AD Sport Asia 2 HD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605129.ts"
+  },
+  {
+    "name": "AD Sport Asia 1 SD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605130.ts"
+  },
+  {
+    "name": "AD Sport Asia 2 SD",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/605131.ts"
+  },
+  {
+    "name": "beIN Sport English 1 4k",
+    "logo": "",
+    "group": "SPORTS | TENNIS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/274141.ts"
+  },
+  {
+    "name": "beIN SPORTS 4K 1",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652310.ts"
+  },
+  {
+    "name": "beIN SPORTS  4K 2",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652311.ts"
+  },
+  {
+    "name": "beIN SPORTS  4K 3",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652312.ts"
+  },
+  {
+    "name": "beIN SPORTS 4K 4",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652313.ts"
+  },
+  {
+    "name": "beIN SPORTS 4K 5",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652314.ts"
+  },
+  {
+    "name": "beIN SPORTS 4K 6",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652315.ts"
+  },
+  {
+    "name": "beIN SPORTS 4K 7",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652316.ts"
+  },
+  {
+    "name": "beIN SPORTS 4K 8",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652317.ts"
+  },
+  {
+    "name": "beIN SPORTS 4K 9",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652318.ts"
+  },
+  {
+    "name": "beIN Sport English 2 4k",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652319.ts"
+  },
+  {
+    "name": "beIN Sport French 4k 1",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652320.ts"
+  },
+  {
+    "name": "beIN Sport French 4k 2",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652321.ts"
+  },
+  {
+    "name": "Bein Sports Global 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652322.ts"
+  },
+  {
+    "name": "Bein Xtra 4K 1",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652323.ts"
+  },
+  {
+    "name": "Bein Xtra 4K 2",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652324.ts"
+  },
+  {
+    "name": "beIN Xtra 4K  3",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652325.ts"
+  },
+  {
+    "name": "Bein Xtra 4K 5",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652326.ts"
+  },
+  {
+    "name": "Bein Xtra 4K 6",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652327.ts"
+  },
+  {
+    "name": "Bein Xtra 4K 4",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652328.ts"
+  },
+  {
+    "name": "Bein Sport AFC 3 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652329.ts"
+  },
+  {
+    "name": "Bein Sport AFC 4 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652330.ts"
+  },
+  {
+    "name": "Bein Sport AFC 5 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652331.ts"
+  },
+  {
+    "name": "Bein Sport NBA 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652332.ts"
+  },
+  {
+    "name": "Bein Sports HD1 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652333.ts"
+  },
+  {
+    "name": "Bein Sports HD2 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652334.ts"
+  },
+  {
+    "name": "Bein Sports HD3 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652335.ts"
+  },
+  {
+    "name": "Bein Sports HD4 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652336.ts"
+  },
+  {
+    "name": "Bein Sports HD5 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652337.ts"
+  },
+  {
+    "name": "Bein Sports HD6 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652338.ts"
+  },
+  {
+    "name": "Bein Sports HD7 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652339.ts"
+  },
+  {
+    "name": "Bein Sports HD8 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652340.ts"
+  },
+  {
+    "name": "Bein Sports HD9 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652341.ts"
+  },
+  {
+    "name": "Bein Xtra HD1 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652342.ts"
+  },
+  {
+    "name": "Bein Xtra HD2 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652343.ts"
+  },
+  {
+    "name": "Bein Xtra HD3 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652344.ts"
+  },
+  {
+    "name": "Bein Sports English 1 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652345.ts"
+  },
+  {
+    "name": "Bein Sports English 2 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652346.ts"
+  },
+  {
+    "name": "Bein Sports French HD1 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652347.ts"
+  },
+  {
+    "name": "Bein Sports French HD2 1080",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652348.ts"
+  },
+  {
+    "name": "Bein Sport News HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652349.ts"
+  },
+  {
+    "name": "Bein Sport HD1 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652350.ts"
+  },
+  {
+    "name": "Bein Sport HD2 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652351.ts"
+  },
+  {
+    "name": "Bein Sport HD3 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652352.ts"
+  },
+  {
+    "name": "Bein Sport HD4 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652353.ts"
+  },
+  {
+    "name": "Bein Sport HD5 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652354.ts"
+  },
+  {
+    "name": "Bein Sport HD6 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652355.ts"
+  },
+  {
+    "name": "Bein Sport HD7 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652356.ts"
+  },
+  {
+    "name": "Bein Sport HD8 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652357.ts"
+  },
+  {
+    "name": "Bein Sport HD9 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652358.ts"
+  },
+  {
+    "name": "Bein Xtra HD1 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652359.ts"
+  },
+  {
+    "name": "Bein Xtra HD2 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652360.ts"
+  },
+  {
+    "name": "Bein Xtra HD3 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652361.ts"
+  },
+  {
+    "name": "Bein Sport English 2 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652362.ts"
+  },
+  {
+    "name": "Bein Sport French HD1 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652363.ts"
+  },
+  {
+    "name": "Bein Sport French HD2 720",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652364.ts"
+  },
+  {
+    "name": "Bein Xtra HD 5",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652365.ts"
+  },
+  {
+    "name": "Bein Xtra HD 6",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652366.ts"
+  },
+  {
+    "name": "Bein Xtra HD 4",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652367.ts"
+  },
+  {
+    "name": "Bein Sport AFC 3 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652368.ts"
+  },
+  {
+    "name": "Bein Sport AFC 4 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652369.ts"
+  },
+  {
+    "name": "Bein Sport AFC 5 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652370.ts"
+  },
+  {
+    "name": "Bein Sport NBA HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652371.ts"
+  },
+  {
+    "name": "Bein Sport  SD1",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652372.ts"
+  },
+  {
+    "name": "Bein Sport SD2",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652373.ts"
+  },
+  {
+    "name": "Bein Sport SD3",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652374.ts"
+  },
+  {
+    "name": "Bein Sport SD4",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652375.ts"
+  },
+  {
+    "name": "Bein Sport SD5",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652376.ts"
+  },
+  {
+    "name": "Bein Sport SD6",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652377.ts"
+  },
+  {
+    "name": "Bein Sport SD7",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652378.ts"
+  },
+  {
+    "name": "Bein Sport SD8",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652379.ts"
+  },
+  {
+    "name": "Bein Sport SD9",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652380.ts"
+  },
+  {
+    "name": "Bein Sport English 1 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652381.ts"
+  },
+  {
+    "name": "Bein Sport English 2 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652382.ts"
+  },
+  {
+    "name": "Bein Sport French SD1",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652383.ts"
+  },
+  {
+    "name": "Bein Sport French SD2",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652384.ts"
+  },
+  {
+    "name": "BeIN Sports Global SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652385.ts"
+  },
+  {
+    "name": "Bein Xtra SD1",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652386.ts"
+  },
+  {
+    "name": "Bein Xtra SD2",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652387.ts"
+  },
+  {
+    "name": "Bein Xtra SD3",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652388.ts"
+  },
+  {
+    "name": "Bein Xtra SD 4",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652389.ts"
+  },
+  {
+    "name": "Bein Xtra SD 5",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652390.ts"
+  },
+  {
+    "name": "Bein Xtra SD 6",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652391.ts"
+  },
+  {
+    "name": "Bein Sport AFC 3 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652392.ts"
+  },
+  {
+    "name": "Bein Sport AFC 4 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652393.ts"
+  },
+  {
+    "name": "Bein Sport AFC 5 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652394.ts"
+  },
+  {
+    "name": "BeIN Alkass 1 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652411.ts"
+  },
+  {
+    "name": "BeIN Alkass 2 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652412.ts"
+  },
+  {
+    "name": "BeIN Alkass 3 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652413.ts"
+  },
+  {
+    "name": "BeIN Alkass 4 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652414.ts"
+  },
+  {
+    "name": "BeIN Alkass 5 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652415.ts"
+  },
+  {
+    "name": "BeIN Alkass 6 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652416.ts"
+  },
+  {
+    "name": "BeIN Alkass 7 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652417.ts"
+  },
+  {
+    "name": "BeIN Alkass 8 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652418.ts"
+  },
+  {
+    "name": "BeIN Alkass 9 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652419.ts"
+  },
+  {
+    "name": "BeIN Alkass 10 4K",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652420.ts"
+  },
+  {
+    "name": "BeIN Alkass 1 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652421.ts"
+  },
+  {
+    "name": "BeIN Alkass 2 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652422.ts"
+  },
+  {
+    "name": "BeIN Alkass 3 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652423.ts"
+  },
+  {
+    "name": "BeIN Alkass 4 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652424.ts"
+  },
+  {
+    "name": "BeIN Alkass 5 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652425.ts"
+  },
+  {
+    "name": "BeIN Alkass 6 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652426.ts"
+  },
+  {
+    "name": "BeIN Alkass 7 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652427.ts"
+  },
+  {
+    "name": "BeIN Alkass 8 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652428.ts"
+  },
+  {
+    "name": "BeIN Alkass 9 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652429.ts"
+  },
+  {
+    "name": "BeIN Alkass 10 HD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652430.ts"
+  },
+  {
+    "name": "BeIN Alkass 1 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652431.ts"
+  },
+  {
+    "name": "BeIN Alkass 2 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652432.ts"
+  },
+  {
+    "name": "BeIN Alkass 3 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652433.ts"
+  },
+  {
+    "name": "BeIN Alkass 4 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652434.ts"
+  },
+  {
+    "name": "BeIN Alkass 5 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652435.ts"
+  },
+  {
+    "name": "BeIN Alkass 6 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652436.ts"
+  },
+  {
+    "name": "BeIN Alkass 7 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652437.ts"
+  },
+  {
+    "name": "BeIN Alkass 8 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652438.ts"
+  },
+  {
+    "name": "BeIN Alkass 9 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652439.ts"
+  },
+  {
+    "name": "BeIN Alkass 10 SD",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652440.ts"
+  },
+  {
+    "name": "beIN Sport English 1 4k.",
+    "logo": "",
+    "group": "SPORTS | BEIN",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/676385.ts"
+  },
+  {
+    "name": "Sky Sport 2 FHD",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/23998.ts"
+  },
+  {
+    "name": "Sky Sport 4 FHD",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/24000.ts"
+  },
+  {
+    "name": "SKY Sport SELECT",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/34152.ts"
+  },
+  {
+    "name": "|CA| TSN 1 | HD",
+    "logo": "",
+    "group": "SPORTS | TENNIS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/1565.ts"
+  },
+  {
+    "name": "TSN+ 01 :2025 PBR Tour Canada Grande Prairie AB A @ Oct 24 12:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615445.ts"
+  },
+  {
+    "name": "TSN+ 02 :SC September Plays of the Month A @ Oct 24 1:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615446.ts"
+  },
+  {
+    "name": "TSN+ 03 :SC Top 50 Curling Shots A @ Oct 24 1:30 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615447.ts"
+  },
+  {
+    "name": "TSN+ 04 :SC September Plays of the Month B @ Oct 24 2:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615448.ts"
+  },
+  {
+    "name": "TSN+ 05 :SC Top 50 Curling Shots B @ Oct 24 2:30 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615449.ts"
+  },
+  {
+    "name": "TSN+ 06 :SC with Jay Onrait B @ Oct 24 3:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615450.ts"
+  },
+  {
+    "name": "TSN+ 07 :SC September Plays of the Month C @ Oct 24 3:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615451.ts"
+  },
+  {
+    "name": "TSN+ 08 :SC Top 50 Curling Shots C @ Oct 24 3:30 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615452.ts"
+  },
+  {
+    "name": "TSN+ 09 :SC with Jay Onrait C @ Oct 24 4:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615453.ts"
+  },
+  {
+    "name": "TSN+ 10 :SC September Plays of the Month D @ Oct 24 4:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615454.ts"
+  },
+  {
+    "name": "TSN+ 11 :SC Top 50 Curling Shots D @ Oct 24 4:30 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615455.ts"
+  },
+  {
+    "name": "TSN+ 12 :SC with Jay Onrait D @ Oct 24 5:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615456.ts"
+  },
+  {
+    "name": "TSN+ 13 :2025 Asia Pacific Amateur Golf Championship Second Round @ Oct 24 5:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615457.ts"
+  },
+  {
+    "name": "TSN+ 14 :SC September Plays of the Month E @ Oct 24 5:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615458.ts"
+  },
+  {
+    "name": "TSN+ 15 :SC Top 50 Curling Shots E @ Oct 24 5:30 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615459.ts"
+  },
+  {
+    "name": "TSN+ 16 :SC with Jay Onrait E @ Oct 24 6:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615460.ts"
+  },
+  {
+    "name": "TSN+ 17 :SC September Plays of the Month F @ Oct 24 6:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615461.ts"
+  },
+  {
+    "name": "TSN+ 18 :SC Top 50 Curling Shots F @ Oct 24 6:30 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615462.ts"
+  },
+  {
+    "name": "TSN+ 19 :SC with Jay Onrait F @ Oct 24 7:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615463.ts"
+  },
+  {
+    "name": "TSN+ 20 :SC September Plays of the Month G @ Oct 24 7:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615464.ts"
+  },
+  {
+    "name": "TSN+ 21 :ATP 500 Tennis Vienna Quarterfinals @ Oct 24 7:30 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615465.ts"
+  },
+  {
+    "name": "TSN+ 22 :SC Top 50 Curling Shots G @ Oct 24 7:30 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615466.ts"
+  },
+  {
+    "name": "TSN+ 23 :SC with Jay Onrait G @ Oct 24 8:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615467.ts"
+  },
+  {
+    "name": "TSN+ 24 :ATP 500 Tennis Basel Quarterfinals @ Oct 24 8:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615468.ts"
+  },
+  {
+    "name": "TSN+ 25 :SPORTSCENTRE K @ Oct 24 8:30 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615469.ts"
+  },
+  {
+    "name": "TSN+ 26 :2025 FIFA Womens U17 World Cup Ecuador vs China PR @ Oct 24 8:48 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615470.ts"
+  },
+  {
+    "name": "TSN+ 27 :2025 FIFA Womens U17 World Cup Norway vs USA @ Oct 24 8:48 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615471.ts"
+  },
+  {
+    "name": "TSN+ 28 :SC with Jay Onrait H @ Oct 24 9:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615472.ts"
+  },
+  {
+    "name": "TSN+ 29 :SC with Jay Onrait I @ Oct 24 10:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615473.ts"
+  },
+  {
+    "name": "TSN+ 30 :SC with Jay Onrait J @ Oct 24 11:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615474.ts"
+  },
+  {
+    "name": "TSN+ 31 :The Pat McAfee Show @ Oct 24 12:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615475.ts"
+  },
+  {
+    "name": "TSN+ 32 :2025 PBR Tour Canada Grande Prairie AB B @ Oct 24 12:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615476.ts"
+  },
+  {
+    "name": "TSN+ 33 :First Take @ Oct 24 12:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615477.ts"
+  },
+  {
+    "name": "TSN+ 34 :SC Top 10 Women’s World Hockey Championship Games @ Oct 24 1:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615478.ts"
+  },
+  {
+    "name": "TSN+ 35 :AFL Womens Series Adelaide Crows vs Port Adelaide @ Oct 24 1:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615479.ts"
+  },
+  {
+    "name": "TSN+ 36 :SC Wacky CFL Moments @ Oct 24 1:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615480.ts"
+  },
+  {
+    "name": "TSN+ 37 :NFL GameDay Week 7 @ Oct 24 2:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615481.ts"
+  },
+  {
+    "name": "TSN+ 38 :Golf Talk Canada Ireland Travel Special @ Oct 24 2:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615482.ts"
+  },
+  {
+    "name": "TSN+ 39 :Formula 1 Driver Tracker Mexico City Grand Prix Practice #1 @ Oct 24 2:20 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615483.ts"
+  },
+  {
+    "name": "TSN+ 40 :Formula 1 Pit Lane Mexico City Grand Prix Practice #1 @ Oct 24 2:20 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615484.ts"
+  },
+  {
+    "name": "TSN+ 41 :Formula 1 Timing Channel Mexico City Grand Prix Practice #1 @ Oct 24 2:20 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615485.ts"
+  },
+  {
+    "name": "TSN+ 42 :Formula 1 Mixed On Board Camera Mexico City Grand Prix Practice #1 @ Oct 24 2:20 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615486.ts"
+  },
+  {
+    "name": "TSN+ 43 :Formula 1 On Board Camera Lance Stroll Mexico City Grand Prix Practice #1 @ Oct 24 2:20 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615487.ts"
+  },
+  {
+    "name": "TSN+ 44 :Formula 1 On Board Camera Oscar Piastri Mexico City Grand Prix Practice #1 @ Oct 24 2:20 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615488.ts"
+  },
+  {
+    "name": "TSN+ 45 :Formula 1 On Board Camera Lewis Hamilton Mexico City Grand Prix Practice #1 @ Oct 24 2:20 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615489.ts"
+  },
+  {
+    "name": "TSN+ 46 :SC September Plays of the Month H @ Oct 24 2:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615490.ts"
+  },
+  {
+    "name": "TSN+ 47 :2025 FIFA Womens U17 World Cup Costa Rica vs Morocco @ Oct 24 2:48 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615491.ts"
+  },
+  {
+    "name": "TSN+ 48 :2025 FIFA Womens U17 World Cup Brazil vs Italy @ Oct 24 2:48 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615492.ts"
+  },
+  {
+    "name": "TSN+ 49 :2025 FIFA Womens U17 World Cup Netherlands vs Korea DPR @ Oct 24 2:48 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615493.ts"
+  },
+  {
+    "name": "TSN+ 50 :2025 FIFA Womens U17 World Cup Mexico vs Cameroon @ Oct 24 2:48 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615494.ts"
+  },
+  {
+    "name": "TSN+ 51 :LaLiga Real Sociedad vs Sevilla @ Oct 24 2:48 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615495.ts"
+  },
+  {
+    "name": "TSN+ 52 :NBA Today @ Oct 24 3:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615496.ts"
+  },
+  {
+    "name": "TSN+ 53 :NFL Live @ Oct 24 4:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615497.ts"
+  },
+  {
+    "name": "TSN+ 54 :OverDrive @ Oct 24 4:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615498.ts"
+  },
+  {
+    "name": "TSN+ 55 :SC Top WNBA Moments A @ Oct 24 4:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615499.ts"
+  },
+  {
+    "name": "TSN+ 56 :SC NBA Plays of the Year A @ Oct 24 4:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615500.ts"
+  },
+  {
+    "name": "TSN+ 57 :College Football Live @ Oct 24 5:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615501.ts"
+  },
+  {
+    "name": "TSN+ 58 :Motorcycle Experience @ Oct 24 5:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615502.ts"
+  },
+  {
+    "name": "TSN+ 59 :NCAA Womens Hockey Cornell vs Harvard @ Oct 24 5:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615503.ts"
+  },
+  {
+    "name": "TSN+ 60 :Pardon the Interruption @ Oct 24 5:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615504.ts"
+  },
+  {
+    "name": "TSN+ 61 :SC Outrageous NASCAR Moments @ Oct 24 5:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615505.ts"
+  },
+  {
+    "name": "TSN+ 62 :2025 Formula 1 Practice Mexico City Grand Prix @ Oct 24 5:45 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615506.ts"
+  },
+  {
+    "name": "TSN+ 63 :Formula 1 Driver Tracker Mexico City Grand Prix Practice #2 @ Oct 24 5:50 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615507.ts"
+  },
+  {
+    "name": "TSN+ 64 :Formula 1 Pit Lane Mexico City Grand Prix Practice #2 @ Oct 24 5:50 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615508.ts"
+  },
+  {
+    "name": "TSN+ 65 :Formula 1 Timing Channel Mexico City Grand Prix Practice #2 @ Oct 24 5:50 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615509.ts"
+  },
+  {
+    "name": "TSN+ 66 :Formula 1 Mixed On Board Camera Mexico City Grand Prix Practice #2 @ Oct 24 5:50 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615510.ts"
+  },
+  {
+    "name": "TSN+ 67 :Formula 1 On Board Camera Lance Stroll Mexico City Grand Prix Practice #2 @ Oct 24 5:50 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615511.ts"
+  },
+  {
+    "name": "TSN+ 68 :Formula 1 On Board Camera Oscar Piastri Mexico City Grand Prix Practice #2 @ Oct 24 5:50 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615512.ts"
+  },
+  {
+    "name": "TSN+ 69 :Formula 1 On Board Camera Lewis Hamilton Mexico City Grand Prix Practice #2 @ Oct 24 5:50 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615513.ts"
+  },
+  {
+    "name": "TSN+ 70 :2025 Home Hardware Curling Pre Trials Mens Final Game 1 @ Oct 24 6:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615514.ts"
+  },
+  {
+    "name": "TSN+ 71 :Raptors GameDay @ Oct 24 6:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615515.ts"
+  },
+  {
+    "name": "TSN+ 72 :NCAA Football Columbia vs Dartmouth @ Oct 24 6:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615516.ts"
+  },
+  {
+    "name": "TSN+ 73 :Tangerine Raptors Basketball Bucks vs Raptors @ Oct 24 6:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615517.ts"
+  },
+  {
+    "name": "TSN+ 74 :CFL Data Enhanced Feed Redblacks vs Tiger Cats @ Oct 24 7:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615518.ts"
+  },
+  {
+    "name": "TSN+ 75 :CFL on TSN Redblacks vs Tiger Cats A @ Oct 24 7:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615519.ts"
+  },
+  {
+    "name": "TSN+ 76 :OHL on TSN+ Brampton Steelheads vs Niagara Ice Dogs @ Oct 24 7:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615520.ts"
+  },
+  {
+    "name": "TSN+ 77 :NBA on TSN+ Hawks vs Magic @ Oct 24 7:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615521.ts"
+  },
+  {
+    "name": "TSN+ 78 :Heisman Trophy Midseason Preview @ Oct 24 7:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615522.ts"
+  },
+  {
+    "name": "TSN+ 79 :NCAA Mens Hockey North Dakota vs Clarkson @ Oct 24 7:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615523.ts"
+  },
+  {
+    "name": "TSN+ 80 :NCAA Football North Texas vs Charlotte @ Oct 24 7:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615524.ts"
+  },
+  {
+    "name": "TSN+ 81 :SC Top Rivalries in Sports @ Oct 24 7:15 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615525.ts"
+  },
+  {
+    "name": "TSN+ 82 :NCAA Football California vs Virginia Tech @ Oct 24 7:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615526.ts"
+  },
+  {
+    "name": "TSN+ 83 :Winnipeg Jets Pre Game @ Oct 24 7:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615527.ts"
+  },
+  {
+    "name": "TSN+ 84 :SC Coaches Gone Wild @ Oct 24 7:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615528.ts"
+  },
+  {
+    "name": "TSN+ 85 :Winnipeg Jets on TSN Flames vs Jets @ Oct 24 8:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615529.ts"
+  },
+  {
+    "name": "TSN+ 86 :MLS Playoffs on TSN Miami vs Nashville @ Oct 24 8:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615530.ts"
+  },
+  {
+    "name": "TSN+ 87 :Park The Bus Episode 20 A @ Oct 24 9:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615531.ts"
+  },
+  {
+    "name": "TSN+ 88 :CFL on TSN Redblacks vs Tiger Cats B @ Oct 24 9:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615532.ts"
+  },
+  {
+    "name": "TSN+ 89 :CFL on TSN Stampeders vs Elks A @ Oct 24 9:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615533.ts"
+  },
+  {
+    "name": "TSN+ 90 :CFL Data Enhanced Feed Stampeders vs Elks @ Oct 24 9:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615534.ts"
+  },
+  {
+    "name": "TSN+ 91 :CFL on TSN Stampeders vs Elks B @ Oct 24 10:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615535.ts"
+  },
+  {
+    "name": "TSN+ 92 :SC September Plays of the Month I @ Oct 24 10:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615536.ts"
+  },
+  {
+    "name": "TSN+ 93 :NCAA Football Montana vs Sacramento State @ Oct 24 10:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615537.ts"
+  },
+  {
+    "name": "TSN+ 94 :Breaking Down Barriers Ice Breakers A @ Oct 24 11:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615538.ts"
+  },
+  {
+    "name": "TSN+ 95 :SC NBA Plays of the Year B @ Oct 24 11:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615539.ts"
+  },
+  {
+    "name": "TSN+ 96 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615540.ts"
+  },
+  {
+    "name": "TSN+ 97 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615541.ts"
+  },
+  {
+    "name": "TSN+ 98 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615542.ts"
+  },
+  {
+    "name": "TSN+ 99 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615543.ts"
+  },
+  {
+    "name": "TSN+ 100 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615544.ts"
+  },
+  {
+    "name": "TSN+ 101 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615640.ts"
+  },
+  {
+    "name": "TSN+ 102 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615641.ts"
+  },
+  {
+    "name": "TSN+ 103 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615642.ts"
+  },
+  {
+    "name": "TSN+ 104 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615643.ts"
+  },
+  {
+    "name": "TSN+ 105 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615644.ts"
+  },
+  {
+    "name": "TSN+ 106 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615645.ts"
+  },
+  {
+    "name": "TSN+ 107 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615646.ts"
+  },
+  {
+    "name": "TSN+ 108 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615647.ts"
+  },
+  {
+    "name": "TSN+ 109 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615648.ts"
+  },
+  {
+    "name": "TSN+ 110 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615649.ts"
+  },
+  {
+    "name": "TSN+ 111 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615650.ts"
+  },
+  {
+    "name": "TSN+ 112 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615651.ts"
+  },
+  {
+    "name": "TSN+ 113 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615652.ts"
+  },
+  {
+    "name": "TSN+ 114 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615653.ts"
+  },
+  {
+    "name": "TSN+ 115 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615654.ts"
+  },
+  {
+    "name": "TSN+ 116 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615655.ts"
+  },
+  {
+    "name": "TSN+ 117 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615656.ts"
+  },
+  {
+    "name": "TSN+ 118 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615657.ts"
+  },
+  {
+    "name": "TSN+ 119 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615658.ts"
+  },
+  {
+    "name": "TSN+ 120 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615659.ts"
+  },
+  {
+    "name": "TSN+ 121 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615660.ts"
+  },
+  {
+    "name": "TSN+ 122 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615661.ts"
+  },
+  {
+    "name": "TSN+ 123 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615662.ts"
+  },
+  {
+    "name": "TSN+ 124 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615663.ts"
+  },
+  {
+    "name": "TSN+ 125 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615664.ts"
+  },
+  {
+    "name": "TSN+ 126 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615665.ts"
+  },
+  {
+    "name": "TSN+ 127 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615666.ts"
+  },
+  {
+    "name": "TSN+ 128 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615667.ts"
+  },
+  {
+    "name": "TSN+ 129 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615668.ts"
+  },
+  {
+    "name": "TSN+ 130 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615669.ts"
+  },
+  {
+    "name": "TSN+ 131 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615670.ts"
+  },
+  {
+    "name": "TSN+ 132 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615671.ts"
+  },
+  {
+    "name": "TSN+ 133 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615672.ts"
+  },
+  {
+    "name": "TSN+ 134 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615673.ts"
+  },
+  {
+    "name": "TSN+ 135 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615674.ts"
+  },
+  {
+    "name": "TSN+ 136 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615675.ts"
+  },
+  {
+    "name": "TSN+ 137 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615676.ts"
+  },
+  {
+    "name": "TSN+ 138 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615677.ts"
+  },
+  {
+    "name": "TSN+ 139 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615678.ts"
+  },
+  {
+    "name": "TSN+ 140 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615679.ts"
+  },
+  {
+    "name": "TSN+ 141 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615680.ts"
+  },
+  {
+    "name": "TSN+ 142 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615681.ts"
+  },
+  {
+    "name": "TSN+ 143 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615682.ts"
+  },
+  {
+    "name": "TSN+ 144 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615683.ts"
+  },
+  {
+    "name": "TSN+ 145 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615684.ts"
+  },
+  {
+    "name": "TSN+ 146 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615685.ts"
+  },
+  {
+    "name": "TSN+ 147 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615686.ts"
+  },
+  {
+    "name": "TSN+ 148 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615687.ts"
+  },
+  {
+    "name": "TSN+ 149 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615688.ts"
+  },
+  {
+    "name": "TSN+ 150 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615689.ts"
+  },
+  {
+    "name": "Sportsnet+ 01 :Sportsnet Central Oct 23 @ Oct 24 5:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615690.ts"
+  },
+  {
+    "name": "Sportsnet+ 02 :Halford & Brough Oct 24 @ Oct 24 9:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615691.ts"
+  },
+  {
+    "name": "Sportsnet+ 03 :The JD Bunkis Podcast Oct 24 @ Oct 24 9:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615692.ts"
+  },
+  {
+    "name": "Sportsnet+ 04 :UFC: UFC 321 Ceremonial Weigh In @ Oct 24 9:55 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615693.ts"
+  },
+  {
+    "name": "Sportsnet+ 05 :Jays Talk Plus Oct 24 @ Oct 24 10:00 AM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615694.ts"
+  },
+  {
+    "name": "Sportsnet+ 06 :The FAN Hockey Show Oct 24 @ Oct 24 12:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615695.ts"
+  },
+  {
+    "name": "Sportsnet+ 07 :Real Kyper & Bourne Oct 24 @ Oct 24 2:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615696.ts"
+  },
+  {
+    "name": "Sportsnet+ 08 :Northampton Saints vs Saracens @ Oct 24 2:35 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615697.ts"
+  },
+  {
+    "name": "Sportsnet+ 09 :Glasgow Warriors vs Vodacom Bulls  @ Oct 24 2:35 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615698.ts"
+  },
+  {
+    "name": "Sportsnet+ 10 :Blair & Barker Oct 24 @ Oct 24 4:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615699.ts"
+  },
+  {
+    "name": "Sportsnet+ 11 :The FAN Pregame Oct 24 @ Oct 24 6:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615700.ts"
+  },
+  {
+    "name": "Sportsnet+ 12 :MLB: World Series Los Angeles vs Toronto Game 1 @ Oct 24 6:30 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615701.ts"
+  },
+  {
+    "name": "Sportsnet+ 13 :NHL: Washington vs Columbus @ Oct 24 7:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615702.ts"
+  },
+  {
+    "name": "Sportsnet+ 14 :NHL: Toronto vs Buffalo @ Oct 24 7:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615703.ts"
+  },
+  {
+    "name": "Sportsnet+ 15 :NHL: San Jose vs New Jersey @ Oct 24 7:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615704.ts"
+  },
+  {
+    "name": "Sportsnet+ 16 :NHL: Jets Broadcast Calgary vs Winnipeg Available outside Jets region @ Oct 24 8:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615705.ts"
+  },
+  {
+    "name": "Sportsnet+ 17 :NHL: Flames Broadcast Calgary vs Winnipeg Available outside Jets region @ Oct 24 8:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615706.ts"
+  },
+  {
+    "name": "Sportsnet+ 18 :NBA: Golden State vs Portland @ Oct 24 10:00 PM",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615707.ts"
+  },
+  {
+    "name": "Sportsnet+ 19 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615708.ts"
+  },
+  {
+    "name": "Sportsnet+ 20 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615709.ts"
+  },
+  {
+    "name": "Sportsnet+ 21 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615710.ts"
+  },
+  {
+    "name": "Sportsnet+ 22 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615711.ts"
+  },
+  {
+    "name": "Sportsnet+ 23 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615712.ts"
+  },
+  {
+    "name": "Sportsnet+ 24 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615713.ts"
+  },
+  {
+    "name": "Sportsnet+ 25 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615714.ts"
+  },
+  {
+    "name": "Sportsnet+ 26 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615715.ts"
+  },
+  {
+    "name": "Sportsnet+ 27 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615716.ts"
+  },
+  {
+    "name": "Sportsnet+ 28 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615717.ts"
+  },
+  {
+    "name": "Sportsnet+ 29 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615718.ts"
+  },
+  {
+    "name": "Sportsnet+ 30 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615719.ts"
+  },
+  {
+    "name": "Sportsnet+ 31 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615720.ts"
+  },
+  {
+    "name": "Sportsnet+ 32 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615721.ts"
+  },
+  {
+    "name": "Sportsnet+ 33 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615722.ts"
+  },
+  {
+    "name": "Sportsnet+ 34 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615723.ts"
+  },
+  {
+    "name": "Sportsnet+ 35 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615724.ts"
+  },
+  {
+    "name": "Sportsnet+ 36 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615725.ts"
+  },
+  {
+    "name": "Sportsnet+ 37 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615726.ts"
+  },
+  {
+    "name": "Sportsnet+ 38 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615727.ts"
+  },
+  {
+    "name": "Sportsnet+ 39 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615728.ts"
+  },
+  {
+    "name": "Sportsnet+ 40 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615729.ts"
+  },
+  {
+    "name": "Sportsnet+ 41 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615730.ts"
+  },
+  {
+    "name": "Sportsnet+ 42 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615731.ts"
+  },
+  {
+    "name": "Sportsnet+ 43 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615732.ts"
+  },
+  {
+    "name": "Sportsnet+ 44 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615733.ts"
+  },
+  {
+    "name": "Sportsnet+ 45 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615734.ts"
+  },
+  {
+    "name": "Sportsnet+ 46 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615735.ts"
+  },
+  {
+    "name": "Sportsnet+ 47 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615736.ts"
+  },
+  {
+    "name": "Sportsnet+ 48 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615737.ts"
+  },
+  {
+    "name": "Sportsnet+ 49 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615738.ts"
+  },
+  {
+    "name": "Sportsnet+ 50 :",
+    "logo": "",
+    "group": "CANADA (LIVE EVENT ONLY)",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/615739.ts"
+  },
+  {
+    "name": "CA TSN 1",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616080.ts"
+  },
+  {
+    "name": "CA TSN 2",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616081.ts"
+  },
+  {
+    "name": "CA TSN 3",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616082.ts"
+  },
+  {
+    "name": "CA TSN 4",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616083.ts"
+  },
+  {
+    "name": "CA TSN 5",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616084.ts"
+  },
+  {
+    "name": "CA TSN4 HD Blackout",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616085.ts"
+  },
+  {
+    "name": "CA TSN5 Blackout",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616086.ts"
+  },
+  {
+    "name": "CA TSN PLUS",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616087.ts"
+  },
+  {
+    "name": "CA SPORTSNET 360",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616088.ts"
+  },
+  {
+    "name": "CA SPORTSNET EAST",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616089.ts"
+  },
+  {
+    "name": "CA Sportsnet West",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616090.ts"
+  },
+  {
+    "name": "CA Sportsnet One",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616091.ts"
+  },
+  {
+    "name": "CA Sportsnet Ontario",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616092.ts"
+  },
+  {
+    "name": "CA Sportsnet Pacific",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616093.ts"
+  },
+  {
+    "name": "CA Sportsnet PPV",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616094.ts"
+  },
+  {
+    "name": "CA Sportsnet World",
+    "logo": "",
+    "group": "CANADA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/616095.ts"
+  },
+  {
+    "name": "ASTRO SUPER SPORTS 2 HD",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/5481.ts"
+  },
+  {
+    "name": "ITV",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/15.ts"
+  },
+  {
+    "name": "USA: TSN 5",
+    "logo": "",
+    "group": "USA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/1017.ts"
+  },
+  {
+    "name": "USA: TSN 4",
+    "logo": "",
+    "group": "USA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/1018.ts"
+  },
+  {
+    "name": "USA: TSN 3",
+    "logo": "",
+    "group": "USA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/1019.ts"
+  },
+  {
+    "name": "USA: TSN 2",
+    "logo": "",
+    "group": "USA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/1020.ts"
+  },
+  {
+    "name": "USA: TSN 1",
+    "logo": "",
+    "group": "USA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/1021.ts"
+  },
+  {
+    "name": "SKY SPORTS MAIN EVENT HD",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186596.ts"
+  },
+  {
+    "name": "SKY SPORTS MAIN EVENT FHD",
+    "logo": "https://i.ibb.co/BwZmx1f/download-7.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186597.ts"
+  },
+  {
+    "name": "SKY SPORTS PREMIER LEAGUE HD ",
+    "logo": "http://stariptv.fun/logos/skysportspremierleaguehd.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186603.ts"
+  },
+  {
+    "name": "SKY SPORTS PREMIER LEAGUE FHD",
+    "logo": "http://stariptv.fun/logos/skysportspremierleaguehd.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186604.ts"
+  },
+  {
+    "name": "SKY SPORTS CRICKET HD",
+    "logo": "https://h.top4top.io/p_247357nqz1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186605.ts"
+  },
+  {
+    "name": "SKY SPORTS CRICKET FHD",
+    "logo": "https://h.top4top.io/p_247357nqz1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186606.ts"
+  },
+  {
+    "name": "SKY SPORTS FOOTBALL HD",
+    "logo": "https://j.top4top.io/p_2563b7cdj1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186607.ts"
+  },
+  {
+    "name": "SKY SPORTS FOOTBALL FHD",
+    "logo": "https://j.top4top.io/p_2563b7cdj1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186612.ts"
+  },
+  {
+    "name": "SKY SPORTS F1 HD",
+    "logo": "https://b.top4top.io/p_247364akp1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186615.ts"
+  },
+  {
+    "name": "SKY SPORTS F1 FHD",
+    "logo": "https://b.top4top.io/p_247364akp1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186616.ts"
+  },
+  {
+    "name": "SKY SPORTS ACTION FHD",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186618.ts"
+  },
+  {
+    "name": "SKY SPORTS GOLF FHD",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Sky_Sport_Golf_-_Logo_2018.svg/1200px-Sky_Sport_Golf_-_Logo_2018.svg.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186614.ts"
+  },
+  {
+    "name": "SKY SPORTS MIX HD",
+    "logo": "https://h.top4top.io/p_2473pjofr1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186621.ts"
+  },
+  {
+    "name": "SKY SPORTS Plus FHD",
+    "logo": "https://l.top4top.io/p_2473e4g9y1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186620.ts"
+  },
+  {
+    "name": "SKY SPORTS MIX FHD",
+    "logo": "https://h.top4top.io/p_2473pjofr1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186622.ts"
+  },
+  {
+    "name": "SKY SPORTS NEWS HD",
+    "logo": "https://f.top4top.io/p_2473anxmd1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186623.ts"
+  },
+  {
+    "name": "SKY SPORTS NEWS FHD",
+    "logo": "https://f.top4top.io/p_2473anxmd1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186624.ts"
+  },
+  {
+    "name": "SKY SPORTS BOX OFFICE HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Sky_Sports_Box_Office.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186625.ts"
+  },
+  {
+    "name": "SKY SPORTS BOX OFFICE FHD",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Sky_Sports_Box_Office.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186626.ts"
+  },
+  {
+    "name": "TNT SPORT 2 FHD",
+    "logo": "http://b1gchlogos.xyz/wp-content/uploads/2023/07/TNT-Sports-2-New.jpg",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186628.ts"
+  },
+  {
+    "name": "TNT SPORT 3 FHD",
+    "logo": "http://b1gchlogos.xyz/wp-content/uploads/2023/07/TNT-Sports-3-1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186629.ts"
+  },
+  {
+    "name": "TNT SPORT 4 FHD",
+    "logo": "http://b1gchlogos.xyz/wp-content/uploads/2023/07/TNT-Sports-4.jpg",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186630.ts"
+  },
+  {
+    "name": "TNT SPORT 5 HD",
+    "logo": "http://b1gchlogos.xyz/wp-content/uploads/2023/07/TNT-Sports-All.jpg",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186631.ts"
+  },
+  {
+    "name": "TNT SPORT 6 HD",
+    "logo": "https://b1gchlogos.xyz/wp-content/uploads/2023/07/TNT-Sports-All.jpg",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186632.ts"
+  },
+  {
+    "name": "TNT SPORT 9 HD",
+    "logo": "https://b1gchlogos.xyz/wp-content/uploads/2023/07/TNT-Sports-All.jpg",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186635.ts"
+  },
+  {
+    "name": "EUROSPORT 1 FHD",
+    "logo": "http://b1g.us/logos/eurosport1hd.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186637.ts"
+  },
+  {
+    "name": "EUROSPORT 2 FHD",
+    "logo": "http://b1g.us/logos/eurosport2.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186638.ts"
+  },
+  {
+    "name": "PREMIER SPORT 1 FHD",
+    "logo": "https://b1gchlogos.xyz/wp-content/uploads/2023/05/PremierSports.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186639.ts"
+  },
+  {
+    "name": "Premier Sport 2 FHD",
+    "logo": "http://b1gchlogos.xyz/wp-content/uploads/2023/05/PremierSports2.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186640.ts"
+  },
+  {
+    "name": "RACING TV HD",
+    "logo": "https://i.ibb.co/99D3Rztx/images-1.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186642.ts"
+  },
+  {
+    "name": "UK: SKY SPORTS RACING FHD",
+    "logo": "https://i.ibb.co/64nvrQX/download-10.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186643.ts"
+  },
+  {
+    "name": "SKY SPORTS ACTION HD",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186617.ts"
+  },
+  {
+    "name": "SuperSport Rugby (FHD)",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/777.ts"
+  },
+  {
+    "name": "DSTV : SuperSport Tennis (FHD)",
+    "logo": "https://i.ibb.co/HnLmKMZ/metelsky220700146.png",
+    "group": "SPORTS | TENNIS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/7603.ts"
+  },
+  {
+    "name": "DSTV : SuperSport Golf (FHD)",
+    "logo": "https://i.ibb.co/QKzqNG8/golf-wallpaper-preview.png",
+    "group": "SPORTS | GOLF",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/778.ts"
+  },
+  {
+    "name": "IN: TEN 1 (4K).",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/98861.ts"
+  },
+  {
+    "name": "IN: TEN 2 (4K).",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/98862.ts"
+  },
+  {
+    "name": "IN: TEN 3 (4K).",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/98863.ts"
+  },
+  {
+    "name": "IN: STAR SPORTS 1 (4K).",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/98864.ts"
+  },
+  {
+    "name": "IN: STAR SPORTS 2 (4K).",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/98865.ts"
+  },
+  {
+    "name": "IN: STAR SPORTS 1 HINDI (4K).",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/98866.ts"
+  },
+  {
+    "name": "IN: STAR SPORTS SELECT 1 (4K).",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/98867.ts"
+  },
+  {
+    "name": "IN: START SPORTS SELECT 2 (4K).",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/98868.ts"
+  },
+  {
+    "name": "IN: SONY TEN 5 (4K).",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/98870.ts"
+  },
+  {
+    "name": "IN: Star Sports Select 1 (FHD)",
+    "logo": "https://vignette.wikia.nocookie.net/logopedia/images/b/b5/Star_Sports_Select_1_HD.jpg/revision/latest/scale-to-width-down/340?cb=20180806112709",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/9400.ts"
+  },
+  {
+    "name": "IN: Star Sports Select 2 (FHD)",
+    "logo": "https://vignette.wikia.nocookie.net/logopedia/images/4/46/Sss-hd2-bronze.png/revision/latest/top-crop/width/220/height/220?cb=20170728104956",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/9401.ts"
+  },
+  {
+    "name": "IN: Sony Ten 1 (FHD)",
+    "logo": "https://i.ytimg.com/vi/QOx79orcb1I/maxresdefault.jpg",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/9402.ts"
+  },
+  {
+    "name": "IN: Sony Ten 3 (FHD)",
+    "logo": "https://tma-live.s3.ap-south-1.amazonaws.com/medias/569ccce68ead0e21236eb474/1565808608783/c9347b41649e4f9d39f547b0d9ffd902.jpg",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/9404.ts"
+  },
+  {
+    "name": "IN: EUROSPORTS (4K)",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/23308.ts"
+  },
+  {
+    "name": "AU: Fox Sports 501",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuR_kF8fYxhcL_qxXuR6697bxKFmLcEJUpmoN_yP4iTTHmO2sLqrduhl-iWKvEJ7IcOrk&usqp=CAU",
+    "group": "SPORTS | FOX AUSTRALIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4748.ts"
+  },
+  {
+    "name": "AU: Fox Sports 506",
+    "logo": "https://static.wikia.nocookie.net/logopedia/images/2/2c/SPE_290x170.png/revision/latest?cb=20180916115509",
+    "group": "SPORTS | FOX AUSTRALIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4753.ts"
+  },
+  {
+    "name": "AU: Fox Sports 507",
+    "logo": "",
+    "group": "SPORTS | FOX AUSTRALIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4754.ts"
+  },
+  {
+    "name": "Sky Sport 1 FHD",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/23997.ts"
+  },
+  {
+    "name": "USA: NBC GOLF HD",
+    "logo": "https://i.ibb.co/QKzqNG8/golf-wallpaper-preview.png",
+    "group": "SPORTS | GOLF",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/56.ts"
+  },
+  {
+    "name": "Sky Sport 3 FHD",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/23999.ts"
+  },
+  {
+    "name": "USA: Tennis Channel",
+    "logo": "https://i.ibb.co/HnLmKMZ/metelsky220700146.png",
+    "group": "SPORTS | TENNIS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/712.ts"
+  },
+  {
+    "name": "AR:  KSA Sport 1 HD+",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4654.ts"
+  },
+  {
+    "name": "AR:  KSA Sport 2 HD+",
+    "logo": "",
+    "group": "SPORTS | ARABIC",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/4655.ts"
+  },
+  {
+    "name": "TNT SPORT 1",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/23564.ts"
+  },
+  {
+    "name": "TNT SPORT 2.",
+    "logo": "http://starapk1.com/logo/rugby.png",
+    "group": "SPORTS | RUGBY",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/23565.ts"
+  },
+  {
+    "name": "IN: Sony Ten 2 (4K)",
+    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/9403.ts"
+  },
+  {
+    "name": "IN: SONY TEN 5 (FHD)",
+    "logo": "https://origin-staticv2.sonyliv.com/masthead_logo/SonySIXHD_Masthead_Logo.png",
+    "group": " SPORTS | INDIA",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/17565.ts"
+  },
+  {
+    "name": "TNT SPORT 1",
+    "logo": "http://starapk1.com/logo/football.png",
+    "group": "SPORTS | TENNIS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/286.ts"
+  },
+  {
+    "name": "SKY SPORTS GOLF HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Sky_Sport_Golf_-_Logo_2018.svg/1200px-Sky_Sport_Golf_-_Logo_2018.svg.png",
+    "group": "SPORTS | UK SPORTS",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186613.ts"
+  },
+  {
+    "name": "GOLF FHD",
+    "logo": "https://i.ibb.co/QKzqNG8/golf-wallpaper-preview.png",
+    "group": "SPORTS | GOLF",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/847.ts"
+  },
+  {
+    "name": "UK: SKY SPORTS GOLF",
+    "logo": "https://i.ibb.co/QKzqNG8/golf-wallpaper-preview.png",
+    "group": "SPORTS | GOLF",
+    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/11.ts"
+  }
+]

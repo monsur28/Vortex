@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from 'react';
-import { X, Play, Pause, Volume2, VolumeX, ExternalLink, Monitor, Maximize, WifiOff, Settings, Check, Star } from 'lucide-react';
+import { X, Play, Pause, Volume2, VolumeX, ExternalLink, Monitor, Maximize, WifiOff, Settings, Check, Star, ChevronLeft, ChevronRight, RotateCcw, RotateCw } from 'lucide-react';
 
 export default function PlayerPanel({ 
   activeChannel, 
@@ -8,16 +8,20 @@ export default function PlayerPanel({
   onToggleFavorite, 
   onClose,
   isTheaterMode,
-  onToggleTheaterMode
+  onToggleTheaterMode,
+  onNextChannel,
+  onPrevChannel
 }) {
   const videoRef = useRef(null);
   const videoWrapperRef = useRef(null);
+  const destroyPromiseRef = useRef(Promise.resolve());
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(1);
   const [buffering, setBuffering] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [shakaInstance, setShakaInstance] = useState(null);
+  const [mpegtsInstance, setMpegtsInstance] = useState(null);
   const [levels, setLevels] = useState([]);
   const [currentLevel, setCurrentLevel] = useState(-1); // -1 means Auto
   const [autoHeight, setAutoHeight] = useState('');
@@ -63,25 +67,79 @@ export default function PlayerPanel({
     const video = videoRef.current;
     if (!video) return;
 
+    let isCancelled = false;
     let newShaka = null;
+    let localMpegts = null;
     let currentUrlIndex = 0;
     const urlCount = activeChannel.urlCount || (Array.isArray(activeChannel.url) ? activeChannel.url.length : 1);
 
     const initPlayer = async (index) => {
+      // Wait for any previous player to finish destroying before creating a new one
+      await destroyPromiseRef.current;
+      if (isCancelled || !videoRef.current) return; // Component unmounted or channel switched
+
       let rawUrl = Array.isArray(activeChannel.url) ? activeChannel.url[index] : activeChannel.url;
-      let streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&t=${Date.now()}`;
       
-      // BDIX/Local IP Bypass: Do not use the Vercel proxy for local BD URLs!
-      if (rawUrl && (rawUrl.includes('bdix') || rawUrl.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/))) {
-        streamUrl = rawUrl;
+      // Interpolate Xtream variables if they exist in the URL
+      if (rawUrl && typeof rawUrl === 'string') {
+        rawUrl = rawUrl
+          .replace('{XTREAM_HOST}', process.env.NEXT_PUBLIC_XTREAM_HOST || 'http://premiumtvs.space:80')
+          .replace('{XTREAM_USER}', process.env.NEXT_PUBLIC_XTREAM_USER || '1Aoen7elp5')
+          .replace('{XTREAM_PASS}', process.env.NEXT_PUBLIC_XTREAM_PASS || 'IgMJ60tmAa');
+      }
+
+      let streamUrl = rawUrl;
+      
+      const isMpegTs = rawUrl && (rawUrl.endsWith('.ts') || rawUrl.includes('.ts?'));
+      
+      // For MPEG-TS, it's a single file stream, so proxying the streamUrl works natively
+      if (isMpegTs) {
+        streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&url=${encodeURIComponent(rawUrl)}&t=${Date.now()}`;
       }
 
       if (newShaka) {
         await newShaka.destroy();
         newShaka = null;
       }
+      if (localMpegts) {
+        localMpegts.destroy();
+        localMpegts = null;
+      }
 
       try {
+        // If it's a raw .ts stream (like Xtream Codes), use mpegts.js instead of Shaka
+        if (rawUrl && (rawUrl.endsWith('.ts') || rawUrl.includes('.ts?'))) {
+          const mpegts = await import('mpegts.js');
+          if (mpegts.default.getFeatureList().mseLivePlayback) {
+            const player = mpegts.default.createPlayer({
+              type: 'mse',
+              isLive: true,
+              url: streamUrl
+            });
+            player.attachMediaElement(video);
+            player.load();
+            player.play().catch(e => console.log('MPEGTS Autoplay blocked:', e));
+            localMpegts = player;
+            setMpegtsInstance(player);
+            setBuffering(false);
+            
+            player.on(mpegts.default.Events.ERROR, (errorType, errorDetail, errorInfo) => {
+              console.error('MPEG-TS Error', errorType, errorDetail, errorInfo);
+              if (currentUrlIndex < urlCount - 1) {
+                currentUrlIndex++;
+                initPlayer(currentUrlIndex);
+              } else {
+                setErrorMsg('Stream Error: ' + errorDetail);
+                setBuffering(false);
+              }
+            });
+          } else {
+            setErrorMsg('MPEG-TS playback is not supported in this browser.');
+            setBuffering(false);
+          }
+          return; // Stop here, don't init Shaka
+        }
+
         const shaka = await import('shaka-player');
         shaka.polyfill.installAll();
 
@@ -94,66 +152,31 @@ export default function PlayerPanel({
         newShaka = new shaka.Player();
         await newShaka.attach(video);
 
-        // Route requests through proxy
-        newShaka.getNetworkingEngine().registerRequestFilter(function(type, request) {
-          if (!request.uris || request.uris.length === 0) return;
-          let url = request.uris[0];
-          
-          if (url.startsWith('http://') || url.startsWith('https://')) {
-            if (!url.includes('/api/proxy') && !url.includes('/api/football-data')) {
-              // BDIX BYPASS: BDIX servers block external proxy servers (like Vercel). 
-              // We must fetch them directly using the user's local BD internet connection!
-              if (url.includes('bdix')) {
-                return;
-              }
-              // We CANNOT bypass proxy for regular segments because many IPTV CDNs (like Akamai) 
-              // bind the stream session to the IP address. If Vercel fetches the manifest, 
-              // Vercel MUST also fetch the segments, otherwise we get 403 Forbidden.
-              request.uris[0] = window.location.origin + '/api/proxy?url=' + encodeURIComponent(url);
-            }
-          } else if (url.startsWith('/')) {
-            request.uris[0] = window.location.origin + url;
-          }
-        });
-
-        // Configure DRM
-        let clearKeys = {};
-        let drmServers = {};
-        
-        if (activeChannel.drm) {
-          if (activeChannel.drm.key) {
-            let keyStr = activeChannel.drm.key;
-            if (keyStr.startsWith('{')) {
-              try {
-                let parsed = JSON.parse(keyStr);
-                if (parsed.keys && parsed.keys.length > 0) {
-                  parsed.keys.forEach(k => { clearKeys[hexToBase64Url(k.kid)] = hexToBase64Url(k.k); });
-                }
-              } catch(e){}
-            } else if (keyStr.includes(':')) {
-              let [kidHex, keyHex] = keyStr.split(':');
-              clearKeys[hexToBase64Url(kidHex)] = hexToBase64Url(keyHex);
-            }
-          }
-          
-          if (activeChannel.drm.licenseUrl) {
-            drmServers = {
-              'com.widevine.alpha': activeChannel.drm.licenseUrl,
-              'com.microsoft.playready': activeChannel.drm.licenseUrl
-            };
-          }
-        }
-
         const drmConfig = {};
-        if (Object.keys(clearKeys).length > 0) {
-          drmConfig.clearKeys = clearKeys;
-        }
-        if (Object.keys(drmServers).length > 0) {
-          drmConfig.servers = drmServers;
-        }
-        
-        if (Object.keys(drmConfig).length > 0) {
-          newShaka.configure({ drm: drmConfig });
+        if (activeChannel.hasDrm) {
+          try {
+            const resp = await fetch(`${window.location.origin}/api/clearkey?id=${activeChannel.id}`, { 
+              method: 'POST', 
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({}) 
+            });
+            if (resp.ok) {
+              const data = await resp.json();
+              if (data.keys && data.keys.length > 0) {
+                const clearKeys = {};
+                data.keys.forEach(k => {
+                  clearKeys[k.kid] = k.k;
+                });
+                drmConfig.clearKeys = clearKeys;
+              }
+            }
+          } catch(e) {
+            console.error('Failed to fetch DRM keys', e);
+          }
+          
+          if (drmConfig.clearKeys) {
+            newShaka.configure('drm.clearKeys', drmConfig.clearKeys);
+          }
         }
 
         // Add error event listener
@@ -167,6 +190,34 @@ export default function PlayerPanel({
             setBuffering(false);
           }
         });
+
+        // Intercept manifest to strip Widevine/PlayReady tags if we are forcing ClearKey
+        if (activeChannel.hasDrm) {
+          newShaka.getNetworkingEngine().registerResponseFilter((type, response) => {
+            if (type === 0) { // shaka.net.NetworkingEngine.RequestType.MANIFEST
+              let bodyText = new TextDecoder('utf-8').decode(response.data);
+              bodyText = bodyText.replace(/<ContentProtection[^>]*urn:uuid:edef8ba9-79d6-4ace-a3c8-27dcd51d21ed[^>]*>[\s\S]*?<\/ContentProtection>/gi, '');
+              bodyText = bodyText.replace(/<ContentProtection[^>]*urn:uuid:9a04f079-9840-4286-ab92-e65be0885f95[^>]*>[\s\S]*?<\/ContentProtection>/gi, '');
+              response.data = new TextEncoder().encode(bodyText);
+            }
+          });
+        }
+
+        // Intercept requests if proxying is enabled
+        if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
+          newShaka.getNetworkingEngine().registerRequestFilter((type, request) => {
+            if (request.uris[0] && request.uris[0].startsWith('http') && !request.uris[0].includes('/api/proxy')) {
+              // type 0 = MANIFEST, type 1 = SEGMENT, type 2 = LICENSE
+              const isManifestProxy = (activeChannel.proxy || activeChannel.useProxy) && type === 0;
+              const isSegmentProxy = activeChannel.proxySegments && type === 1;
+              const isLicenseProxy = activeChannel.proxySegments && type === 2;
+
+              if (isManifestProxy || isSegmentProxy || isLicenseProxy) {
+                request.uris[0] = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(request.uris[0])}`;
+              }
+            }
+          });
+        }
         
         // Listen to adaptation events to update autoHeight
         newShaka.addEventListener('adaptation', () => {
@@ -253,12 +304,13 @@ export default function PlayerPanel({
     video.addEventListener('pause', onPause);
 
     return () => {
+      isCancelled = true;
       if (lagTimeout) clearTimeout(lagTimeout);
       if (newShaka) {
-        newShaka.destroy().catch(() => {});
+        destroyPromiseRef.current = newShaka.destroy().catch(() => {});
       }
-      if (shakaInstance) {
-        shakaInstance.destroy().catch(() => {});
+      if (localMpegts) {
+        localMpegts.destroy();
       }
       video.removeEventListener('waiting', onWaiting);
       video.removeEventListener('playing', onPlaying);
@@ -364,17 +416,20 @@ export default function PlayerPanel({
     }
   };
 
+  const skipForward = (e) => {
+    if (e) e.stopPropagation();
+    if (videoRef.current) videoRef.current.currentTime += 10;
+  };
+
+  const skipBackward = (e) => {
+    if (e) e.stopPropagation();
+    if (videoRef.current) videoRef.current.currentTime -= 10;
+  };
+
   const isFav = favorites.includes(activeChannel.name);
 
   return (
-    <aside className="player-panel open" id="player-panel">
-      <div className="panel-header">
-        <h2>Now Streaming</h2>
-        <button className="close-panel" id="close-panel" aria-label="Close Player" onClick={onClose}>
-          <X size={18} />
-        </button>
-      </div>
-
+    <div className="fullscreen-player-overlay" id="player-panel">
       <div className="player-container">
         <div className="video-wrapper" ref={videoWrapperRef}>
           {activeChannel.iframeUrl ? (
@@ -388,10 +443,63 @@ export default function PlayerPanel({
               </button>
             </div>
           ) : (
-            <video id="video-player" playsInline ref={videoRef}></video>
+            <video id="video-player" playsInline ref={videoRef} onClick={togglePlay}></video>
+          )}
+
+          {/* Top Header Overlay inside Player */}
+          <div className="player-top-overlay">
+            <div className="player-top-left">
+              {activeChannel.logo && activeChannel.logo.trim() !== '' && (
+                <img 
+                  src={activeChannel.logo} 
+                  alt={activeChannel.name} 
+                  className="player-channel-logo"
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                />
+              )}
+              <div className="player-channel-info">
+                <h3>{activeChannel.name}</h3>
+                <span>{activeChannel.group || 'Other'}</span>
+              </div>
+            </div>
+            <div className="player-top-right">
+              <button className="top-btn" onClick={() => onToggleFavorite(activeChannel.name)}>
+                <Star size={20} style={{ fill: isFav ? 'var(--wc-gold)' : 'none', color: isFav ? 'var(--wc-gold)' : 'white' }} />
+              </button>
+              <button className="top-btn" onClick={onClose} aria-label="Close Player">
+                <X size={24} />
+              </button>
+            </div>
+          </div>
+
+          {/* Center Controls & Side Arrows Overlay */}
+          {!activeChannel.iframeUrl && (
+            <div className="center-controls-overlay">
+              <button className="side-nav-arrow left" onClick={(e) => { e.stopPropagation(); onPrevChannel && onPrevChannel(); }}>
+                <ChevronLeft size={48} />
+              </button>
+
+              <div className="center-buttons-container">
+                <button className="center-btn skip" onClick={skipBackward}>
+                  <RotateCcw size={36} />
+                  <span className="skip-text">10</span>
+                </button>
+                <button className="center-btn play-pause" onClick={(e) => { e.stopPropagation(); togglePlay(); }}>
+                  {isPlaying ? <Pause size={48} /> : <Play size={48} style={{ marginLeft: '4px' }} />}
+                </button>
+                <button className="center-btn skip" onClick={skipForward}>
+                  <RotateCw size={36} />
+                  <span className="skip-text">10</span>
+                </button>
+              </div>
+
+              <button className="side-nav-arrow right" onClick={(e) => { e.stopPropagation(); onNextChannel && onNextChannel(); }}>
+                <ChevronRight size={48} />
+              </button>
+            </div>
           )}
           
-          {/* Custom Controls */}
+          {/* Bottom Custom Controls */}
           {!activeChannel.iframeUrl && (
             <div className="player-controls" id="player-controls">
               <div className="controls-progress">
@@ -402,11 +510,11 @@ export default function PlayerPanel({
               <div className="controls-row">
                 <div className="controls-left">
                   <button className="play-btn" onClick={togglePlay}>
-                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+                    {isPlaying ? <Pause size={18} /> : <Play size={18} />}
                   </button>
                 <div className="volume-container">
                   <button className="volume-btn" onClick={toggleMute}>
-                    {isMuted || volume === 0 ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                    {isMuted || volume === 0 ? <VolumeX size={18} /> : <Volume2 size={18} />}
                   </button>
                   <input 
                     type="range" 
@@ -418,7 +526,7 @@ export default function PlayerPanel({
                     onChange={handleVolumeChange}
                   />
                 </div>
-                <span className="time-display">Live Stream</span>
+                <span className="time-display live-badge">LIVE</span>
               </div>
               <div className="controls-right" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 {levels.length > 0 && (
@@ -427,10 +535,10 @@ export default function PlayerPanel({
                       className={`pip-btn ${showQualityMenu ? 'active' : ''}`} 
                       title="Video Quality" 
                       onClick={() => setShowQualityMenu(!showQualityMenu)}
-                      style={{ padding: '0 6px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', fontWeight: '700', borderRadius: '4px', height: '28px', color: showQualityMenu ? 'var(--color-accent)' : 'white' }}
+                      style={{ padding: '0 6px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', fontWeight: '700', borderRadius: '4px', height: '28px', color: showQualityMenu ? 'var(--color-accent)' : 'white' }}
                     >
-                      <Settings size={14} />
-                      <span style={{ fontSize: '10px' }}>
+                      <Settings size={16} />
+                      <span style={{ fontSize: '11px' }}>
                         {currentLevel === -1 
                           ? `Auto${autoHeight ? ` (${autoHeight})` : ''}` 
                           : levels.find(l => l.index === currentLevel)?.name || 'HD'}
@@ -439,7 +547,7 @@ export default function PlayerPanel({
                     {showQualityMenu && (
                       <div className="quality-menu" style={{
                         position: 'absolute',
-                        bottom: '36px',
+                        bottom: '40px',
                         right: '0',
                         backgroundColor: 'rgba(15, 23, 42, 0.95)',
                         backdropFilter: 'blur(12px)',
@@ -466,9 +574,9 @@ export default function PlayerPanel({
                             background: 'none',
                             border: 'none',
                             color: currentLevel === -1 ? 'var(--color-accent)' : 'white',
-                            padding: '6px 14px',
+                            padding: '8px 16px',
                             textAlign: 'left',
-                            fontSize: '11px',
+                            fontSize: '12px',
                             fontWeight: currentLevel === -1 ? '800' : '500',
                             cursor: 'pointer',
                             width: '100%',
@@ -479,7 +587,7 @@ export default function PlayerPanel({
                           }}
                         >
                           <span>Auto (ABR)</span>
-                          {currentLevel === -1 && <Check size={12} />}
+                          {currentLevel === -1 && <Check size={14} />}
                         </button>
                         {levels.map(level => (
                           <button 
@@ -500,9 +608,9 @@ export default function PlayerPanel({
                               background: 'none',
                               border: 'none',
                               color: currentLevel === level.index ? 'var(--color-accent)' : 'white',
-                              padding: '6px 14px',
+                              padding: '8px 16px',
                               textAlign: 'left',
-                              fontSize: '11px',
+                              fontSize: '12px',
                               fontWeight: currentLevel === level.index ? '800' : '500',
                               cursor: 'pointer',
                               width: '100%',
@@ -513,7 +621,7 @@ export default function PlayerPanel({
                             }}
                           >
                             <span>{level.name}</span>
-                            {currentLevel === level.index && <Check size={12} />}
+                            {currentLevel === level.index && <Check size={14} />}
                           </button>
                         ))}
                       </div>
@@ -521,13 +629,10 @@ export default function PlayerPanel({
                   </div>
                 )}
                 <button className="pip-btn" title="Picture in Picture" onClick={handlePiP}>
-                  <ExternalLink size={16} />
-                </button>
-                <button className={`theater-btn ${isTheaterMode ? 'active' : ''}`} title="Theater Mode" onClick={onToggleTheaterMode}>
-                  <Monitor size={16} />
+                  <ExternalLink size={18} />
                 </button>
                 <button className="fullscreen-btn" title="Fullscreen" onClick={handleFullscreen}>
-                  <Maximize size={16} />
+                  <Maximize size={18} />
                 </button>
               </div>
             </div>
@@ -547,38 +652,10 @@ export default function PlayerPanel({
             <div className="player-overlay error-overlay" id="player-error" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
               <WifiOff size={40} style={{ color: 'var(--wc-red)', marginBottom: '12px' }} />
               <p id="player-error-text" style={{ marginBottom: '16px' }}>{errorMsg}</p>
-
             </div>
           )}
         </div>
       </div>
-
-      <div className="active-channel-details" id="active-channel-details">
-        <div className="channel-main-info">
-          {activeChannel.logo && activeChannel.logo.trim() !== '' ? (
-            <img 
-              src={activeChannel.logo} 
-              alt={activeChannel.name} 
-              className="active-channel-logo"
-              onError={(e) => {
-                e.target.style.display = 'none';
-              }}
-            />
-          ) : null}
-          <div>
-            <h3 id="active-channel-name">{activeChannel.name}</h3>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '2px' }}>
-              <span id="active-channel-group" style={{ fontSize: '11px', color: 'var(--color-accent)' }}>{activeChannel.group || 'Other'}</span>
-            </div>
-          </div>
-        </div>
-        <div className="channel-actions" style={{ display: 'flex', gap: '8px' }}>
-          <button className={`star-btn ${isFav ? 'active' : ''}`} onClick={() => onToggleFavorite(activeChannel.name)}>
-            <Star size={16} style={{ fill: isFav ? 'currentColor' : 'none' }} />
-            <span>{isFav ? 'Bookmarked' : 'Add to Favorites'}</span>
-          </button>
-        </div>
-      </div>
-    </aside>
+    </div>
   );
 }

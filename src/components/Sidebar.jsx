@@ -67,7 +67,7 @@ export default function Sidebar({
             <circle cx="50" cy="50" r="40" stroke="url(#vortexGradSidebar)" strokeWidth="12" strokeDasharray="180 60" fill="none" strokeLinecap="round" />
             <circle cx="50" cy="50" r="20" fill="url(#vortexGradSidebar)" />
           </svg>
-          <span>VORTEX</span>
+          <span>WORLD CUP</span>
         </div>
       </div>
 
@@ -138,7 +138,7 @@ export default function Sidebar({
 
       <div className="sidebar-footer" style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'stretch', padding: '12px 16px' }}>
 
-        <p style={{ fontSize: '10px', color: 'var(--text-muted)', textAlign: 'center', margin: '2px 0 0' }}>Vortex Player v1.0.0</p>
+        <p style={{ fontSize: '10px', color: 'var(--text-muted)', textAlign: 'center', margin: '2px 0 0' }}>World Cup Player v1.0.0</p>
       </div>
     </aside>
   );

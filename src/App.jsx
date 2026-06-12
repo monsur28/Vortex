@@ -222,6 +222,28 @@ export default function App({ initialChannels = [] }) {
     if (feedRef.current) {
       feedRef.current.scrollTop = 0;
     }
+    // Always open in theater mode (fullscreen overlay)
+    setIsTheaterMode(true);
+  };
+
+  const handleNextChannel = () => {
+    if (!activeChannel) return;
+    const currentIndex = filteredChannels.findIndex(c => c.name === activeChannel.name);
+    if (currentIndex !== -1 && currentIndex < filteredChannels.length - 1) {
+      handleSelectChannel(filteredChannels[currentIndex + 1]);
+    } else if (filteredChannels.length > 0) {
+      handleSelectChannel(filteredChannels[0]);
+    }
+  };
+
+  const handlePrevChannel = () => {
+    if (!activeChannel) return;
+    const currentIndex = filteredChannels.findIndex(c => c.name === activeChannel.name);
+    if (currentIndex > 0) {
+      handleSelectChannel(filteredChannels[currentIndex - 1]);
+    } else if (filteredChannels.length > 0) {
+      handleSelectChannel(filteredChannels[filteredChannels.length - 1]);
+    }
   };
 
   // Infinite scroll trigger
@@ -369,9 +391,14 @@ export default function App({ initialChannels = [] }) {
               activeChannel={activeChannel}
               favorites={favorites}
               onToggleFavorite={handleToggleFavoriteChannel}
-              onClose={() => setActiveChannel(null)}
+              onClose={() => {
+                setActiveChannel(null);
+                setIsTheaterMode(false);
+              }}
               isTheaterMode={isTheaterMode}
               onToggleTheaterMode={() => setIsTheaterMode(!isTheaterMode)}
+              onNextChannel={handleNextChannel}
+              onPrevChannel={handlePrevChannel}
             />
           )}
 

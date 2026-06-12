@@ -16,8 +16,8 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: 'Vortex Live - Premium IPTV Player',
-  description: 'Premium IPTV Web Player with HLS.js',
+  title: 'World Cup Live - Premium Player',
+  description: 'Premium World Cup Web Player with HLS.js',
 };
 
 export default function RootLayout({ children }) {
