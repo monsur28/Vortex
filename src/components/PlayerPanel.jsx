@@ -92,10 +92,16 @@ export default function PlayerPanel({
     let currentUrlIndex = 0;
     const urlCount = activeChannel.urlCount || (Array.isArray(activeChannel.url) ? activeChannel.url.length : 1);
 
-    const initPlayer = async (index) => {
+    const initPlayer = async (index, retryCount = 0) => {
       // Wait for any previous player to finish destroying before creating a new one
       await destroyPromiseRef.current;
       if (isCancelled || !videoRef.current) return; // Component unmounted or channel switched
+
+      // Reset video element to clear any previous MediaErrors
+      if (videoRef.current) {
+        videoRef.current.removeAttribute('src');
+        videoRef.current.load();
+      }
 
       let rawUrl = Array.isArray(activeChannel.url) ? activeChannel.url[index] : activeChannel.url;
       
@@ -144,9 +150,15 @@ export default function PlayerPanel({
             
             player.on(mpegts.default.Events.ERROR, (errorType, errorDetail, errorInfo) => {
               console.error('MPEG-TS Error', errorType, errorDetail, errorInfo);
-              if (currentUrlIndex < urlCount - 1) {
+              if (retryCount < 5) {
+                console.log(`Stream dropped or MSE Error. Reconnecting... (Attempt ${retryCount + 1})`);
+                setBuffering(true);
+                setTimeout(() => {
+                  if (!isCancelled) initPlayer(index, retryCount + 1);
+                }, 3000);
+              } else if (currentUrlIndex < urlCount - 1) {
                 currentUrlIndex++;
-                initPlayer(currentUrlIndex);
+                initPlayer(currentUrlIndex, 0);
               } else {
                 setErrorMsg('Stream Error: ' + errorDetail);
                 setBuffering(false);
