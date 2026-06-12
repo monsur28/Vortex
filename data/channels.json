@@ -1,11 +1,5 @@
 [
   {
-    "name": "CRIC || PTV SPORTS ᴴᴰ",
-    "logo": "http://greenpa1.com/ptvsporthd.png",
-    "group": "CRICKET",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/89.ts"
-  },
-  {
     "name": "T SPORTS",
     "logo": "http://starapk1.com/logo/football.png",
     "group": "FOOTBALL",
