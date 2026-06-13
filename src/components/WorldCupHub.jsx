@@ -343,14 +343,29 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
                   {groupMatches.map(match => {
                     const date = new Date(match.utcDate);
                     const isLive = match.status === 'IN_PLAY' || match.status === 'PAUSED';
+                    const isFinished = match.status === 'FINISHED';
+                    
+                    let scoreDisplay = null;
+                    if (isLive || isFinished) {
+                      const homeScore = match.score?.fullTime?.home ?? '-';
+                      const awayScore = match.score?.fullTime?.away ?? '-';
+                      scoreDisplay = (
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                          <span style={{ fontWeight: '800', color: 'white', fontSize: '11px', background: 'rgba(0,0,0,0.3)', padding: '2px 8px', borderRadius: '4px', letterSpacing: '1px' }}>{homeScore} - {awayScore}</span>
+                          {isFinished && <span style={{ fontSize: '8px', marginTop: '2px', fontWeight: '600' }}>FT</span>}
+                          {isLive && <span style={{ fontSize: '8px', marginTop: '2px', color: '#ef4444', fontWeight: '800' }}>LIVE</span>}
+                        </div>
+                      );
+                    }
+
                     return (
                       <div key={match.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '8px 12px', borderRadius: '6px', fontSize: '11px', borderLeft: isLive ? '2px solid #ef4444' : 'none' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'flex-end' }}>
                           <span style={{ fontWeight: '600' }}>{match.homeTeam?.name || 'TBD'}</span>
                           {match.homeTeam?.crest && <img src={match.homeTeam.crest} alt="" style={{ width: '16px', height: '16px', objectFit: 'contain' }} />}
                         </div>
-                        <div style={{ padding: '0 12px', color: isLive ? '#ef4444' : 'var(--text-secondary)', textAlign: 'center', fontSize: '9px' }}>
-                          {isLive ? <span style={{ fontWeight: '800' }}>LIVE</span> : `${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`}
+                        <div style={{ padding: '0 12px', color: 'var(--text-secondary)', textAlign: 'center', fontSize: '9px', minWidth: '60px' }}>
+                          {scoreDisplay ? scoreDisplay : `${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`}
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'flex-start' }}>
                           {match.awayTeam?.crest && <img src={match.awayTeam.crest} alt="" style={{ width: '16px', height: '16px', objectFit: 'contain' }} />}
