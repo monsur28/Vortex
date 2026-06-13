@@ -251,7 +251,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
             </div>
             
             {matches.length > 0 ? (
-              <div className="wc-matches-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: isPlayerOpen ? '300px' : 'none', overflowY: 'auto', paddingRight: '4px' }}>
+              <div className="wc-matches-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: isPlayerOpen ? '300px' : '400px', overflowY: 'auto', paddingRight: '4px' }}>
                 {matches
                   .filter(m => m.status !== 'FINISHED' && m.status !== 'AWARDED')
                   .sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate))
