@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: process.env.CAPACITOR_BUILD === 'true' ? 'export' : undefined,
+  images: {
+    unoptimized: true,
+  },
   async rewrites() {
+    if (process.env.CAPACITOR_BUILD === 'true') return [];
+    
     return [
       {
         source: '/api/football-data/:path*',

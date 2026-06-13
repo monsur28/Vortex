@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+    <defs>
+        <linearGradient id="vortexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#a855f7" />
+            <stop offset="100%" stop-color="#6366f1" />
+        </linearGradient>
+        <linearGradient id="vortexGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3b82f6" />
+            <stop offset="100%" stop-color="#8b5cf6" />
+        </linearGradient>
+    </defs>
+    <!-- Dark Background Rounded Container -->
+    <rect width="100" height="100" rx="24" fill="#0f1224" />
+    <!-- Rotating Vortex Outer Ring -->
+    <circle cx="50" cy="50" r="35" stroke="url(#vortexGrad)" stroke-width="6" stroke-dasharray="160 50" fill="none" stroke-linecap="round" />
+    <!-- Inner Swirling Ring -->
+    <circle cx="50" cy="50" r="25" stroke="url(#vortexGrad2)" stroke-width="4" stroke-dasharray="90 70" fill="none" stroke-linecap="round" />
+    <!-- Core Engine -->
+    <circle cx="50" cy="50" r="14" fill="url(#vortexGrad)" />
+</svg>

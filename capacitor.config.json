@@ -1,0 +1,10 @@
+{
+  "appId": "com.vortex.iptv",
+  "appName": "Vortex IPTV",
+  "webDir": "out",
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}

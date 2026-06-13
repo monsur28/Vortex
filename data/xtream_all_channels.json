@@ -22488,12 +22488,6 @@
     "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/151223.ts"
   },
   {
-    "name": "ID Fight Sports (D)",
-    "logo": "",
-    "group": "INDONESIA",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/151224.ts"
-  },
-  {
     "name": "ID Disney XD",
     "logo": "",
     "group": "INDONESIA",
@@ -25948,12 +25942,6 @@
     "logo": "",
     "group": "CARIBBEAN",
     "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/154249.ts"
-  },
-  {
-    "name": "Carib Fight Sports (D)",
-    "logo": "",
-    "group": "CARIBBEAN",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/154250.ts"
   },
   {
     "name": "Carib NBA TV (D)",
@@ -35394,12 +35382,6 @@
     "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/196347.ts"
   },
   {
-    "name": "CRIC || FAST SPORTS ᴴᴰ",
-    "logo": "https://i.ibb.co/dtHrw4W/download-2-2.png",
-    "group": "CRICKET",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/87460.ts"
-  },
-  {
     "name": "CRIC || TEN CRICKET",
     "logo": "https://ethnicchannels.com/images/channeldetail/ten-cricket/ten-ckt-logo.png",
     "group": "CRICKET",
@@ -36088,12 +36070,6 @@
     "logo": "",
     "group": "GREEK",
     "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/650.ts"
-  },
-  {
-    "name": "GR: ERT SPORTS",
-    "logo": "",
-    "group": "GREEK",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/652.ts"
   },
   {
     "name": "GR: RIK SAT",
@@ -61122,12 +61098,6 @@
     "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/24114.ts"
   },
   {
-    "name": "T SPORTS",
-    "logo": "http://starapk1.com/logo/football.png",
-    "group": "FOOTBALL",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/52500.ts"
-  },
-  {
     "name": " ATN",
     "logo": "http://starapk1.com/logo/football.png",
     "group": "FOOTBALL",
@@ -64140,12 +64110,6 @@
     "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186626.ts"
   },
   {
-    "name": "CRIC || TNT SPORTS 1 ᶠᴴᴰ",
-    "logo": "http://greenpa1.com/tntsports.png",
-    "group": "CRICKET",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/186627.ts"
-  },
-  {
     "name": "TNT SPORT 2 FHD",
     "logo": "http://b1gchlogos.xyz/wp-content/uploads/2023/07/TNT-Sports-2-New.jpg",
     "group": "SPORTS | UK SPORTS",
@@ -64258,12 +64222,6 @@
     "logo": "https://i.ibb.co/p4knk5y/images-4.png",
     "group": "CRICKET",
     "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/124269.ts"
-  },
-  {
-    "name": "CRIC || T SPORTS ᴴᴰ",
-    "logo": "https://i.ibb.co/34FSKYK/images.png",
-    "group": "CRICKET",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/130714.ts"
   },
   {
     "name": "CRIC || CARIB SPORTSMAX ᴴᴰ",
@@ -65046,12 +65004,6 @@
     "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/98867.ts"
   },
   {
-    "name": "IN: START SPORTS SELECT 2 (4K).",
-    "logo": "https://i.ibb.co/p4knk5y/images-4.png",
-    "group": " SPORTS | INDIA",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/98868.ts"
-  },
-  {
     "name": "IN: SONY TEN 5 (4K).",
     "logo": "https://i.ibb.co/p4knk5y/images-4.png",
     "group": " SPORTS | INDIA",
@@ -65572,18 +65524,6 @@
     "logo": "http://starapk1.com/logo/rugby.png",
     "group": "SPORTS | RUGBY",
     "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/23565.ts"
-  },
-  {
-    "name": "CRIC || TNT SPORTS 3 ᶠᴴᴰ",
-    "logo": "http://greenpa1.com/tntsports.png",
-    "group": "CRICKET",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/148090.ts"
-  },
-  {
-    "name": "CRIC || T SPORTS ᴴᴰ",
-    "logo": "https://i.ibb.co/34FSKYK/images.png",
-    "group": "CRICKET",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/113069.ts"
   },
   {
     "name": "CRIC || SONY SPORTS 4 TAMIL",
@@ -69004,12 +68944,6 @@
     "logo": "https://i.ibb.co/p4knk5y/images-4.png",
     "group": "CRICKET",
     "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/9722.ts"
-  },
-  {
-    "name": "CRIC || T SPORTS ᴴᴰ",
-    "logo": "https://i.ibb.co/34FSKYK/images.png",
-    "group": "CRICKET",
-    "url": "{XTREAM_HOST}/live/{XTREAM_USER}/{XTREAM_PASS}/18452.ts"
   },
   {
     "name": "CRIC || WILLOW SPORTS ᴴᴰ",

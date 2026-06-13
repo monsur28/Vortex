@@ -479,7 +479,7 @@ export default function PlayerPanel({
               </button>
             </div>
           ) : (
-            <video id="video-player" playsInline ref={videoRef} onClick={togglePlay}></video>
+            <video id="video-player" playsInline ref={videoRef}></video>
           )}
 
           {/* Top Header Overlay inside Player */}
