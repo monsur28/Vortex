@@ -571,22 +571,24 @@ export default function PlayerPanel({
                 <span className="time-display live-badge">LIVE</span>
               </div>
               <div className="controls-right" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                {levels.length > 0 && (
+                {(levels.length > 0 || mpegtsInstance) && (
                   <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                     <button 
-                      className={`pip-btn ${showQualityMenu ? 'active' : ''}`} 
-                      title="Video Quality" 
-                      onClick={() => setShowQualityMenu(!showQualityMenu)}
-                      style={{ padding: '0 6px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', fontWeight: '700', borderRadius: '4px', height: '28px', color: showQualityMenu ? 'var(--color-accent)' : 'white' }}
+                      className={`pip-btn ${showQualityMenu && levels.length > 0 ? 'active' : ''}`} 
+                      title={mpegtsInstance ? "Direct Source Stream" : "Video Quality"} 
+                      onClick={() => levels.length > 0 && setShowQualityMenu(!showQualityMenu)}
+                      style={{ padding: '0 6px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', fontWeight: '700', borderRadius: '4px', height: '28px', color: showQualityMenu && levels.length > 0 ? 'var(--color-accent)' : 'white', cursor: mpegtsInstance ? 'default' : 'pointer' }}
                     >
                       <Settings size={16} />
                       <span style={{ fontSize: '11px' }}>
-                        {currentLevel === -1 
-                          ? `Auto${autoHeight ? ` (${autoHeight})` : ''}` 
-                          : levels.find(l => l.index === currentLevel)?.name || 'HD'}
+                        {mpegtsInstance 
+                          ? 'Source' 
+                          : (currentLevel === -1 
+                            ? `Auto${autoHeight ? ` (${autoHeight})` : ''}` 
+                            : levels.find(l => l.index === currentLevel)?.name || 'HD')}
                       </span>
                     </button>
-                    {showQualityMenu && (
+                    {showQualityMenu && levels.length > 0 && (
                       <div className="quality-menu" style={{
                         position: 'absolute',
                         bottom: '40px',
