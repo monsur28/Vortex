@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import App from '../App';
 
-export const dynamic = 'force-dynamic';
 
 export default function Home() {
   // Load and sanitize channels on the server to prevent network tab fetching

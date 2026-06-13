@@ -153,7 +153,7 @@ export default function App({ initialChannels = [] }) {
 
 
   // Filter channels
-  const getFilteredChannels = () => {
+  const filteredChannels = React.useMemo(() => {
     let filtered = [...channels];
 
     if (searchQuery.trim() !== '') {
@@ -171,11 +171,7 @@ export default function App({ initialChannels = [] }) {
     }
 
     return filtered;
-  };
-
-
-
-  const filteredChannels = getFilteredChannels();
+  }, [channels, searchQuery, showFavoritesOnly, currentCategory, favorites]);
   const slicedChannels = filteredChannels.slice(0, visibleCount);
 
   // Category change handler
@@ -307,12 +303,17 @@ export default function App({ initialChannels = [] }) {
   };
 
   // Dynamic categories counts per group
-  const groupsMap = {};
-  channels.forEach(ch => {
-    const groupName = ch.group || 'Other';
-    groupsMap[groupName] = (groupsMap[groupName] || 0) + 1;
-  });
-  const sortedGroups = Object.keys(groupsMap).sort((a, b) => a.localeCompare(b));
+  const { groupsMap, sortedGroups } = React.useMemo(() => {
+    const map = {};
+    channels.forEach(ch => {
+      const groupName = ch.group || 'Other';
+      map[groupName] = (map[groupName] || 0) + 1;
+    });
+    return {
+      groupsMap: map,
+      sortedGroups: Object.keys(map).sort((a, b) => a.localeCompare(b))
+    };
+  }, [channels]);
 
   const totalCount = channels.length;
   const favCount = favorites.length;
