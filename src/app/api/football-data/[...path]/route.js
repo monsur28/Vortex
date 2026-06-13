@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 
 export async function GET(request, { params }) {
-  const { path } = params;
+  const resolvedParams = await params;
+  const { path } = resolvedParams;
   
   if (!path || !Array.isArray(path)) {
     return NextResponse.json({ error: 'Invalid path' }, { status: 400 });
