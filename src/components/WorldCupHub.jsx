@@ -242,29 +242,20 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
             <button className="wc-watch-btn" onClick={() => onWatchLive("Unite8 Sports 1 HD (HINDI)")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>Unite8 Sports 1 HD (HINDI)</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("Zee Bangla Cinema")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>Zee Bangla Cinema</button>
           </div>
-
           {/* Schedule Section */}
           <div className="wc-schedule-section" style={{ marginTop: '24px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
               <h4 style={{ fontSize: '12px', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>
-                {activeGroup} Schedule
+                Upcoming Matches
               </h4>
-              {isPlayerOpen && (
-                 <select 
-                   value={activeGroup} 
-                   onChange={(e) => setActiveGroup(e.target.value)}
-                   style={{ background: 'rgba(0,0,0,0.3)', color: 'white', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '4px', padding: '2px 6px', fontSize: '10px' }}
-                 >
-                   {Object.keys(groupsData).map(grp => (
-                     <option key={grp} value={grp}>{grp}</option>
-                   ))}
-                 </select>
-              )}
             </div>
             
-            {groupMatches.length > 0 ? (
+            {matches.length > 0 ? (
               <div className="wc-matches-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: isPlayerOpen ? '300px' : 'none', overflowY: 'auto', paddingRight: '4px' }}>
-                {groupMatches.filter(m => m.status !== 'FINISHED' && m.status !== 'AWARDED').map(match => {
+                {matches
+                  .filter(m => m.status !== 'FINISHED' && m.status !== 'AWARDED')
+                  .sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate))
+                  .map(match => {
                   const date = new Date(match.utcDate);
                   const isLive = match.status === 'IN_PLAY' || match.status === 'PAUSED';
                   const statusText = isLive ? 'LIVE' : 'UPCOMING';
@@ -295,7 +286,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
               </div>
             ) : (
               <div style={{ padding: '20px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '6px', fontSize: '12px', color: 'var(--text-secondary)' }}>
-                No schedule data found for this group right now.<br/>
+                No upcoming matches found.<br/>
                 <span style={{ fontSize: '10px', opacity: 0.7 }}>(If the API is loading or rate-limited, please check again shortly.)</span>
               </div>
             )}
