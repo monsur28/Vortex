@@ -99,12 +99,8 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || '/api/football-data';
         const [standingsRes, matchesRes] = await Promise.all([
-          fetch(`${apiUrl}/v4/competitions/WC/standings`, {
-            headers: { 'X-Auth-Token': process.env.NEXT_PUBLIC_FOOTBALL_DATA_API_KEY }
-          }),
-          fetch(`${apiUrl}/v4/competitions/WC/matches`, {
-            headers: { 'X-Auth-Token': process.env.NEXT_PUBLIC_FOOTBALL_DATA_API_KEY }
-          })
+          fetch(`${apiUrl}/v4/competitions/WC/standings`),
+          fetch(`${apiUrl}/v4/competitions/WC/matches`)
         ]);
 
         if (standingsRes.ok) {

@@ -8,10 +8,7 @@ const nextConfig = {
     if (process.env.CAPACITOR_BUILD === 'true') return [];
     
     return [
-      {
-        source: '/api/football-data/:path*',
-        destination: 'https://api.football-data.org/:path*',
-      },
+
       {
         source: '/stream-proxy/:path*',
         destination: 'http://198.195.239.50:8095/:path*',
