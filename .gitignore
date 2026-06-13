@@ -17,6 +17,7 @@ jspm_packages/
 # Output directory
 dist/
 build/
+out/
 
 # IDEs and editors
 .idea/
@@ -46,4 +47,3 @@ Thumbs.db
 
 # Next.js
 .next/
-
