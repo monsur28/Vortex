@@ -135,6 +135,12 @@ export default function PlayerPanel({
         // If it's a raw .ts stream (like Xtream Codes), use mpegts.js instead of Shaka
         if (rawUrl && (rawUrl.endsWith('.ts') || rawUrl.includes('.ts?'))) {
           const mpegts = await import('mpegts.js');
+          if (mpegts.default.LoggingControl) {
+            mpegts.default.LoggingControl.enableAll = false;
+            mpegts.default.LoggingControl.enableDebug = false;
+            mpegts.default.LoggingControl.enableInfo = false;
+            mpegts.default.LoggingControl.enableWarn = false;
+          }
           if (mpegts.default.getFeatureList().mseLivePlayback) {
             const player = mpegts.default.createPlayer({
               type: 'mse',
