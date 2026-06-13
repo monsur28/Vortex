@@ -336,6 +336,36 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
                 </tbody>
               </table>
             </div>
+
+            {/* Active Group Matches */}
+            {groupMatches && groupMatches.length > 0 && (
+              <div style={{ marginTop: '24px', background: 'rgba(0,0,0,0.15)', borderRadius: '8px', padding: '16px', border: '1px solid rgba(255,255,255,0.02)' }}>
+                <h4 style={{ fontSize: '11px', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px', margin: '0 0 12px 0' }}>
+                  {activeGroup} Matches
+                </h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '300px', overflowY: 'auto', paddingRight: '4px' }}>
+                  {groupMatches.map(match => {
+                    const date = new Date(match.utcDate);
+                    const isLive = match.status === 'IN_PLAY' || match.status === 'PAUSED';
+                    return (
+                      <div key={match.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '8px 12px', borderRadius: '6px', fontSize: '11px', borderLeft: isLive ? '2px solid #ef4444' : 'none' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'flex-end' }}>
+                          <span style={{ fontWeight: '600' }}>{match.homeTeam?.name || 'TBD'}</span>
+                          {match.homeTeam?.crest && <img src={match.homeTeam.crest} alt="" style={{ width: '16px', height: '16px', objectFit: 'contain' }} />}
+                        </div>
+                        <div style={{ padding: '0 12px', color: isLive ? '#ef4444' : 'var(--text-secondary)', textAlign: 'center', fontSize: '9px' }}>
+                          {isLive ? <span style={{ fontWeight: '800' }}>LIVE</span> : `${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`}
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'flex-start' }}>
+                          {match.awayTeam?.crest && <img src={match.awayTeam.crest} alt="" style={{ width: '16px', height: '16px', objectFit: 'contain' }} />}
+                          <span style={{ fontWeight: '600' }}>{match.awayTeam?.name || 'TBD'}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
