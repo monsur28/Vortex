@@ -7,7 +7,9 @@
     "drm": {
       "type": "clearkey",
       "key": "549ab7cd35a64bb6bb479ecead04d69d:829799ed534d11fcadeb4b192467e050"
-    }
+    },
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "Fifa World Cup 2",
@@ -17,7 +19,9 @@
     "drm": {
       "type": "clearkey",
       "key": "ce7ab3022e753307997f58afe001bac4:72d631a66e635c60829a0fe7705516c1"
-    }
+    },
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "T SPORTS",
@@ -53,7 +57,9 @@
     "drm": {
       "type": "clearkey",
       "key": "549ab7cd35a64bb6bb479ecead04d69d:829799ed534d11fcadeb4b192467e050"
-    }
+    },
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "Fifa world Cup Spanish",
