@@ -7,8 +7,8 @@
       "type": "clearkey",
       "key": "a7d11d37a1f7611ee88d4db880171f32:68f96d618b0b956b008c445896a25a79"
     },
-    "useProxy": true,
-    "proxySegments": true
+    "useProxy": false,
+    "proxySegments": false
   },
   {
     "name": "Fox Sports 4K",
@@ -18,8 +18,8 @@
       "type": "clearkey",
       "key": "f6564ec2aee819046328a0e153be574d:ff46a8a1031eb27ef22576a077c98ab7"
     },
-    "useProxy": true,
-    "proxySegments": true
+    "useProxy": false,
+    "proxySegments": false
   },
   {
     "name": "Fox Sport [English]",
@@ -29,8 +29,8 @@
       "type": "clearkey",
       "key": "c620c93c60c04999eb9ddc28ecfb70a8:e76a709c251313190e76cb3c3d3a5824"
     },
-    "useProxy": true,
-    "proxySegments": true
+    "useProxy": false,
+    "proxySegments": false
   },
   {
     "name": "Tapmad",
@@ -47,8 +47,8 @@
       "type": "clearkey",
       "key": "549ab7cd35a64bb6bb479ecead04d69d:829799ed534d11fcadeb4b192467e050"
     },
-    "useProxy": true,
-    "proxySegments": true
+    "useProxy": false,
+    "proxySegments": false
   },
   {
     "name": "Fifa World Cup 2",
@@ -59,8 +59,8 @@
       "type": "clearkey",
       "key": "ce7ab3022e753307997f58afe001bac4:72d631a66e635c60829a0fe7705516c1"
     },
-    "useProxy": true,
-    "proxySegments": true
+    "useProxy": false,
+    "proxySegments": false
   },
   {
     "name": "T SPORTS",
@@ -97,8 +97,8 @@
       "type": "clearkey",
       "key": "549ab7cd35a64bb6bb479ecead04d69d:829799ed534d11fcadeb4b192467e050"
     },
-    "useProxy": true,
-    "proxySegments": true
+    "useProxy": false,
+    "proxySegments": false
   },
   {
     "name": "Fifa world Cup Spanish",
