@@ -1,5 +1,16 @@
 [
   {
+    "name": "Fox Sport [English]",
+    "group": "Sports",
+    "url": "https://abgfgo7aaaaaaaammo4qlji7ci5df.ta.bia-cf.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/ap5wz1ofsp/out/v1/7fa6feef143747beaa186ebb6dfb2532/cenc.mpd",
+    "drm": {
+      "type": "clearkey",
+      "key": "c620c93c60c04999eb9ddc28ecfb70a8:e76a709c251313190e76cb3c3d3a5824"
+    },
+    "useProxy": true,
+    "proxySegments": true
+  },
+  {
     "name": "Tapmad",
     "logo": "https://play-lh.googleusercontent.com/FwIe16-e5D3K6hZ8Q11mJ8bB6x10xH9O3a8L0g-PZ6X1XJ0x8w8r5Y0s-g9O4G9F2P8=w240-h480-rw",
     "group": "Sports",
