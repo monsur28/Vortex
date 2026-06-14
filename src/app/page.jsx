@@ -28,7 +28,7 @@ export default function Home() {
         isDash: targetUrl.includes('.mpd') || (channel.drm && channel.drm.type) ? true : false,
         hasDrm: !!channel.drm,
         drm: channel.drm,
-        useProxy: !!channel.proxy,
+        useProxy: !!channel.proxy || !!channel.useProxy,
         proxySegments: !!channel.proxySegments,
         urlCount: originalUrls.length,
         iframeUrl: targetUrl.startsWith('roarzone://') ? targetUrl : undefined
