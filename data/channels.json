@@ -1,5 +1,27 @@
 [
   {
+    "name": "D Sports",
+    "group": "Sports",
+    "url": "https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/ubehitlwzo/out/v1/8e09c381a51f4366a19e979418112e8f/cenc.mpd",
+    "drm": {
+      "type": "clearkey",
+      "key": "a7d11d37a1f7611ee88d4db880171f32:68f96d618b0b956b008c445896a25a79"
+    },
+    "useProxy": true,
+    "proxySegments": true
+  },
+  {
+    "name": "Fox Sports 4K",
+    "group": "Sports",
+    "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
+    "drm": {
+      "type": "clearkey",
+      "key": "f6564ec2aee819046328a0e153be574d:ff46a8a1031eb27ef22576a077c98ab7"
+    },
+    "useProxy": true,
+    "proxySegments": true
+  },
+  {
     "name": "Fox Sport [English]",
     "group": "Sports",
     "url": "https://abgfgo7aaaaaaaammo4qlji7ci5df.ta.bia-cf.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/ap5wz1ofsp/out/v1/7fa6feef143747beaa186ebb6dfb2532/cenc.mpd",
