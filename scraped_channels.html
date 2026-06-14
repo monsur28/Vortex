@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LiveTV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://jwpsrv.com/library/XpMfzFwiEeOfZhIxOQfUww.js"></script>
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card: #1a1a1a;
+            --accent: #ff0055;
+            --text: #fff;
+            --hover: #2a2a2a;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+        }
+        .app-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+        /* Player Section - Reduced size (now flex: 2 instead of flex: 3) */
+        .player-section {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            background: #000;
+            padding: 20px;
+            gap: 15px;
+            box-sizing: border-box;
+        }
+        .video-container {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        /* JW Player div fills the container */
+        #main-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .video-info h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        /* Sidebar remains the same */
+        .sidebar {
+            flex: 1;
+            min-width: 350px;
+            background: var(--card);
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgba(255,255,255,.1);
+        }
+        .search-container {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+        #channel-search {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,.05);
+            color: #fff;
+            margin-bottom: 15px;
+            outline: none;
+        }
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .cat-tab {
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(255,255,255,.08);
+            color: #fff;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .cat-tab.active { background: var(--accent); }
+        .channel-list {
+            list-style: none;
+            margin: 0;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            overflow-y: auto;
+            align-content: start;
+        }
+        .channel-item {
+            background: rgba(255,255,255,.04);
+            border-radius: 12px;
+            cursor: pointer;
+            padding: auto auto;
+            text-align: center;
+            transition: 0.2s;
+            border: 2px solid transparent;
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .channel-item:hover { background: var(--hover); }
+        .channel-item.active { border-color: var(--accent); background: rgba(255,0,85,0.05); }
+        .logo-wrapper {
+            width: 90px;
+            height: 90px;
+            min-height: 60px;
+            min-width: 60px;
+            margin-bottom: 10px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .channel-logo {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .channel-name {
+            font-size: .75rem;
+            font-weight: 600;
+            color: #ddd;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.2;
+        }
+        @media(max-width: 992px){
+            body, html { overflow: auto; height: auto; }
+            .app-container { flex-direction: column; }
+            .sidebar { min-width: 100%; height: auto; }
+            .channel-list { overflow-y: visible; }
+            /* Other mobile styles remain unchanged */
+        }
+        /* Additional mobile adjustments if needed */
+        @media (max-width: 992px) {
+            .player-section {
+                flex: none;
+            }
+        }
+
+        .video-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .download-btn {
+            padding: 8px 16px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .download-btn:hover {
+            background: #e6004d;
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <main class="player-section">
+        <div class="video-container">
+            <!-- JW Player container div instead of iframe -->
+            <div id="main-player"></div>
+        </div>
+        <div class="video-info">
+            <h1 id="now-playing-title">Select a Channel</h1>
+            <a href="LiveTV.apk" download class="download-btn">⬇ Download App</a>
+         </div>
+    </main>
+    <aside class="sidebar">
+        <div class="search-container">
+            <input id="channel-search" placeholder="Search channels..." autocomplete="off">
+            <div class="category-tabs">
+                <button class="cat-tab active" data-type="all">All</button>
+                <button class="cat-tab" data-type="Sports">Sports</button>
+                <button class="cat-tab" data-type="News">News</button>
+                <button class="cat-tab" data-type="Bangla">Bangla</button>
+                <button class="cat-tab" data-type="Indian Bangla">Indian Bangla</button>
+                <button class="cat-tab" data-type="Hindi">Hindi</button>
+                <button class="cat-tab" data-type="Kids">Kids</button>
+                <button class="cat-tab" data-type="Documentary">Doc</button>
+                <button class="cat-tab" data-type="Music">Music</button>
+                <button class="cat-tab" data-type="Other">Other</button>
+            </div>
+        </div>
+        <ul class="channel-list" id="listbar"></ul>
+    </aside>
+</div>
+<script>
+    // JW Player instance reference
+    let jwInstance = null;
+
+    const listBar = document.getElementById("listbar");
+    const title = document.getElementById("now-playing-title");
+    const playerDiv = document.getElementById("main-player");
+    const search = document.getElementById("channel-search");
+    const tabs = document.querySelectorAll(".cat-tab");
+    let items = [];
+    let activeCategory = "all";
+
+    fetch("tv_channels.json")
+    .then(r => r.json())
+    .then(data => {
+        const categoryCount = {};
+        data.channels.forEach((ch, i) => {
+			if (ch.status === "hidden") return;
+            categoryCount[ch.category] = (categoryCount[ch.category] || 0) + 1;
+            const li = document.createElement("li");
+            li.className = "channel-item";
+            li.dataset.name = ch.name.toLowerCase();
+            li.dataset.category = ch.category;
+            li.innerHTML = `
+                <div class="logo-wrapper">
+                    <img src="${ch.logo}" class="channel-logo">
+                </div>
+                <div class="channel-name">${ch.name}</div>
+            `;
+            li.onclick = () => {
+                // Load new stream in JW Player
+                if (jwInstance) {
+                    jwInstance.load([{ file: ch.url }]);
+                    jwInstance.play();
+                } else {
+                    // First time: setup the player
+                    jwInstance = jwplayer("main-player").setup({
+                        file: ch.url,
+                        width: "100%",
+                        height: "100%",
+                        autostart: false,
+						mute: false
+                        // Add hlsjsConfig if needed for better HLS handling
+                        // hlsjsConfig: { }
+                    });
+                }
+                title.innerText = ch.name;
+                document.querySelectorAll(".channel-item").forEach(x => x.classList.remove("active"));
+                li.classList.add("active");
+                if (window.innerWidth < 992) window.scrollTo({ top: 0, behavior: "smooth" });
+            };
+            listBar.appendChild(li);
+            items.push(li);
+        });
+                tabs.forEach(tab => {
+                    const cat = tab.dataset.type;
+		        
+                    if (cat === "all") return;
+		        
+                    if (!categoryCount[cat]) {
+                        tab.style.display = "none";
+                    }
+                });
+        if (items.length > 0) items[0].click(); // Auto-select first channel
+    });
+
+    function filterChannels() {
+        const q = search.value.toLowerCase();
+        items.forEach(i => {
+            const matchName = i.dataset.name.includes(q);
+            const matchCat = (activeCategory === "all" || i.dataset.category === activeCategory);
+            i.style.display = (matchName && matchCat) ? "flex" : "none";
+        });
+    }
+    search.addEventListener("input", filterChannels);
+    tabs.forEach(tab => {
+        tab.onclick = () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+            activeCategory = tab.dataset.type;
+            filterChannels();
+        };
+    });
+</script>
+</body>
+
+</html>
