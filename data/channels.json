@@ -11,9 +11,9 @@
     "proxySegments": false
   },
   {
-    "name": "Fox Sports 4K",
+    "name": "Fox One",
     "group": "Sports",
-    "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
+    "url": "https://otte-qw.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
     "drm": {
       "type": "clearkey",
       "key": "f6564ec2aee819046328a0e153be574d:ff46a8a1031eb27ef22576a077c98ab7"
@@ -39,7 +39,7 @@
     "url": "https://premierleagpl23.akamaized.net/hls/live/2107108/tapmad-P2s6L_FiN@L-UrU/level_0.m3u8"
   },
   {
-    "name": "Fifa World Cup 1",
+    "name": "WorldCupTV",
     "logo": "https://city-png.b-cdn.net/preview/preview_public/uploads/preview/hd-official-2026-fifa-world-cup-transparent-png-701751712076865bw3umpw9lk.png",
     "group": "Sports",
     "url": "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/ch299/default/index.mpd",
@@ -89,7 +89,7 @@
     }
   },
   {
-    "name": "Fifa World Cup 1",
+    "name": "WorldCupTV",
     "logo": "https://city-png.b-cdn.net/preview/preview_public/uploads/preview/hd-official-2026-fifa-world-cup-transparent-png-701751712076865bw3umpw9lk.png",
     "group": "Sports",
     "url": "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/ch299/default/index.mpd",
