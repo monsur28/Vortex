@@ -189,6 +189,36 @@ export default function PlayerPanel({
         newShaka = new shaka.Player();
         await newShaka.attach(video);
 
+        // Advanced configuration for live streams to prevent buffering
+        newShaka.configure({
+          manifest: {
+            defaultPresentationDelay: 15,
+            dash: {
+              ignoreMinBufferTime: true,
+              ignoreSuggestedPresentationDelay: true,
+              autoCorrectDrift: true
+            }
+          },
+          streaming: {
+            bufferingGoal: 30,
+            rebufferingGoal: 3,
+            bufferBehind: 10,
+            jumpLargeGaps: true,
+            smallGapLimit: 2.5,
+            retryParameters: {
+              maxAttempts: 15,
+              baseDelay: 1000,
+              backoffFactor: 2
+            }
+          },
+          abr: {
+            enabled: true,
+            defaultBandwidthEstimate: 300000,
+            switchInterval: 4,
+            clearBufferSwitch: false
+          }
+        });
+
         const drmConfig = {};
         if (activeChannel.hasDrm) {
           try {
