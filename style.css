@@ -1,27 +1,29 @@
 /* Core Variables & Design Tokens */
 :root {
-    --bg-dark: #070913;
-    --bg-surface: #0f1224;
-    --bg-surface-elevated: #161b35;
+    --bg-dark: #000000;
+    --bg-surface: #0a0518;
+    --bg-surface-elevated: #150b33;
 
-    --color-primary: #7c3aed;
-    --color-primary-glow: rgba(124, 58, 237, 0.4);
-    --color-accent: #06b6d4;
-    --color-accent-glow: rgba(6, 182, 212, 0.4);
+    --color-primary: #16F529; /* FIFA Neon Green */
+    --color-primary-glow: rgba(22, 245, 41, 0.4);
+    --color-accent: #6826FA; /* FIFA Deep Purple */
+    --color-accent-glow: rgba(104, 38, 250, 0.4);
+    --color-fifa-red: #FF1C5E; /* FIFA Neon Red */
+    --color-fifa-blue: #034FFF; /* FIFA Vibrant Blue */
 
-    --color-success: #10b981;
+    --color-success: #16F529;
     --color-warning: #f59e0b;
-    --color-error: #ef4444;
+    --color-error: #FF1C5E;
 
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
+    --text-primary: #ffffff;
+    --text-secondary: #e2e8f0;
+    --text-muted: #94a3b8;
 
-    --glass-bg: rgba(15, 18, 36, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: rgba(0, 0, 0, 0.4);
+    --glass-bg: rgba(10, 5, 24, 0.6);
+    --glass-border: rgba(22, 245, 41, 0.15); /* Neon Green border */
+    --glass-shadow: 0 8px 32px 0 rgba(3, 79, 255, 0.37); /* Blue 3D shadow */
     --backdrop-blur: blur(16px);
-
+    --neon-box-shadow: 0 0 10px rgba(22, 245, 41, 0.5), 0 0 20px rgba(22, 245, 41, 0.3), 0 0 30px rgba(104, 38, 250, 0.2);
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 20px;
@@ -47,8 +49,9 @@ body {
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
     background-image:
-        radial-gradient(circle at 10% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.06) 0%, transparent 40%);
+        radial-gradient(circle at 10% 20%, rgba(104, 38, 250, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(22, 245, 41, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(3, 79, 255, 0.05) 0%, transparent 50%);
 }
 
 h1,
@@ -100,14 +103,16 @@ input {
    ============================= */
 .sidebar {
     width: var(--sidebar-width);
-    min-width: var(--sidebar-width);
-    flex-shrink: 0;
-    background-color: var(--bg-surface);
+    background-color: var(--glass-bg);
+    backdrop-filter: var(--backdrop-blur);
     border-right: 1px solid var(--glass-border);
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    flex-shrink: 0;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 100;
-    transition: width var(--transition-normal), min-width var(--transition-normal);
+    box-shadow: 2px 0 20px rgba(104, 38, 250, 0.2);
     overflow: hidden;
 }
 
@@ -229,6 +234,97 @@ input {
 
 .categories-list {
     list-style: none;
+}
+
+.player-panel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.player-panel-overlay.theater-mode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+}
+
+.player-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--backdrop-blur);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--neon-box-shadow);
+    z-index: 10;
+}
+
+.player-video-container {
+    flex: 1;
+    position: relative;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    perspective: 1000px;
+    padding: 20px;
+}
+
+/* 3D Video Wrapper */
+.video-wrapper-3d {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--neon-box-shadow);
+    border: 2px solid rgba(22, 245, 41, 0.3);
+    transition: transform 0.5s ease;
+}
+
+.video-wrapper-3d:hover {
+    transform: translateZ(20px) rotateX(2deg);
+    box-shadow: 0 0 20px rgba(22, 245, 41, 0.6), 0 0 40px rgba(104, 38, 250, 0.4);
+}
+
+/* 3D Floating Custom Controls */
+.custom-controls-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    background: rgba(10, 5, 24, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: var(--neon-box-shadow);
+    z-index: 100;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.custom-controls-overlay:hover {
+    transform: translateX(-50%) translateY(-5px);
+    box-shadow: 0 10px 40px rgba(3, 79, 255, 0.5);
 }
 
 .category-item {
@@ -865,17 +961,26 @@ video.aspect-fill {
    CHANNEL CARDS
    ============================= */
 .channel-card {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--glass-border);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(8px);
     border-radius: var(--radius-md);
-    padding: 16px 10px 14px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    gap: 12px;
     cursor: pointer;
     transition: all var(--transition-normal);
-    animation: fadeInUp 0.35s ease both;
+    border: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+    transform: perspective(500px) translateZ(0);
+}
+
+.channel-card:hover {
+    transform: perspective(500px) translateZ(10px) translateY(-4px);
+    box-shadow: var(--neon-box-shadow);
+    border-color: var(--color-primary);
 }
 
 @keyframes fadeInUp {
