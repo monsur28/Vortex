@@ -217,6 +217,22 @@ export default function PlayerPanel({
           ui: false,
           tweaks: {
             app_id: 'com.iptv.app'
+          },
+          network: {
+            preprocessHttpRequest: (type, request) => {
+                if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
+                    if (request.url && request.url.startsWith('http') && !request.url.includes('/api/proxy')) {
+                      const isManifestProxy = (activeChannel.proxy || activeChannel.useProxy) && (type === HttpRequestType.MANIFEST_DASH || type === HttpRequestType.MANIFEST_HLS_MASTER || type === HttpRequestType.MANIFEST_HLS_VARIANT);
+                      const isSegmentProxy = activeChannel.proxySegments && (type === HttpRequestType.MEDIA_VIDEO || type === HttpRequestType.MEDIA_AUDIO);
+                      const isLicenseProxy = activeChannel.proxySegments && (type === HttpRequestType.DRM_LICENSE_CLEARKEY || type === HttpRequestType.KEY_HLS_AES);
+        
+                      if (isManifestProxy || isSegmentProxy || isLicenseProxy) {
+                        request.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(request.url)}`;
+                      }
+                    }
+                }
+                return Promise.resolve(request);
+            }
           }
         };
 
@@ -309,22 +325,7 @@ export default function PlayerPanel({
           }
         });
 
-        // Intercept requests if proxying is enabled
-        if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
-            newBitmovin.network.addRequestFilter((type, request) => {
-                if (request.url && request.url.startsWith('http') && !request.url.includes('/api/proxy')) {
-                  const isManifestProxy = (activeChannel.proxy || activeChannel.useProxy) && (type === HttpRequestType.MANIFEST_DASH || type === HttpRequestType.MANIFEST_HLS_MASTER || type === HttpRequestType.MANIFEST_HLS_VARIANT);
-                  const isSegmentProxy = activeChannel.proxySegments && (type === HttpRequestType.MEDIA_VIDEO || type === HttpRequestType.MEDIA_AUDIO);
-                  const isLicenseProxy = activeChannel.proxySegments && (type === HttpRequestType.DRM_LICENSE_CLEARKEY || type === HttpRequestType.KEY_HLS_AES);
-    
-                  if (isManifestProxy || isSegmentProxy || isLicenseProxy) {
-                    request.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(request.url)}`;
-                  }
-                }
-                return Promise.resolve(request);
-            });
-        }
-        
+        // Request filter has been moved to config.network.preprocessHttpRequest
         newBitmovin.on(PlayerEvent.VideoPlaybackQualityChanged, (e) => {
            if (e.targetQuality && e.targetQuality.height) {
               let hName = e.targetQuality.height + 'p';
