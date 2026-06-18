@@ -182,12 +182,6 @@ export default function PlayerPanel({
         const Player = bitmovin.Player || bitmovinModule.Player;
         const PlayerEvent = bitmovin.PlayerEvent || bitmovinModule.PlayerEvent;
         const HttpRequestType = bitmovin.HttpRequestType || bitmovinModule.HttpRequestType;
-        
-        if (!Player || !Player.isSupported()) {
-          setErrorMsg('Browser not supported for Bitmovin Player');
-          setBuffering(false);
-          return;
-        }
 
         const config = {
           key: 'a68001f0-1a8c-4347-b14e-d0a9481165bd',
