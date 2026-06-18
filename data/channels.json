@@ -1,6 +1,6 @@
 [
   {
-    "name": "M6 FRANCE (Sportzfy)",
+    "name": "M6 FRANCE",
     "group": "FIFA World Cup 2026",
     "url": "https://origin-m6web.live.6cloud.fr/out/v1/6play/6play-m6/cmaf_cenc00/dash-short-hd.mpd",
     "drm": {
@@ -12,7 +12,7 @@
     "proxySegments": false
   },
   {
-    "name": "TSN 1 (Sportzfy)",
+    "name": "TSN 1",
     "group": "FIFA World Cup 2026",
     "url": "https://kplust.pages.dev/spw1.m3u8",
     "bufferless": true,
