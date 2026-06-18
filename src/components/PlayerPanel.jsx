@@ -301,7 +301,10 @@ export default function PlayerPanel({
         
         newBitmovin.on(PlayerEvent.VideoPlaybackQualityChanged, (e) => {
            if (e.targetQuality && e.targetQuality.height) {
-              setAutoHeight(e.targetQuality.height + 'p');
+              let hName = e.targetQuality.height + 'p';
+              if (e.targetQuality.height >= 2160) hName = '4K';
+              else if (e.targetQuality.height >= 1440) hName = '2K';
+              setAutoHeight(hName);
            }
         });
 
@@ -314,11 +317,18 @@ export default function PlayerPanel({
         const tracks = newBitmovin.getAvailableVideoQualities();
         if (tracks && tracks.length > 0) {
           const lvls = tracks
-            .map(t => ({
-              index: t.id,
-              height: t.height,
-              name: `${t.height}p`
-            }))
+            .map(t => {
+              let qName = `${t.height}p`;
+              if (t.height >= 2160) qName = '4K (UHD)';
+              else if (t.height >= 1440) qName = '2K (QHD)';
+              else if (t.height >= 1080) qName = '1080p (FHD)';
+              else if (t.height >= 720) qName = '720p (HD)';
+              return {
+                index: t.id,
+                height: t.height,
+                name: qName
+              };
+            })
             .filter((v, i, a) => a.findIndex(t => (t.height === v.height)) === i)
             .sort((a, b) => b.height - a.height);
           setLevels(lvls);
