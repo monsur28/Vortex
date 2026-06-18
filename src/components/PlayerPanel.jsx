@@ -249,26 +249,51 @@ export default function PlayerPanel({
             source.hls = streamUrl; 
         }
 
-        if (activeChannel.hasDrm) {
+        if (activeChannel.hasDrm || activeChannel.drm) {
           try {
-            const resp = await fetch(`${window.location.origin}/api/clearkey?id=${activeChannel.id}`, { 
-              method: 'POST', 
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({}) 
-            });
-            if (resp.ok) {
-              const data = await resp.json();
-              if (data.keys && data.keys.length > 0) {
-                source.drm = {
-                    clearkey: data.keys.map(k => ({
-                        kid: k.kid,
-                        key: k.k
-                    }))
-                };
+            let clearKeys = [];
+            
+            // Extract keys directly from the channel object to avoid a network request
+            if (activeChannel.drm && activeChannel.drm.key) {
+              let keyStr = activeChannel.drm.key;
+              if (keyStr.startsWith('{')) {
+                try {
+                  let parsed = JSON.parse(keyStr);
+                  if (parsed.keys) {
+                    parsed.keys.forEach(k => clearKeys.push({ kid: k.kid, key: k.k }));
+                  }
+                } catch(e) {}
+              } else if (keyStr.includes(':')) {
+                let [kidHex, keyHex] = keyStr.split(':');
+                clearKeys.push({ kid: kidHex, key: keyHex });
+              }
+            }
+
+            if (clearKeys.length > 0) {
+              source.drm = {
+                clearkey: clearKeys
+              };
+            } else if (activeChannel.hasDrm) {
+              // Fallback network request only if embedded keys are missing
+              const resp = await fetch(`${window.location.origin}/api/clearkey?id=${activeChannel.id}`, { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({}) 
+              });
+              if (resp.ok) {
+                const data = await resp.json();
+                if (data.keys && data.keys.length > 0) {
+                  source.drm = {
+                      clearkey: data.keys.map(k => ({
+                          kid: k.kid,
+                          key: k.k
+                      }))
+                  };
+                }
               }
             }
           } catch(e) {
-            console.error('Failed to fetch DRM keys', e);
+            console.error('Failed to parse DRM keys', e);
           }
         }
 
