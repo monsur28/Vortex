@@ -20,7 +20,7 @@ export default function PlayerPanel({
   const [volume, setVolume] = useState(1);
   const [buffering, setBuffering] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  const [shakaInstance, setShakaInstance] = useState(null);
+  const [bitmovinInstance, setBitmovinInstance] = useState(null);
   const [mpegtsInstance, setMpegtsInstance] = useState(null);
   const [levels, setLevels] = useState([]);
   const [currentLevel, setCurrentLevel] = useState(-1); // -1 means Auto
@@ -87,7 +87,7 @@ export default function PlayerPanel({
     if (!video) return;
 
     let isCancelled = false;
-    let newShaka = null;
+    let newBitmovin = null;
     let localMpegts = null;
     let currentUrlIndex = 0;
     const urlCount = activeChannel.urlCount || (Array.isArray(activeChannel.url) ? activeChannel.url.length : 1);
@@ -122,9 +122,9 @@ export default function PlayerPanel({
         streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&url=${encodeURIComponent(rawUrl)}&t=${Date.now()}`;
       }
 
-      if (newShaka) {
-        await newShaka.destroy();
-        newShaka = null;
+      if (newBitmovin) {
+        await newBitmovin.destroy();
+        newBitmovin = null;
       }
       if (localMpegts) {
         localMpegts.destroy();
@@ -177,49 +177,56 @@ export default function PlayerPanel({
           return; // Stop here, don't init Shaka
         }
 
-        const shaka = await import('shaka-player');
-        shaka.polyfill.installAll();
-
-        if (!shaka.Player.isBrowserSupported()) {
-          setErrorMsg('Browser not supported');
+        const bitmovin = await import('bitmovin-player');
+        
+        if (!bitmovin.Player.isSupported()) {
+          setErrorMsg('Browser not supported for Bitmovin Player');
           setBuffering(false);
           return;
         }
 
-        newShaka = new shaka.Player();
-        await newShaka.attach(video);
-
-        // Advanced configuration for live streams to prevent buffering
-        newShaka.configure({
-          manifest: {
-            defaultPresentationDelay: 15,
-            dash: {
-              ignoreMinBufferTime: true,
-              ignoreSuggestedPresentationDelay: true,
-              autoCorrectDrift: true
-            }
+        const config = {
+          key: 'a68001f0-1a8c-4347-b14e-d0a9481165bd',
+          playback: {
+            autoplay: true,
+            muted: isMuted,
           },
-          streaming: {
-            bufferingGoal: 30,
-            rebufferingGoal: 3,
-            bufferBehind: 10,
-            jumpLargeGaps: true,
-            smallGapLimit: 2.5,
-            retryParameters: {
-              maxAttempts: 15,
-              baseDelay: 1000,
-              backoffFactor: 2
-            }
-          },
-          abr: {
-            enabled: true,
-            defaultBandwidthEstimate: 300000,
-            switchInterval: 4,
-            clearBufferSwitch: false
+          ui: false,
+          tweaks: {
+            app_id: 'com.iptv.app'
           }
-        });
+        };
 
-        const drmConfig = {};
+        if (activeChannel.bufferless) {
+            config.live = { lowLatency: true };
+            config.tweaks = { ...config.tweaks, max_buffer_level: 5 };
+        }
+
+        let container = document.getElementById('bm-container');
+        if (!container) {
+          container = document.createElement('div');
+          container.id = 'bm-container';
+          container.style.position = 'absolute';
+          container.style.inset = '0';
+          container.style.zIndex = '0';
+          videoRef.current.parentNode.insertBefore(container, videoRef.current);
+          videoRef.current.style.display = 'none';
+        }
+
+        newBitmovin = new bitmovin.Player(container, config);
+
+        const source = {
+            title: activeChannel.name
+        };
+        
+        if (streamUrl.includes('.mpd')) {
+            source.dash = streamUrl;
+        } else if (streamUrl.includes('.m3u8')) {
+            source.hls = streamUrl;
+        } else {
+            source.hls = streamUrl; 
+        }
+
         if (activeChannel.hasDrm) {
           try {
             const resp = await fetch(`${window.location.origin}/api/clearkey?id=${activeChannel.id}`, { 
@@ -230,103 +237,72 @@ export default function PlayerPanel({
             if (resp.ok) {
               const data = await resp.json();
               if (data.keys && data.keys.length > 0) {
-                const clearKeys = {};
-                data.keys.forEach(k => {
-                  clearKeys[k.kid] = k.k;
-                });
-                drmConfig.clearKeys = clearKeys;
+                source.drm = {
+                    clearkey: data.keys.map(k => ({
+                        kid: k.kid,
+                        key: k.k
+                    }))
+                };
               }
             }
           } catch(e) {
             console.error('Failed to fetch DRM keys', e);
           }
-          
-          if (drmConfig.clearKeys) {
-            newShaka.configure('drm.clearKeys', drmConfig.clearKeys);
-          }
         }
 
-        // Add error event listener
-        newShaka.addEventListener('error', (event) => {
-          console.error('Shaka Error', event.detail);
+        newBitmovin.on(bitmovin.PlayerEvent.Error, (event) => {
+          console.error('Bitmovin Error', event);
           if (currentUrlIndex < urlCount - 1) {
             currentUrlIndex++;
             initPlayer(currentUrlIndex);
           } else {
-            setErrorMsg('Stream Error: ' + (event.detail?.message || 'Playback failed'));
+            setErrorMsg('Stream Error: ' + (event.message || 'Playback failed'));
             setBuffering(false);
           }
         });
 
-        // Intercept manifest to strip Widevine/PlayReady tags if we are forcing ClearKey
-        if (activeChannel.hasDrm) {
-          newShaka.getNetworkingEngine().registerResponseFilter((type, response) => {
-            if (type === 0) { // shaka.net.NetworkingEngine.RequestType.MANIFEST
-              let bodyText = new TextDecoder('utf-8').decode(response.data);
-              bodyText = bodyText.replace(/<ContentProtection[^>]*urn:uuid:edef8ba9-79d6-4ace-a3c8-27dcd51d21ed[^>]*>[\s\S]*?<\/ContentProtection>/gi, '');
-              bodyText = bodyText.replace(/<ContentProtection[^>]*urn:uuid:9a04f079-9840-4286-ab92-e65be0885f95[^>]*>[\s\S]*?<\/ContentProtection>/gi, '');
-              response.data = new TextEncoder().encode(bodyText);
-            }
-          });
-        }
-
         // Intercept requests if proxying is enabled
         if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
-          newShaka.getNetworkingEngine().registerRequestFilter((type, request) => {
-            if (request.uris[0] && request.uris[0].startsWith('http') && !request.uris[0].includes('/api/proxy')) {
-              // type 0 = MANIFEST, type 1 = SEGMENT, type 2 = LICENSE
-              const isManifestProxy = (activeChannel.proxy || activeChannel.useProxy) && type === 0;
-              const isSegmentProxy = activeChannel.proxySegments && type === 1;
-              const isLicenseProxy = activeChannel.proxySegments && type === 2;
-
-              if (isManifestProxy || isSegmentProxy || isLicenseProxy) {
-                request.uris[0] = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(request.uris[0])}`;
-              }
-            }
-          });
+            newBitmovin.network.addRequestFilter((type, request) => {
+                if (request.url && request.url.startsWith('http') && !request.url.includes('/api/proxy')) {
+                  const isManifestProxy = (activeChannel.proxy || activeChannel.useProxy) && (type === bitmovin.HttpRequestType.MANIFEST_DASH || type === bitmovin.HttpRequestType.MANIFEST_HLS_MASTER || type === bitmovin.HttpRequestType.MANIFEST_HLS_VARIANT);
+                  const isSegmentProxy = activeChannel.proxySegments && (type === bitmovin.HttpRequestType.MEDIA_VIDEO || type === bitmovin.HttpRequestType.MEDIA_AUDIO);
+                  const isLicenseProxy = activeChannel.proxySegments && (type === bitmovin.HttpRequestType.DRM_LICENSE_CLEARKEY || type === bitmovin.HttpRequestType.KEY_HLS_AES);
+    
+                  if (isManifestProxy || isSegmentProxy || isLicenseProxy) {
+                    request.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(request.url)}`;
+                  }
+                }
+                return Promise.resolve(request);
+            });
         }
         
-        // Listen to adaptation events to update autoHeight
-        newShaka.addEventListener('adaptation', () => {
-          if (newShaka) {
-            const tracks = newShaka.getVariantTracks();
-            const activeTrack = tracks.find(t => t.active);
-            if (activeTrack && activeTrack.height) {
-              setAutoHeight(`${activeTrack.height}p`);
-            }
-          }
+        newBitmovin.on(bitmovin.PlayerEvent.VideoPlaybackQualityChanged, (e) => {
+           if (e.targetQuality && e.targetQuality.height) {
+              setAutoHeight(e.targetQuality.height + 'p');
+           }
         });
 
-        await newShaka.load(streamUrl);
+        await newBitmovin.load(source);
         
-        // Load was successful
         setBuffering(false);
         setIsPlaying(true);
-        video.play().catch(e => console.log('Autoplay blocked:', e));
+        newBitmovin.play().catch(e => console.log('Autoplay blocked:', e));
 
-        // Get video qualities
-        const tracks = newShaka.getVariantTracks();
+        const tracks = newBitmovin.getAvailableVideoQualities();
         if (tracks && tracks.length > 0) {
           const lvls = tracks
-            .filter(t => t.type === 'variant' && t.height)
             .map(t => ({
               index: t.id,
               height: t.height,
               name: `${t.height}p`
             }))
-            .filter((v, i, a) => a.findIndex(t => (t.height === v.height)) === i) // Keep unique heights
+            .filter((v, i, a) => a.findIndex(t => (t.height === v.height)) === i)
             .sort((a, b) => b.height - a.height);
-          
           setLevels(lvls);
-          
-          // Initial auto height
-          const activeTrack = tracks.find(t => t.active);
-          if (activeTrack && activeTrack.height) {
-            setAutoHeight(`${activeTrack.height}p`);
-          }
         }
 
-        setShakaInstance(newShaka);
+        setBitmovinInstance(newBitmovin);
 
       } catch (err) {
         console.error('Error loading shaka', err);
@@ -373,8 +349,8 @@ export default function PlayerPanel({
     return () => {
       isCancelled = true;
       if (lagTimeout) clearTimeout(lagTimeout);
-      if (newShaka) {
-        destroyPromiseRef.current = newShaka.destroy().catch(() => {});
+      if (newBitmovin) {
+        destroyPromiseRef.current = newBitmovin.destroy().catch(() => {});
       }
       if (localMpegts) {
         localMpegts.destroy();
@@ -387,11 +363,15 @@ export default function PlayerPanel({
 
   // Sync volume state to video ref
   useEffect(() => {
+    if (bitmovinInstance) {
+      bitmovinInstance.setVolume(volume * 100);
+      if (isMuted) bitmovinInstance.mute(); else bitmovinInstance.unmute();
+    }
     if (videoRef.current) {
       videoRef.current.volume = volume;
       videoRef.current.muted = isMuted;
     }
-  }, [volume, isMuted]);
+  }, [volume, isMuted, bitmovinInstance]);
 
   // Hotkeys handling
   useEffect(() => {
@@ -416,6 +396,16 @@ export default function PlayerPanel({
   if (!activeChannel) return null;
 
   const togglePlay = () => {
+    if (bitmovinInstance) {
+      if (isPlaying) {
+        bitmovinInstance.pause();
+        setIsPlaying(false);
+      } else {
+        bitmovinInstance.play();
+        setIsPlaying(true);
+      }
+      return;
+    }
     const video = videoRef.current;
     if (!video) return;
     if (isPlaying) {
@@ -485,11 +475,13 @@ export default function PlayerPanel({
 
   const skipForward = (e) => {
     if (e) e.stopPropagation();
+    if (bitmovinInstance) { bitmovinInstance.seek(bitmovinInstance.getCurrentTime() + 10); return; }
     if (videoRef.current) videoRef.current.currentTime += 10;
   };
 
   const skipBackward = (e) => {
     if (e) e.stopPropagation();
+    if (bitmovinInstance) { bitmovinInstance.seek(Math.max(0, bitmovinInstance.getCurrentTime() - 10)); return; }
     if (videoRef.current) videoRef.current.currentTime -= 10;
   };
 
@@ -638,8 +630,8 @@ export default function PlayerPanel({
                       }}>
                         <button 
                           onClick={() => {
-                            if (shakaInstance) {
-                              shakaInstance.configure({ abr: { enabled: true } });
+                            if (bitmovinInstance) {
+                              bitmovinInstance.setVideoQuality('auto');
                               setCurrentLevel(-1);
                             }
                             setShowQualityMenu(false);
@@ -667,13 +659,8 @@ export default function PlayerPanel({
                           <button 
                             key={level.index}
                             onClick={() => {
-                              if (shakaInstance) {
-                                shakaInstance.configure({ abr: { enabled: false } });
-                                const tracks = shakaInstance.getVariantTracks();
-                                const targetTrack = tracks.find(t => t.height === level.height);
-                                if (targetTrack) {
-                                  shakaInstance.selectVariantTrack(targetTrack, true);
-                                }
+                              if (bitmovinInstance) {
+                                bitmovinInstance.setVideoQuality(level.index);
                                 setCurrentLevel(level.index);
                               }
                               setShowQualityMenu(false);

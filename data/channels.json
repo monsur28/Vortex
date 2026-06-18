@@ -1,5 +1,417 @@
 [
   {
+    "name": "M6 FRANCE (Sportzfy)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://origin-m6web.live.6cloud.fr/out/v1/6play/6play-m6/cmaf_cenc00/dash-short-hd.mpd",
+    "drm": {
+      "type": "clearkey",
+      "key": "433ffba670963e70857859a9dff4be04:51ede3a821229fe81e71282c8eff80e3"
+    },
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "TSN 1 (Sportzfy)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://kplust.pages.dev/spw1.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "SP",
+    "group": "FIFA World Cup 2026",
+    "url": "https://hqlive.yarncdn.live/live/hqtv_blv_phanma/playlist.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "FOX",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/dash/enc/ap5wz1ofsp/out/v1/7fa6feef143747beaa186ebb6dfb2532/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "c620c93c60c04999eb9ddc28ecfb70a8:e76a709c251313190e76cb3c3d3a5824"
+    }
+  },
+  {
+    "name": "TSN 1",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/w0rehjjrwe/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "14eeabf30c14b7fbf3008c03099ce011:17d2ac8dbc5429bd70af3433aa12158d"
+    }
+  },
+  {
+    "name": "D Sports",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/ubehitlwzo/out/v1/8e09c381a51f4366a19e979418112e8f/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "a7d11d37a1f7611ee88d4db880171f32:68f96d618b0b956b008c445896a25a79"
+    }
+  },
+  {
+    "name": "Bengali",
+    "group": "FIFA World Cup 2026",
+    "url": "https://kplust.pages.dev/ben.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "FOX FHD",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "f6564ec2aee819046328a0e153be574d:ff46a8a1031eb27ef22576a077c98ab7"
+    }
+  },
+  {
+    "name": "CAZETV",
+    "group": "FIFA World Cup 2026",
+    "url": "https://a166aivottlinear-a.akamaihd.net/OTTB/sin-nitro/live/dash/enc/jo3rmhhp2r/out/v1/50656942ce4e40a1be824c9d83578fe9/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "34475edab991ad5e92548aebd710410a:501b209cccd323ac00bf5ac15b406cb4"
+    }
+  },
+  {
+    "name": "TUDN",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/8u9cregwlt/out/v1/687f6b2a559943549be271504a948ffd/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "1710ac2bbfcd3032d0f6533850968f47:d2548dacc8efcd1cd0af0373060c82dc"
+    }
+  },
+  {
+    "name": "TIPIK",
+    "group": "FIFA World Cup 2026",
+    "url": "https://c9851ec-rbm-hilv-fsly.cdn.redbee.live/L26/6b640fa2/a765d074.isml/dash/.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "adca25b8779e4168a0cd710f59f61ccf:be5383ed3cd8079f4ffe78ad067f476a"
+    }
+  },
+  {
+    "name": "VRT",
+    "group": "FIFA World Cup 2026",
+    "url": "https://live.vrtcdn.be/groupd/live/0761024f-37fe-4254-bc37-e95d7c62b2d1/live.isml/.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "893bc63340876605f52886a42e0ccce5:d6c46d2d691056fbd091bf1f01b21a91"
+    }
+  },
+  {
+    "name": "TSN4 (CANADA VPN)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/ihys8nw4wv/out/v1/fde190f369484bc6b6117cc16cd82a9f/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "abc5b2883121012850ebda05b528c5ec:e5250924f4b738905f7163a0134587a7"
+    }
+  },
+  {
+    "name": "TSN 1 (CANADA VPN)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/w0rehjjrwe/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "14eeabf30c14b7fbf3008c03099ce011:17d2ac8dbc5429bd70af3433aa12158d"
+    }
+  },
+  {
+    "name": "TSN3 (CANADA VPN)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/lsibpqruq1/out/v1/748887d614a84913ba8bcdf3c82823e6/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "d3250252765347a0c2603c6cb4869f8c:0c19319460da7e9ed816db46ce839b37"
+    }
+  },
+  {
+    "name": "FUSSBALL (Germany VPN)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://svc45.main.sl.t-online.de/bpk-tv/KID01037_FUSSBALLTV1_hd/DASH/index.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "1cb20afcd9d979c833cfd208c7d3eeb2:fef0c15b4a523370892edd5e4133c269"
+    }
+  },
+  {
+    "name": "FUSSBALL 4K (Germany VPN)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://svc45.main.sl.t-online.de/bpk-tv/KID01037_FUSSBALLTV1_uhd/DASH/index.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "1f09d5788fbbb03a053d03cc731f31a9:d493d5a70c793362324638f61d1726ac"
+    }
+  },
+  {
+    "name": "JOJ SPORT",
+    "group": "FIFA World Cup 2026",
+    "url": "https://dash2.antik.sk/stream/nvidia_joj_sport/playlist_cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "11223344556677889900112233445566:4b80724d0ef86bcb2c21f7999d67739d"
+    }
+  },
+  {
+    "name": "TVP SPORT",
+    "group": "FIFA World Cup 2026",
+    "url": "https://estreams.tv.nej.cz/dash/CH_TVP_SPORT_Portable.ism/playlist.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "11223344556677889900112233445566:4b80724d0ef86bcb2c21f7999d67739d"
+    }
+  },
+  {
+    "name": "SP",
+    "group": "FIFA World Cup 2026",
+    "url": "https://hqlive.yarncdn.live/live/hqtv_blv_phanma/playlist.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "FOX",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/dash/enc/ap5wz1ofsp/out/v1/7fa6feef143747beaa186ebb6dfb2532/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "c620c93c60c04999eb9ddc28ecfb70a8:e76a709c251313190e76cb3c3d3a5824"
+    }
+  },
+  {
+    "name": "TSN 1",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/w0rehjjrwe/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "14eeabf30c14b7fbf3008c03099ce011:17d2ac8dbc5429bd70af3433aa12158d"
+    }
+  },
+  {
+    "name": "D Sports",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/ubehitlwzo/out/v1/8e09c381a51f4366a19e979418112e8f/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "a7d11d37a1f7611ee88d4db880171f32:68f96d618b0b956b008c445896a25a79"
+    }
+  },
+  {
+    "name": "Bengali",
+    "group": "FIFA World Cup 2026",
+    "url": "https://kplust.pages.dev/ben.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "FOX FHD",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "f6564ec2aee819046328a0e153be574d:ff46a8a1031eb27ef22576a077c98ab7"
+    }
+  },
+  {
+    "name": "CAZETV",
+    "group": "FIFA World Cup 2026",
+    "url": "https://a166aivottlinear-a.akamaihd.net/OTTB/sin-nitro/live/dash/enc/jo3rmhhp2r/out/v1/50656942ce4e40a1be824c9d83578fe9/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "34475edab991ad5e92548aebd710410a:501b209cccd323ac00bf5ac15b406cb4"
+    }
+  },
+  {
+    "name": "TUDN",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/8u9cregwlt/out/v1/687f6b2a559943549be271504a948ffd/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "1710ac2bbfcd3032d0f6533850968f47:d2548dacc8efcd1cd0af0373060c82dc"
+    }
+  },
+  {
+    "name": "TIPIK",
+    "group": "FIFA World Cup 2026",
+    "url": "https://c9851ec-rbm-hilv-fsly.cdn.redbee.live/L26/6b640fa2/a765d074.isml/dash/.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "adca25b8779e4168a0cd710f59f61ccf:be5383ed3cd8079f4ffe78ad067f476a"
+    }
+  },
+  {
+    "name": "VRT",
+    "group": "FIFA World Cup 2026",
+    "url": "https://live.vrtcdn.be/groupd/live/0761024f-37fe-4254-bc37-e95d7c62b2d1/live.isml/.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "893bc63340876605f52886a42e0ccce5:d6c46d2d691056fbd091bf1f01b21a91"
+    }
+  },
+  {
+    "name": "TSN4 (CANADA VPN)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/ihys8nw4wv/out/v1/fde190f369484bc6b6117cc16cd82a9f/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "abc5b2883121012850ebda05b528c5ec:e5250924f4b738905f7163a0134587a7"
+    }
+  },
+  {
+    "name": "TSN 1 (CANADA VPN)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/w0rehjjrwe/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "14eeabf30c14b7fbf3008c03099ce011:17d2ac8dbc5429bd70af3433aa12158d"
+    }
+  },
+  {
+    "name": "TSN3 (CANADA VPN)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/lsibpqruq1/out/v1/748887d614a84913ba8bcdf3c82823e6/cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "d3250252765347a0c2603c6cb4869f8c:0c19319460da7e9ed816db46ce839b37"
+    }
+  },
+  {
+    "name": "FUSSBALL (Germany VPN)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://svc45.main.sl.t-online.de/bpk-tv/KID01037_FUSSBALLTV1_hd/DASH/index.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "1cb20afcd9d979c833cfd208c7d3eeb2:fef0c15b4a523370892edd5e4133c269"
+    }
+  },
+  {
+    "name": "FUSSBALL 4K (Germany VPN)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://svc45.main.sl.t-online.de/bpk-tv/KID01037_FUSSBALLTV1_uhd/DASH/index.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "1f09d5788fbbb03a053d03cc731f31a9:d493d5a70c793362324638f61d1726ac"
+    }
+  },
+  {
+    "name": "JOJ SPORT",
+    "group": "FIFA World Cup 2026",
+    "url": "https://dash2.antik.sk/stream/nvidia_joj_sport/playlist_cenc.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "11223344556677889900112233445566:4b80724d0ef86bcb2c21f7999d67739d"
+    }
+  },
+  {
+    "name": "TVP SPORT",
+    "group": "FIFA World Cup 2026",
+    "url": "https://estreams.tv.nej.cz/dash/CH_TVP_SPORT_Portable.ism/playlist.mpd",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false,
+    "drm": {
+      "type": "clearkey",
+      "key": "11223344556677889900112233445566:4b80724d0ef86bcb2c21f7999d67739d"
+    }
+  },
+  {
     "name": "D Sports",
     "group": "Sports",
     "url": "https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/ubehitlwzo/out/v1/8e09c381a51f4366a19e979418112e8f/cenc.mpd",
