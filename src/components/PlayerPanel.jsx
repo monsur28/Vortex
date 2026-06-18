@@ -388,6 +388,7 @@ export default function PlayerPanel({
   }, [activeChannel]);
 
   // Sync volume state to video ref
+  useEffect(() => {
     if (videoRef.current) {
       videoRef.current.volume = volume;
       videoRef.current.muted = isMuted;
