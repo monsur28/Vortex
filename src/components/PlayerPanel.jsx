@@ -177,9 +177,13 @@ export default function PlayerPanel({
           return; // Stop here, don't init Shaka
         }
 
-        const bitmovin = await import('bitmovin-player');
+        const bitmovinModule = await import('bitmovin-player');
+        const bitmovin = bitmovinModule.default || bitmovinModule;
+        const Player = bitmovin.Player || bitmovinModule.Player;
+        const PlayerEvent = bitmovin.PlayerEvent || bitmovinModule.PlayerEvent;
+        const HttpRequestType = bitmovin.HttpRequestType || bitmovinModule.HttpRequestType;
         
-        if (!bitmovin.Player.isSupported()) {
+        if (!Player || !Player.isSupported()) {
           setErrorMsg('Browser not supported for Bitmovin Player');
           setBuffering(false);
           return;
@@ -213,7 +217,7 @@ export default function PlayerPanel({
           videoRef.current.style.display = 'none';
         }
 
-        newBitmovin = new bitmovin.Player(container, config);
+        newBitmovin = new Player(container, config);
 
         const source = {
             title: activeChannel.name
@@ -250,7 +254,7 @@ export default function PlayerPanel({
           }
         }
 
-        newBitmovin.on(bitmovin.PlayerEvent.Error, (event) => {
+        newBitmovin.on(PlayerEvent.Error, (event) => {
           console.error('Bitmovin Error', event);
           if (currentUrlIndex < urlCount - 1) {
             currentUrlIndex++;
@@ -265,9 +269,9 @@ export default function PlayerPanel({
         if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
             newBitmovin.network.addRequestFilter((type, request) => {
                 if (request.url && request.url.startsWith('http') && !request.url.includes('/api/proxy')) {
-                  const isManifestProxy = (activeChannel.proxy || activeChannel.useProxy) && (type === bitmovin.HttpRequestType.MANIFEST_DASH || type === bitmovin.HttpRequestType.MANIFEST_HLS_MASTER || type === bitmovin.HttpRequestType.MANIFEST_HLS_VARIANT);
-                  const isSegmentProxy = activeChannel.proxySegments && (type === bitmovin.HttpRequestType.MEDIA_VIDEO || type === bitmovin.HttpRequestType.MEDIA_AUDIO);
-                  const isLicenseProxy = activeChannel.proxySegments && (type === bitmovin.HttpRequestType.DRM_LICENSE_CLEARKEY || type === bitmovin.HttpRequestType.KEY_HLS_AES);
+                  const isManifestProxy = (activeChannel.proxy || activeChannel.useProxy) && (type === HttpRequestType.MANIFEST_DASH || type === HttpRequestType.MANIFEST_HLS_MASTER || type === HttpRequestType.MANIFEST_HLS_VARIANT);
+                  const isSegmentProxy = activeChannel.proxySegments && (type === HttpRequestType.MEDIA_VIDEO || type === HttpRequestType.MEDIA_AUDIO);
+                  const isLicenseProxy = activeChannel.proxySegments && (type === HttpRequestType.DRM_LICENSE_CLEARKEY || type === HttpRequestType.KEY_HLS_AES);
     
                   if (isManifestProxy || isSegmentProxy || isLicenseProxy) {
                     request.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(request.url)}`;
@@ -277,7 +281,7 @@ export default function PlayerPanel({
             });
         }
         
-        newBitmovin.on(bitmovin.PlayerEvent.VideoPlaybackQualityChanged, (e) => {
+        newBitmovin.on(PlayerEvent.VideoPlaybackQualityChanged, (e) => {
            if (e.targetQuality && e.targetQuality.height) {
               setAutoHeight(e.targetQuality.height + 'p');
            }
@@ -305,7 +309,7 @@ export default function PlayerPanel({
         setBitmovinInstance(newBitmovin);
 
       } catch (err) {
-        console.error('Error loading shaka', err);
+        console.error('Error loading bitmovin', err);
         if (currentUrlIndex < urlCount - 1) {
           currentUrlIndex++;
           initPlayer(currentUrlIndex);
