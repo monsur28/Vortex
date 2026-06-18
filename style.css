@@ -2569,4 +2569,17 @@ video.aspect-fill {
         padding: 30px 16px 16px 16px;
     }
 }
-
+
+/* Sportzify style slider */
+.volume-slider.sportzify-slider {
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.volume-slider.sportzify-slider::-webkit-slider-thumb {
+    background-color: #0ea5e9;
+    width: 12px;
+    height: 12px;
+}
+.volume-slider.sportzify-slider:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}

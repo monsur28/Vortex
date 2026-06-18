@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from 'react';
-import { X, Play, Pause, Volume2, VolumeX, ExternalLink, Monitor, Maximize, WifiOff, Settings, Check, Star, ChevronLeft, ChevronRight, RotateCcw, RotateCw } from 'lucide-react';
+import { X, Play, Pause, Square, Volume2, VolumeX, ExternalLink, Monitor, Maximize, WifiOff, Settings, Check, Star, ChevronLeft, ChevronRight, RotateCcw, RotateCw } from 'lucide-react';
 
 export default function PlayerPanel({ 
   activeChannel, 
@@ -534,53 +534,27 @@ export default function PlayerPanel({
             </div>
           </div>
 
-          {/* Center Controls & Side Arrows Overlay */}
-          {!activeChannel.iframeUrl && (
-            <div className="center-controls-overlay">
-              <button className="side-nav-arrow left" onClick={(e) => { e.stopPropagation(); onPrevChannel && onPrevChannel(); }}>
-                <ChevronLeft size={48} />
-              </button>
-
-              <div className="center-buttons-container">
-                <button className="center-btn skip" onClick={skipBackward}>
-                  <RotateCcw size={36} />
-                  <span className="skip-text">10</span>
-                </button>
-                <button className="center-btn play-pause" onClick={(e) => { e.stopPropagation(); togglePlay(); }}>
-                  {isPlaying ? <Pause size={48} /> : <Play size={48} style={{ marginLeft: '4px' }} />}
-                </button>
-                <button className="center-btn skip" onClick={skipForward}>
-                  <RotateCw size={36} />
-                  <span className="skip-text">10</span>
-                </button>
-              </div>
-
-              <button className="side-nav-arrow right" onClick={(e) => { e.stopPropagation(); onNextChannel && onNextChannel(); }}>
-                <ChevronRight size={48} />
-              </button>
-            </div>
-          )}
+          {/* Center Controls & Side Arrows Overlay (Removed for sportzify style) */}
           
           {/* Bottom Custom Controls */}
           {!activeChannel.iframeUrl && (
-            <div className="player-controls" id="player-controls">
-              <div className="controls-progress">
-                <div className="progress-bar">
-                  <div className="progress-filled" style={{ width: '100%' }}></div>
-                </div>
+            <div className="player-controls" id="player-controls" style={{ background: '#080808', padding: '12px 20px', paddingBottom: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px', paddingLeft: '4px' }}>
+                <span style={{ color: '#ff0000', fontSize: '12px', marginRight: '6px' }}>●</span>
+                <span style={{ color: 'white', fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.5px' }}>LIVE</span>
               </div>
               <div className="controls-row">
                 <div className="controls-left">
-                  <button className="play-btn" onClick={togglePlay}>
-                    {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+                  <button className="play-btn" onClick={togglePlay} style={{ color: 'white' }}>
+                    {isPlaying ? <Square size={16} strokeWidth={3} /> : <Play size={18} fill="currentColor" />}
                   </button>
                 <div className="volume-container">
-                  <button className="volume-btn" onClick={toggleMute}>
+                  <button className="volume-btn" onClick={toggleMute} style={{ color: 'white' }}>
                     {isMuted || volume === 0 ? <VolumeX size={18} /> : <Volume2 size={18} />}
                   </button>
                   <input 
                     type="range" 
-                    className="volume-slider" 
+                    className="volume-slider sportzify-slider" 
                     min="0" 
                     max="1" 
                     step="0.05" 
@@ -588,7 +562,6 @@ export default function PlayerPanel({
                     onChange={handleVolumeChange}
                   />
                 </div>
-                <span className="time-display live-badge">LIVE</span>
               </div>
               <div className="controls-right" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 {(levels.length > 0 || mpegtsInstance) && (
@@ -687,8 +660,8 @@ export default function PlayerPanel({
                     )}
                   </div>
                 )}
-                <button className="pip-btn" title="Picture in Picture" onClick={handlePiP}>
-                  <ExternalLink size={18} />
+                <button className="pip-btn" title="Picture in Picture" onClick={handlePiP} style={{ color: 'white' }}>
+                  <Monitor size={18} />
                 </button>
                 <button className="fullscreen-btn" title="Fullscreen" onClick={handleFullscreen}>
                   <Maximize size={18} />
