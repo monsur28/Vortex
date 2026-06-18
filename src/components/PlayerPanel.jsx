@@ -557,14 +557,14 @@ export default function PlayerPanel({
   const isFav = favorites.includes(activeChannel.name);
 
   return (
-    <div className={`player-panel-overlay ${isTheaterMode ? 'theater-mode' : ''}`} id="player-panel">
+    <div className="fullscreen-player-overlay" id="player-panel">
       <div 
-        className={`player-video-container ${!showControls && isPlaying ? 'controls-hidden' : ''}`}
+        className={`player-container ${!showControls && isPlaying ? 'controls-hidden' : ''}`}
         onMouseMove={resetControlsTimeout}
         onClick={resetControlsTimeout}
         onMouseLeave={() => isPlaying && setShowControls(false)}
       >
-        <div className="video-wrapper-3d" ref={videoWrapperRef}>
+        <div className="video-wrapper" ref={videoWrapperRef}>
           {activeChannel.iframeUrl ? (
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center', justifyContent: 'center', backgroundColor: '#000', color: 'white' }}>
               <p style={{ marginBottom: '20px', fontSize: '14px', color: 'var(--text-secondary)' }}>This channel requires opening in a separate window due to network security.</p>
@@ -609,7 +609,7 @@ export default function PlayerPanel({
           
           {/* Bottom Custom Controls */}
           {!activeChannel.iframeUrl && (
-            <div className="custom-controls-overlay" id="player-controls">
+            <div className="player-controls" id="player-controls" style={{ background: '#080808', padding: '12px 20px', paddingBottom: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px', paddingLeft: '4px' }}>
                 <span style={{ color: delaySeconds > 0 ? '#94a3b8' : '#ff0000', fontSize: '12px', marginRight: '6px', transition: 'color 0.3s' }}>●</span>
                 <span style={{ color: delaySeconds > 0 ? '#94a3b8' : 'white', fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.5px', marginRight: '10px', transition: 'color 0.3s' }}>LIVE</span>

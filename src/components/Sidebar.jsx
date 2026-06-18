@@ -57,17 +57,17 @@ export default function Sidebar({
     <aside className={`sidebar ${isOpen ? 'open' : ''}`} id="sidebar">
       <div className="sidebar-header">
         <div className="logo">
-          <svg className="logo-icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '28px', height: '28px', filter: 'drop-shadow(0 0 6px rgba(212, 175, 55, 0.5))', transform: 'translateZ(10px)' }}>
+          <svg className="logo-icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '28px', height: '28px', filter: 'drop-shadow(0 0 6px rgba(124, 58, 237, 0.4))' }}>
             <defs>
               <linearGradient id="vortexGradSidebar" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#d4af37" />
-                <stop offset="100%" stopColor="#10b981" />
+                <stop offset="0%" stopColor="#a855f7" />
+                <stop offset="100%" stopColor="#6366f1" />
               </linearGradient>
             </defs>
             <circle cx="50" cy="50" r="40" stroke="url(#vortexGradSidebar)" strokeWidth="12" strokeDasharray="180 60" fill="none" strokeLinecap="round" />
             <circle cx="50" cy="50" r="20" fill="url(#vortexGradSidebar)" />
           </svg>
-          <span style={{ transform: 'translateZ(5px)' }}>FIFA 2026</span>
+          <span>WORLD CUP</span>
         </div>
       </div>
 
