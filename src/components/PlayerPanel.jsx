@@ -216,7 +216,27 @@ export default function PlayerPanel({
           },
           ui: false,
           tweaks: {
-            app_id: 'com.iptv.app'
+            app_id: 'com.iptv.app',
+            startup_threshold: 4, // Wait for 4s of video to buffer before playing
+            max_buffer_level: 60 // Allow up to 60s of buffer ahead
+          },
+          buffer: {
+            video: {
+              forwardduration: 40,
+              backwardduration: 10
+            },
+            audio: {
+              forwardduration: 40,
+              backwardduration: 10
+            }
+          },
+          adaptation: {
+            desktop: {
+              startupBitrate: 800000 // Start at a low bitrate to instantly load chunks
+            },
+            mobile: {
+              startupBitrate: 500000
+            }
           },
           network: {
             preprocessHttpRequest: (type, request) => {
