@@ -27,6 +27,7 @@ export default function PlayerPanel({
   const [autoHeight, setAutoHeight] = useState('');
   const [showQualityMenu, setShowQualityMenu] = useState(false);
   const [showControls, setShowControls] = useState(true);
+  const [delaySeconds, setDelaySeconds] = useState(0);
   const controlsTimeoutRef = useRef(null);
 
   const resetControlsTimeout = () => {
@@ -45,6 +46,29 @@ export default function PlayerPanel({
       if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
     };
   }, [isPlaying]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (bitmovinInstance && bitmovinInstance.isLive && bitmovinInstance.isLive()) {
+        const shift = bitmovinInstance.getTimeShift();
+        if (shift < -2) {
+          setDelaySeconds(Math.abs(Math.round(shift)));
+        } else {
+          setDelaySeconds(0);
+        }
+      } else if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
+        const seekableEnd = videoRef.current.seekable.end(videoRef.current.seekable.length - 1);
+        const current = videoRef.current.currentTime;
+        const delay = Math.round(seekableEnd - current);
+        if (delay > 2) {
+          setDelaySeconds(delay);
+        } else {
+          setDelaySeconds(0);
+        }
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [bitmovinInstance]);
 
   // Helper for converting hex DRM keys to base64url
   const hexToBase64Url = (hexString) => {
@@ -483,6 +507,16 @@ export default function PlayerPanel({
     if (videoRef.current) videoRef.current.currentTime -= 10;
   };
 
+  const jumpToLive = () => {
+    if (bitmovinInstance && bitmovinInstance.isLive && bitmovinInstance.isLive()) {
+      bitmovinInstance.timeShift(0);
+    } else if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
+      videoRef.current.currentTime = videoRef.current.seekable.end(videoRef.current.seekable.length - 1);
+    }
+    setDelaySeconds(0);
+    if (!isPlaying) togglePlay();
+  };
+
   const isFav = favorites.includes(activeChannel.name);
 
   return (
@@ -540,8 +574,18 @@ export default function PlayerPanel({
           {!activeChannel.iframeUrl && (
             <div className="player-controls" id="player-controls" style={{ background: '#080808', padding: '12px 20px', paddingBottom: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px', paddingLeft: '4px' }}>
-                <span style={{ color: '#ff0000', fontSize: '12px', marginRight: '6px' }}>●</span>
-                <span style={{ color: 'white', fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.5px' }}>LIVE</span>
+                <span style={{ color: delaySeconds > 0 ? '#94a3b8' : '#ff0000', fontSize: '12px', marginRight: '6px', transition: 'color 0.3s' }}>●</span>
+                <span style={{ color: delaySeconds > 0 ? '#94a3b8' : 'white', fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.5px', marginRight: '10px', transition: 'color 0.3s' }}>LIVE</span>
+                {delaySeconds > 0 && (
+                  <button 
+                    onClick={jumpToLive}
+                    style={{ background: 'rgba(255,0,0,0.1)', border: '1px solid #ff0000', borderRadius: '4px', padding: '2px 6px', fontSize: '10px', color: '#ff0000', cursor: 'pointer', fontWeight: 'bold', transition: 'all 0.2s' }}
+                    onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255,0,0,0.2)'; }}
+                    onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(255,0,0,0.1)'; }}
+                  >
+                    -{delaySeconds}s Behind (Click to go Live)
+                  </button>
+                )}
               </div>
               <div className="controls-row">
                 <div className="controls-left">
