@@ -20,7 +20,7 @@ export default function PlayerPanel({
   const [volume, setVolume] = useState(1);
   const [buffering, setBuffering] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  const [shakaInstance, setShakaInstance] = useState(null);
+  const [bitmovinInstance, setBitmovinInstance] = useState(null);
   const [mpegtsInstance, setMpegtsInstance] = useState(null);
   const [levels, setLevels] = useState([]);
   const [currentLevel, setCurrentLevel] = useState(-1); // -1 means Auto
@@ -49,7 +49,14 @@ export default function PlayerPanel({
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
+      if (bitmovinInstance && bitmovinInstance.isLive && bitmovinInstance.isLive()) {
+        const shift = bitmovinInstance.getTimeShift();
+        if (shift < -2) {
+          setDelaySeconds(Math.abs(Math.round(shift)));
+        } else {
+          setDelaySeconds(0);
+        }
+      } else if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
         const seekableEnd = videoRef.current.seekable.end(videoRef.current.seekable.length - 1);
         const current = videoRef.current.currentTime;
         const delay = Math.round(seekableEnd - current);
@@ -61,7 +68,7 @@ export default function PlayerPanel({
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [bitmovinInstance]);
 
   // Helper for converting hex DRM keys to base64url
   const hexToBase64Url = (hexString) => {
@@ -140,9 +147,9 @@ export default function PlayerPanel({
         streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&url=${encodeURIComponent(rawUrl)}&t=${Date.now()}`;
       }
 
-      if (shakaInstance) {
-        await shakaInstance.destroy();
-        setShakaInstance(null);
+      if (newBitmovin) {
+        await newBitmovin.destroy();
+        newBitmovin = null;
       }
       if (localMpegts) {
         localMpegts.destroy();
@@ -194,48 +201,97 @@ export default function PlayerPanel({
           }
           return; // Stop here, don't init Shaka
         }
-        // If it's DASH/HLS, initialize Shaka Player
-        const shaka = await import('shaka-player');
+
+        const bitmovinModule = await import('bitmovin-player');
+        const bitmovin = bitmovinModule.default || bitmovinModule;
+        const Player = bitmovin.Player || bitmovinModule.Player;
+        const PlayerEvent = bitmovin.PlayerEvent || bitmovinModule.PlayerEvent;
+        const HttpRequestType = bitmovin.HttpRequestType || bitmovinModule.HttpRequestType;
+
+        const config = {
+          key: 'a68001f0-1a8c-4347-b14e-d0a9481165bd',
+          playback: {
+            autoplay: true,
+            muted: isMuted,
+          },
+          ui: false,
+          tweaks: {
+            app_id: 'com.iptv.app'
+          },
+          network: {
+            preprocessHttpRequest: (type, request) => {
+                if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
+                    if (request.url && request.url.startsWith('http') && !request.url.includes('/api/proxy')) {
+                      const isManifestProxy = (activeChannel.proxy || activeChannel.useProxy) && (type === HttpRequestType.MANIFEST_DASH || type === HttpRequestType.MANIFEST_HLS_MASTER || type === HttpRequestType.MANIFEST_HLS_VARIANT);
+                      const isSegmentProxy = activeChannel.proxySegments && (type === HttpRequestType.MEDIA_VIDEO || type === HttpRequestType.MEDIA_AUDIO);
+                      const isLicenseProxy = activeChannel.proxySegments && (type === HttpRequestType.DRM_LICENSE_CLEARKEY || type === HttpRequestType.KEY_HLS_AES);
         
-        // Install polyfills
-        shaka.polyfill.installAll();
-        if (!shaka.Player.isBrowserSupported()) {
-          setErrorMsg('Browser does not support Shaka Player');
-          return;
-        }
-
-        const player = new shaka.Player(video);
-
-        // Configure DRM if applicable
-        if (activeChannel.hasDrm || activeChannel.drm) {
-          let clearKeysMap = {};
-          let hasKeys = false;
-          
-          if (activeChannel.drm && activeChannel.drm.key) {
-            let keyStr = activeChannel.drm.key;
-            if (keyStr.startsWith('{')) {
-              try {
-                let parsed = JSON.parse(keyStr);
-                if (parsed.keys) {
-                  parsed.keys.forEach(k => { clearKeysMap[k.kid] = k.k; hasKeys = true; });
+                      if (isManifestProxy || isSegmentProxy || isLicenseProxy) {
+                        request.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(request.url)}`;
+                      }
+                    }
                 }
-              } catch(e) {}
-            } else if (keyStr.includes(':')) {
-              let [kidHex, keyHex] = keyStr.split(':');
-              clearKeysMap[kidHex] = keyHex;
-              hasKeys = true;
+                return Promise.resolve(request);
             }
           }
+        };
 
-          if (hasKeys) {
-            player.configure({
-              drm: {
-                clearKeys: clearKeysMap
+        if (activeChannel.bufferless) {
+            config.live = { lowLatency: true };
+            config.tweaks = { ...config.tweaks, max_buffer_level: 5 };
+        }
+
+        let container = document.getElementById('bm-container');
+        if (!container) {
+          container = document.createElement('div');
+          container.id = 'bm-container';
+          container.style.position = 'absolute';
+          container.style.inset = '0';
+          container.style.zIndex = '0';
+          videoRef.current.parentNode.insertBefore(container, videoRef.current);
+          videoRef.current.style.display = 'none';
+        }
+
+        newBitmovin = new Player(container, config);
+
+        const source = {
+            title: activeChannel.name
+        };
+        
+        if (streamUrl.includes('.mpd')) {
+            source.dash = streamUrl;
+        } else if (streamUrl.includes('.m3u8')) {
+            source.hls = streamUrl;
+        } else {
+            source.hls = streamUrl; 
+        }
+
+        if (activeChannel.hasDrm || activeChannel.drm) {
+          try {
+            let clearKeys = [];
+            
+            // Extract keys directly from the channel object to avoid a network request
+            if (activeChannel.drm && activeChannel.drm.key) {
+              let keyStr = activeChannel.drm.key;
+              if (keyStr.startsWith('{')) {
+                try {
+                  let parsed = JSON.parse(keyStr);
+                  if (parsed.keys) {
+                    parsed.keys.forEach(k => clearKeys.push({ kid: k.kid, key: k.k }));
+                  }
+                } catch(e) {}
+              } else if (keyStr.includes(':')) {
+                let [kidHex, keyHex] = keyStr.split(':');
+                clearKeys.push({ kid: kidHex, key: keyHex });
               }
-            });
-          } else if (activeChannel.hasDrm) {
-            // Fallback clear key fetch
-            try {
+            }
+
+            if (clearKeys.length > 0) {
+              source.drm = {
+                clearkey: clearKeys
+              };
+            } else if (activeChannel.hasDrm) {
+              // Fallback network request only if embedded keys are missing
               const resp = await fetch(`${window.location.origin}/api/clearkey?id=${activeChannel.id}`, { 
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json' },
@@ -244,66 +300,48 @@ export default function PlayerPanel({
               if (resp.ok) {
                 const data = await resp.json();
                 if (data.keys && data.keys.length > 0) {
-                  data.keys.forEach(k => { clearKeysMap[k.kid] = k.k; hasKeys = true; });
-                  player.configure({ drm: { clearKeys: clearKeysMap } });
+                  source.drm = {
+                      clearkey: data.keys.map(k => ({
+                          kid: k.kid,
+                          key: k.k
+                      }))
+                  };
                 }
               }
-            } catch (e) {
-              console.error('Failed to fetch DRM keys', e);
             }
+          } catch(e) {
+            console.error('Failed to parse DRM keys', e);
           }
         }
 
-        // Configure network interceptor for CORS proxying
-        if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
-          player.getNetworkingEngine().registerRequestFilter((type, request) => {
-            if (request.uris[0] && request.uris[0].startsWith('http') && !request.uris[0].includes('/api/proxy')) {
-              const isManifest = (type === shaka.net.NetworkingEngine.RequestType.MANIFEST);
-              const isSegment = (type === shaka.net.NetworkingEngine.RequestType.SEGMENT);
-              const isLicense = (type === shaka.net.NetworkingEngine.RequestType.LICENSE);
-              
-              if ((isManifest && (activeChannel.proxy || activeChannel.useProxy)) || ((isSegment || isLicense) && activeChannel.proxySegments)) {
-                request.uris[0] = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(request.uris[0])}`;
-              }
-            }
-          });
-        }
-
-        player.addEventListener('error', (event) => {
-          console.error('Shaka Error', event.detail);
-          // Let Shaka handle minor network drops, but if fatal, show error
-          if (event.detail && event.detail.severity === 2) {
-            if (currentUrlIndex < urlCount - 1) {
-              currentUrlIndex++;
-              initPlayer(currentUrlIndex);
-            } else {
-              setErrorMsg('Stream Error: ' + (event.detail.message || 'Playback failed'));
-              setBuffering(false);
-            }
+        newBitmovin.on(PlayerEvent.Error, (event) => {
+          console.error('Bitmovin Error', event);
+          if (currentUrlIndex < urlCount - 1) {
+            currentUrlIndex++;
+            initPlayer(currentUrlIndex);
+          } else {
+            setErrorMsg('Stream Error: ' + (event.message || 'Playback failed'));
+            setBuffering(false);
           }
         });
 
-        // Listen for quality changes
-        player.addEventListener('adaptation', () => {
-          const tracks = player.getVariantTracks();
-          const active = tracks.find(t => t.active);
-          if (active) {
-            let hName = active.height + 'p';
-            if (active.height >= 2160) hName = '4K';
-            else if (active.height >= 1440) hName = '2K';
-            setAutoHeight(hName);
-            setCurrentLevel(active.id);
-          }
+        // Request filter has been moved to config.network.preprocessHttpRequest
+        newBitmovin.on(PlayerEvent.VideoPlaybackQualityChanged, (e) => {
+           if (e.targetQuality && e.targetQuality.height) {
+              let hName = e.targetQuality.height + 'p';
+              if (e.targetQuality.height >= 2160) hName = '4K';
+              else if (e.targetQuality.height >= 1440) hName = '2K';
+              setAutoHeight(hName);
+           }
         });
 
-        await player.load(streamUrl);
-        setShakaInstance(player);
+        await newBitmovin.load(source);
+        
         setBuffering(false);
         setIsPlaying(true);
-        video.play().catch(e => console.log('Autoplay blocked:', e));
+        newBitmovin.play().catch(e => console.log('Autoplay blocked:', e));
 
-        // Get qualities
-        const tracks = player.getVariantTracks();
+        const tracks = newBitmovin.getAvailableVideoQualities();
         if (tracks && tracks.length > 0) {
           const lvls = tracks
             .map(t => {
@@ -323,8 +361,10 @@ export default function PlayerPanel({
           setLevels(lvls);
         }
 
+        setBitmovinInstance(newBitmovin);
+
       } catch (err) {
-        console.error('Error loading shaka', err);
+        console.error('Error loading bitmovin', err);
         if (currentUrlIndex < urlCount - 1) {
           currentUrlIndex++;
           initPlayer(currentUrlIndex);
@@ -368,8 +408,8 @@ export default function PlayerPanel({
     return () => {
       isCancelled = true;
       if (lagTimeout) clearTimeout(lagTimeout);
-      if (shakaInstance) {
-        destroyPromiseRef.current = shakaInstance.destroy().catch(() => {});
+      if (newBitmovin) {
+        destroyPromiseRef.current = newBitmovin.destroy().catch(() => {});
       }
       if (localMpegts) {
         localMpegts.destroy();
@@ -382,11 +422,15 @@ export default function PlayerPanel({
 
   // Sync volume state to video ref
   useEffect(() => {
+    if (bitmovinInstance) {
+      bitmovinInstance.setVolume(volume * 100);
+      if (isMuted) bitmovinInstance.mute(); else bitmovinInstance.unmute();
+    }
     if (videoRef.current) {
       videoRef.current.volume = volume;
       videoRef.current.muted = isMuted;
     }
-  }, [volume, isMuted, shakaInstance]);
+  }, [volume, isMuted, bitmovinInstance]);
 
   // Hotkeys handling
   useEffect(() => {
@@ -411,6 +455,16 @@ export default function PlayerPanel({
   if (!activeChannel) return null;
 
   const togglePlay = () => {
+    if (bitmovinInstance) {
+      if (isPlaying) {
+        bitmovinInstance.pause();
+        setIsPlaying(false);
+      } else {
+        bitmovinInstance.play();
+        setIsPlaying(true);
+      }
+      return;
+    }
     const video = videoRef.current;
     if (!video) return;
     if (isPlaying) {
@@ -480,16 +534,20 @@ export default function PlayerPanel({
 
   const skipForward = (e) => {
     if (e) e.stopPropagation();
+    if (bitmovinInstance) { bitmovinInstance.seek(bitmovinInstance.getCurrentTime() + 10); return; }
     if (videoRef.current) videoRef.current.currentTime += 10;
   };
 
   const skipBackward = (e) => {
     if (e) e.stopPropagation();
+    if (bitmovinInstance) { bitmovinInstance.seek(Math.max(0, bitmovinInstance.getCurrentTime() - 10)); return; }
     if (videoRef.current) videoRef.current.currentTime -= 10;
   };
 
   const jumpToLive = () => {
-    if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
+    if (bitmovinInstance && bitmovinInstance.isLive && bitmovinInstance.isLive()) {
+      bitmovinInstance.timeShift(0);
+    } else if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
       videoRef.current.currentTime = videoRef.current.seekable.end(videoRef.current.seekable.length - 1);
     }
     setDelaySeconds(0);
@@ -499,14 +557,14 @@ export default function PlayerPanel({
   const isFav = favorites.includes(activeChannel.name);
 
   return (
-    <div className="fullscreen-player-overlay" id="player-panel">
+    <div className={`player-panel-overlay ${isTheaterMode ? 'theater-mode' : ''}`} id="player-panel">
       <div 
-        className={`player-container ${!showControls && isPlaying ? 'controls-hidden' : ''}`}
+        className={`player-video-container ${!showControls && isPlaying ? 'controls-hidden' : ''}`}
         onMouseMove={resetControlsTimeout}
         onClick={resetControlsTimeout}
         onMouseLeave={() => isPlaying && setShowControls(false)}
       >
-        <div className="video-wrapper" ref={videoWrapperRef}>
+        <div className="video-wrapper-3d" ref={videoWrapperRef}>
           {activeChannel.iframeUrl ? (
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center', justifyContent: 'center', backgroundColor: '#000', color: 'white' }}>
               <p style={{ marginBottom: '20px', fontSize: '14px', color: 'var(--text-secondary)' }}>This channel requires opening in a separate window due to network security.</p>
@@ -549,9 +607,9 @@ export default function PlayerPanel({
 
           {/* Center Controls & Side Arrows Overlay (Removed for sportzify style) */}
           
-          {/* Bottom Custom Controls (Moved inside video-wrapper to persist in fullscreen) */}
+          {/* Bottom Custom Controls */}
           {!activeChannel.iframeUrl && (
-            <div className={`player-controls ${!showControls && isPlaying ? 'controls-hidden' : ''}`} id="player-controls" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(transparent, rgba(0,0,0,0.9))', padding: '40px 20px 16px', zIndex: 10 }}>
+            <div className="custom-controls-overlay" id="player-controls">
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px', paddingLeft: '4px' }}>
                 <span style={{ color: delaySeconds > 0 ? '#94a3b8' : '#ff0000', fontSize: '12px', marginRight: '6px', transition: 'color 0.3s' }}>●</span>
                 <span style={{ color: delaySeconds > 0 ? '#94a3b8' : 'white', fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.5px', marginRight: '10px', transition: 'color 0.3s' }}>LIVE</span>
@@ -624,8 +682,8 @@ export default function PlayerPanel({
                       }}>
                         <button 
                           onClick={() => {
-                            if (shakaInstance) {
-                              shakaInstance.configure({ abr: { enabled: true } });
+                            if (bitmovinInstance) {
+                              bitmovinInstance.setVideoQuality('auto');
                               setCurrentLevel(-1);
                             }
                             setShowQualityMenu(false);
@@ -653,9 +711,8 @@ export default function PlayerPanel({
                           <button 
                             key={level.index}
                             onClick={() => {
-                              if (shakaInstance) {
-                                shakaInstance.configure({ abr: { enabled: false } });
-                                shakaInstance.selectVariantTrack(level);
+                              if (bitmovinInstance) {
+                                bitmovinInstance.setVideoQuality(level.index);
                                 setCurrentLevel(level.index);
                               }
                               setShowQualityMenu(false);
@@ -692,7 +749,7 @@ export default function PlayerPanel({
                 </button>
               </div>
             </div>
-            </div>
+          </div>
           )}
 
           {/* Buffering Indicator Overlay */}
