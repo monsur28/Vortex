@@ -32,8 +32,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/dash/enc/ap5wz1ofsp/out/v1/7fa6feef143747beaa186ebb6dfb2532/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "c620c93c60c04999eb9ddc28ecfb70a8:e76a709c251313190e76cb3c3d3a5824"
@@ -44,8 +44,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/w0rehjjrwe/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "14eeabf30c14b7fbf3008c03099ce011:17d2ac8dbc5429bd70af3433aa12158d"
@@ -56,8 +56,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/ubehitlwzo/out/v1/8e09c381a51f4366a19e979418112e8f/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "a7d11d37a1f7611ee88d4db880171f32:68f96d618b0b956b008c445896a25a79"
@@ -76,8 +76,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "f6564ec2aee819046328a0e153be574d:ff46a8a1031eb27ef22576a077c98ab7"
@@ -100,8 +100,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/8u9cregwlt/out/v1/687f6b2a559943549be271504a948ffd/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "1710ac2bbfcd3032d0f6533850968f47:d2548dacc8efcd1cd0af0373060c82dc"
@@ -136,8 +136,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/ihys8nw4wv/out/v1/fde190f369484bc6b6117cc16cd82a9f/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "abc5b2883121012850ebda05b528c5ec:e5250924f4b738905f7163a0134587a7"
@@ -148,8 +148,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/w0rehjjrwe/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "14eeabf30c14b7fbf3008c03099ce011:17d2ac8dbc5429bd70af3433aa12158d"
@@ -160,8 +160,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/lsibpqruq1/out/v1/748887d614a84913ba8bcdf3c82823e6/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "d3250252765347a0c2603c6cb4869f8c:0c19319460da7e9ed816db46ce839b37"
@@ -228,8 +228,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/dash/enc/ap5wz1ofsp/out/v1/7fa6feef143747beaa186ebb6dfb2532/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "c620c93c60c04999eb9ddc28ecfb70a8:e76a709c251313190e76cb3c3d3a5824"
@@ -240,8 +240,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/w0rehjjrwe/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "14eeabf30c14b7fbf3008c03099ce011:17d2ac8dbc5429bd70af3433aa12158d"
@@ -252,8 +252,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/ubehitlwzo/out/v1/8e09c381a51f4366a19e979418112e8f/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "a7d11d37a1f7611ee88d4db880171f32:68f96d618b0b956b008c445896a25a79"
@@ -272,8 +272,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "f6564ec2aee819046328a0e153be574d:ff46a8a1031eb27ef22576a077c98ab7"
@@ -296,8 +296,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/8u9cregwlt/out/v1/687f6b2a559943549be271504a948ffd/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "1710ac2bbfcd3032d0f6533850968f47:d2548dacc8efcd1cd0af0373060c82dc"
@@ -332,8 +332,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/ihys8nw4wv/out/v1/fde190f369484bc6b6117cc16cd82a9f/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "abc5b2883121012850ebda05b528c5ec:e5250924f4b738905f7163a0134587a7"
@@ -344,8 +344,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/w0rehjjrwe/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "14eeabf30c14b7fbf3008c03099ce011:17d2ac8dbc5429bd70af3433aa12158d"
@@ -356,8 +356,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/lsibpqruq1/out/v1/748887d614a84913ba8bcdf3c82823e6/cenc.mpd",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false,
+    "useProxy": true,
+    "proxySegments": true,
     "drm": {
       "type": "clearkey",
       "key": "d3250252765347a0c2603c6cb4869f8c:0c19319460da7e9ed816db46ce839b37"
@@ -419,8 +419,8 @@
       "type": "clearkey",
       "key": "a7d11d37a1f7611ee88d4db880171f32:68f96d618b0b956b008c445896a25a79"
     },
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "Fox One",
@@ -488,7 +488,9 @@
     "drm": {
       "type": "clearkey",
       "key": "1223d5105392cabf1bb9c2c1fdf6539a:340b409f4b8f78a343e0363a7938df38"
-    }
+    },
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "Zee Bangla Cinema",
@@ -530,7 +532,9 @@
     "drm": {
       "type": "clearkey",
       "key": "a7d11d37a1f7611ee88d4db880171f32:68f96d618b0b956b008c445896a25a79"
-    }
+    },
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "TSN Sports",
@@ -540,7 +544,9 @@
     "drm": {
       "type": "clearkey",
       "key": "c4088f5f265f9de50cffd80bf89308b7:2c4d2239d96d532b4ec2050653611003"
-    }
+    },
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "Fifa World Cup 3",
@@ -550,7 +556,9 @@
     "drm": {
       "type": "clearkey",
       "key": "1710ac2bbfcd3032d0f6533850968f47:d2548dacc8efcd1cd0af0373060c82dc"
-    }
+    },
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "============ DENMARK (H.264) Local Streams ============",
