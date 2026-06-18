@@ -135,6 +135,11 @@ export default function PlayerPanel({
           .replace('{XTREAM_HOST}', process.env.NEXT_PUBLIC_XTREAM_HOST || 'https://premiumtvs.space')
           .replace('{XTREAM_USER}', process.env.NEXT_PUBLIC_XTREAM_USER || '1Aoen7elp5')
           .replace('{XTREAM_PASS}', process.env.NEXT_PUBLIC_XTREAM_PASS || 'IgMJ60tmAa');
+          
+        // Force Xtream .ts streams to .m3u8 so Shaka Player can play them
+        if (rawUrl.includes('premiumtvs.space') && rawUrl.endsWith('.ts')) {
+          rawUrl = rawUrl.replace('.ts', '.m3u8');
+        }
       }
 
       let streamUrl = rawUrl;
