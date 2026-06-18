@@ -132,7 +132,7 @@ export default function PlayerPanel({
       // Interpolate Xtream variables if they exist in the URL
       if (rawUrl && typeof rawUrl === 'string') {
         rawUrl = rawUrl
-          .replace('{XTREAM_HOST}', process.env.NEXT_PUBLIC_XTREAM_HOST || 'http://premiumtvs.space:80')
+          .replace('{XTREAM_HOST}', process.env.NEXT_PUBLIC_XTREAM_HOST || 'https://premiumtvs.space')
           .replace('{XTREAM_USER}', process.env.NEXT_PUBLIC_XTREAM_USER || '1Aoen7elp5')
           .replace('{XTREAM_PASS}', process.env.NEXT_PUBLIC_XTREAM_PASS || 'IgMJ60tmAa');
       }
@@ -141,8 +141,9 @@ export default function PlayerPanel({
       
       const isMpegTs = rawUrl && (rawUrl.endsWith('.ts') || rawUrl.includes('.ts?'));
       
-      // For MPEG-TS, it's a single file stream, so proxying the streamUrl works natively
-      if (isMpegTs) {
+      // For MPEG-TS, it's a single file stream.
+      // We only proxy it if it's HTTP, to avoid Mixed Content errors. If it's HTTPS, we can play it directly!
+      if (isMpegTs && rawUrl.startsWith('http://')) {
         streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&url=${encodeURIComponent(rawUrl)}&t=${Date.now()}`;
       }
 
