@@ -49,14 +49,7 @@ export default function PlayerPanel({
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (bitmovinInstance && bitmovinInstance.isLive && bitmovinInstance.isLive()) {
-        const shift = bitmovinInstance.getTimeShift();
-        if (shift < -2) {
-          setDelaySeconds(Math.abs(Math.round(shift)));
-        } else {
-          setDelaySeconds(0);
-        }
-      } else if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
+      if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
         const seekableEnd = videoRef.current.seekable.end(videoRef.current.seekable.length - 1);
         const current = videoRef.current.currentTime;
         const delay = Math.round(seekableEnd - current);
@@ -68,7 +61,7 @@ export default function PlayerPanel({
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [bitmovinInstance]);
+  }, []);
 
   // Helper for converting hex DRM keys to base64url
   const hexToBase64Url = (hexString) => {
