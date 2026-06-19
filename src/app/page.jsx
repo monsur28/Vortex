@@ -31,7 +31,7 @@ export default function Home() {
         useProxy: !!channel.proxy || !!channel.useProxy,
         proxySegments: !!channel.proxySegments,
         urlCount: originalUrls.length,
-        iframeUrl: targetUrl.startsWith('roarzone://') ? targetUrl : undefined
+        iframeUrl: channel.iframeUrl || (targetUrl.startsWith('roarzone://') ? targetUrl : undefined)
       };
     });
   } catch (error) {
