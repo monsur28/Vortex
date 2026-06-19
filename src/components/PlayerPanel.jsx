@@ -100,8 +100,8 @@ export default function PlayerPanel({
     setAutoHeight('');
     setShowQualityMenu(false);
 
-    // If it's a popup/iframe channel, just stop buffering and do nothing else
-    if (activeChannel.iframeUrl) {
+    // If it's a popup/iframe channel or uses native video, just stop buffering and do nothing else with Bitmovin
+    if (activeChannel.iframeUrl || activeChannel.useNativeVideo) {
       setBuffering(false);
       setIsPlaying(true);
       return;
@@ -600,6 +600,8 @@ export default function PlayerPanel({
                 Open Stream Window
               </button>
             </div>
+          ) : activeChannel.useNativeVideo ? (
+            <video id="video-player" controls autoPlay playsInline style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'black' }} src={activeChannel.url}></video>
           ) : (
             <video id="video-player" playsInline ref={videoRef}></video>
           )}

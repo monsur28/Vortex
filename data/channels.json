@@ -571,6 +571,6 @@
     "bufferless": true,
     "useProxy": false,
     "proxySegments": false,
-    "iframeUrl": "https://fifalive.click/play"
+    "useNativeVideo": true
   }
 ]
