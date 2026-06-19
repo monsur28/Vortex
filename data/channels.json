@@ -572,5 +572,29 @@
     "useProxy": false,
     "proxySegments": false,
     "useNativeVideo": true
+  },
+  {
+    "name": "beIN Sports 1",
+    "group": "FIFA World Cup 2026",
+    "url": "http://mordor.voohocep.top:8080/live/Marko/Marko/1679.ts",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "ESPN",
+    "group": "FIFA World Cup 2026",
+    "url": "http://mordor.voohocep.top:8080/live/Marko/Marko/155107.ts",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "VIP FOX",
+    "group": "FIFA World Cup 2026",
+    "url": "http://mordor.voohocep.top:8080/live/Marko/Marko/1872.ts",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
   }
 ]
