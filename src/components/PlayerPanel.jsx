@@ -589,7 +589,12 @@ export default function PlayerPanel({
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center', justifyContent: 'center', backgroundColor: '#000', color: 'white' }}>
               <p style={{ marginBottom: '20px', fontSize: '14px', color: 'var(--text-secondary)' }}>This channel requires opening in a separate window due to network security.</p>
               <button 
-                onClick={() => window.open(`https://tv.roarzone.net/player.php?stream=${activeChannel.iframeUrl.replace('roarzone://', '')}`, '_blank', 'width=800,height=600')}
+                onClick={() => {
+                  const targetUrl = activeChannel.iframeUrl.startsWith('roarzone://') 
+                    ? `https://tv.roarzone.net/player.php?stream=${activeChannel.iframeUrl.replace('roarzone://', '')}` 
+                    : activeChannel.iframeUrl;
+                  window.open(targetUrl, '_blank', 'width=800,height=600');
+                }}
                 style={{ padding: '10px 20px', borderRadius: '6px', background: 'var(--color-accent)', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
               >
                 Open Stream Window
