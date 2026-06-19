@@ -8,7 +8,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "update-keys": "node scripts/update-channels.cjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.4.0",
@@ -19,6 +20,9 @@
     "lucide-react": "^1.17.0",
     "mpegts.js": "^1.8.0",
     "next": "^16.2.7",
+    "puppeteer": "^25.1.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },

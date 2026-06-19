@@ -507,5 +507,61 @@
     },
     "useProxy": false,
     "proxySegments": false
+  },
+  {
+    "name": "Somoy TV",
+    "group": "FIFA World Cup 2026",
+    "url": "https://live.thebosstv.com:30443/dwlive/Somoy-TV/playlist.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Live 89",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/89/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Live 32",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/32/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Live 84",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/84/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Fox Live",
+    "group": "FIFA World Cup 2026",
+    "url": "http://84.17.50.102/fox/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Live 94",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/94/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Live 23",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/23/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
   }
 ]
