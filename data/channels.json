@@ -356,8 +356,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
     "bufferless": true,
-    "useProxy": true,
-    "proxySegments": true,
+    "useProxy": false,
+    "proxySegments": false,
     "drm": {
       "type": "clearkey",
       "key": "f6564ec2aee819046328a0e153be574d:ff46a8a1031eb27ef22576a077c98ab7"
