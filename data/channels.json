@@ -25,15 +25,15 @@
     "group": "FIFA World Cup 2026",
     "url": "https://cdn.fifalive.click/play.m3u8",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "FIFA 2026 Live (Server 3)",
     "group": "FIFA World Cup 2026",
     "url": "https://vizio.kuvuslov.cymru/hls/fox.m3u8",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   }
 ]
