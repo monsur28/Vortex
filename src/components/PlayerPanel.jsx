@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from 'react';
-import { X, Star, WifiOff } from 'lucide-react';
-import 'bitmovin-player-ui/dist/css/bitmovinplayer-ui.css';
+import { X, Play, Pause, Square, Volume2, VolumeX, ExternalLink, Monitor, Maximize, WifiOff, Settings, Check, Star, ChevronLeft, ChevronRight, RotateCcw, RotateCw } from 'lucide-react';
 
 export default function PlayerPanel({ 
   activeChannel, 
@@ -31,8 +30,21 @@ export default function PlayerPanel({
   const [delaySeconds, setDelaySeconds] = useState(0);
   const controlsTimeoutRef = useRef(null);
 
+  const resetControlsTimeout = () => {
+    setShowControls(true);
+    if (controlsTimeoutRef.current) {
+      clearTimeout(controlsTimeoutRef.current);
+    }
+    controlsTimeoutRef.current = setTimeout(() => {
+      setShowControls(false);
+    }, 3000);
+  };
+
   useEffect(() => {
-    // Timeout logic removed since we are using native controls
+    resetControlsTimeout();
+    return () => {
+      if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
+    };
   }, [isPlaying]);
 
   useEffect(() => {
@@ -202,6 +214,7 @@ export default function PlayerPanel({
             autoplay: true,
             muted: isMuted,
           },
+          ui: false,
           tweaks: {
             app_id: 'com.iptv.app',
             startup_threshold: 4, // Wait for 4s of video to buffer before playing
@@ -256,19 +269,6 @@ export default function PlayerPanel({
         }
 
         newBitmovin = new Player(container, config);
-
-        try {
-          const bitmovinUiModule = await import('bitmovin-player-ui');
-          const UIFactory = bitmovinUiModule.UIFactory || (bitmovinUiModule.default && bitmovinUiModule.default.UIFactory);
-
-          if (UIFactory) {
-            UIFactory.buildDefaultUI(newBitmovin);
-          } else {
-            console.error("Bitmovin UIFactory not found in:", bitmovinUiModule);
-          }
-        } catch (e) {
-          console.error("Failed to load Bitmovin UI", e);
-        }
 
         const source = {
             title: activeChannel.name
@@ -575,7 +575,10 @@ export default function PlayerPanel({
   return (
     <div className="fullscreen-player-overlay" id="player-panel">
       <div 
-        className="player-container"
+        className={`player-container ${!showControls && isPlaying ? 'controls-hidden' : ''}`}
+        onMouseMove={resetControlsTimeout}
+        onClick={resetControlsTimeout}
+        onMouseLeave={() => isPlaying && setShowControls(false)}
       >
         <div className="video-wrapper" ref={videoWrapperRef}>
           {activeChannel.iframeUrl ? (
@@ -596,7 +599,7 @@ export default function PlayerPanel({
           ) : activeChannel.useNativeVideo ? (
             <video id="video-player" controls autoPlay playsInline style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'black' }} src={activeChannel.url}></video>
           ) : (
-            <video id="video-player" controls playsInline ref={videoRef} style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'black' }}></video>
+            <video id="video-player" playsInline ref={videoRef}></video>
           )}
 
           {/* Top Header Overlay inside Player */}
@@ -625,7 +628,152 @@ export default function PlayerPanel({
             </div>
           </div>
 
-          {/* Custom controls removed as per user request to use native player */}
+          {/* Center Controls & Side Arrows Overlay (Removed for sportzify style) */}
+          
+          {/* Bottom Custom Controls */}
+          {!activeChannel.iframeUrl && (
+            <div className="player-controls" id="player-controls" style={{ background: '#080808', padding: '12px 20px', paddingBottom: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px', paddingLeft: '4px' }}>
+                <span style={{ color: delaySeconds > 0 ? '#94a3b8' : '#ff0000', fontSize: '12px', marginRight: '6px', transition: 'color 0.3s' }}>●</span>
+                <span style={{ color: delaySeconds > 0 ? '#94a3b8' : 'white', fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.5px', marginRight: '10px', transition: 'color 0.3s' }}>LIVE</span>
+                {delaySeconds > 0 && (
+                  <button 
+                    onClick={jumpToLive}
+                    style={{ background: 'rgba(255,0,0,0.1)', border: '1px solid #ff0000', borderRadius: '4px', padding: '2px 6px', fontSize: '10px', color: '#ff0000', cursor: 'pointer', fontWeight: 'bold', transition: 'all 0.2s' }}
+                    onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255,0,0,0.2)'; }}
+                    onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(255,0,0,0.1)'; }}
+                  >
+                    -{delaySeconds}s Behind (Click to go Live)
+                  </button>
+                )}
+              </div>
+              <div className="controls-row">
+                <div className="controls-left">
+                  <button className="play-btn" onClick={togglePlay} style={{ color: 'white' }}>
+                    {isPlaying ? <Square size={16} strokeWidth={3} /> : <Play size={18} fill="currentColor" />}
+                  </button>
+                <div className="volume-container">
+                  <button className="volume-btn" onClick={toggleMute} style={{ color: 'white' }}>
+                    {isMuted || volume === 0 ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                  </button>
+                  <input 
+                    type="range" 
+                    className="volume-slider sportzify-slider" 
+                    min="0" 
+                    max="1" 
+                    step="0.05" 
+                    value={isMuted ? 0 : volume}
+                    onChange={handleVolumeChange}
+                  />
+                </div>
+              </div>
+              <div className="controls-right" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                {(levels.length > 0 || mpegtsInstance) && (
+                  <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                    <button 
+                      className={`pip-btn ${showQualityMenu && levels.length > 0 ? 'active' : ''}`} 
+                      title={mpegtsInstance ? "Direct Source Stream" : "Video Quality"} 
+                      onClick={() => levels.length > 0 && setShowQualityMenu(!showQualityMenu)}
+                      style={{ padding: '0 6px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', fontWeight: '700', borderRadius: '4px', height: '28px', color: showQualityMenu && levels.length > 0 ? 'var(--color-accent)' : 'white', cursor: mpegtsInstance ? 'default' : 'pointer' }}
+                    >
+                      <Settings size={16} />
+                      <span style={{ fontSize: '11px' }}>
+                        {mpegtsInstance 
+                          ? 'Source' 
+                          : (currentLevel === -1 
+                            ? `Auto${autoHeight ? ` (${autoHeight})` : ''}` 
+                            : levels.find(l => l.index === currentLevel)?.name || 'HD')}
+                      </span>
+                    </button>
+                    {showQualityMenu && levels.length > 0 && (
+                      <div className="quality-menu" style={{
+                        position: 'absolute',
+                        bottom: '40px',
+                        right: '0',
+                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                        backdropFilter: 'blur(12px)',
+                        border: '1px solid var(--glass-border)',
+                        borderRadius: '6px',
+                        padding: '6px 0',
+                        minWidth: '120px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        zIndex: 100,
+                        boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                        maxHeight: '200px',
+                        overflowY: 'auto'
+                      }}>
+                        <button 
+                          onClick={() => {
+                            if (bitmovinInstance) {
+                              bitmovinInstance.setVideoQuality('auto');
+                              setCurrentLevel(-1);
+                            }
+                            setShowQualityMenu(false);
+                          }}
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            color: currentLevel === -1 ? 'var(--color-accent)' : 'white',
+                            padding: '8px 16px',
+                            textAlign: 'left',
+                            fontSize: '12px',
+                            fontWeight: currentLevel === -1 ? '800' : '500',
+                            cursor: 'pointer',
+                            width: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            transition: 'all 0.2s'
+                          }}
+                        >
+                          <span>Auto (ABR)</span>
+                          {currentLevel === -1 && <Check size={14} />}
+                        </button>
+                        {levels.map(level => (
+                          <button 
+                            key={level.index}
+                            onClick={() => {
+                              if (bitmovinInstance) {
+                                bitmovinInstance.setVideoQuality(level.index);
+                                setCurrentLevel(level.index);
+                              }
+                              setShowQualityMenu(false);
+                            }}
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              color: currentLevel === level.index ? 'var(--color-accent)' : 'white',
+                              padding: '8px 16px',
+                              textAlign: 'left',
+                              fontSize: '12px',
+                              fontWeight: currentLevel === level.index ? '800' : '500',
+                              cursor: 'pointer',
+                              width: '100%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              transition: 'all 0.2s'
+                            }}
+                          >
+                            <span>{level.name}</span>
+                            {currentLevel === level.index && <Check size={14} />}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+                <button className="pip-btn" title="Picture in Picture" onClick={handlePiP} style={{ color: 'white' }}>
+                  <Monitor size={18} />
+                </button>
+                <button className="fullscreen-btn" title="Fullscreen" onClick={handleFullscreen}>
+                  <Maximize size={18} />
+                </button>
+              </div>
+            </div>
+          </div>
+          )}
 
           {/* Buffering Indicator Overlay */}
           {buffering && !errorMsg && (
