@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from 'react';
 import { X, Star, WifiOff } from 'lucide-react';
-import 'bitmovin-player/bitmovinplayer-ui.css';
+import 'bitmovin-player-ui/dist/css/bitmovinplayer-ui.css';
 
 export default function PlayerPanel({ 
   activeChannel, 
@@ -258,11 +258,8 @@ export default function PlayerPanel({
         newBitmovin = new Player(container, config);
 
         try {
-          const bitmovinUiModule = await import('bitmovin-player/bitmovinplayer-ui.js');
-          const UIFactory = bitmovinUiModule.UIFactory 
-                         || (bitmovinUiModule.default && bitmovinUiModule.default.UIFactory)
-                         || (bitmovinUiModule['bitmovinplayer-ui'] && bitmovinUiModule['bitmovinplayer-ui'].UIFactory)
-                         || (window.bitmovin && window.bitmovin.playerui && window.bitmovin.playerui.UIFactory);
+          const bitmovinUiModule = await import('bitmovin-player-ui');
+          const UIFactory = bitmovinUiModule.UIFactory || (bitmovinUiModule.default && bitmovinUiModule.default.UIFactory);
 
           if (UIFactory) {
             UIFactory.buildDefaultUI(newBitmovin);
