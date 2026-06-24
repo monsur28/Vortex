@@ -29,12 +29,52 @@ export default function KnockoutBracket({ matches }) {
     matchesByStage[stage.id] = filledMatches;
   });
 
-  const renderMatch = (match) => {
+  const renderMatch = (match, stageId, index) => {
     if (match.isPlaceholder) {
+      let homeLabel = "TBD";
+      let awayLabel = "TBD";
+
+      if (stageId === 'LAST_32') {
+        const labels = [
+          { home: "1st Group A", away: "3rd Group C/D/E" },
+          { home: "2nd Group B", away: "2nd Group F" },
+          { home: "1st Group C", away: "3rd Group A/B/F" },
+          { home: "2nd Group E", away: "2nd Group I" },
+          { home: "1st Group D", away: "3rd Group B/C/E/F" },
+          { home: "2nd Group A", away: "2nd Group H" },
+          { home: "1st Group F", away: "3rd Group A/B/C" },
+          { home: "2nd Group C", away: "2nd Group G" },
+          { home: "1st Group E", away: "3rd Group A/B/C/D" },
+          { home: "2nd Group D", away: "2nd Group J" },
+          { home: "1st Group G", away: "3rd Group H/I/J/K" },
+          { home: "2nd Group K", away: "2nd Group L" },
+          { home: "1st Group H", away: "3rd Group E/F/G" },
+          { home: "1st Group I", away: "3rd Group C/D/H" },
+          { home: "1st Group J", away: "3rd Group A/B/F" },
+          { home: "1st Group L", away: "3rd Group D/E/I" }
+        ];
+        if (labels[index]) {
+          homeLabel = labels[index].home;
+          awayLabel = labels[index].away;
+        }
+      } else if (stageId === 'LAST_16') {
+        homeLabel = `Winner R32 M${(index * 2) + 1}`;
+        awayLabel = `Winner R32 M${(index * 2) + 2}`;
+      } else if (stageId === 'QUARTER_FINALS') {
+        homeLabel = `Winner R16 M${(index * 2) + 1}`;
+        awayLabel = `Winner R16 M${(index * 2) + 2}`;
+      } else if (stageId === 'SEMI_FINALS') {
+        homeLabel = `Winner QF M${(index * 2) + 1}`;
+        awayLabel = `Winner QF M${(index * 2) + 2}`;
+      } else if (stageId === 'FINAL') {
+        homeLabel = `Winner SF 1`;
+        awayLabel = `Winner SF 2`;
+      }
+
       return (
         <div className="wc-bracket-match placeholder" key={match.id}>
-          <div className="wc-bracket-team"><span>TBD</span></div>
-          <div className="wc-bracket-team"><span>TBD</span></div>
+          <div className="wc-bracket-team"><span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>{homeLabel}</span></div>
+          <div className="wc-bracket-team"><span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>{awayLabel}</span></div>
         </div>
       );
     }
@@ -74,7 +114,7 @@ export default function KnockoutBracket({ matches }) {
                 const isTopHalf = idx % 2 === 0;
                 return (
                   <div className={`wc-bracket-match-wrapper ${stageIndex < STAGES.length - 1 ? (isTopHalf ? 'connect-down' : 'connect-up') : ''}`} key={match.id || idx}>
-                    {renderMatch(match)}
+                    {renderMatch(match, stage.id, idx)}
                   </div>
                 )
               })}
