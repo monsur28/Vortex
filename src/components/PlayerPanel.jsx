@@ -100,8 +100,8 @@ export default function PlayerPanel({
     setAutoHeight('');
     setShowQualityMenu(false);
 
-    // If it's a popup/iframe channel or uses native video, just stop buffering and do nothing else with Bitmovin
-    if (activeChannel.iframeUrl || activeChannel.useNativeVideo) {
+    // If it's a popup/iframe channel, just stop buffering and do nothing else
+    if (activeChannel.iframeUrl) {
       setBuffering(false);
       setIsPlaying(true);
       return;
@@ -109,6 +109,22 @@ export default function PlayerPanel({
 
     const video = videoRef.current;
     if (!video) return;
+
+    if (activeChannel.useNativeVideo) {
+      setBuffering(false);
+      setIsPlaying(true);
+      
+      const onPlaying = () => setIsPlaying(true);
+      const onPause = () => setIsPlaying(false);
+      
+      video.addEventListener('playing', onPlaying);
+      video.addEventListener('pause', onPause);
+      
+      return () => {
+        video.removeEventListener('playing', onPlaying);
+        video.removeEventListener('pause', onPause);
+      };
+    }
 
     let isCancelled = false;
     let newBitmovin = null;
@@ -603,7 +619,7 @@ export default function PlayerPanel({
               </button>
             </div>
           ) : activeChannel.useNativeVideo ? (
-            <video id="video-player" controls autoPlay playsInline style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'black' }} src={activeChannel.url}></video>
+            <video id="video-player" ref={videoRef} autoPlay playsInline style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'black' }} src={activeChannel.url}></video>
           ) : (
             <video id="video-player" playsInline ref={videoRef}></video>
           )}
@@ -637,7 +653,7 @@ export default function PlayerPanel({
           {/* Center Controls & Side Arrows Overlay (Removed for sportzify style) */}
           
           {/* Bottom Custom Controls */}
-          {!(activeChannel.iframeUrl || activeChannel.useNativeVideo) && (
+          {!activeChannel.iframeUrl && (
             <div className="player-controls" id="player-controls" style={{ background: '#080808', padding: '12px 20px', paddingBottom: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px', paddingLeft: '4px' }}>
                 <span style={{ color: delaySeconds > 0 ? '#94a3b8' : '#ff0000', fontSize: '12px', marginRight: '6px', transition: 'color 0.3s' }}>●</span>
