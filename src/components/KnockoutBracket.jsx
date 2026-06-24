@@ -26,6 +26,9 @@ export default function KnockoutBracket({ matches }) {
         filledMatches.push({ id: `placeholder-${stage.id}-${i}`, isPlaceholder: true });
       }
     }
+    matchesByStage[stage.id] = filledMatches;
+  });
+
   const getPlaceholderLabels = (stageId, index) => {
     let homeLabel = "TBD";
     let awayLabel = "TBD";
