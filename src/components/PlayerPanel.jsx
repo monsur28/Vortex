@@ -188,43 +188,11 @@ export default function PlayerPanel({
 
         // --- HLS.JS Initialization ---
         if (Hls.isSupported()) {
-            class ProxyLoader extends Hls.DefaultConfig.loader {
-               constructor(config) {
-                 super(config);
-                 const originalLoad = this.load.bind(this);
-                 this.load = (context, loaderConfig, callbacks) => {
-                    if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
-                       if (context.url.startsWith('http') && !context.url.includes('/api/proxy')) {
-                          context.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(context.url)}`;
-                       }
-                    }
-                    originalLoad(context, loaderConfig, callbacks);
-                 };
-               }
-            }
-
-            class FragmentProxyLoader extends Hls.DefaultConfig.loader {
-               constructor(config) {
-                 super(config);
-                 const originalLoad = this.load.bind(this);
-                 this.load = (context, loaderConfig, callbacks) => {
-                    if (activeChannel.proxySegments || activeChannel.useProxy) {
-                       if (context.url.startsWith('http') && !context.url.includes('/api/proxy')) {
-                          context.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(context.url)}`;
-                       }
-                    }
-                    originalLoad(context, loaderConfig, callbacks);
-                 };
-               }
-            }
-
             const hlsConfig = {
               autoStartLoad: true,
               startPosition: -1,
               maxBufferLength: activeChannel.bufferless ? 10 : 60,
-              liveSyncDurationCount: activeChannel.bufferless ? 2 : 3,
-              pLoader: ProxyLoader,
-              fLoader: FragmentProxyLoader
+              liveSyncDurationCount: activeChannel.bufferless ? 2 : 3
             };
 
           if (activeChannel.hasDrm || activeChannel.drm) {
