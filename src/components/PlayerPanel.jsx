@@ -581,6 +581,7 @@ export default function PlayerPanel({
             </div>
           ) : activeChannel.useNativeVideo ? (
             <video id="video-player" controls autoPlay playsInline style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'black' }} src={activeChannel.url}></video>
+          ) : (
             <video id="video-player" controls playsInline ref={videoRef} style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'black' }}></video>
           )}
 
