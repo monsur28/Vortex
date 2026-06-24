@@ -47,5 +47,133 @@
     "bufferless": true,
     "useProxy": false,
     "proxySegments": false
+  },
+  {
+    "name": "WIN Sports",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/32/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "ESPN HD",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/97/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Unite 8 Sports 1 HD",
+    "group": "FIFA World Cup 2026",
+    "url": "http://starhub.pro/live/farhat-3379/67897-913379/741567.ts",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Unite 8 Sports 2 HD",
+    "group": "FIFA World Cup 2026",
+    "url": "http://212.102.34.8:9080/AndFlixHD/video.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "TVP Sports",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/89/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Bein Sports 1",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/23/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "beIN SPORTS 1 UHD",
+    "group": "FIFA World Cup 2026",
+    "url": "http://proxpanel.cc/h1wqD6CY/byxHYgX/707929",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "M6",
+    "group": "FIFA World Cup 2026",
+    "url": "https://tv.beyondtaxconsultants.com/api/robi/lps/http://151.80.18.177:86/M6_HD/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "FOX",
+    "group": "FIFA World Cup 2026",
+    "url": "http://84.17.50.102/fox/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "S Football",
+    "group": "FIFA World Cup 2026",
+    "url": "http://rgkkw.live/live/1Aoen7elp5/IgMJ60tmAa/745149.ts",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "T Sports HD",
+    "group": "FIFA World Cup 2026",
+    "url": "http://starhub.pro/live/Anthony2/Anthony123/113069.ts",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "PTV 4K",
+    "group": "FIFA World Cup 2026",
+    "url": "http://starhub.pro/live/Anthony2/Anthony123/61674.ts",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Telemundo",
+    "group": "FIFA World Cup 2026",
+    "url": "https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream1/master.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "ESPN S2",
+    "group": "FIFA World Cup 2026",
+    "url": "http://186.33.40.97:8789/play/20",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "D Sports",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/106/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Tudn Sports",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/52/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
   }
 ]

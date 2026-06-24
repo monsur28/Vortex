@@ -400,6 +400,5 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
       </>
       )}
     </div>
-    </div>
   );
 }
