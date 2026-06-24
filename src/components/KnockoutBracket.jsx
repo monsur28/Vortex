@@ -26,50 +26,54 @@ export default function KnockoutBracket({ matches }) {
         filledMatches.push({ id: `placeholder-${stage.id}-${i}`, isPlaceholder: true });
       }
     }
-    matchesByStage[stage.id] = filledMatches;
-  });
+  const getPlaceholderLabels = (stageId, index) => {
+    let homeLabel = "TBD";
+    let awayLabel = "TBD";
+
+    if (stageId === 'LAST_32') {
+      const labels = [
+        { home: "1st Group A", away: "3rd Group C/D/E" },
+        { home: "2nd Group B", away: "2nd Group F" },
+        { home: "1st Group C", away: "3rd Group A/B/F" },
+        { home: "2nd Group E", away: "2nd Group I" },
+        { home: "1st Group D", away: "3rd Group B/C/E/F" },
+        { home: "2nd Group A", away: "2nd Group H" },
+        { home: "1st Group F", away: "3rd Group A/B/C" },
+        { home: "2nd Group C", away: "2nd Group G" },
+        { home: "1st Group E", away: "3rd Group A/B/C/D" },
+        { home: "2nd Group D", away: "2nd Group J" },
+        { home: "1st Group G", away: "3rd Group H/I/J/K" },
+        { home: "2nd Group K", away: "2nd Group L" },
+        { home: "1st Group H", away: "3rd Group E/F/G" },
+        { home: "1st Group I", away: "3rd Group C/D/H" },
+        { home: "1st Group J", away: "3rd Group A/B/F" },
+        { home: "1st Group L", away: "3rd Group D/E/I" }
+      ];
+      if (labels[index]) {
+        homeLabel = labels[index].home;
+        awayLabel = labels[index].away;
+      }
+    } else if (stageId === 'LAST_16') {
+      homeLabel = `Winner R32 M${(index * 2) + 1}`;
+      awayLabel = `Winner R32 M${(index * 2) + 2}`;
+    } else if (stageId === 'QUARTER_FINALS') {
+      homeLabel = `Winner R16 M${(index * 2) + 1}`;
+      awayLabel = `Winner R16 M${(index * 2) + 2}`;
+    } else if (stageId === 'SEMI_FINALS') {
+      homeLabel = `Winner QF M${(index * 2) + 1}`;
+      awayLabel = `Winner QF M${(index * 2) + 2}`;
+    } else if (stageId === 'FINAL') {
+      homeLabel = `Winner SF 1`;
+      awayLabel = `Winner SF 2`;
+    }
+
+    return { homeLabel, awayLabel };
+  };
 
   const renderMatch = (match, stageId, index) => {
-    if (match.isPlaceholder) {
-      let homeLabel = "TBD";
-      let awayLabel = "TBD";
+    const { homeLabel, awayLabel } = getPlaceholderLabels(stageId, index);
 
-      if (stageId === 'LAST_32') {
-        const labels = [
-          { home: "1st Group A", away: "3rd Group C/D/E" },
-          { home: "2nd Group B", away: "2nd Group F" },
-          { home: "1st Group C", away: "3rd Group A/B/F" },
-          { home: "2nd Group E", away: "2nd Group I" },
-          { home: "1st Group D", away: "3rd Group B/C/E/F" },
-          { home: "2nd Group A", away: "2nd Group H" },
-          { home: "1st Group F", away: "3rd Group A/B/C" },
-          { home: "2nd Group C", away: "2nd Group G" },
-          { home: "1st Group E", away: "3rd Group A/B/C/D" },
-          { home: "2nd Group D", away: "2nd Group J" },
-          { home: "1st Group G", away: "3rd Group H/I/J/K" },
-          { home: "2nd Group K", away: "2nd Group L" },
-          { home: "1st Group H", away: "3rd Group E/F/G" },
-          { home: "1st Group I", away: "3rd Group C/D/H" },
-          { home: "1st Group J", away: "3rd Group A/B/F" },
-          { home: "1st Group L", away: "3rd Group D/E/I" }
-        ];
-        if (labels[index]) {
-          homeLabel = labels[index].home;
-          awayLabel = labels[index].away;
-        }
-      } else if (stageId === 'LAST_16') {
-        homeLabel = `Winner R32 M${(index * 2) + 1}`;
-        awayLabel = `Winner R32 M${(index * 2) + 2}`;
-      } else if (stageId === 'QUARTER_FINALS') {
-        homeLabel = `Winner R16 M${(index * 2) + 1}`;
-        awayLabel = `Winner R16 M${(index * 2) + 2}`;
-      } else if (stageId === 'SEMI_FINALS') {
-        homeLabel = `Winner QF M${(index * 2) + 1}`;
-        awayLabel = `Winner QF M${(index * 2) + 2}`;
-      } else if (stageId === 'FINAL') {
-        homeLabel = `Winner SF 1`;
-        awayLabel = `Winner SF 2`;
-      }
+    if (match.isPlaceholder) {
 
       return (
         <div className="wc-bracket-match placeholder" key={match.id}>
@@ -88,14 +92,18 @@ export default function KnockoutBracket({ matches }) {
         <div className="wc-bracket-team">
           <div className="team-info">
             {match.homeTeam?.crest && <img src={match.homeTeam.crest} alt="" />}
-            <span style={{ fontWeight: match.score?.winner === 'HOME_TEAM' ? '800' : '500' }}>{match.homeTeam?.name || 'TBD'}</span>
+            <span style={{ fontWeight: match.score?.winner === 'HOME_TEAM' ? '800' : '500', fontSize: match.homeTeam?.name ? '12px' : '10px', color: match.homeTeam?.name ? 'inherit' : 'var(--text-secondary)' }}>
+              {match.homeTeam?.name || homeLabel}
+            </span>
           </div>
           <div className="team-score">{homeScore}</div>
         </div>
         <div className="wc-bracket-team">
           <div className="team-info">
             {match.awayTeam?.crest && <img src={match.awayTeam.crest} alt="" />}
-            <span style={{ fontWeight: match.score?.winner === 'AWAY_TEAM' ? '800' : '500' }}>{match.awayTeam?.name || 'TBD'}</span>
+            <span style={{ fontWeight: match.score?.winner === 'AWAY_TEAM' ? '800' : '500', fontSize: match.awayTeam?.name ? '12px' : '10px', color: match.awayTeam?.name ? 'inherit' : 'var(--text-secondary)' }}>
+              {match.awayTeam?.name || awayLabel}
+            </span>
           </div>
           <div className="team-score">{awayScore}</div>
         </div>
