@@ -99,7 +99,7 @@
   {
     "name": "beIN SPORTS 1 UHD",
     "group": "FIFA World Cup 2026",
-    "url": "http://proxpanel.cc/h1wqD6CY/byxHYgX/707929",
+    "url": "http://proxpanel.cc/h1wqD6CY/byxHYgX/707929.ts",
     "bufferless": true,
     "useProxy": true,
     "proxySegments": true
@@ -109,8 +109,8 @@
     "group": "FIFA World Cup 2026",
     "url": "https://tv.beyondtaxconsultants.com/api/robi/lps/http://151.80.18.177:86/M6_HD/index.m3u8",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "FOX",
