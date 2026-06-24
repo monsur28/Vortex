@@ -257,6 +257,16 @@ export default function PlayerPanel({
 
         newBitmovin = new Player(container, config);
 
+        try {
+          const bitmovinUiModule = await import('bitmovin-player/bitmovinplayer-ui.js');
+          const UIFactory = bitmovinUiModule.UIFactory || (bitmovinUiModule.default && bitmovinUiModule.default.UIFactory);
+          if (UIFactory) {
+            UIFactory.buildDefaultUI(newBitmovin);
+          }
+        } catch (e) {
+          console.error("Failed to load Bitmovin UI", e);
+        }
+
         const source = {
             title: activeChannel.name
         };
