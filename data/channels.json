@@ -69,16 +69,16 @@
     "group": "FIFA World Cup 2026",
     "url": "http://starhub.pro/live/farhat-3379/67897-913379/741567.ts",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "Unite 8 Sports 2 HD",
     "group": "FIFA World Cup 2026",
     "url": "http://212.102.34.8:9080/AndFlixHD/video.m3u8",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "TVP Sports",
@@ -101,8 +101,8 @@
     "group": "FIFA World Cup 2026",
     "url": "http://proxpanel.cc/h1wqD6CY/byxHYgX/707929",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "M6",
@@ -117,32 +117,32 @@
     "group": "FIFA World Cup 2026",
     "url": "http://84.17.50.102/fox/index.m3u8",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "S Football",
     "group": "FIFA World Cup 2026",
     "url": "http://rgkkw.live/live/1Aoen7elp5/IgMJ60tmAa/745149.ts",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "T Sports HD",
     "group": "FIFA World Cup 2026",
     "url": "http://starhub.pro/live/Anthony2/Anthony123/113069.ts",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "PTV 4K",
     "group": "FIFA World Cup 2026",
     "url": "http://starhub.pro/live/Anthony2/Anthony123/61674.ts",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "Telemundo",
@@ -157,8 +157,8 @@
     "group": "FIFA World Cup 2026",
     "url": "http://186.33.40.97:8789/play/20",
     "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
+    "useProxy": true,
+    "proxySegments": true
   },
   {
     "name": "D Sports",
