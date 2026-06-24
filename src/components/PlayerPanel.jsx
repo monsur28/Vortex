@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from 'react';
-import { X, Play, Pause, Square, Volume2, VolumeX, ExternalLink, Monitor, Maximize, WifiOff, Settings, Check, Star, ChevronLeft, ChevronRight, RotateCcw, RotateCw } from 'lucide-react';
+import { X, Star, WifiOff } from 'lucide-react';
+import 'bitmovin-player/bitmovinplayer-ui.css';
 
 export default function PlayerPanel({ 
   activeChannel, 
