@@ -242,11 +242,7 @@ export default function PlayerPanel({
             preprocessHttpRequest: (type, request) => {
                 if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
                     if (request.url && request.url.startsWith('http') && !request.url.includes('/api/proxy')) {
-                      const isManifestProxy = (activeChannel.proxy || activeChannel.useProxy) && (type === HttpRequestType.MANIFEST_DASH || type === HttpRequestType.MANIFEST_HLS_MASTER || type === HttpRequestType.MANIFEST_HLS_VARIANT);
-                      const isSegmentProxy = activeChannel.proxySegments && (type === HttpRequestType.MEDIA_VIDEO || type === HttpRequestType.MEDIA_AUDIO);
-                      const isLicenseProxy = activeChannel.proxySegments && (type === HttpRequestType.DRM_LICENSE_CLEARKEY || type === HttpRequestType.KEY_HLS_AES);
-        
-                      if (isManifestProxy || isSegmentProxy || isLicenseProxy) {
+                      if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
                         request.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(request.url)}`;
                       }
                     }
