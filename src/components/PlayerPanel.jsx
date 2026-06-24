@@ -259,9 +259,15 @@ export default function PlayerPanel({
 
         try {
           const bitmovinUiModule = await import('bitmovin-player/bitmovinplayer-ui.js');
-          const UIFactory = bitmovinUiModule.UIFactory || (bitmovinUiModule.default && bitmovinUiModule.default.UIFactory);
+          const UIFactory = bitmovinUiModule.UIFactory 
+                         || (bitmovinUiModule.default && bitmovinUiModule.default.UIFactory)
+                         || (bitmovinUiModule['bitmovinplayer-ui'] && bitmovinUiModule['bitmovinplayer-ui'].UIFactory)
+                         || (window.bitmovin && window.bitmovin.playerui && window.bitmovin.playerui.UIFactory);
+
           if (UIFactory) {
             UIFactory.buildDefaultUI(newBitmovin);
+          } else {
+            console.error("Bitmovin UIFactory not found in:", bitmovinUiModule);
           }
         } catch (e) {
           console.error("Failed to load Bitmovin UI", e);
