@@ -10,6 +10,7 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import PlayerPanel from './components/PlayerPanel';
 import WorldCupHub from './components/WorldCupHub';
+import GlobalTVHub from './components/GlobalTVHub';
 import ChannelGrid from './components/ChannelGrid';
 import DownloadApp from './components/DownloadApp';
 import { database, ref, onValue, onDisconnect, set, push } from './firebase';
@@ -364,6 +365,13 @@ export default function App({ initialChannels = [] }) {
             <span>All</span>
           </div>
           <div 
+            className={`category-chip ${currentCategory === 'Global TV' ? 'active' : ''}`}
+            onClick={() => handleSelectCategory('Global TV')}
+          >
+            <Globe size={14} style={{ marginRight: '4px' }} />
+            <span>Global TV</span>
+          </div>
+          <div 
             className={`category-chip ${showFavoritesOnly ? 'active' : ''}`}
             onClick={() => handleSelectCategory('Favorites')}
           >
@@ -417,7 +425,15 @@ export default function App({ initialChannels = [] }) {
                   />
                 )}
 
-                {filteredChannels.length > 0 ? (
+                {/* Global TV Hub */}
+                {currentCategory === 'Global TV' && (
+                  <GlobalTVHub 
+                    isPlayerOpen={activeChannel !== null}
+                    onWatchLive={handleSelectChannel}
+                  />
+                )}
+
+                {currentCategory !== 'Global TV' && filteredChannels.length > 0 ? (
                   <ChannelGrid 
                     channels={slicedChannels}
                     favorites={favorites}
@@ -502,6 +518,16 @@ export default function App({ initialChannels = [] }) {
                   <span>All Channels</span>
                 </div>
                 <span className="category-count">{totalCount}</span>
+              </li>
+              <li 
+                className={`category-item ${currentCategory === 'Global TV' ? 'active' : ''}`}
+                onClick={() => handleSelectCategory('Global TV')}
+              >
+                <div className="category-item-left">
+                  <Globe size={18} />
+                  <span>Global TV</span>
+                </div>
+                <span className="category-count" style={{ backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#3b82f6', fontWeight: 700 }}>NEW</span>
               </li>
               <li 
                 className={`category-item ${showFavoritesOnly ? 'active' : ''}`}

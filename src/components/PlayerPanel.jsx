@@ -355,7 +355,10 @@ export default function PlayerPanel({
         
         setBuffering(false);
         setIsPlaying(true);
-        newBitmovin.play().catch(e => console.log('Autoplay blocked:', e));
+        newBitmovin.play().catch(e => {
+            console.log('Autoplay blocked:', e);
+            setIsPlaying(false);
+        });
 
         const tracks = newBitmovin.getAvailableVideoQualities();
         if (tracks && tracks.length > 0) {
@@ -489,7 +492,10 @@ export default function PlayerPanel({
     } else {
       video.play()
         .then(() => setIsPlaying(true))
-        .catch(e => console.log(e));
+        .catch(e => {
+            console.log(e);
+            setIsPlaying(false);
+        });
     }
   };
 
@@ -631,7 +637,7 @@ export default function PlayerPanel({
           {/* Center Controls & Side Arrows Overlay (Removed for sportzify style) */}
           
           {/* Bottom Custom Controls */}
-          {!activeChannel.iframeUrl && (
+          {!(activeChannel.iframeUrl || activeChannel.useNativeVideo) && (
             <div className="player-controls" id="player-controls" style={{ background: '#080808', padding: '12px 20px', paddingBottom: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px', paddingLeft: '4px' }}>
                 <span style={{ color: delaySeconds > 0 ? '#94a3b8' : '#ff0000', fontSize: '12px', marginRight: '6px', transition: 'color 0.3s' }}>●</span>

@@ -104,6 +104,22 @@ export default function Sidebar({
             <span className="category-count">{totalCount}</span>
           </li>
 
+          {/* Global TV */}
+          <li 
+            className={`category-item ${currentCategory === 'Global TV' ? 'active' : ''}`} 
+            onClick={() => onSelectCategory('Global TV')}
+            style={{ 
+              borderLeft: currentCategory === 'Global TV' ? '3px solid #3b82f6' : 'transparent', 
+              background: currentCategory === 'Global TV' ? 'linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, transparent 100%)' : 'transparent' 
+            }}
+          >
+            <div className="category-item-left" style={{ color: currentCategory === 'Global TV' ? '#3b82f6' : 'var(--text-secondary)' }}>
+              <Globe size={18} />
+              <span>Global TV</span>
+            </div>
+            <span className="category-count" style={{ backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#3b82f6', fontWeight: 700 }}>NEW</span>
+          </li>
+
           {/* Bookmarks */}
           <li 
             className={`category-item ${showFavoritesOnly ? 'active' : ''}`} 
