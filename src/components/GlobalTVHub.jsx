@@ -16,20 +16,29 @@ export default function GlobalTVHub({ isPlayerOpen, onWatchLive }) {
     const fetchData = async () => {
       try {
         setLoading(true);
-        // Fetch channels, streams, and countries in parallel
-        const [channelsRes, streamsRes, countriesRes] = await Promise.all([
+        // Fetch channels, streams, countries, and the working M3U playlist in parallel
+        const [channelsRes, streamsRes, countriesRes, m3uRes] = await Promise.all([
           fetch('https://iptv-org.github.io/api/channels.json'),
           fetch('https://iptv-org.github.io/api/streams.json'),
-          fetch('https://iptv-org.github.io/api/countries.json')
+          fetch('https://iptv-org.github.io/api/countries.json'),
+          fetch('https://iptv-org.github.io/iptv/index.m3u')
         ]);
 
-        if (!channelsRes.ok || !streamsRes.ok || !countriesRes.ok) {
+        if (!channelsRes.ok || !streamsRes.ok || !countriesRes.ok || !m3uRes.ok) {
           throw new Error('Failed to fetch IPTV data');
         }
 
         const channelsData = await channelsRes.json();
         const streamsData = await streamsRes.json();
         const countriesData = await countriesRes.json();
+        const m3uText = await m3uRes.text();
+
+        // Extract alive URLs from the working M3U playlist
+        const aliveUrls = new Set(
+          m3uText.split('\n')
+            .filter(line => line.trim().startsWith('http'))
+            .map(line => line.trim())
+        );
 
         // Map countries by code
         const countryMap = {};
@@ -38,10 +47,12 @@ export default function GlobalTVHub({ isPlayerOpen, onWatchLive }) {
         });
         setCountries(countryMap);
 
-        // Group streams by channel ID
+        // Group streams by channel ID (only keeping working/alive ones)
         const streamsMap = {};
         streamsData.forEach(s => {
           if (!s.channel) return;
+          if (!aliveUrls.has(s.url)) return; // Skip dead streams
+          
           if (!streamsMap[s.channel]) streamsMap[s.channel] = [];
           streamsMap[s.channel].push(s);
         });
