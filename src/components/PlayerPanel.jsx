@@ -188,38 +188,44 @@ export default function PlayerPanel({
 
         // --- HLS.JS Initialization ---
         if (Hls.isSupported()) {
-          const hlsConfig = {
-            autoStartLoad: true,
-            startPosition: -1,
-            maxBufferLength: activeChannel.bufferless ? 10 : 60,
-            liveSyncDurationCount: activeChannel.bufferless ? 2 : 3,
-            pLoader: function(config) {
-               let loader = new Hls.DefaultConfig.loader(config);
-               this.abort = () => loader.abort();
-               this.destroy = () => loader.destroy();
-               this.load = (context, config, callbacks) => {
-                 if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
-                    if (context.url.startsWith('http') && !context.url.includes('/api/proxy')) {
-                       context.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(context.url)}`;
+            class ProxyLoader extends Hls.DefaultConfig.loader {
+               constructor(config) {
+                 super(config);
+                 const originalLoad = this.load.bind(this);
+                 this.load = (context, loaderConfig, callbacks) => {
+                    if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
+                       if (context.url.startsWith('http') && !context.url.includes('/api/proxy')) {
+                          context.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(context.url)}`;
+                       }
                     }
-                 }
-                 loader.load(context, config, callbacks);
-               };
-            },
-            fLoader: function(config) {
-               let loader = new Hls.DefaultConfig.loader(config);
-               this.abort = () => loader.abort();
-               this.destroy = () => loader.destroy();
-               this.load = (context, config, callbacks) => {
-                 if (activeChannel.proxySegments || activeChannel.useProxy) {
-                    if (context.url.startsWith('http') && !context.url.includes('/api/proxy')) {
-                       context.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(context.url)}`;
-                    }
-                 }
-                 loader.load(context, config, callbacks);
-               };
+                    originalLoad(context, loaderConfig, callbacks);
+                 };
+               }
             }
-          };
+
+            class FragmentProxyLoader extends Hls.DefaultConfig.loader {
+               constructor(config) {
+                 super(config);
+                 const originalLoad = this.load.bind(this);
+                 this.load = (context, loaderConfig, callbacks) => {
+                    if (activeChannel.proxySegments || activeChannel.useProxy) {
+                       if (context.url.startsWith('http') && !context.url.includes('/api/proxy')) {
+                          context.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(context.url)}`;
+                       }
+                    }
+                    originalLoad(context, loaderConfig, callbacks);
+                 };
+               }
+            }
+
+            const hlsConfig = {
+              autoStartLoad: true,
+              startPosition: -1,
+              maxBufferLength: activeChannel.bufferless ? 10 : 60,
+              liveSyncDurationCount: activeChannel.bufferless ? 2 : 3,
+              pLoader: ProxyLoader,
+              fLoader: FragmentProxyLoader
+            };
 
           if (activeChannel.hasDrm || activeChannel.drm) {
              let clearKeys = {};
