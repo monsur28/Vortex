@@ -221,7 +221,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
       </div>
 
       {viewMode === 'knockouts' ? (
-        <KnockoutBracket matches={matches} />
+        <KnockoutBracket matches={matches} groupsData={groupsData} />
       ) : (
         <>
           {/* Mobile Group Carousel */}

@@ -8,7 +8,7 @@ const STAGES = [
   { id: 'FINAL', name: 'Final', matchCount: 1 },
 ];
 
-export default function KnockoutBracket({ matches }) {
+export default function KnockoutBracket({ matches, groupsData }) {
   // Group matches by stage
   const matchesByStage = {};
   
@@ -73,15 +73,53 @@ export default function KnockoutBracket({ matches }) {
     return { homeLabel, awayLabel };
   };
 
+  const resolveTeamFromLabel = (label) => {
+    if (!groupsData || !label) return null;
+    const match = label.match(/(\d)(?:st|nd) Group ([A-L])/);
+    if (match) {
+      const rank = parseInt(match[1]) - 1;
+      const groupName = `GROUP_${match[2]}`;
+      const groupStandings = groupsData[groupName];
+      if (groupStandings && groupStandings[rank]) {
+        return {
+          name: groupStandings[rank].name,
+          crest: groupStandings[rank].flag
+        };
+      }
+    }
+    return null;
+  };
+
   const renderMatch = (match, stageId, index) => {
     const { homeLabel, awayLabel } = getPlaceholderLabels(stageId, index);
 
-    if (match.isPlaceholder) {
+    let resolvedHome = resolveTeamFromLabel(homeLabel);
+    let resolvedAway = resolveTeamFromLabel(awayLabel);
 
+    if (!match.isPlaceholder) {
+      if (match.homeTeam?.name) resolvedHome = match.homeTeam;
+      if (match.awayTeam?.name) resolvedAway = match.awayTeam;
+    }
+
+    if (match.isPlaceholder) {
       return (
         <div className="wc-bracket-match placeholder" key={match.id}>
-          <div className="wc-bracket-team"><span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>{homeLabel}</span></div>
-          <div className="wc-bracket-team"><span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>{awayLabel}</span></div>
+          <div className="wc-bracket-team">
+            <div className="team-info">
+              {resolvedHome?.crest && <img src={resolvedHome.crest} alt="" />}
+              <span style={{ fontSize: resolvedHome ? '12px' : '11px', color: resolvedHome ? 'inherit' : 'var(--text-secondary)' }}>
+                {resolvedHome ? resolvedHome.name : homeLabel}
+              </span>
+            </div>
+          </div>
+          <div className="wc-bracket-team">
+            <div className="team-info">
+              {resolvedAway?.crest && <img src={resolvedAway.crest} alt="" />}
+              <span style={{ fontSize: resolvedAway ? '12px' : '11px', color: resolvedAway ? 'inherit' : 'var(--text-secondary)' }}>
+                {resolvedAway ? resolvedAway.name : awayLabel}
+              </span>
+            </div>
+          </div>
         </div>
       );
     }
@@ -94,18 +132,18 @@ export default function KnockoutBracket({ matches }) {
       <div className={`wc-bracket-match ${isLive ? 'live' : ''}`} key={match.id}>
         <div className="wc-bracket-team">
           <div className="team-info">
-            {match.homeTeam?.crest && <img src={match.homeTeam.crest} alt="" />}
-            <span style={{ fontWeight: match.score?.winner === 'HOME_TEAM' ? '800' : '500', fontSize: match.homeTeam?.name ? '12px' : '10px', color: match.homeTeam?.name ? 'inherit' : 'var(--text-secondary)' }}>
-              {match.homeTeam?.name || homeLabel}
+            {resolvedHome?.crest && <img src={resolvedHome.crest} alt="" />}
+            <span style={{ fontWeight: match.score?.winner === 'HOME_TEAM' ? '800' : '500', fontSize: resolvedHome?.name ? '12px' : '10px', color: resolvedHome?.name ? 'inherit' : 'var(--text-secondary)' }}>
+              {resolvedHome?.name || homeLabel}
             </span>
           </div>
           <div className="team-score">{homeScore}</div>
         </div>
         <div className="wc-bracket-team">
           <div className="team-info">
-            {match.awayTeam?.crest && <img src={match.awayTeam.crest} alt="" />}
-            <span style={{ fontWeight: match.score?.winner === 'AWAY_TEAM' ? '800' : '500', fontSize: match.awayTeam?.name ? '12px' : '10px', color: match.awayTeam?.name ? 'inherit' : 'var(--text-secondary)' }}>
-              {match.awayTeam?.name || awayLabel}
+            {resolvedAway?.crest && <img src={resolvedAway.crest} alt="" />}
+            <span style={{ fontWeight: match.score?.winner === 'AWAY_TEAM' ? '800' : '500', fontSize: resolvedAway?.name ? '12px' : '10px', color: resolvedAway?.name ? 'inherit' : 'var(--text-secondary)' }}>
+              {resolvedAway?.name || awayLabel}
             </span>
           </div>
           <div className="team-score">{awayScore}</div>
