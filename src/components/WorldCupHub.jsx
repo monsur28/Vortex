@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { Trophy, PlayCircle, List } from 'lucide-react';
+import KnockoutBracket from './KnockoutBracket';
 
 const wcGroupsData = {
   'Group A': [
@@ -83,6 +84,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
   const [countdown, setCountdown] = useState({ days: '00', hours: '00', mins: '00', secs: '00', live: false });
   const [groupsData, setGroupsData] = useState(wcGroupsData);
   const [matches, setMatches] = useState([]);
+  const [viewMode, setViewMode] = useState('groups'); // 'groups' | 'knockouts'
   const carouselRef = useRef(null);
 
   useEffect(() => {
@@ -203,7 +205,26 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
         </div>
       </div>
 
-      {/* Mobile Group Carousel */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', margin: '16px 0', padding: '0 16px' }}>
+        <button 
+          onClick={() => setViewMode('groups')}
+          style={{ padding: '8px 20px', borderRadius: '24px', border: '1px solid var(--wc-gold)', background: viewMode === 'groups' ? 'var(--wc-gold)' : 'rgba(0,0,0,0.3)', color: viewMode === 'groups' ? '#000' : 'var(--wc-gold)', fontWeight: '800', cursor: 'pointer', transition: 'all 0.2s', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}
+        >
+          Group Stages
+        </button>
+        <button 
+          onClick={() => setViewMode('knockouts')}
+          style={{ padding: '8px 20px', borderRadius: '24px', border: '1px solid var(--wc-gold)', background: viewMode === 'knockouts' ? 'var(--wc-gold)' : 'rgba(0,0,0,0.3)', color: viewMode === 'knockouts' ? '#000' : 'var(--wc-gold)', fontWeight: '800', cursor: 'pointer', transition: 'all 0.2s', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}
+        >
+          Knockout Bracket
+        </button>
+      </div>
+
+      {viewMode === 'knockouts' ? (
+        <KnockoutBracket matches={matches} />
+      ) : (
+        <>
+          {/* Mobile Group Carousel */}
       <div className="wc-mobile-carousel-container">
         <div className="wc-groups-carousel" ref={carouselRef}>
           {Object.keys(groupsData).map(group => (
@@ -376,6 +397,9 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
           </div>
         )}
       </div>
+      </>
+      )}
+    </div>
     </div>
   );
 }
