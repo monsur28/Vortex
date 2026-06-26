@@ -178,7 +178,6 @@
   },
   {
     "name": "Fox 4K",
-    "group": "All Channels",
     "url": "https://nhjjhhjhjjhfjj.pages.dev/1782511273/6cccaaff5be44092a095c864bc8b6486/eZQaBXKMfJNW7ttS-jMyjL5FBePSPsrIZWodV3Z1CqM/fox4k-usa.m3u8",
     "bufferless": true,
     "useProxy": false,
@@ -186,124 +185,24 @@
   },
   {
     "name": "Fox USA",
-    "group": "All Channels",
     "url": "https://nhjjhhjhjjhfjj.pages.dev/1782510761/3023cd13a3e14f12a1f2a7cfec65500b/U7-6SPhUltFwYQWlHDZAR8OJgVYlYQmXJjjGcaDKyuE/fox-usa.m3u8",
     "bufferless": true,
     "useProxy": false,
     "proxySegments": false
   },
   {
-    "name": "D SPORTS 1080p",
-    "logo": "",
-    "url": "https://pub-4d2103f8af8641e2974e9590622c3264.r2.dev/d-sports/d-sports.m3u8",
-    "group": "All Channels",
-    "useProxy": false
-  },
-  {
-    "name": "BeIN MAX 1",
-    "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png",
-    "url": "https://tmaxapp.site/beinmax1.m3u8",
-    "group": "All Channels",
-    "useProxy": false
-  },
-  {
-    "name": "BeIN MAX 2",
-    "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/6719.png",
-    "url": "https://tmaxapp.site/beinmax2.m3u8",
-    "group": "All Channels",
-    "useProxy": false
-  },
-  {
     "name": "BeIN Sports 1",
     "logo": "https://elmarada.org/wp-content/uploads/2022/03/download-247x200.png",
     "url": "http://41.205.70.146/BEINSPORT1/index.m3u8",
-    "group": "All Channels",
+    "group": "FIFA World Cup 2026",
     "useProxy": true
   },
   {
     "name": "BeIN Sports 2",
     "logo": "https://elmarada.org/wp-content/uploads/2022/03/download-247x200.png",
     "url": "http://41.205.70.146/BEINSPORT2/index.m3u8",
-    "group": "All Channels",
+    "group": "FIFA World Cup 2026",
     "useProxy": true
-  },
-  {
-    "name": "BeIN Sports 5",
-    "logo": "https://elmarada.org/wp-content/uploads/2022/03/download-247x200.png",
-    "url": "http://41.205.70.146/BEINSPORT5/index.m3u8",
-    "group": "All Channels",
-    "useProxy": true
-  },
-  {
-    "name": "SKY SPORTS HD [No VPN]",
-    "logo": "https://cdn.sportmonks.com/images/cricket/teams/6/38.png",
-    "url": "https://bl.rutube.ru/livestream/7c13a51576b9ff2601f08f5d57dd5169/index.m3u8?s=uiXES2ePt7xTpQnbJxn7Dg&e=2074684474&scheme=https",
-    "group": "All Channels",
-    "useProxy": false
-  },
-  {
-    "name": "Win Sports [No VPN]",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Win_Sports_nuevo_logo.svg/500px-Win_Sports_nuevo_logo.svg.png",
-    "url": "https://1nyaler.streamhostingcdn.top/stream/32/index.m3u8",
-    "group": "All Channels",
-    "useProxy": false
-  },
-  {
-    "name": "Match! Football 1",
-    "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/6719.png",
-    "url": "https://bl.video.matchtv.ru/media/playlist/free_d46d0cf1712c0542ec7fd4f0808f600a_hd/17_89756005/1080/e6bef86de8a133cd7b27deb040758a00/4796141934.m3u8",
-    "group": "All Channels",
-    "useProxy": false
-  },
-  {
-    "name": "Sky Sports La Liga",
-    "logo": "https://epg.pw/media/images/epg/2025/04/23/20250423022300132210_61.png",
-    "url": "https://aca-live4-ott.izzigo.tv/12/out/u/dash/SKY-SPORTS-16-HD/default.mpd",
-    "group": "All Channels",
-    "type": "dash",
-    "kid": "cb80e1e7d7598eaf98b1dbbe6dc14ee9",
-    "key": "103ae55c7948ca1d159d6743619d26c4",
-    "useProxy": false
-  },
-  {
-    "name": "Sky Sports La Liga 1",
-    "logo": "https://epg.pw/media/images/epg/2025/04/23/20250423022300132210_61.png",
-    "url": "https://aca-live-ott.izzigo.tv/7/out/u/dash/SKY-SPORTS-16-HD-H265/default.mpd",
-    "group": "All Channels",
-    "type": "dash",
-    "kid": "95b52d16d344af539ce9c2c9ff95571a",
-    "key": "5f035d9c4a178221f89d2439426b2e9a",
-    "useProxy": false
-  },
-  {
-    "name": "TELEMUNDO FHD",
-    "logo": "https://www.bellmedia.ca/lede/wp-content/uploads/2024/09/18581592_10155403529061055_8240563011649656197_n.jpg",
-    "url": "https://cun-live1-ott.izzigo.tv/out/u/dash/NOG1/TELEMUNDO-ARIZONA-USA-TCS-HD/default.mpd",
-    "type": "dash",
-    "group": "All Channels",
-    "kid": "1efe4add8fdf327c5f8d2a1c195e5c71",
-    "key": "4f50e6f011e60ca01ee561f27187e78f",
-    "useProxy": true
-  },
-  {
-    "name": "JOJ SPORTS FHD",
-    "logo": "",
-    "url": "https://dash2.antik.sk/stream/nvidia_joj_sport/playlist_cenc.mpd",
-    "type": "dash",
-    "group": "All Channels",
-    "kid": "11223344556677889900112233445566",
-    "key": "4b80724d0ef86bcb2c21f7999d67739d",
-    "useProxy": false
-  },
-  {
-    "name": "ViX MUNDIAL FHD",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/ViX_Logo.svg/500px-ViX_Logo.svg.png",
-    "url": "https://cun-live1-ott.izzigo.tv/11/out/u/dash/VIX-MUNDIAL-90-HD/default.mpd",
-    "type": "dash",
-    "group": "All Channels",
-    "kid": "052aba8b4944541841db862526bbe6b6",
-    "key": "b785276874581a60b8e95b668b7c0d2b",
-    "useProxy": false
   },
   {
     "name": "TV9 Bangla",
