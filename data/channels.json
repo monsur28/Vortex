@@ -183,5 +183,13 @@
     "bufferless": true,
     "useProxy": false,
     "proxySegments": false
+  },
+  {
+    "name": "Fox USA",
+    "group": "Sports",
+    "url": "https://nhjjhhjhjjhfjj.pages.dev/1782510761/3023cd13a3e14f12a1f2a7cfec65500b/U7-6SPhUltFwYQWlHDZAR8OJgVYlYQmXJjjGcaDKyuE/fox-usa.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
   }
 ]
