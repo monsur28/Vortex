@@ -113,12 +113,12 @@
     "proxySegments": true
   },
   {
-    "name": "FOX",
-    "group": "FIFA World Cup 2026",
-    "url": "http://84.17.50.102/fox/index.m3u8",
+    "name": "Fox 4K",
+    "url": "https://nhjjhhjhjjhfjj.pages.dev/1782511273/6cccaaff5be44092a095c864bc8b6486/eZQaBXKMfJNW7ttS-jMyjL5FBePSPsrIZWodV3Z1CqM/fox4k-usa.m3u8",
     "bufferless": true,
-    "useProxy": true,
-    "proxySegments": true
+    "useProxy": false,
+    "proxySegments": false,
+    "group": "FIFA World Cup 2026"
   },
   {
     "name": "S Football",
@@ -172,13 +172,6 @@
     "name": "Tudn Sports",
     "group": "FIFA World Cup 2026",
     "url": "https://1nyaler.streamhostingcdn.top/stream/52/index.m3u8",
-    "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
-  },
-  {
-    "name": "Fox 4K",
-    "url": "https://nhjjhhjhjjhfjj.pages.dev/1782511273/6cccaaff5be44092a095c864bc8b6486/eZQaBXKMfJNW7ttS-jMyjL5FBePSPsrIZWodV3Z1CqM/fox4k-usa.m3u8",
     "bufferless": true,
     "useProxy": false,
     "proxySegments": false
