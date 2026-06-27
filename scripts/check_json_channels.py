@@ -18,7 +18,7 @@ def check_channel(channel):
             'Accept': '*/*'
         }
         
-        response = requests.get(url, headers=headers, timeout=5, stream=True, verify=False)
+        response = requests.get(url, headers=headers, timeout=15, stream=True, verify=False)
         if response.status_code in (200, 206):
             return channel
     except Exception as e:

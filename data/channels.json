@@ -9,22 +9,6 @@
     "useNativeVideo": true
   },
   {
-    "name": "somoy Tv",
-    "group": "FIFA World Cup 2026",
-    "url": "https://live.thebosstv.com:30443/dwlive/Somoy-TV/chunks.m3u8",
-    "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
-  },
-  {
-    "name": "Dazn",
-    "group": "FIFA World Cup 2026",
-    "url": "https://1nyaler.streamhostingcdn.top/stream/94/index.m3u8",
-    "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
-  },
-  {
     "name": "Bein",
     "group": "FIFA World Cup 2026",
     "url": "https://edge22.776740.ir.cdn.ir/hls2/sport.m3u8",
@@ -52,14 +36,6 @@
     "name": "WIN Sports",
     "group": "FIFA World Cup 2026",
     "url": "https://1nyaler.streamhostingcdn.top/stream/32/index.m3u8",
-    "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
-  },
-  {
-    "name": "ESPN HD",
-    "group": "FIFA World Cup 2026",
-    "url": "https://1nyaler.streamhostingcdn.top/stream/97/index.m3u8",
     "bufferless": true,
     "useProxy": false,
     "proxySegments": false
@@ -113,33 +89,9 @@
     "proxySegments": true
   },
   {
-    "name": "Fox 4K",
-    "url": "https://nhjjhhjhjjhfjj.pages.dev/1782511273/6cccaaff5be44092a095c864bc8b6486/eZQaBXKMfJNW7ttS-jMyjL5FBePSPsrIZWodV3Z1CqM/fox4k-usa.m3u8",
-    "bufferless": true,
-    "useProxy": true,
-    "proxySegments": false,
-    "group": "FIFA World Cup 2026"
-  },
-  {
     "name": "S Football",
     "group": "FIFA World Cup 2026",
     "url": "http://rgkkw.live/live/1Aoen7elp5/IgMJ60tmAa/745149.ts",
-    "bufferless": true,
-    "useProxy": true,
-    "proxySegments": true
-  },
-  {
-    "name": "T Sports HD",
-    "group": "FIFA World Cup 2026",
-    "url": "http://starhub.pro/live/Anthony2/Anthony123/113069.ts",
-    "bufferless": true,
-    "useProxy": true,
-    "proxySegments": true
-  },
-  {
-    "name": "PTV 4K",
-    "group": "FIFA World Cup 2026",
-    "url": "http://starhub.pro/live/Anthony2/Anthony123/61674.ts",
     "bufferless": true,
     "useProxy": true,
     "proxySegments": true
@@ -172,13 +124,6 @@
     "name": "Tudn Sports",
     "group": "FIFA World Cup 2026",
     "url": "https://1nyaler.streamhostingcdn.top/stream/52/index.m3u8",
-    "bufferless": true,
-    "useProxy": false,
-    "proxySegments": false
-  },
-  {
-    "name": "Fox USA",
-    "url": "https://nhjjhhjhjjhfjj.pages.dev/1782510761/3023cd13a3e14f12a1f2a7cfec65500b/U7-6SPhUltFwYQWlHDZAR8OJgVYlYQmXJjjGcaDKyuE/fox-usa.m3u8",
     "bufferless": true,
     "useProxy": false,
     "proxySegments": false
@@ -383,13 +328,6 @@
     "name": "DBC News",
     "logo": "https://raw.githubusercontent.com/subirkumarpaul/Logo/main/DBC%20News.png",
     "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1728/output/1728.m3u8",
-    "group": "Bangla",
-    "useProxy": false
-  },
-  {
-    "name": "Channel 1 News 4K",
-    "logo": "https://raw.githubusercontent.com/subirkumarpaul/Logo/refs/heads/main/Channel%201.png",
-    "url": "https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/channel1bd.stream/tracks-v1a1/mono.m3u8",
     "group": "Bangla",
     "useProxy": false
   },
