@@ -159,7 +159,8 @@ export default function PlayerPanel({
       
       // For MPEG-TS, it's a single file stream.
       // We only proxy it if it's HTTP, to avoid Mixed Content errors. If it's HTTPS, we can play it directly!
-      if (isMpegTs && rawUrl.startsWith('http://')) {
+      const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (rawUrl && rawUrl.includes('pages.dev'));
+      if ((isMpegTs && rawUrl.startsWith('http://')) || needsProxy) {
         streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&url=${encodeURIComponent(rawUrl)}&t=${Date.now()}`;
       }
 
@@ -256,11 +257,10 @@ export default function PlayerPanel({
           },
           network: {
             preprocessHttpRequest: (type, request) => {
-                if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
+                const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (request.url && request.url.includes('pages.dev'));
+                if (needsProxy) {
                     if (request.url && request.url.startsWith('http') && !request.url.includes('/api/proxy')) {
-                      if (activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments) {
                         request.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(request.url)}`;
-                      }
                     }
                 }
                 return Promise.resolve(request);

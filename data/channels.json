@@ -116,7 +116,7 @@
     "name": "Fox 4K",
     "url": "https://nhjjhhjhjjhfjj.pages.dev/1782511273/6cccaaff5be44092a095c864bc8b6486/eZQaBXKMfJNW7ttS-jMyjL5FBePSPsrIZWodV3Z1CqM/fox4k-usa.m3u8",
     "bufferless": true,
-    "useProxy": false,
+    "useProxy": true,
     "proxySegments": false,
     "group": "FIFA World Cup 2026"
   },
