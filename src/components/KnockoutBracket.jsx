@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { X, Calendar, MapPin, Activity } from 'lucide-react';
 
 const STAGES = [
   { id: 'LAST_32', name: 'Round of 32', matchCount: 16 },
@@ -9,6 +10,8 @@ const STAGES = [
 ];
 
 export default function KnockoutBracket({ matches, groupsData }) {
+  const [selectedMatch, setSelectedMatch] = useState(null);
+
   // Group matches by stage
   const matchesByStage = {};
   
@@ -103,7 +106,7 @@ export default function KnockoutBracket({ matches, groupsData }) {
 
     if (match.isPlaceholder) {
       return (
-        <div className="wc-bracket-match placeholder" key={match.id}>
+        <div className="wc-bracket-match placeholder" key={match.id} style={{ cursor: 'pointer', transition: 'transform 0.2s', ':hover': { transform: 'scale(1.02)' } }} onClick={() => setSelectedMatch({ ...match, resolvedHome, resolvedAway, homeLabel, awayLabel, stageId })}>
           <div className="wc-bracket-team">
             <div className="team-info">
               {resolvedHome?.crest && <img src={resolvedHome.crest} alt="" />}
@@ -129,7 +132,7 @@ export default function KnockoutBracket({ matches, groupsData }) {
     const isLive = match.status === 'IN_PLAY' || match.status === 'PAUSED';
 
     return (
-      <div className={`wc-bracket-match ${isLive ? 'live' : ''}`} key={match.id}>
+      <div className={`wc-bracket-match ${isLive ? 'live' : ''}`} key={match.id} style={{ cursor: 'pointer', transition: 'transform 0.2s' }} onClick={() => setSelectedMatch({ ...match, resolvedHome, resolvedAway, homeLabel, awayLabel, stageId })}>
         <div className="wc-bracket-team">
           <div className="team-info">
             {resolvedHome?.crest && <img src={resolvedHome.crest} alt="" />}
@@ -171,6 +174,112 @@ export default function KnockoutBracket({ matches, groupsData }) {
           </div>
         ))}
       </div>
+
+      {/* Match Details Modal */}
+      {selectedMatch && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, 
+          backgroundColor: 'rgba(0,0,0,0.85)', zIndex: 1000, 
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          backdropFilter: 'blur(4px)'
+        }} onClick={() => setSelectedMatch(null)}>
+          <div style={{
+            background: 'linear-gradient(145deg, #0f172a, #1e293b)',
+            border: '1px solid var(--wc-gold)',
+            borderRadius: '12px',
+            width: '90%',
+            maxWidth: '500px',
+            padding: '24px',
+            position: 'relative',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+          }} onClick={e => e.stopPropagation()}>
+            <button 
+              onClick={() => setSelectedMatch(null)}
+              style={{ position: 'absolute', top: '16px', right: '16px', background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer' }}
+            >
+              <X size={24} />
+            </button>
+            
+            <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+              <span style={{ color: 'var(--wc-gold)', fontSize: '12px', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                {STAGES.find(s => s.id === selectedMatch.stageId)?.name}
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+              {/* Home Team */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+                {selectedMatch.resolvedHome?.crest ? (
+                  <img src={selectedMatch.resolvedHome.crest} alt="" style={{ width: '64px', height: '64px', objectFit: 'contain', marginBottom: '12px' }} />
+                ) : (
+                  <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', marginBottom: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>?</div>
+                )}
+                <span style={{ fontWeight: '800', fontSize: '16px', textAlign: 'center' }}>
+                  {selectedMatch.resolvedHome?.name || selectedMatch.homeLabel}
+                </span>
+              </div>
+
+              {/* Score / VS */}
+              <div style={{ padding: '0 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                {selectedMatch.isPlaceholder ? (
+                  <span style={{ fontSize: '24px', fontWeight: '900', color: 'rgba(255,255,255,0.3)' }}>VS</span>
+                ) : (
+                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                    <span style={{ fontSize: '36px', fontWeight: '900' }}>{selectedMatch.score?.fullTime?.home ?? '-'}</span>
+                    <span style={{ color: 'var(--wc-gold)' }}>:</span>
+                    <span style={{ fontSize: '36px', fontWeight: '900' }}>{selectedMatch.score?.fullTime?.away ?? '-'}</span>
+                  </div>
+                )}
+                {selectedMatch.status === 'IN_PLAY' && (
+                  <span style={{ color: '#ef4444', fontWeight: '800', fontSize: '12px', marginTop: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <span style={{ display: 'inline-block', width: '8px', height: '8px', background: '#ef4444', borderRadius: '50%', animation: 'pulse 1.5s infinite' }}></span>
+                    LIVE
+                  </span>
+                )}
+              </div>
+
+              {/* Away Team */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+                {selectedMatch.resolvedAway?.crest ? (
+                  <img src={selectedMatch.resolvedAway.crest} alt="" style={{ width: '64px', height: '64px', objectFit: 'contain', marginBottom: '12px' }} />
+                ) : (
+                  <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', marginBottom: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>?</div>
+                )}
+                <span style={{ fontWeight: '800', fontSize: '16px', textAlign: 'center' }}>
+                  {selectedMatch.resolvedAway?.name || selectedMatch.awayLabel}
+                </span>
+              </div>
+            </div>
+
+            <div style={{ background: 'rgba(0,0,0,0.3)', borderRadius: '8px', padding: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px', color: 'var(--text-secondary)' }}>
+                <Calendar size={18} />
+                <span style={{ fontSize: '14px' }}>
+                  {selectedMatch.utcDate 
+                    ? new Date(selectedMatch.utcDate).toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }) 
+                    : 'Date & Time TBD'}
+                </span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px', color: 'var(--text-secondary)' }}>
+                <MapPin size={18} />
+                <span style={{ fontSize: '14px' }}>USA / Canada / Mexico</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text-secondary)' }}>
+                <Activity size={18} />
+                <span style={{ fontSize: '14px' }}>
+                  {selectedMatch.isPlaceholder ? 'Matchup Predictor: 50% / 50%' : 'Win Probability Available Soon'}
+                </span>
+              </div>
+            </div>
+
+            {selectedMatch.status === 'IN_PLAY' && (
+              <button style={{ width: '100%', padding: '14px', marginTop: '20px', borderRadius: '8px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '900', border: 'none', cursor: 'pointer', fontSize: '16px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
+                <Activity size={20} /> WATCH LIVE
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
