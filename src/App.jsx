@@ -266,7 +266,8 @@ export default function App({ initialChannels = [] }) {
                 channels.find(c => c.name.toLowerCase().includes("rai 1")) ||
                 channels.find(c => c.name.toLowerCase().includes("rai"));
     } else {
-      channel = channels.find(c => c.name.toLowerCase().includes(targetChannelName.toLowerCase()));
+      channel = channels.find(c => c.name.toLowerCase() === targetChannelName.toLowerCase()) ||
+                channels.find(c => c.name.toLowerCase().includes(targetChannelName.toLowerCase()));
       // Fallback search with single words if not found
       if (!channel) {
         const words = targetChannelName.split(' ');
