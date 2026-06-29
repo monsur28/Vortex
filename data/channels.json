@@ -29,40 +29,40 @@
         "group": "FIFA World Cup 2026",
         "url": "https://binge.oolcaykarael.workers.dev/",
         "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
-        "useProxy": true,
-        "proxySegments": true
+        "useProxy": false,
+        "proxySegments": false
     },
     {
         "name": "FIFA Live (Server 3)",
         "group": "FIFA World Cup 2026",
         "url": "https://cdn011.viaplus.site/fox-usa.m3u8",
         "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
-        "useProxy": true,
-        "proxySegments": true
+        "useProxy": false,
+        "proxySegments": false
     },
     {
         "name": "FIFA Live (Server 4)",
         "group": "FIFA World Cup 2026",
         "url": "https://cdn011.viaplus.site/telemundo-usa.m3u8",
         "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
-        "useProxy": true,
-        "proxySegments": true
+        "useProxy": false,
+        "proxySegments": false
     },
     {
         "name": "FIFA Live (Server 5)",
         "group": "FIFA World Cup 2026",
         "url": "https://cdn011.viaplus.site/fox4k-usa.m3u8",
         "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
-        "useProxy": true,
-        "proxySegments": true
+        "useProxy": false,
+        "proxySegments": false
     },
     {
         "name": "FIFA Live (Server 6)",
         "group": "FIFA World Cup 2026",
         "url": "https://cdn011.viaplus.site/tsn1-ca.m3u8",
         "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
-        "useProxy": true,
-        "proxySegments": true
+        "useProxy": false,
+        "proxySegments": false
     },
     {
         "name": "Bein",
