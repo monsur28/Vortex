@@ -27,10 +27,10 @@
     {
         "name": "World Cup TV",
         "group": "FIFA World Cup 2026",
-        "url": "https://binge.oolcaykarael.workers.dev/",
+        "url": "https://binge.oolcaykarael.workers.dev/?ext=.m3u8",
         "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
-        "useProxy": true,
-        "proxySegments": true
+        "useProxy": false,
+        "proxySegments": false
     },
     {
         "name": "FIFA Live (Server 3)",
