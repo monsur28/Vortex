@@ -15,10 +15,26 @@ export default function KnockoutBracket({ matches, groupsData }) {
   // Group matches by stage
   const matchesByStage = {};
   
+  // Official FIFA 2026 bracket mapping to visual binary tree
+  const VISUAL_MAP = {
+    'LAST_32': [0, 3, 1, 2, 8, 11, 9, 10, 4, 7, 5, 6, 12, 15, 13, 14],
+    'LAST_16': [0, 1, 4, 5, 2, 3, 6, 7]
+  };
+
   STAGES.forEach(stage => {
-    // Attempt to find matches for this stage. 
-    // Fallback if not populated.
     let stageMatches = matches.filter(m => m.stage === stage.id);
+    
+    // Sort chronologically just to be safe
+    stageMatches.sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
+
+    // Reorder stage matches to visual binary tree order if a map exists
+    if (VISUAL_MAP[stage.id] && stageMatches.length > 0) {
+      const mappedMatches = [];
+      for (let i = 0; i < VISUAL_MAP[stage.id].length; i++) {
+        mappedMatches[i] = stageMatches[VISUAL_MAP[stage.id][i]] || stageMatches[i];
+      }
+      stageMatches = mappedMatches;
+    }
     
     // Fill in placeholders if we don't have enough matches
     const filledMatches = [];
@@ -39,29 +55,31 @@ export default function KnockoutBracket({ matches, groupsData }) {
     if (stageId === 'LAST_32') {
       const labels = [
         { home: "1st Group A", away: "3rd Group C/D/E" },
+        { home: "2nd Group E", away: "2nd Group I" },
         { home: "2nd Group B", away: "2nd Group F" },
         { home: "1st Group C", away: "3rd Group A/B/F" },
-        { home: "2nd Group E", away: "2nd Group I" },
-        { home: "1st Group D", away: "3rd Group B/C/E/F" },
-        { home: "2nd Group A", away: "2nd Group H" },
-        { home: "1st Group F", away: "3rd Group A/B/C" },
-        { home: "2nd Group C", away: "2nd Group G" },
         { home: "1st Group E", away: "3rd Group A/B/C/D" },
+        { home: "2nd Group K", away: "2nd Group L" },
         { home: "2nd Group D", away: "2nd Group J" },
         { home: "1st Group G", away: "3rd Group H/I/J/K" },
-        { home: "2nd Group K", away: "2nd Group L" },
+        { home: "1st Group D", away: "3rd Group B/C/E/F" },
+        { home: "2nd Group C", away: "2nd Group G" },
+        { home: "2nd Group A", away: "2nd Group H" },
+        { home: "1st Group F", away: "3rd Group A/B/C" },
         { home: "1st Group H", away: "3rd Group E/F/G" },
+        { home: "1st Group L", away: "3rd Group D/E/I" },
         { home: "1st Group I", away: "3rd Group C/D/H" },
-        { home: "1st Group J", away: "3rd Group A/B/F" },
-        { home: "1st Group L", away: "3rd Group D/E/I" }
+        { home: "1st Group J", away: "3rd Group A/B/F" }
       ];
       if (labels[index]) {
         homeLabel = labels[index].home;
         awayLabel = labels[index].away;
       }
     } else if (stageId === 'LAST_16') {
-      homeLabel = `Winner R32 M${(index * 2) + 1}`;
-      awayLabel = `Winner R32 M${(index * 2) + 2}`;
+      // Revert to chronological label indexing for R16 visually
+      const chronoIdx = VISUAL_MAP['LAST_16'] ? VISUAL_MAP['LAST_16'][index] : index;
+      homeLabel = `Winner R32 M${(chronoIdx * 2) + 1}`;
+      awayLabel = `Winner R32 M${(chronoIdx * 2) + 2}`;
     } else if (stageId === 'QUARTER_FINALS') {
       homeLabel = `Winner R16 M${(index * 2) + 1}`;
       awayLabel = `Winner R16 M${(index * 2) + 2}`;
