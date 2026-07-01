@@ -8,9 +8,17 @@
     "proxySegments": true
   },
   {
+    "name": "FIfa WOrld Cup TV",
+    "group": "FIFA World Cup 2026",
+    "url": "http://ubuntu.moonplex.net:8080/TSports_HD/index.m3u8",
+    "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
+    "useProxy": true,
+    "proxySegments": true
+  },
+  {
     "name": "ToffeeLive",
     "group": "FIFA World Cup 2026",
-    "url": "https://prod-cdn01-live.toffeelive.com/live/FIFA-2026/sst/0/master_1500.m3u8?hdntl=Expires=1782987569~_GO=Generated~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Signature=AeQsclD8E49TKJaioAwFJMUnGas8vyrFS1xrDoQoYIpVkaFGVB9nWJHjO_eeWQ5uRmmQuoCmVj_sgwUqfi-Z-ci98FUD",
+    "url": "https://prod-cdn01-live.toffeelive.com/live/FIFA-2026/sst/0/master_1500.m3u8?hdntl=Expires=1782924250~_GO=Generated~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Signature=AeQsclBqwZp0SAOB2OCxO_9fL9UrwMyo2g2XlvPGKtvjq6depqLoVLcp8PhNHVNqab5XP4nAno7LKWhZQMMRwu8XXzQO",
     "bufferless": true,
     "useProxy": false,
     "proxySegments": false,
@@ -22,8 +30,47 @@
     "url": "https://binge.oolcaykarael.workers.dev/?ext=.m3u8",
     "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
     "useProxy": false,
-    "proxySegments": false,
-    "category": "Fifa World cup"
+    "proxySegments": false
+  },
+  {
+    "name": "FIFA Live (Server 3)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://cdn011.viaplus.site/fox-usa.m3u8",
+    "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "FIFA Live (Server 4)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://cdn011.viaplus.site/telemundo-usa.m3u8",
+    "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "FIFA Live (Server 5)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://cdn011.viaplus.site/fox4k-usa.m3u8",
+    "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "FIFA Live (Server 6)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://cdn011.viaplus.site/tsn1-ca.m3u8",
+    "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
+    "name": "Bein",
+    "group": "FIFA World Cup 2026",
+    "url": "https://edge22.776740.ir.cdn.ir/hls2/sport.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
   },
   {
     "name": "D-Sports",
@@ -53,6 +100,14 @@
     "name": "Unite 8 Sports 1 HD",
     "group": "FIFA World Cup 2026",
     "url": "http://starhub.pro/live/farhat-3379/67897-913379/741567.ts",
+    "bufferless": true,
+    "useProxy": true,
+    "proxySegments": true
+  },
+  {
+    "name": "Unite 8 Sports 2 HD",
+    "group": "FIFA World Cup 2026",
+    "url": "http://212.102.34.8:9080/AndFlixHD/video.m3u8",
     "bufferless": true,
     "useProxy": true,
     "proxySegments": true
@@ -114,6 +169,14 @@
     "proxySegments": true
   },
   {
+    "name": "D Sports",
+    "group": "FIFA World Cup 2026",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/106/index.m3u8",
+    "bufferless": true,
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
     "name": "Tudn Sports",
     "group": "FIFA World Cup 2026",
     "url": "https://1nyaler.streamhostingcdn.top/stream/52/index.m3u8",
@@ -125,6 +188,13 @@
     "name": "BeIN Sports 1",
     "logo": "https://elmarada.org/wp-content/uploads/2022/03/download-247x200.png",
     "url": "http://41.205.70.146/BEINSPORT1/index.m3u8",
+    "group": "FIFA World Cup 2026",
+    "useProxy": true
+  },
+  {
+    "name": "BeIN Sports 2",
+    "logo": "https://elmarada.org/wp-content/uploads/2022/03/download-247x200.png",
+    "url": "http://41.205.70.146/BEINSPORT2/index.m3u8",
     "group": "FIFA World Cup 2026",
     "useProxy": true
   },
@@ -528,6 +598,27 @@
     "useProxy": false
   },
   {
+    "name": "Nexus Television",
+    "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitq58axdbCfGNK8qnGYe7NLyrBUvXyrKC6Ecv8Tz1lAm92MameWti_mim2e6PRquP9dhudYb7k0CqmMmVqrFGVXYV5xzbaNoi07uK3C-Xqz78BNSstr0Q0tRBsrj1V2GXRnNg_jL_iGObQ3FsRUDOBL7AQBsU-85f5gTslDC7oJPHF6z_Rkv9WgIl4Nw/s600/Nur_20251226_221102_0000.png",
+    "url": "https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/nexustv.stream/tracks-v1a1/mono.m3u8",
+    "group": "Bangla",
+    "useProxy": false
+  },
+  {
+    "name": "Global TV",
+    "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXMpIa-Ckqus5ll5uOh9vNZc7_ekC8gzp47_m9tSLqe3KbPGpr2kWhELxLHj-d25HSOh_ys__QnM1ccCK7x_1jeO8KWWj6sg6cZP3u0hJD9QS9nEdWrCCF9qU21nekj758dLm9yaBF9Qw8jxVtY5uuANki_WjX9kEui7iBGf9bpdzCLW1kuodOUTJ5lA/s600/Nur_20251227_140413_0000.png",
+    "url": "https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/Global-tv.stream/tracks-v1a1/mono.m3u8",
+    "group": "Bangla",
+    "useProxy": false
+  },
+  {
+    "name": "Desh TV",
+    "logo": "https://i.postimg.cc/wvBbd56q/Desh-TV.jpg",
+    "url": "https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/deshtv.stream/tracks-v1a1/mono.m3u8",
+    "group": "Bangla",
+    "useProxy": false
+  },
+  {
     "name": "Ekushey TV",
     "logo": "https://i.postimg.cc/L6R2F0jj/20250529_105209.png",
     "url": "https://master-proxy.wispy-boat-fc77.workers.dev/?url=https://ekusheyserver.com/hls-live/livepkgr/_definst_/liveevent/livestream3.m3u8",
@@ -563,6 +654,13 @@
     "useProxy": false
   },
   {
+    "name": "RTV",
+    "logo": "https://i.postimg.cc/8kmxMkrr/20250529_101852.png",
+    "url": "https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/rtv-sg.stream/tracks-v1a1/mono.m3u8",
+    "group": "Bangla",
+    "useProxy": false
+  },
+  {
     "name": "Somoy TV",
     "logo": "https://i.postimg.cc/Qxn4JFNV/20250529-071147.png",
     "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1702/output/1702-audio_113322_eng=113200-video=2202800.m3u8",
@@ -577,14 +675,30 @@
     "useProxy": false
   },
   {
+    "name": "BIOSCOPE+",
+    "url": "https://d1kep4defqj6r1.cloudfront.net/out/v1/4e21d5a122c549289dd6feab259266e8/index_1.m3u8",
+    "group": "FIFA World Cup 2026",
+    "useProxy": true,
+    "headers": {
+      "Origin": "https://rzn079.github.io",
+      "Referer": "https://rzn079.github.io/"
+    }
+  },
+  {
+    "name": "T SPORTS",
+    "url": "https://tv.emnetbd.com/flussonic/Tsports1/tracks-v1a1/mono.m3u8",
+    "group": "Bangla",
+    "useProxy": false
+  },
+  {
     "name": "2 Tv Sports FIFA Worldcup Server 2",
     "url": "https://tv.cdn.xsg.ge/gpb-2tv/index.m3u8",
-    "category": "Fifa World cup"
+    "category": "Sports"
   },
   {
     "name": "2 Tv Sports FIFA Worldcup",
     "url": "https://tv.cdn.xsg.ge/gpb-2tv/tracks-v1a1/mono.ts.m3u8",
-    "category": "Fifa World cup"
+    "category": "Sports"
   },
   {
     "name": "Channel 1 TV",
@@ -600,6 +714,11 @@
     "name": "Star Jalsha",
     "url": "https://yupptvcatchupire.yuppcdn.net/preview/starjalsha/1800.m3u8",
     "category": "Entertainment"
+  },
+  {
+    "name": "South India Movie",
+    "url": "https://live20.bozztv.com/giatvplayout7/giatv-209593/tracks-v1a1/mono.ts.m3u8",
+    "category": "Movies"
   },
   {
     "name": "Cricket Gold",
@@ -793,10 +912,18 @@
     "useProxy": true
   },
   {
-    "id": "T Sports 2",
+    "id": "ptv-sports",
     "name": "PTV-Sports",
     "url": "http://180.94.28.28:8097//PTV-Sports/index.fmp4.m3u8",
     "category": "Sports",
+    "logo": "",
+    "useProxy": true
+  },
+  {
+    "id": "sony-max",
+    "name": "SONY-MAX",
+    "url": "http://180.94.28.28:8097//SONY-MAX/index.fmp4.m3u8",
+    "category": "Entertainment",
     "logo": "",
     "useProxy": true
   },
@@ -817,10 +944,18 @@
     "url": "http://starhub.pro/live/farhat-3379/67897-913379/744517.ts"
   },
   {
+    "id": "ptv-sports-c",
+    "name": "PTV Sports C 🇵🇰",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/89.ts"
+  },
+  {
     "id": "fox-sports-fifa-2026",
     "name": "Fox Sports - FIFA 2026",
     "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
+    "category": "All",
     "useProxy": true,
     "url": "http://84.17.50.102/fox/index.m3u8"
   },
@@ -841,6 +976,86 @@
     "url": "http://starhub.pro/live/farhat-3379/67897-913379/745269.ts"
   },
   {
+    "id": "zee-bangla",
+    "name": "Zee Bangla",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://main.epgmaker.com/live/y49sz6KMQs/6115263489/536.ts"
+  },
+  {
+    "id": "colors-bangla",
+    "name": "Colors Bangla",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://main.epgmaker.com/live/y49sz6KMQs/6115263489/532.ts"
+  },
+  {
+    "id": "g-series-drama",
+    "name": "G Series Drama",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://vods2.aynaott.com/gseriesDrama/tracks-v1a1/mono.ts.m3u8"
+  },
+  {
+    "id": "hindi-classic-24",
+    "name": "Hindi Classic 24",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://vods2.aynaott.com/hindimovies/index.m3u8"
+  },
+  {
+    "id": "action-hollywood",
+    "name": "Action Hollywood",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://cdn-apse1-prod.tsv2.amagi.tv/linear/amg01076-lightningintern-actionhollywood-samsungnz/playlist.m3u8"
+  },
+  {
+    "id": "9x-tashan",
+    "name": "9X Tashan",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://wiselp.wiseplayout.com/9X_Tashan/master.m3u8"
+  },
+  {
+    "id": "9x-jalwa",
+    "name": "9X Jalwa",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://wiselp.wiseplayout.com/9X_Jalwa/master.m3u8"
+  },
+  {
+    "id": "9x-jhakaas",
+    "name": "9X Jhakaas",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://wiselp.wiseplayout.com/9X_Jhakaas/master.m3u8"
+  },
+  {
+    "id": "party-universe",
+    "name": "Party Universe",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://nomawnoijl.gpcdn.net/akash/partyuniverse/chunks.m3u8"
+  },
+  {
+    "id": "party-universe-b",
+    "name": "Party Universe B",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://nomawnoijl.gpcdn.net/akash/partyuniverse/playlist.m3u8"
+  },
+  {
     "id": "asian-tv",
     "name": "Asian TV",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -855,6 +1070,110 @@
     "category": "All",
     "useProxy": true,
     "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1715/output/1715-audio_113452_eng=113200-video=1181200.m3u8"
+  },
+  {
+    "id": "btv",
+    "name": "BTV",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1709/output/index.m3u8"
+  },
+  {
+    "id": "channel-24",
+    "name": "Channel 24",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1703/output/1703-audio_113332_eng=113200-video=2202800.m3u8"
+  },
+  {
+    "id": "channel-9-hd",
+    "name": "Channel 9 HD",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1729/output/1729-audio_113592_eng=113200-video=1181200.m3u8"
+  },
+  {
+    "id": "channel-s-tv",
+    "name": "Channel S TV",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://app.ncare.live/live-orgin/channels.stream/live-orgin/channels.stream/chunks.m3u8"
+  },
+  {
+    "id": "dbc-news",
+    "name": "DBC News",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1728/output/index.m3u8"
+  },
+  {
+    "id": "ekattor-tv-hd",
+    "name": "Ekattor TV HD",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1705/output/1705.m3u8"
+  },
+  {
+    "id": "jago-news-24",
+    "name": "Jago News 24",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://app.ncare.live/live-orgin/jagonews24.stream/live-orgin/jagonews24.stream/chunks.m3u8"
+  },
+  {
+    "id": "maasranga-tv",
+    "name": "Maasranga TV",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1722/output/1722.m3u8"
+  },
+  {
+    "id": "movie-bangla",
+    "name": "Movie Bangla",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://alvetv.com/moviebanglatv/8080/index.m3u8"
+  },
+  {
+    "id": "news-24",
+    "name": "News 24",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1708/output/index.m3u8"
+  },
+  {
+    "id": "ntv",
+    "name": "NTV",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1716/output/1716-audio_113462_eng=113200-video=1181200.m3u8"
+  },
+  {
+    "id": "somoy-tv",
+    "name": "Somoy TV",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1702/output/index.m3u8"
+  },
+  {
+    "id": "star-news",
+    "name": "Star News",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1710/output/1710-audio_113402_eng=113200-video=1181200.m3u8"
   },
   {
     "id": "republic-bangla",
@@ -905,12 +1224,124 @@
     "url": "https://amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv/BBCStudios-BBCEarthA-hls/playlist540p.m3u8"
   },
   {
+    "id": "wild-earth",
+    "name": "Wild Earth",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://wildearth-plex.amagi.tv/master.m3u8"
+  },
+  {
+    "id": "animal-planet",
+    "name": "Animal Planet",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://tiger-hub.vercel.app@vodzong.mjunoon.tv:8087/streamtest/Animal-Planet-158-3/playlist.m3u8"
+  },
+  {
+    "id": "movie-hd",
+    "name": "জলসা Movie HD",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/23304.ts"
+  },
+  {
+    "id": "sun-bangla",
+    "name": "Sun Bangla",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/3753.ts"
+  },
+  {
+    "id": "colours-bangla-chinema",
+    "name": "Colours Bangla Chinema",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/271038.ts"
+  },
+  {
     "id": "ente10-bangla",
     "name": "Ente10 Bangla",
     "logo": "https://imgur.com/79g2kMA.png",
     "category": "All",
     "useProxy": true,
     "url": "https://amg01448-samsungin-enterr10bangla-samsungin-ad-gg.amagi.tv/playlist/amg01448-samsungin-enterr10bangla-samsungin/playlist.m3u8"
+  },
+  {
+    "id": "a-sports",
+    "name": "A SPORTS",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/43444.ts"
+  },
+  {
+    "id": "euro-tv",
+    "name": "Euro TV",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://stream.ottplus.bd/live/euro_sports_hd_abr/live/euro_sports_hd/chunks.m3u8"
+  },
+  {
+    "id": "willow",
+    "name": "Willow",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/5040.ts"
+  },
+  {
+    "id": "star-sports-1-jadoo",
+    "name": "STAR SPORTS 1 JADOO",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/148.ts"
+  },
+  {
+    "id": "star-sports-2",
+    "name": "STAR SPORTS 2",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/9398.ts"
+  },
+  {
+    "id": "star-sports-3",
+    "name": "STAR SPORTS 3",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/158442.ts"
+  },
+  {
+    "id": "sony-sports-3-hd",
+    "name": "SONY SPORTS 3 HD",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/146.ts"
+  },
+  {
+    "id": "star-sports-select-1-hd",
+    "name": "STAR SPORTS SELECT 1 HD",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/9400.ts"
+  },
+  {
+    "id": "star-sports-select-2-hd",
+    "name": "STAR SPORTS SELECT 2 HD",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/9401.ts"
   },
   {
     "id": "bein-sports-4",
@@ -953,6 +1384,22 @@
     "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1713/output/index.m3u8"
   },
   {
+    "id": "jamuna-tv",
+    "name": "Jamuna Tv",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1701/output/1701-audio_113312_eng=113200-video=1692000.m3u8"
+  },
+  {
+    "id": "channel-24",
+    "name": "Channel 24",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1703/output/index.m3u8"
+  },
+  {
     "id": "ekttor-tv",
     "name": "EKTTOR tv",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -961,12 +1408,52 @@
     "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1705/output/index.m3u8"
   },
   {
+    "id": "independent-tv",
+    "name": "INDEPENDENT TV",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1704/output/index.m3u8"
+  },
+  {
+    "id": "atn-news",
+    "name": "ATN NEWS",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1706/output/index.m3u8"
+  },
+  {
+    "id": "banglavison",
+    "name": "Banglavison",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1715/output/index.m3u8"
+  },
+  {
+    "id": "maasranga",
+    "name": "Maasranga",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1722/output/index.m3u8"
+  },
+  {
     "id": "deepto-tv",
     "name": "Deepto Tv",
     "logo": "https://imgur.com/79g2kMA.png",
     "category": "All",
     "useProxy": true,
     "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1711/output/index.m3u8"
+  },
+  {
+    "id": "channel-i",
+    "name": "Channel i",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1723/output/index.m3u8"
   },
   {
     "id": "ntv",
@@ -1023,6 +1510,14 @@
     "category": "All",
     "useProxy": true,
     "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1724/output/index.m3u8"
+  },
+  {
+    "id": "jago-news-24",
+    "name": "Jago News 24",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://app.ncare.live/live-orgin/jagonews24.stream/playlist.m3u8"
   },
   {
     "id": "bangla-tv",
@@ -1113,12 +1608,28 @@
     "url": "https://nomawnoijl.gpcdn.net/akash/screem/playlist.m3u8"
   },
   {
+    "id": "toffee-premium",
+    "name": "Toffee {premium}",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://main.epgmaker.com/live/y49sz6KMQs/6115263489/522.ts"
+  },
+  {
     "id": "bein-sports-1",
     "name": "Bein Sports 1",
     "logo": "https://imgur.com/79g2kMA.png",
     "category": "All",
     "useProxy": true,
     "url": "https://amg01334-beinsportsllc-beinxtraesp-localnow-aekzc.amagi.tv/playlistR1080p.m3u8"
+  },
+  {
+    "id": "star-sports-1-hd",
+    "name": "Star Sports 1 HD",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://41.205.93.154/STARSPORTS1/index.m3u8"
   },
   {
     "id": "real-madrid-tv",
@@ -1161,6 +1672,14 @@
     "url": "http://179.60.224.196:8000/play/a0i7/index.m3u8"
   },
   {
+    "id": "2tv-sport",
+    "name": "2TV Sport 🇳🇴",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://tv.cdn.xsg.ge/gpb-2tv/index.m3u8"
+  },
+  {
     "id": "fgn",
     "name": "FGN",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -1196,7 +1715,7 @@
     "id": "football-world-cup-2026-4k",
     "name": "Football World Cup 2026 (4K)",
     "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
+    "category": "All",
     "useProxy": true,
     "url": "http://ytoxw6un.ottclub.xyz/iptv/KCUHA6DGYYVA8ZZFUPQV3KZH/6408/index.m3u8"
   },
@@ -1207,6 +1726,14 @@
     "category": "All",
     "useProxy": true,
     "url": "https://otte.live.fly.ww.aiv-cdn.net/sin-nitro/live/clients/dash-sd/enc/v8g0dlo4z8/out/v1/946019f85dc64ae99ff9ce64a9727a62/cenc-sd.mpd"
+  },
+  {
+    "id": "t-sports",
+    "name": "T Sports",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://luckonline.eu/live/y49sz6KMQs/6115263489/1142.ts"
   },
   {
     "id": "dazn-fast",
@@ -1263,6 +1790,14 @@
     "category": "All",
     "useProxy": true,
     "url": "https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream1/master_720.m3u8"
+  },
+  {
+    "id": "telemundo-2",
+    "name": "Telemundo 2",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream1/master.m3u8"
   },
   {
     "id": "fox-deportes",
@@ -1383,6 +1918,14 @@
     "category": "All",
     "useProxy": true,
     "url": "http://tv.zeuspro.xyz:8080/peterordonez/OKEtJocXkL/157580"
+  },
+  {
+    "id": "telefe-fuente-1",
+    "name": "TELEFE FUENTE 1",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://tv.zeuspro.xyz:8080/peterordonez/OKEtJocXkL/157590"
   },
   {
     "id": "rcn-colombia",
@@ -1623,6 +2166,46 @@
     "category": "All",
     "useProxy": true,
     "url": "http://45.170.130.224:8000/play/a04l/index.m3u8"
+  },
+  {
+    "id": "arg-espn-1",
+    "name": "ARG ESPN 1",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://rlatinop.com:8880/josesosa547tv/FFy5GgKfmFgh/327914"
+  },
+  {
+    "id": "arg-espn-2",
+    "name": "ARG ESPN 2",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://rlatinop.com:8880/josesosa547tv/FFy5GgKfmFgh/327915"
+  },
+  {
+    "id": "arg-espn-3",
+    "name": "ARG ESPN 3",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://rlatinop.com:8880/josesosa547tv/FFy5GgKfmFgh/327916"
+  },
+  {
+    "id": "arg-espn-premium",
+    "name": "ARG ESPN PREMIUM",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://rlatinop.com:8880/josesosa547tv/FFy5GgKfmFgh/327917"
+  },
+  {
+    "id": "arg-espn-premium-op2",
+    "name": "ARG ESPN PREMIUM OP2",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://rlatinop.com:8880/josesosa547tv/FFy5GgKfmFgh/377719"
   },
   {
     "id": "dazn-1",
@@ -1897,6 +2480,14 @@
     "url": "http://daleplaytv.vip:80//live/123MMM/654321/81254.ts"
   },
   {
+    "id": "espn-3-mx",
+    "name": "ESPN 3 MX",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://daleplaytv.vip:80//live/123MMM/654321/361011.ts"
+  },
+  {
     "id": "sky-sport",
     "name": "Sky Sport",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -2153,12 +2744,60 @@
     "url": "https://db34cc6127ac459db55cab5f97cd66b9.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-680-WORBAUENFAST-WHALETVPLUS/680/whaletvplus/hls/master/playlist.m3u8"
   },
   {
+    "id": "red-bull-tv-espanha",
+    "name": "Red Bull TV Espanha",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://886bd3fbc782459f8de7555d32d7e9ce.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-957-WORBLATAMESFAST-WHALETVPLUS/957/whaletvplus/hls/master/playlist.m3u8"
+  },
+  {
     "id": "canal-live-1",
     "name": "Canal + Live 1",
     "logo": "https://imgur.com/79g2kMA.png",
     "category": "All",
     "useProxy": true,
     "url": "http://assarao4k.com:80/play/live.php"
+  },
+  {
+    "id": "espn-4",
+    "name": "ESPN 4",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://45.5.119.43:4000/play/a028/index.m3u8"
+  },
+  {
+    "id": "la-liga",
+    "name": "la liga",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://45.5.119.43:4000/play/a05r/index.m3u8"
+  },
+  {
+    "id": "tudn",
+    "name": "tudn",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://45.5.119.43:4000/play/a05q/index.m3u8"
+  },
+  {
+    "id": "espn-2",
+    "name": "ESPN 2",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://45.5.119.43:4000/play/a053/index.m3u8"
+  },
+  {
+    "id": "sky-sports-gt",
+    "name": "SKY SPORTS GT",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://45.171.64.30:2000/play/a08m/index.m3u8"
   },
   {
     "id": "espn-co",
@@ -2177,6 +2816,14 @@
     "url": "http://181.205.130.194:4000/play/a0eh"
   },
   {
+    "id": "tudn",
+    "name": "TUDN",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://45.171.64.30:2000/play/a08j/index.m3u8"
+  },
+  {
     "id": "tyc-sports",
     "name": "TyC Sports",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -2193,6 +2840,14 @@
     "url": "http://190.83.9.222:8000/play/ca129"
   },
   {
+    "id": "tigo-sports",
+    "name": "TIGO Sports",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://45.5.119.43:4000/play/a05t/index.m3u8"
+  },
+  {
     "id": "espn-premium-hd",
     "name": "ESPN PREMIUM HD",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -2207,6 +2862,22 @@
     "category": "All",
     "useProxy": true,
     "url": "http://181.205.130.194:4000/play/a0fu"
+  },
+  {
+    "id": "fox-sports-3",
+    "name": "Fox SPORTS 3",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://45.5.119.43:4000/play/a024/index.m3u8"
+  },
+  {
+    "id": "5",
+    "name": "5",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://45.5.119.43:4000/play/a05o/index.m3u8"
   },
   {
     "id": "win2",
@@ -2239,6 +2910,22 @@
     "category": "All",
     "useProxy": true,
     "url": "http://198.195.239.50:8095/tsports/index.m3u8"
+  },
+  {
+    "id": "atn-bangla-uk",
+    "name": "ATN Bangla UK",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/atnbanglauk-off.stream/playlist.m3u8"
+  },
+  {
+    "id": "ntv-uk",
+    "name": "NTV UK",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/ntvuk00332211.stream/playlist.m3u8"
   },
   {
     "id": "al-sunnah-tv",
@@ -2289,12 +2976,44 @@
     "url": "http://103.175.73.12:8080/live/378/378_0.m3u8"
   },
   {
+    "id": "abp-ananda",
+    "name": "ABP Ananda",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://amg01448-samsungin-abpananda-samsungin-ad-pw.amagi.tv/playlist/amg01448-samsungin-abpananda-samsungin/playlist.m3u8"
+  },
+  {
+    "id": "zee-24-ghanta",
+    "name": "Zee 24 Ghanta",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://d2dsoyvkr33m05.cloudfront.net/index_1.m3u8"
+  },
+  {
     "id": "news18-bangla-news",
     "name": "News18 Bangla News",
     "logo": "https://imgur.com/79g2kMA.png",
     "category": "All",
     "useProxy": true,
     "url": "https://amg01448-samsungin-news18bangla-samsungin-ad-qy.amagi.tv/playlist/amg01448-samsungin-news18bangla-samsungin/playlist.m3u8"
+  },
+  {
+    "id": "r-plus-news",
+    "name": "R Plus News",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://thelegitpro.in/pntv/rplusnews24x7/tracks-v1a1/mono.m3u8"
+  },
+  {
+    "id": "kolkata-tv",
+    "name": "Kolkata TV",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://cdn.ottlive.co.in/kolkatatv/index.m3u8"
   },
   {
     "id": "tv9-bangla",
@@ -3937,6 +4656,14 @@
     "url": "https://villagetv.applelive.in/villagetv/villagetv/index.m3u8"
   },
   {
+    "id": "r-plus-768p",
+    "name": "R Plus (768p)",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://thelegitpro.in/pntv/rplusnews24x7/index.m3u8"
+  },
+  {
     "id": "rongeen-tv-720p",
     "name": "Rongeen TV (720p)",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -4239,6 +4966,22 @@
     "category": "All",
     "useProxy": true,
     "url": "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/CS7X8FQ83E4L82/9334/index.m3u8"
+  },
+  {
+    "id": "star-cricket",
+    "name": "Star Cricket",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://atc.hopto.org/star-sprts-1-hd-sport/playlist.m3u8"
+  },
+  {
+    "id": "gol-classics",
+    "name": "Gol Classics",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://d71gqtnep83vb.cloudfront.net/gol_classics/gol_classics.m3u8"
   },
   {
     "id": "setenta-1",
@@ -4561,6 +5304,14 @@
     "url": "http://balance1.QITV.TOP:8088/rj-live/rj-live/600236.ts"
   },
   {
+    "id": "bioscope-plus",
+    "name": "Bioscope Plus 🇧🇩",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://bioscope.sm-monirulislam-exp.workers.dev/bioscope.m3u8"
+  },
+  {
     "id": "next-tv",
     "name": "NEXT TV",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -4572,9 +5323,17 @@
     "id": "fifa-world-cup-uzbekistan-vs-colombia-hd-fawa",
     "name": "[FIFA World Cup] Uzbekistan vs Colombia HD (FAWA)",
     "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
+    "category": "All",
     "useProxy": true,
     "url": "https://pullsgp.yyzb456.top/live/stream-506605_lhd.m3u8"
+  },
+  {
+    "id": "super",
+    "name": "super",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://premiumtvs.space/live/jen12345/Jen54321/745149.ts"
   },
   {
     "id": "star-sports-3",
@@ -4609,6 +5368,14 @@
     "url": "http://103.157.248.140:8000/play/a01q/index.m3u8"
   },
   {
+    "id": "sony-sports-2-hd",
+    "name": "SONY SPORTS 2 HD",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://main.epgmaker.com/live/y49sz6KMQs/6115263489/513.ts"
+  },
+  {
     "id": "sony-sports-5-hd",
     "name": "SONY SPORTS 5 HD",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -4620,7 +5387,7 @@
     "id": "football-world-cup-2026",
     "name": "Football World Cup 2026",
     "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
+    "category": "All",
     "useProxy": true,
     "url": "https://stream.ottplus.live/live/zee_bangla_cinema_abr/live/zee_bangla_cinema_720/chunks.m3u8"
   },
@@ -4655,6 +5422,14 @@
     "category": "All",
     "useProxy": true,
     "url": "https://andro.226503.xyz/checklist/androstreamliveexn2.m3u8"
+  },
+  {
+    "id": "jamuna-tv",
+    "name": "JAMUNA TV",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1701/output/index.m3u8"
   },
   {
     "id": "btv-bangladesh",
@@ -4969,6 +5744,30 @@
     "url": "http://185.57.68.33/110/mpegts"
   },
   {
+    "id": "setanta-sport",
+    "name": "Setanta Sport 🇺🇦",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://217.174.225.146/hls/ch004_720/index.m3u8"
+  },
+  {
+    "id": "super-sport-1",
+    "name": "Super Sport 1 🇦🇱",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://93.93.113.95:25461/TV-Berati/XtreamCodes/494"
+  },
+  {
+    "id": "super-sport-2",
+    "name": "Super Sport 2 🇦🇱",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://93.93.113.95:25461/TV-Berati/XtreamCodes/495"
+  },
+  {
     "id": "nova-sport-1-hd",
     "name": "NOVA SPORT 1 HD 🇨🇿",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -5113,6 +5912,14 @@
     "url": "http://200.115.120.1:8000/play/ca124/index.m3u8"
   },
   {
+    "id": "tdm-desporto",
+    "name": "TDM Desporto 🇲🇴",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://cdn6.163189.xyz/163189/amty"
+  },
+  {
     "id": "ott-club",
     "name": "OTT CLUB 🇷🇺",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -5135,6 +5942,22 @@
     "category": "All",
     "useProxy": true,
     "url": "http://200.115.120.1:8000/play/ca040/index.m3u8"
+  },
+  {
+    "id": "bein-sport-1",
+    "name": "Bein Sport 1 🇫🇷",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://99.27.51.147:8080/BeinSport/index.m3u8"
+  },
+  {
+    "id": "bein-sport-3",
+    "name": "Bein Sport 3 🇫🇷",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://99.27.51.147:8080/BeinSport3/index.m3u8"
   },
   {
     "id": "",
@@ -5257,6 +6080,14 @@
     "url": "http://200.10.30.241:8000/play/a01r/index.m3u8"
   },
   {
+    "id": "fifa-world-cup-2026",
+    "name": "FIFA World Cup 2026",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1702/output/1702-audio_113322_eng=113200-video=2202800.m3u8"
+  },
+  {
     "id": "willow-sports-1080p",
     "name": "Willow Sports (1080p)",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -5281,10 +6112,18 @@
     "url": "http://ytoxw6un.ottclub.xyz/iptv/VSQZTL9D68WBD9/6126/index.m3u8"
   },
   {
+    "id": "se-al-exclusiva-1",
+    "name": "señal exclusiva (1)",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "All",
+    "useProxy": true,
+    "url": "http://rlatinop.com:8880/Jhoselin102030xd1011/SQDyyTdV2z6x/526169"
+  },
+  {
     "id": "world-cup-a1",
     "name": "World Cup A1 🇧🇩",
     "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
+    "category": "Sports",
     "useProxy": true,
     "url": "http://rgkkw.live:80/live/1Aoen7elp5/IgMJ60tmAa/130714.ts"
   },
@@ -5292,7 +6131,7 @@
     "id": "world-cup-a2",
     "name": "World Cup A2 🇧🇩",
     "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
+    "category": "Sports",
     "useProxy": true,
     "url": "http://198.195.239.50:8095/tsports/tracks-v1a1/mono.m3u8"
   },
@@ -5300,7 +6139,7 @@
     "id": "world-cup-s2",
     "name": "World Cup S2",
     "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
+    "category": "Sports",
     "useProxy": true,
     "url": "https://andro.226503.xyz/checklist/androstreamlivebs1.m3u8"
   },
@@ -5308,7 +6147,7 @@
     "id": "fifa-live-bangla",
     "name": "FIFA Live - Bangla 🇮🇳",
     "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
+    "category": "Sports",
     "useProxy": true,
     "url": "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/ColorsHD/default/ColorsHD-video=2137600.m3u8"
   },
@@ -5316,8 +6155,40 @@
     "id": "fifa-live-bangla-a",
     "name": "FIFA Live - Bangla A 🇮🇳",
     "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
+    "category": "Sports",
     "useProxy": true,
     "url": "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/ColorsHD/default/ColorsHD.m3u8"
+  },
+  {
+    "id": "unite-8-sports-1-hd-hindi",
+    "name": "Unite 8 Sports 1 HD 🇮🇳 Hindi",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "Sports",
+    "useProxy": true,
+    "url": "http://starhub.pro/live/farhat-3379/67897-913379/741567.ts"
+  },
+  {
+    "id": "s-football",
+    "name": "S Football",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "Sports",
+    "useProxy": true,
+    "url": "http://rgkkw.live/live/1Aoen7elp5/IgMJ60tmAa/745149.ts"
+  },
+  {
+    "id": "t-sports-hd",
+    "name": "T-Sports HD",
+    "url": "http://rgkkw.live:80/live/1Aoen7elp5/IgMJ60tmAa/130714.ts",
+    "category": "Sports",
+    "logo": "",
+    "useProxy": true
+  },
+  {
+    "id": "t-sports-hd",
+    "name": "T-Sports HD",
+    "url": "http://rgkkw.live:80/live/1Aoen7elp5/IgMJ60tmAa/130714.ts",
+    "category": "Sports",
+    "logo": "",
+    "useProxy": true
   }
 ]
