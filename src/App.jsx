@@ -427,14 +427,9 @@ export default function App({ initialChannels = [] }) {
                 )}
 
                 {/* Xtream TV Hub */}
-                {currentCategory === 'Xtream TV' && (
-                  <GlobalTVHub 
-                    isPlayerOpen={activeChannel !== null}
-                    onWatchLive={handleSelectChannel}
-                  />
-                )}
+                
 
-                {currentCategory !== 'Xtream TV' && filteredChannels.length > 0 ? (
+                {filteredChannels.length > 0 ? (
                   <ChannelGrid 
                     channels={slicedChannels}
                     favorites={favorites}
