@@ -104,21 +104,6 @@ export default function Sidebar({
             <span className="category-count">{totalCount}</span>
           </li>
 
-          {/* Xtream TV */}
-          <li 
-            className={`category-item ${currentCategory === 'Xtream TV' ? 'active' : ''}`} 
-            onClick={() => onSelectCategory('Xtream TV')}
-            style={{ 
-              borderLeft: currentCategory === 'Xtream TV' ? '3px solid #3b82f6' : 'transparent', 
-              background: currentCategory === 'Xtream TV' ? 'linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, transparent 100%)' : 'transparent' 
-            }}
-          >
-            <div className="category-item-left" style={{ color: currentCategory === 'Xtream TV' ? '#3b82f6' : 'var(--text-secondary)' }}>
-              <Globe size={18} />
-              <span>Xtream TV</span>
-            </div>
-            <span className="category-count" style={{ backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#3b82f6', fontWeight: 700 }}>NEW</span>
-          </li>
 
           {/* Bookmarks */}
           <li 
