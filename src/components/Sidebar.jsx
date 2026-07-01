@@ -104,18 +104,18 @@ export default function Sidebar({
             <span className="category-count">{totalCount}</span>
           </li>
 
-          {/* Global TV */}
+          {/* Xtream TV */}
           <li 
-            className={`category-item ${currentCategory === 'Global TV' ? 'active' : ''}`} 
-            onClick={() => onSelectCategory('Global TV')}
+            className={`category-item ${currentCategory === 'Xtream TV' ? 'active' : ''}`} 
+            onClick={() => onSelectCategory('Xtream TV')}
             style={{ 
-              borderLeft: currentCategory === 'Global TV' ? '3px solid #3b82f6' : 'transparent', 
-              background: currentCategory === 'Global TV' ? 'linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, transparent 100%)' : 'transparent' 
+              borderLeft: currentCategory === 'Xtream TV' ? '3px solid #3b82f6' : 'transparent', 
+              background: currentCategory === 'Xtream TV' ? 'linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, transparent 100%)' : 'transparent' 
             }}
           >
-            <div className="category-item-left" style={{ color: currentCategory === 'Global TV' ? '#3b82f6' : 'var(--text-secondary)' }}>
+            <div className="category-item-left" style={{ color: currentCategory === 'Xtream TV' ? '#3b82f6' : 'var(--text-secondary)' }}>
               <Globe size={18} />
-              <span>Global TV</span>
+              <span>Xtream TV</span>
             </div>
             <span className="category-count" style={{ backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#3b82f6', fontWeight: 700 }}>NEW</span>
           </li>
@@ -133,7 +133,7 @@ export default function Sidebar({
           </li>
 
           {/* Dynamic Groups */}
-          {sortedGroups.map(group => {
+          {sortedGroups.filter(g => g !== 'Xtream TV' && g !== 'FIFA World Cup 2026').map(group => {
             const isActive = currentCategory === group && !showFavoritesOnly;
             return (
               <li 

@@ -366,11 +366,11 @@ export default function App({ initialChannels = [] }) {
             <span>All</span>
           </div>
           <div 
-            className={`category-chip ${currentCategory === 'Global TV' ? 'active' : ''}`}
-            onClick={() => handleSelectCategory('Global TV')}
+            className={`category-chip ${currentCategory === 'Xtream TV' ? 'active' : ''}`}
+            onClick={() => handleSelectCategory('Xtream TV')}
           >
             <Globe size={14} style={{ marginRight: '4px' }} />
-            <span>Global TV</span>
+            <span>Xtream TV</span>
           </div>
           <div 
             className={`category-chip ${showFavoritesOnly ? 'active' : ''}`}
@@ -426,15 +426,15 @@ export default function App({ initialChannels = [] }) {
                   />
                 )}
 
-                {/* Global TV Hub */}
-                {currentCategory === 'Global TV' && (
+                {/* Xtream TV Hub */}
+                {currentCategory === 'Xtream TV' && (
                   <GlobalTVHub 
                     isPlayerOpen={activeChannel !== null}
                     onWatchLive={handleSelectChannel}
                   />
                 )}
 
-                {currentCategory !== 'Global TV' && filteredChannels.length > 0 ? (
+                {currentCategory !== 'Xtream TV' && filteredChannels.length > 0 ? (
                   <ChannelGrid 
                     channels={slicedChannels}
                     favorites={favorites}
@@ -521,12 +521,12 @@ export default function App({ initialChannels = [] }) {
                 <span className="category-count">{totalCount}</span>
               </li>
               <li 
-                className={`category-item ${currentCategory === 'Global TV' ? 'active' : ''}`}
-                onClick={() => handleSelectCategory('Global TV')}
+                className={`category-item ${currentCategory === 'Xtream TV' ? 'active' : ''}`}
+                onClick={() => handleSelectCategory('Xtream TV')}
               >
                 <div className="category-item-left">
                   <Globe size={18} />
-                  <span>Global TV</span>
+                  <span>Xtream TV</span>
                 </div>
                 <span className="category-count" style={{ backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#3b82f6', fontWeight: 700 }}>NEW</span>
               </li>
