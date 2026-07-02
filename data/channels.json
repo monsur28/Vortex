@@ -75,7 +75,7 @@
   {
     "name": "Bein Sports 1",
     "group": "FIFA World Cup 2026",
-    "url": "https://pul-tenm.gkykp.com/live/hd-en-1-4459728.m3u8?txSecret=fb9886e58494e1a0f969531c8f296d85&txTime=6A480188",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/23/index.m3u8",
     "bufferless": true,
     "useProxy": false,
     "proxySegments": false
@@ -128,7 +128,13 @@
     "useProxy": false,
     "proxySegments": false
   },
-
+  {
+    "name": "BeIN Sports 1",
+    "logo": "https://elmarada.org/wp-content/uploads/2022/03/download-247x200.png",
+    "url": "http://41.205.70.146/BEINSPORT1/index.m3u8",
+    "group": "FIFA World Cup 2026",
+    "useProxy": true
+  },
   {
     "name": "TV9 Bangla",
     "logo": "https://images.tv9bangla.com/wp-content/themes/tv9bangla/images/tv9-bangla-logo.svg",
