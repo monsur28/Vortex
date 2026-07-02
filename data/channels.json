@@ -17,17 +17,6 @@
     "useNativeVideo": true
   },
   {
-    "name": "FIFA Live (Server 3)",
-    "group": "FIFA World Cup 2026",
-    "url": "https://tahmidx.shusanta-project.workers.dev/",
-    "useProxy": true,
-    "proxySegments": true,
-    "headers": {
-      "Origin": "https://fifalive.click",
-      "Referer": "https://fifalive.click/"
-    }
-  },
-  {
     "name": "World Cup TV",
     "group": "FIFA World Cup 2026",
     "url": "https://edge22.776740.ir.cdn.ir/hls2/sport.m3u8",
