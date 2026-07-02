@@ -19,15 +19,11 @@
   {
     "name": "World Cup TV",
     "group": "FIFA World Cup 2026",
-    "url": "https://binge.oolcaykarael.workers.dev/?ext=.m3u8",
+    "url": "https://edge22.776740.ir.cdn.ir/hls2/sport.m3u8",
     "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
-    "useProxy": true,
+    "useProxy": false,
     "proxySegments": false,
-    "category": "Fifa World cup",
-    "headers": {
-      "Referer": "https://fifalive.click/",
-      "Origin": "https://fifalive.click"
-    }
+    "category": "Fifa World cup"
   },
   {
     "name": "D-Sports",
@@ -275,7 +271,7 @@
   {
     "name": "Somoy TV",
     "logo": "https://raw.githubusercontent.com/subirkumarpaul/Logo/main/Somoy%20TV.jpeg",
-    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1702/output/1702.m3u8",
+    "url": "http://114.130.57.233:8080/Somoy-TV-3Mb/tracks-v1a1/mono.m3u8?token=SkQuhAXZxgBan1",
     "group": "Bangla",
     "useProxy": false
   },
@@ -567,13 +563,6 @@
     "useProxy": false
   },
   {
-    "name": "Somoy TV",
-    "logo": "https://i.postimg.cc/Qxn4JFNV/20250529-071147.png",
-    "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1702/output/1702-audio_113322_eng=113200-video=2202800.m3u8",
-    "group": "Bangla",
-    "useProxy": false
-  },
-  {
     "name": "Jago News 24",
     "logo": "https://www.jagobd.com/wp-content/uploads/2024/08/pran-RFL.png",
     "url": "https://app.ncare.live/live-orgin/jagonews24.stream/playlist.m3u8",
@@ -731,11 +720,6 @@
     "category": "Bangladesh"
   },
   {
-    "name": "Somoy Tv",
-    "url": "https://sm-monirul.top/toffee/play/somoy_tv.m3u8",
-    "category": "Bangladesh"
-  },
-  {
     "name": "Star News",
     "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1710/output/1710-audio_113402_eng=113200-video=1181200.m3u8",
     "category": "Bangladesh"
@@ -799,10 +783,10 @@
   {
     "id": "T Sports 2",
     "name": "PTV-Sports",
-    "url": "http://180.94.28.28:8097//PTV-Sports/index.fmp4.m3u8",
+    "url": "http://198.195.239.50:8095/ptv/tracks-v1a1/mono.m3u8",
     "category": "Sports",
     "logo": "",
-    "useProxy": true
+    "useProxy": false
   },
   {
     "id": "616-sports-4k",
