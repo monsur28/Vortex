@@ -28,7 +28,10 @@ export async function GET(request) {
         }
       }
     } catch (e) {
-      return new NextResponse('Error loading channel data', { status: 500 });
+      if (!targetUrl) {
+        return new NextResponse('Error loading channel data', { status: 500 });
+      }
+      console.warn('Could not load channels.json, but targetUrl is provided.');
     }
   } else if (token) {
     targetUrl = decryptUrl(token);
