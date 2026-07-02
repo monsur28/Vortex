@@ -26,6 +26,13 @@
     "category": "Fifa World cup"
   },
   {
+    "name": "Sportzfy TV Live (FIFA)",
+    "group": "FIFA World Cup 2026",
+    "url": "https://bfiaawagaalygikasqdk.supabase.co/functions/v1/swift-api?url=Q09k4OukERocGAoHOgrmE5BfFkbSFsy5FsEKFsdudONmQCPKIMY&headers=3OymHRdJERI_4UgRHGHJIRIRFhNcE0zKLpycyCv_EU1Uq1yjin",
+    "useProxy": false,
+    "proxySegments": false
+  },
+  {
     "name": "D-Sports",
     "group": "FIFA World Cup 2026",
     "url": "https://1nyaler.streamhostingcdn.top/stream/106/index.m3u8",
