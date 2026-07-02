@@ -5282,6 +5282,7 @@
     "logo": "https://imgur.com/79g2kMA.png",
     "category": "Fifa World cup",
     "useProxy": true,
+    "useNativeVideo": true,
     "url": "http://198.195.239.50:8095/tsports/tracks-v1a1/mono.m3u8"
   },
   {
