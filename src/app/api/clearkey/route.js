@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import channelsData from '../../../../data/channels.json';
+
+export const runtime = 'edge';
 
 export async function POST(request) {
   const url = new URL(request.url);
@@ -8,9 +9,7 @@ export async function POST(request) {
   if (!id) return new NextResponse('Missing id', { status: 400 });
 
   try {
-    const filePath = path.join(process.cwd(), 'data', 'channels.json');
-    const channels = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    const channel = channels[parseInt(id, 10)];
+    const channel = channelsData[parseInt(id, 10)];
     
     if (!channel || !channel.drm || !channel.drm.key) {
       return new NextResponse('No DRM key for this channel', { status: 404 });

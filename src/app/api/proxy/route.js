@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { encryptUrl, decryptUrl } from '../../../lib/encryption';
-import fs from 'fs';
-import path from 'path';
+import channelsData from '../../../../data/channels.json';
 
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
@@ -24,9 +24,7 @@ export async function GET(request) {
 
   if (id !== null) {
     try {
-      const filePath = path.join(process.cwd(), 'data', 'channels.json');
-      const channels = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-      const channel = channels[parseInt(id, 10)];
+      const channel = channelsData[parseInt(id, 10)];
       let channelUrl = channel ? (channel.url || channel.stream_url) : null;
       if (channelUrl && !targetUrl) {
         if (Array.isArray(channelUrl)) {
@@ -93,9 +91,7 @@ export async function GET(request) {
   // Apply custom headers from channel config (e.g. Referer, Origin)
   if (id !== null) {
     try {
-      const filePath = path.join(process.cwd(), 'data', 'channels.json');
-      const channels = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-      const channel = channels[parseInt(id, 10)];
+      const channel = channelsData[parseInt(id, 10)];
       if (channel && channel.headers) {
         Object.assign(fetchHeaders, channel.headers);
       }

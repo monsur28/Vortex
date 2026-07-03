@@ -1,15 +1,11 @@
-import fs from 'fs';
-import path from 'path';
 import App from '../App';
-
+import channelsData from '../../data/channels.json';
 
 export default function Home() {
   // Load and sanitize channels on the server to prevent network tab fetching
-  const filePath = path.join(process.cwd(), 'data', 'channels.json');
   let channels = [];
   try {
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const rawChannels = JSON.parse(fileContent);
+    const rawChannels = channelsData;
     channels = rawChannels.map((channel, index) => {
       let targetUrl = channel.url || channel.stream_url || '';
       let originalUrls = targetUrl;

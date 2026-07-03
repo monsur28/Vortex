@@ -1,8 +1,8 @@
-import crypto from 'crypto';
+import crypto from 'node:crypto';
 
 // Use a stable key from environment variables or generate a deterministic one
 // This keeps tokens secure but prevents them from invalidating across serverless function instances
-const fallbackKey = crypto.scryptSync(process.env.PROXY_SECRET || 'default_stable_secret', 'salt', 32);
+const fallbackKey = crypto.createHash('sha256').update(process.env.PROXY_SECRET || 'default_stable_secret').digest();
 const ENCRYPTION_KEY = process.env.PROXY_ENCRYPTION_KEY 
   ? Buffer.from(process.env.PROXY_ENCRYPTION_KEY, 'hex') 
   : fallbackKey;
