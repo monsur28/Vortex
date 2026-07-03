@@ -129,6 +129,7 @@ export default function PlayerPanel({
     let isCancelled = false;
     let newBitmovin = null;
     let localMpegts = null;
+    let localHls = null;
     let currentUrlIndex = 0;
     const urlCount = activeChannel.urlCount || (Array.isArray(activeChannel.url) ? activeChannel.url.length : 1);
 
@@ -171,6 +172,10 @@ export default function PlayerPanel({
       if (localMpegts) {
         localMpegts.destroy();
         localMpegts = null;
+      }
+      if (localHls) {
+        localHls.destroy();
+        localHls = null;
       }
 
       try {
@@ -217,6 +222,54 @@ export default function PlayerPanel({
             setBuffering(false);
           }
           return; // Stop here, don't init Shaka
+        }
+
+        // If it's a standard HLS stream without ClearKey DRM, use hls.js
+        if (rawUrl && (rawUrl.endsWith('.m3u8') || rawUrl.includes('.m3u8?')) && !activeChannel.clearkeys && !activeChannel.drm) {
+          const HlsModule = await import('hls.js');
+          const Hls = HlsModule.default || HlsModule;
+          
+          if (Hls.isSupported()) {
+            localHls = new Hls({
+              debug: false,
+              enableWorker: true
+            });
+            localHls.loadSource(streamUrl);
+            localHls.attachMedia(video);
+            
+            localHls.on(Hls.Events.MANIFEST_PARSED, function() {
+              video.play().catch(e => console.log('HLS Autoplay prevented:', e));
+              setBuffering(false);
+            });
+            
+            localHls.on(Hls.Events.ERROR, function(event, data) {
+              if (data.fatal) {
+                switch (data.type) {
+                  case Hls.ErrorTypes.NETWORK_ERROR:
+                    localHls.startLoad();
+                    break;
+                  case Hls.ErrorTypes.MEDIA_ERROR:
+                    localHls.recoverMediaError();
+                    break;
+                  default:
+                    localHls.destroy();
+                    setErrorMsg('HLS Fatal Error: ' + data.details);
+                    break;
+                }
+              }
+            });
+          } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            // Safari / Native HLS
+            video.src = streamUrl;
+            video.addEventListener('loadedmetadata', function() {
+              video.play().catch(e => console.log(e));
+              setBuffering(false);
+            });
+          } else {
+            setErrorMsg('HLS playback is not supported in this browser.');
+            setBuffering(false);
+          }
+          return; // Stop here
         }
 
         const bitmovinModule = await import('bitmovin-player');
@@ -452,10 +505,13 @@ export default function PlayerPanel({
       if (newBitmovin) {
         destroyPromiseRef.current = newBitmovin.destroy().catch(() => {});
       }
-      if (localMpegts) {
-        localMpegts.destroy();
-      }
-      video.removeEventListener('waiting', onWaiting);
+        if (localMpegts) {
+          localMpegts.destroy();
+        }
+        if (localHls) {
+          localHls.destroy();
+        }
+        video.removeEventListener('waiting', onWaiting);
       video.removeEventListener('playing', onPlaying);
       video.removeEventListener('pause', onPause);
     };
