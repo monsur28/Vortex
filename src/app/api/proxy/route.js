@@ -14,6 +14,10 @@ export async function GET(request) {
   const token = url.searchParams.get('token');
   const isStalker = url.searchParams.get('stalker') === 'true';
 
+  if (token) {
+    targetUrl = decryptUrl(token);
+  }
+
   if (id !== null) {
     try {
       const filePath = path.join(process.cwd(), 'data', 'channels.json');
@@ -33,8 +37,6 @@ export async function GET(request) {
       }
       console.warn('Could not load channels.json, but targetUrl is provided.');
     }
-  } else if (token) {
-    targetUrl = decryptUrl(token);
   }
 
   // Handle relative targetUrls (e.g. starting with /stream-proxy/)
