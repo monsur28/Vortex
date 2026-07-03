@@ -109,7 +109,8 @@ export async function GET(request) {
   const fetchOptions = {
     method: 'GET',
     headers: fetchHeaders,
-    redirect: isDevALive ? 'manual' : 'follow'
+    redirect: isDevALive ? 'manual' : 'follow',
+    cache: 'no-store'
   };
 
   try {
@@ -134,6 +135,7 @@ export async function GET(request) {
     headers.delete('content-encoding');
     headers.delete('content-length');
     headers.set('Access-Control-Allow-Origin', '*');
+    headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     
     if (!response.ok) {
       console.warn(`Proxy upstream returned ${response.status} for ${targetUrl}`);
@@ -254,6 +256,7 @@ export async function POST(request) {
     const response = await fetch(targetUrl, fetchOptions);
     const responseHeaders = new Headers(response.headers);
     responseHeaders.set('Access-Control-Allow-Origin', '*');
+    responseHeaders.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     responseHeaders.delete('content-encoding');
     responseHeaders.delete('content-length');
 
