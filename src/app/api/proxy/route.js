@@ -15,7 +15,11 @@ export async function GET(request) {
   const isStalker = url.searchParams.get('stalker') === 'true';
 
   if (token) {
-    targetUrl = decryptUrl(token);
+    try {
+      targetUrl = decryptUrl(token);
+    } catch (e) {
+      console.error('Failed to decrypt token:', e);
+    }
   }
 
   if (id !== null) {
