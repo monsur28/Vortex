@@ -21,7 +21,7 @@
     "group": "FIFA World Cup 2026",
     "url": "https://pub-e2ad638cf56b45cfafcb943e602a0831.r2.dev/iscreen/main.m3u8",
     "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
-    "useProxy": false,
+    "useProxy": true,
     "proxySegments": false,
     "category": "Fifa World cup"
   },
