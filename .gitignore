@@ -47,3 +47,11 @@ Thumbs.db
 
 # Next.js
 .next/
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example

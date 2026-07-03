@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
-import channelsData from '../../../../data/channels.json';
-
-export const runtime = 'edge';
+import * as channelsJson from '../../../../data/channels.json';
+const channelsData = channelsJson.default || channelsJson;
 
 export async function POST(request) {
   const url = new URL(request.url);

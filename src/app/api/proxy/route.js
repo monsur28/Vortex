@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server';
 import { encryptUrl, decryptUrl } from '../../../lib/encryption';
-import channelsData from '../../../../data/channels.json';
+import * as channelsJson from '../../../../data/channels.json';
+const channelsData = channelsJson.default || channelsJson;
 
-export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+// Handled by OpenNext automatically
+
+// Process is undefined or restricted in Cloudflare Workers
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 export async function GET(request) {
   const url = new URL(request.url);
