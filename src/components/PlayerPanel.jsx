@@ -289,6 +289,12 @@ export default function PlayerPanel({
         const source = {
             title: activeChannel.name
         };
+
+        if (activeChannel.clearkeys) {
+            source.drm = {
+                clearkey: activeChannel.clearkeys
+            };
+        }
         
         if (streamUrl.includes('.mpd')) {
             source.dash = streamUrl;

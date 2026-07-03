@@ -19,7 +19,7 @@
   {
     "name": "World Cup TV",
     "group": "FIFA World Cup 2026",
-    "url": "https://edge22.776740.ir.cdn.ir/hls2/sport.m3u8",
+    "url": "https://pub-e2ad638cf56b45cfafcb943e602a0831.r2.dev/iscreen/main.m3u8",
     "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
     "useProxy": false,
     "proxySegments": false,
@@ -5363,5 +5363,61 @@
       "Referer": "https://fifalive.click/",
       "Origin": "https://fifalive.click"
     }
+  },
+  {
+    "name": "Fox One - 1",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/enc/jfca5zun1r/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "Fifa World cup",
+    "useProxy": true,
+    "clearkeys": [
+      {
+        "keyId": "f6564ec2aee819046328a0e153be574d",
+        "key": "ff46a8a1031eb27ef22576a077c98ab7"
+      }
+    ]
+  },
+  {
+    "name": "Fox One -1 [ALT]",
+    "group": "FIFA World Cup 2026",
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "Fifa World cup",
+    "useProxy": true,
+    "clearkeys": [
+      {
+        "keyId": "f6564ec2aee819046328a0e153be574d",
+        "key": "ff46a8a1031eb27ef22576a077c98ab7"
+      }
+    ]
+  },
+  {
+    "name": "Fox 4K [BDiX]",
+    "group": "FIFA World Cup 2026",
+    "url": "https://pub-e2ad638cf56b45cfafcb943e602a0831.r2.dev/fox/livestream76.mpd",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "Fifa World cup",
+    "useProxy": true,
+    "clearkeys": [
+      {
+        "keyId": "1f68713028d439ec03be07f56c1d6213",
+        "key": "20093db6455160fffed4c394def3193d"
+      }
+    ]
+  },
+  {
+    "name": "TUDN",
+    "group": "FIFA World Cup 2026",
+    "url": "https://live-pv-ta.amazon.fastly-edge.com/iad-nitro/live/clients/dash/enc/o2vy4aahsh/out/v1/e293c932745a44dcaf897573dfc53532/cenc.mpd",
+    "logo": "https://imgur.com/79g2kMA.png",
+    "category": "Fifa World cup",
+    "useProxy": true,
+    "clearkeys": [
+      {
+        "keyId": "763ce1ebcaf23502c8cf357c6ef423e1",
+        "key": "0c5e6c0820a1ea28753721db00272411"
+      }
+    ]
   }
 ]
