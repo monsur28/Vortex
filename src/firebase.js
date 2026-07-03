@@ -14,8 +14,12 @@ const firebaseConfig = {
 let app, database;
 
 try {
-  app = initializeApp(firebaseConfig);
-  database = getDatabase(app);
+  if (firebaseConfig.projectId) {
+    app = initializeApp(firebaseConfig);
+    database = getDatabase(app);
+  } else {
+    console.warn("Firebase config missing. Firebase will not initialize.");
+  }
 } catch (error) {
   console.error("Firebase initialization failed. Did you add your config?", error);
 }

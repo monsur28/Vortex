@@ -1,5 +1,5 @@
 {
-  "name": "vortex-iptv-player",
+  "name": "vortex",
   "version": "1.0.0",
   "description": "Premium IPTV Web Player with HLS.js",
   "type": "module",
