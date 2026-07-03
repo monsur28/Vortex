@@ -158,7 +158,9 @@ export async function GET(request) {
               if (uri.startsWith('data:')) return match;
               const absoluteUrl = new URL(uri, baseUrl.href).href;
               const tokenStr = encryptUrl(absoluteUrl);
-              const proxiedUrl = `/api/proxy?token=${encodeURIComponent(tokenStr)}${isStalker ? '&stalker=true' : ''}${id !== null ? `&id=${id}` : ''}`;
+              const extMatch = absoluteUrl.match(/(\.[a-z0-9]+)(?:[\?#]|$)/i);
+              const hashExt = extMatch ? `#${extMatch[1]}` : '';
+              const proxiedUrl = `/api/proxy?token=${encodeURIComponent(tokenStr)}${isStalker ? '&stalker=true' : ''}${id !== null ? `&id=${id}` : ''}${hashExt}`;
               return `URI="${proxiedUrl}"`;
             });
           }
@@ -167,7 +169,9 @@ export async function GET(request) {
         
         const absoluteUrl = new URL(trimmed, baseUrl.href).href;
         const tokenStr = encryptUrl(absoluteUrl);
-        return `/api/proxy?token=${encodeURIComponent(tokenStr)}${isStalker ? '&stalker=true' : ''}${id !== null ? `&id=${id}` : ''}`;
+        const extMatch = absoluteUrl.match(/(\.[a-z0-9]+)(?:[\?#]|$)/i);
+        const hashExt = extMatch ? `#${extMatch[1]}` : '';
+        return `/api/proxy?token=${encodeURIComponent(tokenStr)}${isStalker ? '&stalker=true' : ''}${id !== null ? `&id=${id}` : ''}${hashExt}`;
       });
       
       return new NextResponse(rewrittenLines.join('\n'), {
