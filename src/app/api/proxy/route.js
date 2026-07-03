@@ -202,6 +202,10 @@ export async function GET(request) {
         bodyText = bodyText.replace(/(<MPD[^>]*>)/i, `$1\n  <BaseURL>${absoluteBaseUrl}</BaseURL>`);
       }
 
+      // Filter out unsupported codecs like Dolby Digital (ec-3) and TTML subtitles (stpp)
+      // which can cause SOURCE_CODEC_VERIFICATION_FAILED in web players.
+      bodyText = bodyText.replace(/<AdaptationSet[^>]*>[\s\S]*?codecs="(ec-3|stpp)"[\s\S]*?<\/AdaptationSet>/gi, '');
+
 
       return new NextResponse(bodyText, {
         status: response.status,
