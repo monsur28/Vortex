@@ -14,7 +14,7 @@
     "bufferless": true,
     "useProxy": true,
     "proxySegments": true,
-    "useNativeVideo": false,
+    "useNativeVideo": true,
     "headers": {
       "Referer": "https://fifalive.click/",
       "Origin": "https://fifalive.click"
