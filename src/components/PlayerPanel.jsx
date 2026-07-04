@@ -51,7 +51,7 @@ export default function PlayerPanel({
     const interval = setInterval(() => {
       if (bitmovinInstance && bitmovinInstance.isLive && bitmovinInstance.isLive()) {
         const shift = bitmovinInstance.getTimeShift();
-        if (shift < -2) {
+        if (shift < -15) {
           setDelaySeconds(Math.abs(Math.round(shift)));
         } else {
           setDelaySeconds(0);
@@ -60,7 +60,7 @@ export default function PlayerPanel({
         const seekableEnd = videoRef.current.seekable.end(videoRef.current.seekable.length - 1);
         const current = videoRef.current.currentTime;
         const delay = Math.round(seekableEnd - current);
-        if (delay > 2) {
+        if (delay > 15) {
           setDelaySeconds(delay);
         } else {
           setDelaySeconds(0);
@@ -155,13 +155,41 @@ export default function PlayerPanel({
       }
 
       let streamUrl = rawUrl;
+      let dynamicToken = null;
+
+      if (activeChannel.dynamicConfig) {
+        setBuffering(true);
+        try {
+          const res = await fetch(activeChannel.dynamicConfig);
+          if (!res.ok) {
+            throw new Error(`API returned ${res.status}`);
+          }
+          const data = await res.json();
+          if (data.url) {
+            dynamicToken = data.token;
+            streamUrl = data.url + (data.token || '');
+            rawUrl = streamUrl;
+            if (data.drmKey) {
+              activeChannel.drm = { key: data.drmKey };
+            }
+          } else {
+            throw new Error('No URL returned from dynamic config');
+          }
+        } catch (e) {
+          console.error("Failed to fetch dynamic config", e);
+          setErrorMsg('Failed to load stream configuration (404/500). Please ensure the Next.js dev server is restarted so it picks up the new API route.');
+          setBuffering(false);
+          return;
+        }
+      }
       
       const isMpegTs = rawUrl && (rawUrl.endsWith('.ts') || rawUrl.includes('.ts?'));
       
       // For MPEG-TS, it's a single file stream.
       // We only proxy it if it's HTTP, to avoid Mixed Content errors. If it's HTTPS, we can play it directly!
       const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (rawUrl && rawUrl.includes('pages.dev'));
-      if ((isMpegTs && rawUrl.startsWith('http://')) || needsProxy) {
+      // Skip this early proxy rewrite for dynamic streams because Bitmovin handles it in preprocessHttpRequest
+      if (!activeChannel.dynamicConfig && ((isMpegTs && rawUrl.startsWith('http://')) || needsProxy)) {
         streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&url=${encodeURIComponent(rawUrl)}&t=${Date.now()}`;
       }
 
@@ -232,7 +260,10 @@ export default function PlayerPanel({
           if (Hls.isSupported()) {
             localHls = new Hls({
               debug: false,
-              enableWorker: true
+              enableWorker: true,
+              capLevelToPlayerSize: true,
+              abrEwmaDefaultEstimate: 500000,
+              maxBufferLength: 15
             });
             localHls.loadSource(streamUrl);
             localHls.attachMedia(video);
@@ -310,12 +341,23 @@ export default function PlayerPanel({
           },
           network: {
             preprocessHttpRequest: (type, request) => {
-                const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (request.url && request.url.includes('pages.dev'));
-                if (needsProxy) {
-                    if (request.url && request.url.startsWith('http') && !request.url.includes('/api/proxy')) {
-                        request.url = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(request.url)}`;
+                let target = request.url;
+                
+                if (dynamicToken) {
+                    const tokenToAppend = dynamicToken.substring(1);
+                    if (!target.includes(tokenToAppend)) {
+                        target = target + (target.includes('?') ? '&' : '?') + tokenToAppend;
                     }
                 }
+
+                const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (target && target.includes('pages.dev'));
+                if (needsProxy) {
+                    if (target && target.startsWith('http') && !target.includes('/api/proxy')) {
+                        target = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(target)}`;
+                    }
+                }
+
+                request.url = target;
                 return Promise.resolve(request);
             }
           }
@@ -666,20 +708,30 @@ export default function PlayerPanel({
       >
         <div className="video-wrapper" ref={videoWrapperRef}>
           {activeChannel.iframeUrl ? (
-            <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center', justifyContent: 'center', backgroundColor: '#000', color: 'white' }}>
-              <p style={{ marginBottom: '20px', fontSize: '14px', color: 'var(--text-secondary)' }}>This channel requires opening in a separate window due to network security.</p>
-              <button 
-                onClick={() => {
-                  const targetUrl = activeChannel.iframeUrl.startsWith('roarzone://') 
-                    ? `https://tv.roarzone.net/player.php?stream=${activeChannel.iframeUrl.replace('roarzone://', '')}` 
-                    : activeChannel.iframeUrl;
-                  window.open(targetUrl, '_blank', 'width=800,height=600');
-                }}
-                style={{ padding: '10px 20px', borderRadius: '6px', background: 'var(--color-accent)', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
-              >
-                Open Stream Window
-              </button>
-            </div>
+            activeChannel.iframeInline ? (
+              <iframe 
+                src={activeChannel.iframeUrl} 
+                style={{ width: '100%', height: '100%', border: 'none', backgroundColor: '#000' }} 
+                allowFullScreen
+                allow="autoplay; encrypted-media"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center', justifyContent: 'center', backgroundColor: '#000', color: 'white' }}>
+                <p style={{ marginBottom: '20px', fontSize: '14px', color: 'var(--text-secondary)' }}>This channel requires opening in a separate window due to network security.</p>
+                <button 
+                  onClick={() => {
+                    const targetUrl = activeChannel.iframeUrl.startsWith('roarzone://') 
+                      ? `https://tv.roarzone.net/player.php?stream=${activeChannel.iframeUrl.replace('roarzone://', '')}` 
+                      : activeChannel.iframeUrl;
+                    window.open(targetUrl, '_blank', 'width=800,height=600');
+                  }}
+                  style={{ padding: '10px 20px', borderRadius: '6px', background: 'var(--color-accent)', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
+                >
+                  Open Stream Window
+                </button>
+              </div>
+            )
           ) : activeChannel.useNativeVideo ? (
             <video id="video-player" ref={videoRef} autoPlay playsInline style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'black' }} src={activeChannel.url}></video>
           ) : (

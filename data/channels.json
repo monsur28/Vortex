@@ -10,23 +10,9 @@
   {
     "name": "ToffeeLive",
     "group": "FIFA World Cup 2026",
-    "url": "https://fox4k.fifalive4k.workers.dev/",
-    "bufferless": true,
-    "useProxy": true,
-    "proxySegments": true,
-    "useNativeVideo": false,
-    "headers": {
-      "Referer": "https://fifalive.click/",
-      "Origin": "https://fifalive.click"
-    }
-  },
-  {
-    "name": "World Cup TV",
-    "group": "FIFA World Cup 2026",
-    "url": "https://pub-e2ad638cf56b45cfafcb943e602a0831.r2.dev/iscreen/main.m3u8",
+    "iframeUrl": "https://vod.yagaverse.net/toffee2.php",
+    "iframeInline": true,
     "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
-    "useProxy": true,
-    "proxySegments": false,
     "category": "Fifa World cup"
   },
   {
@@ -581,16 +567,6 @@
     "useProxy": false
   },
   {
-    "name": "2 Tv Sports FIFA Worldcup Server 2",
-    "url": "https://tv.cdn.xsg.ge/gpb-2tv/index.m3u8",
-    "category": "Fifa World cup"
-  },
-  {
-    "name": "2 Tv Sports FIFA Worldcup",
-    "url": "https://tv.cdn.xsg.ge/gpb-2tv/tracks-v1a1/mono.ts.m3u8",
-    "category": "Fifa World cup"
-  },
-  {
     "name": "Channel 1 TV",
     "url": "https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/channel1bd.stream/tracks-v1a1/mono.m3u8",
     "category": "Bangladesh"
@@ -814,14 +790,6 @@
     "category": "All",
     "useProxy": true,
     "url": "http://starhub.pro/live/farhat-3379/67897-913379/744517.ts"
-  },
-  {
-    "id": "fox-sports-fifa-2026",
-    "name": "Fox Sports - FIFA 2026",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "http://84.17.50.102/fox/index.m3u8"
   },
   {
     "id": "caze-tv-brazil",
@@ -1190,14 +1158,6 @@
     "category": "All",
     "useProxy": true,
     "url": "https://dfr80qz435crc.cloudfront.net/MNOP/Amagi/Caze/Caze_TV_BR/Caze_TV.m3u8"
-  },
-  {
-    "id": "football-world-cup-2026-4k",
-    "name": "Football World Cup 2026 (4K)",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "http://ytoxw6un.ottclub.xyz/iptv/KCUHA6DGYYVA8ZZFUPQV3KZH/6408/index.m3u8"
   },
   {
     "id": "fancode-link-3",
@@ -4568,14 +4528,6 @@
     "url": "https://next.badinan.xyz/nexttv/FHD/playlist.m3u8"
   },
   {
-    "id": "fifa-world-cup-uzbekistan-vs-colombia-hd-fawa",
-    "name": "[FIFA World Cup] Uzbekistan vs Colombia HD (FAWA)",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "https://pullsgp.yyzb456.top/live/stream-506605_lhd.m3u8"
-  },
-  {
     "id": "star-sports-3",
     "name": "Star Sports 3",
     "logo": "https://imgur.com/79g2kMA.png",
@@ -4614,14 +4566,6 @@
     "category": "All",
     "useProxy": true,
     "url": "http://66.102.126.10:8000/play/a010/index.m3u8"
-  },
-  {
-    "id": "football-world-cup-2026",
-    "name": "Football World Cup 2026",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "https://stream.ottplus.live/live/zee_bangla_cinema_abr/live/zee_bangla_cinema_720/chunks.m3u8"
   },
   {
     "id": "w-sports",
@@ -5280,155 +5224,45 @@
     "url": "http://ytoxw6un.ottclub.xyz/iptv/VSQZTL9D68WBD9/6126/index.m3u8"
   },
   {
-    "id": "world-cup-a1",
-    "name": "World Cup A1 🇧🇩",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "http://rgkkw.live:80/live/1Aoen7elp5/IgMJ60tmAa/130714.ts"
-  },
-  {
-    "id": "world-cup-a2",
-    "name": "World Cup A2 🇧🇩",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "useNativeVideo": true,
-    "url": "http://198.195.239.50:8095/tsports/tracks-v1a1/mono.m3u8"
-  },
-  {
-    "id": "world-cup-s2",
-    "name": "World Cup S2",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "https://andro.226503.xyz/checklist/androstreamlivebs1.m3u8"
-  },
-  {
-    "id": "fifa-live-bangla",
-    "name": "FIFA Live - Bangla 🇮🇳",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/ColorsHD/default/ColorsHD-video=2137600.m3u8"
-  },
-  {
-    "id": "fifa-live-bangla-a",
-    "name": "FIFA Live - Bangla A 🇮🇳",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/ColorsHD/default/ColorsHD.m3u8"
-  },
-  {
-    "id": "fifa-live-toffee-1",
-    "name": "FIFA Live Toffee (Server 1)",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "https://fox4k.fifalive4k.workers.dev/",
-    "headers": {
-      "Referer": "https://fifalive.click/",
-      "Origin": "https://fifalive.click"
-    }
-  },
-  {
-    "id": "fifa-live-toffee-2",
-    "name": "FIFA Live Toffee (Server 2)",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "https://live3.nextgoal.workers.dev/",
-    "headers": {
-      "Referer": "https://fifalive.click/",
-      "Origin": "https://fifalive.click"
-    }
-  },
-  {
-    "id": "fifa-live-toffee-3",
-    "name": "FIFA Live Toffee (Server 3)",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "https://live.smtahmidx.workers.dev/",
-    "headers": {
-      "Referer": "https://fifalive.click/",
-      "Origin": "https://fifalive.click"
-    }
-  },
-  {
-    "id": "fifa-live-toffee-4",
-    "name": "FIFA Live Toffee (Server 4)",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "url": "https://fx.cinecdn.workers.dev/",
-    "headers": {
-      "Referer": "https://fifalive.click/",
-      "Origin": "https://fifalive.click"
-    }
-  },
-  {
-    "name": "Fox One - 1",
+    "name": "Fox 4K",
     "group": "FIFA World Cup 2026",
-    "url": "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/enc/jfca5zun1r/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "clearkeys": [
-      {
-        "keyId": "f6564ec2aee819046328a0e153be574d",
-        "key": "ff46a8a1031eb27ef22576a077c98ab7"
-      }
-    ]
+    "iframeUrl": "https://vod.yagaverse.net/fox.php",
+    "iframeInline": true,
+    "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
+    "category": "Fifa World cup"
   },
   {
-    "name": "Fox One -1 [ALT]",
+    "name": "Fox One",
     "group": "FIFA World Cup 2026",
     "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
-    "logo": "https://imgur.com/79g2kMA.png",
+    "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
     "category": "Fifa World cup",
-    "useProxy": true,
-    "clearkeys": [
-      {
-        "keyId": "f6564ec2aee819046328a0e153be574d",
-        "key": "ff46a8a1031eb27ef22576a077c98ab7"
-      }
-    ]
+    "drm": {
+      "key": "f6564ec2aee819046328a0e153be574d:ff46a8a1031eb27ef22576a077c98ab7"
+    },
+    "useProxy": false,
+    "proxySegments": false
   },
   {
-    "name": "Fox 4K [BDiX]",
+    "name": "World Cup TV",
     "group": "FIFA World Cup 2026",
-    "url": "https://pub-e2ad638cf56b45cfafcb943e602a0831.r2.dev/fox/livestream76.mpd",
-    "logo": "https://imgur.com/79g2kMA.png",
+    "url": "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/fifa_ppv1/default/index.mpd",
+    "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
     "category": "Fifa World cup",
-    "useProxy": true,
-    "clearkeys": [
-      {
-        "keyId": "1f68713028d439ec03be07f56c1d6213",
-        "key": "20093db6455160fffed4c394def3193d"
-      }
-    ]
-  },
-  {
-    "name": "TUDN",
-    "group": "FIFA World Cup 2026",
-    "url": "https://live-pv-ta.amazon.fastly-edge.com/iad-nitro/live/clients/dash/enc/o2vy4aahsh/out/v1/e293c932745a44dcaf897573dfc53532/cenc.mpd",
-    "logo": "https://imgur.com/79g2kMA.png",
-    "category": "Fifa World cup",
-    "useProxy": true,
-    "clearkeys": [
-      {
-        "keyId": "763ce1ebcaf23502c8cf357c6ef423e1",
-        "key": "0c5e6c0820a1ea28753721db00272411"
-      }
-    ]
+    "drm": {
+      "key": "2c338a117d434ce4bbe3569231af90f1:a9633d901ee8a3f4f58ac314b5c5f4fb"
+    },
+    "useProxy": false,
+    "proxySegments": false
   },
   {
     "name": "FIFA - MAIN SERVER",
     "group": "FIFA World Cup 2026",
-    "url": "https://weathered-sky-eb3e.saadalmamunhossain.workers.dev/?u=WTduenlYT3ZxNG83bmNRVTYyOFdmaWVUQXFWeXI5c1NiUVA0bzYwSkhnSnA2WUw0WEFQak1Ibll2Um9VMkpkV05CZ0JVYjAzODdNbVJYRkFWUVVHZ3A5WC9PL2pWcnlTNnRqYlA3eDI2dk1FTEkvbGNCdUNNalYvODdmVHNvWEZOdXA1VXhkWHlEalBWVUdSZ2NOTlpnPT06Oq_NzLWAD62gfZMgpX3lOCY~",
+    "url": "https://shrill-forest-1b14.saadmamun99.workers.dev/?u=UXFZemIrSzB5dElUWWRjNERTNmc3VFJIT2h1d3psaG9uQWM4RTd4Wk5PZGEzYzIxWFlsWFJ2dDY0WW9EOFNCWlpjS2NBOTNHMVJxSVBSZGYvY2FCSHdkNGVIMmkxVjU4T3kydU05VHdsUFdOSnd4MExZM1pXQ1AvMk40YXBmOGh3T0c5enA5MHZ2Wll5MU04L0JkN1d0RFpKaE4yS3RkUmZsTWtTNkRDYlBrPTo6qWk72JkZos-ADPHVLrJxag~~",
     "category": "Fifa World cup",
+    "headers": {
+      "Referer": "https://stavo.site/"
+    },
     "useProxy": true
   },
   {
@@ -5436,6 +5270,9 @@
     "group": "FIFA World Cup 2026",
     "url": "https://weathered-sky-eb3e.saadalmamunhossain.workers.dev/?u=V0xVb1Vxd1JFbUNTRXNBRHBUQllNYnRVMWd3QWJIalVaWTZzNERHczF2cFBHTGhhTVVBN1E1bmZYNlhzdHcrTXN0RlM1Q3JzejVFZ2hFN3ljY3hqRlhGWXRzT1BqMXcxWjJLcWFzT05hOVFZV21kMm1yU1R5Q1I4VVVPQ3FzTDFsRnpFSktWdFNhVjcyWnAxNjl3dkZpZVBxTHYrNUxucFlISWxCWnZ6d0xFbnRBbW8rKzF1RFNqUGE4K0ZxTjdYZFJJTXlrNVUzb0pidmI1MkdHZkwzNkN3VCtoQmZ1VG9rOVI0RXJXMXovNGNWWC9jR29EanJrakFOUVN0SEtxcjJ2WllYK3YxK045TkRTNDhTUG41WkJOcDVDdmhWZkxteXVvMjNkdm8xRzF0QnpWR213ZDVLc1lzNzd6Kzc4UmJCODBBOXVOdC9wWXc2RElxd2R0R1JVRVE3NFkyeEpYQ1ozRUIyQ3VnTGZXbnRyeWhNRXliSU1FNG9BVUQrYzJmbXRRM3VTVjZGSkVEeHZ6eUxzRzJyYXlQRy90SXBSbDVld09JSDg3WXN6L0pNSEVIYnJLcDRoaElIWUhCUHBDS1pNWnREYm1ySHI2YTlJZ1M1R21qWGJ2cEViYS9KQnhsMGNQeHVCcS80dFprbXpEbGU5SXVlWTNtVm4ydDExSHp3ZXJVbzZmZlpzakxIWHYxczdZalp5ODJqQ212Y3RqQzUvZzhXdU81OUdjTkFsRGxIcFJic2FpT0IvZSt3WGtpT0hBekpRQms4K1BMZy8xbENCNlJWYUw4b1hkaGIxMUJnenZFaHdudVpaaz06OiWAujVeAaN6uQf-b0heOZE~",
     "category": "Fifa World cup",
+    "headers": {
+      "Referer": "https://stavo.site/"
+    },
     "useProxy": true
   },
   {
@@ -5443,6 +5280,9 @@
     "group": "FIFA World Cup 2026",
     "url": "https://weathered-sky-eb3e.saadalmamunhossain.workers.dev/?u=RFBheCtQS1E0T1NYYkxuNjY3T1VsSU4yQ2tmTXhEVTFUMERoTGNDZndNelp1VXkwSmpLQWRRdG1IY2s1Qit2UGVqMFNySFpzVDRTZXJXazdpMHliMUZienN5RXVlbmZ2OEptTEZveHFmcGM9OjojKi7hfy5kkXuCah6VGnnl",
     "category": "Fifa World cup",
+    "headers": {
+      "Referer": "https://stavo.site/"
+    },
     "useProxy": true
   }
 ]

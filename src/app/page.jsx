@@ -24,6 +24,8 @@ export default function Home() {
         isDash: targetUrl.includes('.mpd') || (channel.drm && channel.drm.type) ? true : false,
         hasDrm: !!channel.drm,
         drm: channel.drm,
+        dynamicConfig: channel.dynamicConfig || undefined,
+        clearkeys: channel.clearkeys || undefined,
         useProxy: !!channel.proxy || !!channel.useProxy,
         proxySegments: !!channel.proxySegments,
         urlCount: originalUrls.length,

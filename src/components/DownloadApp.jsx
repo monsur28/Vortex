@@ -62,7 +62,7 @@ export default function DownloadApp() {
             <li style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', color: 'var(--text-secondary)' }}>
               <span style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 'bold', flexShrink: 0 }}>3</span>
               <div>
-                <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}><ShieldCheck size={16} color="var(--wc-green)" /> 100% Safe</strong>
+                <strong style={{ color: 'var(--text-primary)', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}><ShieldCheck size={16} color="var(--wc-green)" /> 100% Safe</strong>
                 This app is secure and directly built from this website.
               </div>
             </li>

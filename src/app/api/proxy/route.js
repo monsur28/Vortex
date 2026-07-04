@@ -80,7 +80,7 @@ export async function GET(request) {
   
   if (isStalker) {
     userAgent = 'Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3';
-  } else if (targetUrl && (targetUrl.endsWith('.ts') || targetUrl.includes('.ts?'))) {
+  } else if (targetUrl && (targetUrl.endsWith('.ts') || targetUrl.includes('.ts?')) && !targetUrl.includes('toffeelive.com')) {
     userAgent = 'VLC/3.0.9 LibVLC/3.0.9';
   }
 
@@ -148,7 +148,9 @@ export async function GET(request) {
     }
     
     const contentType = (headers.get('content-type') || '').toLowerCase();
-    if (contentType.includes('mpegurl') || targetUrl.includes('.m3u8') || targetUrl.includes('extension=m3u8')) {
+    
+    // Only rewrite playlists if the response was successful
+    if (response.ok && (contentType.includes('mpegurl') || targetUrl.includes('.m3u8') || targetUrl.includes('extension=m3u8'))) {
       headers.delete('content-length');
       const bodyText = await response.text();
       const baseUrl = new URL(targetUrl);
@@ -184,7 +186,7 @@ export async function GET(request) {
         status: response.status,
         headers
       });
-    } else if (contentType.includes('dash+xml') || targetUrl.includes('.mpd')) {
+    } else if (response.ok && (contentType.includes('dash+xml') || targetUrl.includes('.mpd'))) {
       headers.delete('content-length');
       let bodyText = await response.text();
       
