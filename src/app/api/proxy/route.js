@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 import { encryptUrl, decryptUrl } from '../../../lib/encryption';
 import * as channelsJson from '../../../../data/channels.json';
 const channelsData = channelsJson.default || channelsJson;
