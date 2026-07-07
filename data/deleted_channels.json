@@ -1,0 +1,848 @@
+[
+    {
+        "channel": {
+            "name": "GOLTV VIVO",
+            "logo": "",
+            "url": "https://dmbgaz4xf6jyh.cloudfront.net/live-stream-dai/69690cfcce0dc031830e7c1a/123a264b71764485bd49eca2d552cf33/d97743de3620a865848fff7a9de14dda1bf2409d/manifest.mpd?aid=688aae6d61c87d6274c05065&dnt=true&access_token=63ey9SOpQeHBRfWJYQLXQjelQc0QM1HXmlHp4iZrH8UCOCM8QtGIGg1sEEPJH0R0yXktUEXdLeB&uid=Knx65GY6UbaWSADZybEvf6m5MvqNIuNs&sid=bwRy9BgSc4RFeVhYh52hVIY8uPsJ4v4d&pid=A0xT1VnepBvKKqyeyRNtNkZBmHBrNNZM&ref=ditu.caracoltv.com&ext_pb=0&es=dmbgaz4xf6jyh.cloudfront.net&proto=https&pz=us&xr=us-east-2&manifestfilter=video_height:480-1080",
+            "type": "dash",
+            "group": "GOLTV",
+            "useProxy": true,
+            "drm": {
+                "key": "1c6bfd8d1cdd4df69ea5fc4dd2f025bb:b6fd90027dac7a94a9461f8b2638cbb4"
+            },
+            "proxySegments": true
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "name": "Sportzfy TV Live (FIFA)",
+            "group": "FIFA World Cup 2026",
+            "url": "https://bfiaawagaalygikasqdk.supabase.co/functions/v1/swift-api?url=Q09k4OuzERoki_6lGb89FRoTLpNuoOWhojWRopWkQVbmFk6nI0zf&headers=3OymHRdJERI_4UgRHGHJIRIRFhNcE0zKLpycyCv_EU1Uq1yjin",
+            "useProxy": false,
+            "proxySegments": false
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "name": "Bangla Jago TV",
+            "logo": "https://banglajagotv.com/wp-content/themes/BANGLAJAGOTV/images/logo.png",
+            "url": "http://banglajagotv.livebox.co.in:80/banglajagohls/24x7.m3u8",
+            "group": "Bangla",
+            "useProxy": true
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "name": "Green TV",
+            "logo": "https://raw.githubusercontent.com/subirkumarpaul/Logo/main/Green%20TV.png",
+            "url": "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/greentv.stream/live-orgin/greentv.stream/chunks.m3u8",
+            "group": "Bangla",
+            "useProxy": false
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "name": "Green TV",
+            "logo": "https://greentvbangla.com/wp-content/uploads/2023/03/lazy_tv0.jpg.webp",
+            "url": "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/greentv.stream/live-orgin/greentv.stream/playlist.m3u8",
+            "group": "Bangla",
+            "useProxy": false
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "name": "Thikana",
+            "url": "https://5dd3981940faa.streamlock.net:443/thikanatv/thikanatv/playlist.m3u8",
+            "category": "Bangladesh"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "name": "Animal Planet",
+            "url": "https://tiger-hub.vercel.app@vodzong.mjunoon.tv:8087/streamtest/Animal-Planet-158-3/playlist.m3u8",
+            "category": "Documentary"
+        },
+        "isDead": true,
+        "reason": "Request cannot be constructed from a URL that includes credentials: https://tiger-hub.vercel.app@vodzong.mjunoon.tv:8087/streamtest/Animal-Planet-158-3/playlist.m3u8"
+    },
+    {
+        "channel": {
+            "id": "ananda-tv",
+            "name": "Ananda TV",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://sm-monirul.top/toffee/play/anandatv.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "bijoy-tv",
+            "name": "Bijoy TV",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://sm-monirul.top/toffee/play/bijoytv.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "bangla-tv",
+            "name": "Bangla TV",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://sm-monirul.top/toffee/play/bangla_tv.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "zee-cinema-hd",
+            "name": "Zee Cinema HD",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://sm-monirul.top/toffee/play/zee_cinema_hd.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "max",
+            "name": "MAX",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://sm-monirul.top/toffee/play/sony_max_hd.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "max-2",
+            "name": "MAX 2",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://sm-monirul.top/toffee/play/sonymax_2.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "18-picture",
+            "name": "18.& Picture",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://sm-monirul.top/toffee/play/andpicture_hd.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "discovery",
+            "name": "Discovery",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://sm-monirul.top/toffee/play/discovery_hd.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "sky-sports-action",
+            "name": "SKY SPORTS ACTION",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/VCQ4ADX96VH4G8PY7URBWRQU/9155/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "go-3-sport-1-hd",
+            "name": "GO 3 sport 1 hd",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://ytoxw6un.ottclub.xyz/iptv/KCUHA6DGYYVA8ZZFUPQV3KZH/18000/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "go-3-sport-2-hd",
+            "name": "GO 3 sport 2 hd",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://ytoxw6un.ottclub.xyz/iptv/KCUHA6DGYYVA8ZZFUPQV3KZH/18001/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "dazn-combat",
+            "name": "DAZN COMBAT",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://dazn-combat-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-dazn-combat-rakuten/CDN/master.m3u8"
+        },
+        "isDead": true,
+        "reason": "fetch failed"
+    },
+    {
+        "channel": {
+            "id": "rajdhani-tv",
+            "name": "RAJDHANI TV",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://sm-monirul.top/toffee/play/rajdhani_tv.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "choppertown",
+            "name": "Choppertown",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://7d8dc76d676946ec8d372d4ed7b22333.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-11-CHOPPERTOWN-SPORTSTRIBAL/mt/sportstribaltv/11/hls/master/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "commune",
+            "name": "Commune",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://082cdda06abe450a84acd825e814a6b8.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/SportsTribal-eu_Commune-1/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "cricket-gold",
+            "name": "Cricket Gold",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://d1nj4u39ja4cn0.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/FLS-MuxIP-CricketGold/418.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "documentary",
+            "name": "Documentary+",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://a38d899367d24b1197db60dedfa80262.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-887-DOCUMENTARYINTERNATIONAL-FREELIVESPORTS/mt/freelivesports/887/hls/master/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "drone-tv",
+            "name": "Drone TV",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://a480c1a918694b47b63f7ba07a0f1dc2.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/SportsTribal-eu_DroneTV/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "field-stream",
+            "name": "Field & Stream",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://3100d8a6ad764beb9da3c6ebf285ba1b.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-600-OUTDOORAMERICA-FREELIVESPORTS/mt/freelivesports/600/hls/master/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "gopro",
+            "name": "GoPro",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://3a1b4d927c02473b806350cc162d271f.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-891-GOPRO-FREELIVESPORTS/mt/freelivesports/891/hls/master/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "h20-tv",
+            "name": "H20 TV",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://1261a78709344810a5b834d397509879.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-738-H2OTV-SPORTSTRIBALTV/mt/sportstribaltv/738/hls/master/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "hard-knocks",
+            "name": "Hard Knocks",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://d3uyzhwvmemdyf.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/HardKnocks-SportsTribalV2/121.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "harlem-globetrotters",
+            "name": "Harlem Globetrotters",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://32d0f0785a2a46d28117199f63ad73ea.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/SportsTribal-eu_TheHarlemGlobeTrotters/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "espn-arg",
+            "name": "ESPN ARG",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://45.170.130.224:8000/play/a04l/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "Timeout"
+    },
+    {
+        "channel": {
+            "id": "red-bull-tv-brasil",
+            "name": "Red Bull TV Brasil",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://d03ae6b5c6724c24867e97a3dc04934a.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-1026-WORBBRPTFAST-WHALETVPLUS/1026/hls/master/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "red-bull-tv-australia",
+            "name": "Red Bull TV Australia",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://db34cc6127ac459db55cab5f97cd66b9.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-680-WORBAUENFAST-WHALETVPLUS/680/whaletvplus/hls/master/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "the-movie-club",
+            "name": "The Movie Club",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://cc-r5hupcym5oehh.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-r5hupcym5oehh/SBUM/RunnTV/BollyFlix_IN/BollyFlix_IN.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "jungle-book",
+            "name": "Jungle Book",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://cc-4bhi5osabejc9.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-4bhi5osabejc9/junglebook.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "sky-news",
+            "name": "Sky News",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://d39chvnxm26pgp.cloudfront.net/v1/master/72588bff830dec7b26d7cbbf5f3c24928aec5c03/cc-sthen6ms4vxgv-stage/WNSFO/ABR.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "muxip-sportsfirst-tv",
+            "name": "MuxIP-SportsFirst TV🎯",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://d2396zb8liu8hs.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/DistroTV-MuxIP-SportsFirstTV/409.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "pitaara-720p",
+            "name": "Pitaara (720p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://vg-pitaaratvlive.akamaized.net/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/vglive-sk-583798/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "south-station-1080p",
+            "name": "South Station (1080p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://cc-yw7ztecy8do3q.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-yw7ztecy8do3q/SS_IN.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "tlc-hd",
+            "name": "TLC HD",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://zbgbierf.megatv.fun/iptv/XQKYTP7AMVYFXD/1105/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "epic-tv-digital-1080p",
+            "name": "Epic TV Digital (1080p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://cc-czbq30x55knit.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-czbq30x55knit/DIYC/PMSL/IN10/Epic_TV_IN_B/Epic_TV_IN_B.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "kalaignar-murasu-396p",
+            "name": "Kalaignar Murasu (396p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/murasu_nim_https/050522/murasu/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "mazhavil-manorama-396p",
+            "name": "Mazhavil Manorama (396p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/mazhavilmanorama_nim_https/050522/mazhavilmanorama/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "nazara-1080p",
+            "name": "Nazara (1080p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://cc-p1izg43bk7sj5.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-p1izg43bk7sj5/DIYC/PMSL/IN10/Nazara_IN_B/Nazara_IN_B.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "subin-tv-1080p",
+            "name": "Subin TV (1080p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://stream.galaxyott.live/live/subintv/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "gtc-news-1080p",
+            "name": "GTC News (1080p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/921cca59-daee-4f89-8c38-7ffe8de44f4c/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "india-tv-speed-news-1080p",
+            "name": "India TV Speed News (1080p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://cc-lyf4c0hwzg5dd.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-lyf4c0hwzg5dd/v1/vglive-sk-479089/main.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "janam-tv-576p",
+            "name": "Janam TV (576p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/janamtv_nim_https/140622/janamtv/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "manorama-news-1080p",
+            "name": "Manorama News (1080p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://mmtvnews1.akamaized.net/v1/master/673630b269b766886555eebfddd4f27f3de3ab50/mmtvNewsCampaign1/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "times-now-navbharat-1080p-geo-blocked",
+            "name": "Times Now Navbharat (1080p) [Geo-blocked]",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://amg01448-samsungin-tinnavbharat-samsungin-ad-m8.amagi.tv/playlist/amg01448-samsungin-tinnavbharat-samsungin/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "fetch failed"
+    },
+    {
+        "channel": {
+            "id": "v6-news-576p",
+            "name": "V6 News (576p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/v6news_nim_https/140622/v6news/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "etv-life-480p",
+            "name": "ETV Life (480p)",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://d2cj1h11htct8o.cloudfront.net/v1/master/9d43eacaed199f8d5883927e7aef514a8a08e108/ETV_LIFE_H264_cloud_in/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "fox-sports-501",
+            "name": "Fox Sports 501",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://y3fqd48g.megatv.fun/iptv/NRLXRWSBWBPLN4/19146/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "ss-football",
+            "name": "SS Football",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/KD6YT2WWZRCKHB/9289/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "ss-pl-league",
+            "name": "SS PL League",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/CS7X8FQ83E4L82/9334/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "sony-sports-5-hd",
+            "name": "SONY SPORTS 5 HD",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://66.102.126.10:8000/play/a010/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "Timeout"
+    },
+    {
+        "channel": {
+            "id": "sunnah",
+            "name": "SUNNAH",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "https://tiger-hub.vercel.app@vodzong.mjunoon.tv:8087/streamtest/SaudiSunnah-141/playlist.m3u8"
+        },
+        "isDead": true,
+        "reason": "Request cannot be constructed from a URL that includes credentials: https://tiger-hub.vercel.app@vodzong.mjunoon.tv:8087/streamtest/SaudiSunnah-141/playlist.m3u8"
+    },
+    {
+        "channel": {
+            "id": "5-sport",
+            "name": "5 SPORT 🇮🇱",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2558/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "dazn-1",
+            "name": "Dazn 1 🇵🇹",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2531/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "dazn-1",
+            "name": "Dazn 1 🇵🇹",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/19158/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "dazn-2",
+            "name": "Dazn 2 🇵🇹",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2532/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "dazn-3",
+            "name": "Dazn 3 🇵🇹",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/7062/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "dazn-4",
+            "name": "Dazn 4 🇵🇹",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2534/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "dazn-5",
+            "name": "Dazn 5 🇵🇹",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2535/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "nova-sport-1-hd",
+            "name": "NOVA SPORT 1 HD 🇨🇿",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2555/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "ziggo-sport-2-hd",
+            "name": "ZIGGO SPORT 2 HD 🇳🇱",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2561/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "ziggo-sport-3-hd",
+            "name": "ZIGGO SPORT 3 HD 🇳🇱",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2559/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "ziggo-sport-live",
+            "name": "ZIGGO SPORT LIVE 🇳🇱",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2560/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "ott-club",
+            "name": "OTT CLUB 🇷🇺",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://czrb8vng.ottclub.xyz/iptv/AHMQNVLWUTM5PW/6554/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "bein-sports-4-hd",
+            "name": "beIN SPORTS 4 HD",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://ytoxw6un.ottclub.xyz/iptv/VSQZTL9D68WBD9/6125/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    },
+    {
+        "channel": {
+            "id": "bein-sports-5-hd",
+            "name": "beIN SPORTS 5 HD",
+            "logo": "https://imgur.com/79g2kMA.png",
+            "category": "All",
+            "useProxy": true,
+            "url": "http://ytoxw6un.ottclub.xyz/iptv/VSQZTL9D68WBD9/6126/index.m3u8"
+        },
+        "isDead": true,
+        "reason": "404 Not Found"
+    }
+]

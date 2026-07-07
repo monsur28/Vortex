@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 import { encryptUrl, decryptUrl } from '../../../lib/encryption';
 import * as channelsJson from '../../../../data/channels.json';
 const channelsData = channelsJson.default || channelsJson;
@@ -77,7 +78,7 @@ export async function GET(request) {
   // Use a standard Chrome User-Agent for non-Stalker URLs to bypass Cloudflare/403 blocks
   // But for Xtream (.ts) streams, use VLC to avoid being blocked by IPTV providers.
   let userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36';
-  
+
   if (isStalker) {
     userAgent = 'Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3';
   } else if (targetUrl && (targetUrl.endsWith('.ts') || targetUrl.includes('.ts?')) && !targetUrl.includes('toffeelive.com')) {
@@ -98,6 +99,12 @@ export async function GET(request) {
         Object.assign(fetchHeaders, channel.headers);
       }
     } catch (e) { /* ignore */ }
+  }
+
+  // tiktokcdn.com blocks requests with unexpected referers
+  if (targetUrl && targetUrl.includes('tiktokcdn.com')) {
+    delete fetchHeaders['Referer'];
+    delete fetchHeaders['Origin'];
   }
 
   if (isStalker) {
@@ -127,7 +134,7 @@ export async function GET(request) {
         const redirectHeaders = new Headers(response.headers);
         redirectHeaders.set('location', absoluteLocation);
         redirectHeaders.set('Access-Control-Allow-Origin', '*');
-        
+
         return new NextResponse(null, {
           status: response.status,
           headers: redirectHeaders
@@ -140,31 +147,32 @@ export async function GET(request) {
     headers.delete('content-length');
     headers.set('Access-Control-Allow-Origin', '*');
     headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-    
+
     if (!response.ok) {
       console.warn(`Proxy upstream returned ${response.status} for ${targetUrl}`);
       headers.set('X-Debug-Upstream-Status', response.status.toString());
       headers.set('X-Debug-Target-Url', targetUrl);
     }
-    
+
     const contentType = (headers.get('content-type') || '').toLowerCase();
-    
+
     // Only rewrite playlists if the response was successful
     if (response.ok && (contentType.includes('mpegurl') || targetUrl.includes('.m3u8') || targetUrl.includes('extension=m3u8'))) {
       headers.delete('content-length');
       const bodyText = await response.text();
       const baseUrl = new URL(targetUrl);
-      
+
       const lines = bodyText.split('\n');
       const rewrittenLines = lines.map(line => {
         const trimmed = line.trim();
         if (!trimmed) return line;
-        
+
         if (trimmed.startsWith('#')) {
           if (trimmed.includes('URI="')) {
             return line.replace(/URI="([^"]+)"/, (match, uri) => {
               if (uri.startsWith('data:')) return match;
               const absoluteUrl = new URL(uri, baseUrl.href).href;
+              
               const tokenStr = encryptUrl(absoluteUrl);
               const extMatch = absoluteUrl.match(/(\.[a-z0-9]+)(?:[\?#]|$)/i);
               const hashExt = extMatch ? `#${extMatch[1]}` : '';
@@ -174,14 +182,15 @@ export async function GET(request) {
           }
           return line;
         }
-        
+
         const absoluteUrl = new URL(trimmed, baseUrl.href).href;
+        
         const tokenStr = encryptUrl(absoluteUrl);
         const extMatch = absoluteUrl.match(/(\.[a-z0-9]+)(?:[\?#]|$)/i);
         const hashExt = extMatch ? `#${extMatch[1]}` : '';
         return `/api/proxy?token=${encodeURIComponent(tokenStr)}${isStalker ? '&stalker=true' : ''}${id !== null ? `&id=${id}` : ''}${hashExt}`;
       });
-      
+
       return new NextResponse(rewrittenLines.join('\n'), {
         status: response.status,
         headers
@@ -189,7 +198,7 @@ export async function GET(request) {
     } else if (response.ok && (contentType.includes('dash+xml') || targetUrl.includes('.mpd'))) {
       headers.delete('content-length');
       let bodyText = await response.text();
-      
+
       // We no longer strip ContentProtection tags because Shaka Player handles them robustly
       // and needs them to identify the DRM system properly.
 
@@ -197,7 +206,7 @@ export async function GET(request) {
       const urlObj = new URL(targetUrl);
       const mpdBaseUrl = urlObj.search ? targetUrl.substring(0, targetUrl.indexOf(urlObj.search)) : targetUrl;
       const absoluteBaseUrl = mpdBaseUrl.substring(0, mpdBaseUrl.lastIndexOf('/') + 1);
-      
+
       if (bodyText.includes('<BaseURL>')) {
         // Replace any existing BaseURL (could be relative like "dash/") with absolute CDN URL
         bodyText = bodyText.replace(/<BaseURL>[^<]*<\/BaseURL>/gi, (match) => {

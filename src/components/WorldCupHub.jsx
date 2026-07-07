@@ -109,7 +109,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
         if (standingsRes.ok) {
           const data = await standingsRes.json();
           const newGroupsData = {};
-          
+
           if (data && data.standings) {
             data.standings.forEach(standing => {
               if (standing.type === 'TOTAL') {
@@ -123,7 +123,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
                 }));
               }
             });
-            
+
             if (Object.keys(newGroupsData).length > 0) {
               setGroupsData(newGroupsData);
             }
@@ -154,7 +154,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
         console.error("Failed to fetch dynamic data, falling back to static data", err);
       }
     };
-    
+
     fetchStandingsAndMatches();
   }, []);
 
@@ -197,7 +197,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
     if (!matches || matches.length === 0) return null;
     let liveMatch = matches.find(m => m.status === 'IN_PLAY' || m.status === 'PAUSED');
     if (liveMatch) return liveMatch;
-    
+
     const now = new Date();
     const upcomingMatches = matches.filter(m => new Date(m.utcDate) >= now && m.status !== 'FINISHED').sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
     if (upcomingMatches.length > 0) return upcomingMatches[0];
@@ -223,7 +223,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
       <div className="wc-header">
         <div className="wc-title-area">
           <span className="wc-logo-badge">
-            <Trophy size={14} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '4px' }} /> 
+            <Trophy size={14} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '4px' }} />
             FIFA 2026
           </span>
           <h2>FIFA WORLD CUP HUB</h2>
@@ -248,15 +248,23 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
         {/* Live Stream Channels */}
         <div className="wc-matches-section">
           <h3 className="wc-section-header">
-            <PlayCircle size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '6px' }} /> 
+            <PlayCircle size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '6px' }} />
             LIVE STREAM CHANNELS
           </h3>
           <div className="wc-channels-header" style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap', alignItems: 'center', background: 'rgba(15, 23, 42, 0.3)', padding: '10px 14px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
             <span style={{ fontSize: '10px', fontWeight: '800', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Select to Watch:</span>
             <button className="wc-watch-btn" onClick={() => onWatchLive("ToffeeLive")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>Toffee Live</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("Binge BDIX (BD)")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>Binge Live(BDIX)</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("World Cup TV")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>World Cup TV</button>
-            <button className="wc-watch-btn" onClick={() => onWatchLive("Fox 4K")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>Fox 4K</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("TSN FHD - 1")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>TSN 1</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("FOX ONE 4K")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>FOX 4K</button>
             <button className="wc-watch-btn" onClick={() => onWatchLive("Fox One")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>Fox One ALT</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("TSPORTS HD")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>TSPORTS HD</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("DSports FHD")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>DSports FHD</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("Somoy TV B")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>Somoy TV B</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("SporTV BR FHD")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>SporTV BR</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("TELEMUNDO HD")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>TELEMUNDO</button>
+            <button className="wc-watch-btn" onClick={() => onWatchLive("TVE La 1 FHD")} style={{ padding: '5px 12px', height: 'auto', borderRadius: '4px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '10px', textTransform: 'uppercase' }}>TVE La 1</button>
           </div>
           {/* Schedule Section */}
           <div className="wc-schedule-section" style={{ marginTop: '24px' }}>
@@ -265,44 +273,44 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
                 Upcoming Matches
               </h4>
             </div>
-            
+
             {matches.length > 0 ? (
               <div className="wc-matches-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: isPlayerOpen ? '300px' : '400px', overflowY: 'auto', paddingRight: '4px' }}>
                 {matches
                   .filter(m => m.status !== 'FINISHED' && m.status !== 'AWARDED')
                   .sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate))
                   .map(match => {
-                  const date = new Date(match.utcDate);
-                  const isLive = match.status === 'IN_PLAY' || match.status === 'PAUSED';
-                  const statusText = isLive ? 'LIVE' : 'UPCOMING';
-                  const statusColor = isLive ? '#ef4444' : 'var(--wc-gold)';
-                  
-                  return (
-                    <div key={match.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '10px 14px', borderRadius: '6px', fontSize: '12px', borderLeft: isLive ? '3px solid #ef4444' : 'none' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, justifyContent: 'flex-end' }}>
-                        <span style={{ fontWeight: '600' }}>{match.homeTeam?.name || 'TBD'}</span>
-                        {match.homeTeam?.crest && <img src={match.homeTeam.crest} alt="" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />}
+                    const date = new Date(match.utcDate);
+                    const isLive = match.status === 'IN_PLAY' || match.status === 'PAUSED';
+                    const statusText = isLive ? 'LIVE' : 'UPCOMING';
+                    const statusColor = isLive ? '#ef4444' : 'var(--wc-gold)';
+
+                    return (
+                      <div key={match.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '10px 14px', borderRadius: '6px', fontSize: '12px', borderLeft: isLive ? '3px solid #ef4444' : 'none' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, justifyContent: 'flex-end' }}>
+                          <span style={{ fontWeight: '600' }}>{match.homeTeam?.name || 'TBD'}</span>
+                          {match.homeTeam?.crest && <img src={match.homeTeam.crest} alt="" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />}
+                        </div>
+                        <div style={{ padding: '0 16px', color: statusColor, fontWeight: '800', textAlign: 'center', fontSize: '10px' }}>
+                          <div style={{ marginBottom: '4px', display: 'inline-block', padding: '2px 6px', background: isLive ? 'rgba(239,68,68,0.2)' : 'rgba(255,255,255,0.1)', borderRadius: '4px' }}>
+                            {isLive && <span style={{ display: 'inline-block', width: '6px', height: '6px', background: '#ef4444', borderRadius: '50%', marginRight: '4px' }}></span>}
+                            {statusText}
+                          </div><br />
+                          <span style={{ color: 'var(--text-secondary)' }}>
+                            {date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} • {date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                          </span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, justifyContent: 'flex-start' }}>
+                          {match.awayTeam?.crest && <img src={match.awayTeam.crest} alt="" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />}
+                          <span style={{ fontWeight: '600' }}>{match.awayTeam?.name || 'TBD'}</span>
+                        </div>
                       </div>
-                      <div style={{ padding: '0 16px', color: statusColor, fontWeight: '800', textAlign: 'center', fontSize: '10px' }}>
-                        <div style={{ marginBottom: '4px', display: 'inline-block', padding: '2px 6px', background: isLive ? 'rgba(239,68,68,0.2)' : 'rgba(255,255,255,0.1)', borderRadius: '4px' }}>
-                          {isLive && <span style={{ display: 'inline-block', width: '6px', height: '6px', background: '#ef4444', borderRadius: '50%', marginRight: '4px' }}></span>}
-                          {statusText}
-                        </div><br/>
-                        <span style={{ color: 'var(--text-secondary)' }}>
-                          {date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} • {date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
-                        </span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, justifyContent: 'flex-start' }}>
-                        {match.awayTeam?.crest && <img src={match.awayTeam.crest} alt="" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />}
-                        <span style={{ fontWeight: '600' }}>{match.awayTeam?.name || 'TBD'}</span>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
               </div>
             ) : (
               <div style={{ padding: '20px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '6px', fontSize: '12px', color: 'var(--text-secondary)' }}>
-                No upcoming matches found.<br/>
+                No upcoming matches found.<br />
                 <span style={{ fontSize: '10px', opacity: 0.7 }}>(If the API is loading or rate-limited, please check again shortly.)</span>
               </div>
             )}
@@ -314,57 +322,65 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
           <div className="wc-groups-panel" style={{ background: 'transparent', border: 'none', padding: 0 }}>
             {/* Match of the Day Card */}
             {matchOfTheDay && (
-            <div style={{ background: 'linear-gradient(145deg, #1e293b, #0f172a)', borderRadius: '12px', border: '1px solid var(--wc-gold)', padding: '20px', marginBottom: '24px', position: 'relative', overflow: 'hidden', boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)' }}>
-              <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.05, transform: 'scale(2)' }}>
-                <Trophy size={120} color="var(--wc-gold)" />
-              </div>
-              <h3 style={{ fontSize: '12px', color: 'var(--wc-gold)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ background: 'linear-gradient(145deg, #1e293b, #0f172a)', borderRadius: '12px', border: '1px solid var(--wc-gold)', padding: '20px', marginBottom: '24px', position: 'relative', overflow: 'hidden', boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)' }}>
+                <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.05, transform: 'scale(2)' }}>
+                  <Trophy size={120} color="var(--wc-gold)" />
+                </div>
+                <h3 style={{ fontSize: '12px', color: 'var(--wc-gold)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  {(matchOfTheDay.status === 'IN_PLAY' || matchOfTheDay.status === 'PAUSED') && (
+                    <span style={{ display: 'inline-block', width: '8px', height: '8px', background: '#ef4444', borderRadius: '50%', animation: 'pulse 1.5s infinite' }}></span>
+                  )}
+                  Match of the Day
+                </h3>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+                    {matchOfTheDay.homeTeam?.crest ? (
+                      <img src={matchOfTheDay.homeTeam.crest} alt={matchOfTheDay.homeTeam.name} style={{ width: '56px', height: '56px', objectFit: 'cover', borderRadius: '50%', border: '2px solid rgba(255,255,255,0.2)', marginBottom: '10px', boxShadow: '0 4px 10px rgba(0,0,0,0.3)' }} />
+                    ) : (
+                      <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>?</div>
+                    )}
+                    <span style={{ fontWeight: '800', fontSize: '14px', textAlign: 'center' }}>{matchOfTheDay.homeTeam?.name || 'TBD'}</span>
+                  </div>
+                  <div style={{ padding: '0 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1 }}>
+                    {matchOfTheDay.status === 'TIMED' || matchOfTheDay.status === 'SCHEDULED' ? (
+                      <div style={{ fontSize: '18px', fontWeight: '900', color: 'white' }}>
+                        {new Date(matchOfTheDay.utcDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </div>
+                    ) : (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(0,0,0,0.4)', padding: '8px 16px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                        <span style={{ fontSize: '28px', fontWeight: '900', color: 'white' }}>{matchOfTheDay.score?.fullTime?.home ?? '-'}</span>
+                        <span style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>:</span>
+                        <span style={{ fontSize: '28px', fontWeight: '900', color: 'white' }}>{matchOfTheDay.score?.fullTime?.away ?? '-'}</span>
+                      </div>
+                    )}
+                    {matchOfTheDay.status === 'IN_PLAY' && <span style={{ fontSize: '11px', color: '#ef4444', fontWeight: '800', marginTop: '8px', letterSpacing: '1px' }}>LIVE</span>}
+                    {matchOfTheDay.status === 'FINISHED' && <span style={{ fontSize: '11px', color: 'var(--text-secondary)', fontWeight: '800', marginTop: '8px', letterSpacing: '1px' }}>FT</span>}
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+                    {matchOfTheDay.awayTeam?.crest ? (
+                      <img src={matchOfTheDay.awayTeam.crest} alt={matchOfTheDay.awayTeam.name} style={{ width: '56px', height: '56px', objectFit: 'cover', borderRadius: '50%', border: '2px solid rgba(255,255,255,0.2)', marginBottom: '10px', boxShadow: '0 4px 10px rgba(0,0,0,0.3)' }} />
+                    ) : (
+                      <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>?</div>
+                    )}
+                    <span style={{ fontWeight: '800', fontSize: '14px', textAlign: 'center' }}>{matchOfTheDay.awayTeam?.name || 'TBD'}</span>
+                  </div>
+                </div>
+
                 {(matchOfTheDay.status === 'IN_PLAY' || matchOfTheDay.status === 'PAUSED') && (
-                  <span style={{ display: 'inline-block', width: '8px', height: '8px', background: '#ef4444', borderRadius: '50%', animation: 'pulse 1.5s infinite' }}></span>
+                  <div style={{ display: 'flex', gap: '10px', width: '100%' }}>
+                    <button onClick={() => onWatchLive("ToffeeLive")} style={{ flex: 1, padding: '12px', borderRadius: '8px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '900', border: 'none', cursor: 'pointer', fontSize: '13px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', transition: 'all 0.2s', textTransform: 'uppercase' }}>
+                      <PlayCircle size={18} /> Toffee Live
+                    </button>
+                    <button onClick={() => onWatchLive("FifaLive")} style={{ flex: 1, padding: '12px', borderRadius: '8px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '900', border: 'none', cursor: 'pointer', fontSize: '13px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', transition: 'all 0.2s', textTransform: 'uppercase' }}>
+                      <PlayCircle size={18} /> Fifa Live
+                    </button>
+                    <button onClick={() => onWatchLive("Binge BDIX (BD)")} style={{ flex: 1, padding: '12px', borderRadius: '8px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '900', border: 'none', cursor: 'pointer', fontSize: '13px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', transition: 'all 0.2s', textTransform: 'uppercase' }}>
+                      <PlayCircle size={18} /> Binge Live
+                    </button>
+                  </div>
                 )}
-                Match of the Day
-              </h3>
-              
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
-                  {matchOfTheDay.homeTeam?.crest ? (
-                    <img src={matchOfTheDay.homeTeam.crest} alt={matchOfTheDay.homeTeam.name} style={{ width: '56px', height: '56px', objectFit: 'cover', borderRadius: '50%', border: '2px solid rgba(255,255,255,0.2)', marginBottom: '10px', boxShadow: '0 4px 10px rgba(0,0,0,0.3)' }} />
-                  ) : (
-                    <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>?</div>
-                  )}
-                  <span style={{ fontWeight: '800', fontSize: '14px', textAlign: 'center' }}>{matchOfTheDay.homeTeam?.name || 'TBD'}</span>
-                </div>
-                <div style={{ padding: '0 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1 }}>
-                  {matchOfTheDay.status === 'TIMED' || matchOfTheDay.status === 'SCHEDULED' ? (
-                     <div style={{ fontSize: '18px', fontWeight: '900', color: 'white' }}>
-                       {new Date(matchOfTheDay.utcDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                     </div>
-                  ) : (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(0,0,0,0.4)', padding: '8px 16px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                      <span style={{ fontSize: '28px', fontWeight: '900', color: 'white' }}>{matchOfTheDay.score?.fullTime?.home ?? '-'}</span>
-                      <span style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>:</span>
-                      <span style={{ fontSize: '28px', fontWeight: '900', color: 'white' }}>{matchOfTheDay.score?.fullTime?.away ?? '-'}</span>
-                    </div>
-                  )}
-                  {matchOfTheDay.status === 'IN_PLAY' && <span style={{ fontSize: '11px', color: '#ef4444', fontWeight: '800', marginTop: '8px', letterSpacing: '1px' }}>LIVE</span>}
-                  {matchOfTheDay.status === 'FINISHED' && <span style={{ fontSize: '11px', color: 'var(--text-secondary)', fontWeight: '800', marginTop: '8px', letterSpacing: '1px' }}>FT</span>}
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
-                  {matchOfTheDay.awayTeam?.crest ? (
-                    <img src={matchOfTheDay.awayTeam.crest} alt={matchOfTheDay.awayTeam.name} style={{ width: '56px', height: '56px', objectFit: 'cover', borderRadius: '50%', border: '2px solid rgba(255,255,255,0.2)', marginBottom: '10px', boxShadow: '0 4px 10px rgba(0,0,0,0.3)' }} />
-                  ) : (
-                    <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>?</div>
-                  )}
-                  <span style={{ fontWeight: '800', fontSize: '14px', textAlign: 'center' }}>{matchOfTheDay.awayTeam?.name || 'TBD'}</span>
-                </div>
               </div>
-              
-              {(matchOfTheDay.status === 'IN_PLAY' || matchOfTheDay.status === 'PAUSED') && (
-                <button onClick={() => onWatchLive("Fox 4K")} style={{ width: '100%', padding: '12px', borderRadius: '8px', background: 'linear-gradient(135deg, var(--wc-gold), #b45309)', color: 'black', fontWeight: '900', border: 'none', cursor: 'pointer', fontSize: '13px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', transition: 'all 0.2s', textTransform: 'uppercase' }}>
-                  <PlayCircle size={18} /> Watch Stream
-                </button>
-              )}
-            </div>
             )}
 
             {/* Golden Boot Leaderboard */}
@@ -374,7 +390,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
                   <Trophy size={14} color="var(--wc-gold)" /> Golden Boot Race
                 </h3>
               </div>
-              
+
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {displayScorers.map(player => (
                   <div key={player.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(255,255,255,0.03)', padding: '10px 14px', borderRadius: '8px', transition: 'background 0.2s', cursor: 'default' }} onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'} onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}>
@@ -400,7 +416,7 @@ export default function WorldCupHub({ isPlayerOpen, onWatchLive }) {
 
       <div style={{ marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
         <h3 className="wc-section-header" style={{ marginLeft: '20px', marginBottom: '20px' }}>
-          <Trophy size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '6px' }} /> 
+          <Trophy size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '6px' }} />
           TOURNAMENT BRACKET
         </h3>
         <KnockoutBracket matches={matches} groupsData={groupsData} />
