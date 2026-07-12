@@ -1,5 +1,21 @@
 [
     {
+        "name": "FIFA 4k",
+        "url": "https://fastshare1.com/live/25711345/late8airline/745269.ts",
+        "group": "Sports",
+        "bufferless": true,
+        "useProxy": false,
+        "proxySegments": false
+    },
+    {
+        "name": "T-Sports 2",
+        "url": "https://fastshare1.com/live/25711345/late8airline/52500.ts",
+        "group": "Sports",
+        "bufferless": true,
+        "useProxy": false,
+        "proxySegments": false
+    },
+    {
         "name": "FOX ONE 4K",
         "logo": "",
         "url": "https://inproviszon.st/fox4k-usa.m3u8?",
@@ -10,17 +26,21 @@
         }
     },
     {
-        "name": "ToffeeLive",
+        "name": "Fast Server",
+        "url": "https://live05.grita.app/live/78905744-1783817538.ts?txspiseq=115848740043992940565",
         "group": "FIFA World Cup 2026",
-        "url": "https://prod-cdn01-live.toffeelive.com/live/FIFA-2026/sst/0/master_1500.m3u8?hdntl=Expires=1783524306~_GO=Generated~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Signature=AWIR_5EPeRjqC4pdh1IIlHW8W5m24an5C2xrBgsyOrsIHthip2kjh8AhFG_1Sqmq7Cyr_-2MVi4HG70LE1QbZyYUMX4J",
-        "bufferless": true,
-        "useProxy": true,
-        "proxySegments": true,
         "useNativeVideo": true,
-        "headers": {
-            "Referer": "https://fifalive.click/",
-            "Origin": "https://fifalive.click"
-        }
+        "bufferless": true,
+        "useProxy": false
+    },
+    {
+        "name": "Bein Sports",
+        "group": "FIFA World Cup 2026",
+        "url": "https://jzlocreblfyeoqnridmg.supabase.co/functions/v1/clever-worker?url=Q09k4OuBL5X-HS6li7_uiOak4MYmoV9JdsHJokrJdkABFhNcE0zKLw&headers=3OvT47zfFUIJq1aA4UgTq5ug7Ro57R_8IRvmV_N5dswh7RPSHSaA40vmISaPzA_MF5okFCoRqGu8I5gUFCIRIhNmQCPKIMYjQjvhq7v_qU1OyCT",
+        "bufferless": true,
+        "useProxy": false,
+        "proxySegments": false,
+        "useNativeVideo": false
     },
     {
         "name": "FifaLive",
@@ -60,17 +80,17 @@
     {
         "name": "Fox One",
         "group": "FIFA World Cup 2026",
-        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
-        "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
-        "category": "Fifa World cup",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
         "drm": {
             "key": "f6564ec2aee819046328a0e153be574d:ff46a8a1031eb27ef22576a077c98ab7"
         },
+        "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
+        "category": "Fifa World cup",
         "useProxy": false,
         "proxySegments": false
     },
     {
-        "name": "World Cup TV",
+        "name": "WC TV FHD",
         "group": "FIFA World Cup 2026",
         "url": "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/fifa_ppv1/default/index.mpd",
         "logo": "https://image.tsports.com/images/mobile_thumbnail/1761718928-1750064430-LIVE.jpg",
@@ -78,8 +98,13 @@
         "drm": {
             "key": "2c338a117d434ce4bbe3569231af90f1:a9633d901ee8a3f4f58ac314b5c5f4fb"
         },
-        "useProxy": false,
-        "proxySegments": false
+        "useProxy": true,
+        "proxySegments": true
+    },
+    {
+        "name": "Low latency server",
+        "url": "https://pull.niues.live/live/stream-9912060_lhd.m3u8?auth_key=1783284383-0-0-ba541e77b9330eab42075af6aa5029e4",
+        "useProxy": false
     },
     {
         "name": "TSPORTS HD",
@@ -4843,5 +4868,1032 @@
             "Referer": "https://stavo.site/"
         },
         "useProxy": true
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/fskjanach24.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/dzjhkfazbka26.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/pllmazjkdzajh72.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/wfazgsqtrezu66.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/sqhdghzavbxu75.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/jnzkdzjfanch23.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/zeafwqvhfe69.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/mlkijfezag65.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "BBC SPORTS HD",
+        "logo": "https://cdn.livesoccertv.com/images/channels/thumbnails/itv-1.png",
+        "url": "https://chatgpt.hereisman.net/playlist/53152/load-playlist?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://gooz.aapmains.net"
+    },
+    {
+        "name": "TSN SPORTS HD",
+        "logo": "https://www.bellmedia.ca/lede/wp-content/uploads/2024/09/18581592_10155403529061055_8240563011649656197_n.jpg",
+        "url": "https://chatgpt.hereisman.net/playlist/53157/load-playlist?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://gooz.aapmains.net"
+    },
+    {
+        "name": "FAST SERVER",
+        "logo": "",
+        "url": "https://pulltx.jdnzrgm.com/live/hd-en-6MvYMRTH6YRgg3QgJS.m3u8?txSecret=1d26ea4858c85f60ee5f6ad9075b5caf&txTime=6A5167A0",
+        "group": "FIFA World Cup 2026",
+        "useProxy": false
+    },
+    {
+        "name": "FOX SPORTS HD",
+        "logo": "https://images.seeklogo.com/logo-png/28/1/fox-sports-logo-png_seeklogo-284763.png",
+        "url": "https://chatgpt.hereisman.net/playlist/53156/load-playlist?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://gooz.aapmains.net"
+    },
+    {
+        "name": "TSN SPORTS HD",
+        "logo": "https://www.bellmedia.ca/lede/wp-content/uploads/2024/09/18581592_10155403529061055_8240563011649656197_n.jpg",
+        "url": "https://chatgpt.hereisman.net/playlist/53157/load-playlist?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://gooz.aapmains.net"
+    },
+    {
+        "name": "SD SERVER [ENG]",
+        "logo": "",
+        "url": "http://193.47.62.59/hls/VVQJMMMCZzsssp.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "http://www.fawanews.sc/",
+        "origin": "http://www.fawanews.sc/"
+    },
+    {
+        "name": "SD SERVER [SWE]",
+        "logo": "",
+        "url": "http://193.47.62.59/hls/VVQJMMMCZckkkqq.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "http://www.fawanews.sc/",
+        "origin": "http://www.fawanews.sc/"
+    },
+    {
+        "name": "beiN SPORTS FR",
+        "logo": "https://play-lh.googleusercontent.com/jBDZq3aBmCXuvtuJHEasqsdYPRxMBGzYmEha4dMlgoIk19Zlh6BGQC08Zt6Ifrmzhg",
+        "url": "http://193.47.62.59/hls/VVQJMMMCZckkkq.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "http://www.fawanews.sc/",
+        "origin": "http://www.fawanews.sc/"
+    },
+    {
+        "name": "TSports BDIX",
+        "logo": "",
+        "url": "http://103.165.93.31:8095/tsports/video.m3u8",
+        "group": "FIFA World Cup 2026",
+        "useProxy": false
+    },
+    {
+        "name": "SportzX LIVE",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/jnzkdzjfanch23.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/yjtzafghvjza74.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/fskjanach24.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "CT SPORTS CZ",
+        "logo": "",
+        "url": "https://dash2.antik.sk/stream/nvidia_ct_sport/playlist_cenc.mpd",
+        "type": "dash",
+        "group": "FIFA World Cup 2026",
+        "kid": "11223344556677889900112233445566",
+        "key": "4b80724d0ef86bcb2c21f7999d67739d",
+        "useProxy": true
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/bvnsqdfvgha70.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/jzabfazkbf27.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/zayrtezafgvdv68.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/hfsdqtaxvb67.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/ztyarueaghj71.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/ijfnakfidch22.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/dazhfiach15.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/bzagLHzach19.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/jkzahzadach20.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "FULL MATCH",
+        "logo": "",
+        "url": "https://hgcloud.to/e/us7kdjgtzcka",
+        "group": "FIFA World Cup 2026",
+        "useProxy": false
+    },
+    {
+        "name": "1st HALF",
+        "logo": "",
+        "url": "https://soccerfull.net/hls/14645.m3u8",
+        "group": "FIFA World Cup 2026",
+        "useProxy": false
+    },
+    {
+        "name": "2nd HALF",
+        "logo": "",
+        "url": "https://hgcloud.to/e/vo1x8pseaklb",
+        "group": "FIFA World Cup 2026",
+        "useProxy": false
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/Czajafjihafch18.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/16yuitzaerghbhc16.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/ojzkajnach21.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/ihfazugfyjcazich17.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/jzabfazkbf27.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/ztyarueaghj71.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX LIVE",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/jnzkdzjfanch23.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/fdgsqdfawa73.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/zayrtezafgvdv68.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/zeafwqvhfe69.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/bvnsqdfvgha70.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/ihfazugfyjcazich17.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/16yuitzaerghbhc16.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/dazhfiach15.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/ojzkajnach21.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/ijfnakfidch22.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/jzabfazkbf27.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/dzjhkfazbka26.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/bzagLHzach19.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/fskjanach24.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/ojzkajnach21.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/ijfnakfidch22.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/Czajafjihafch18.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/jkzahzadach20.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/dazhfiach15.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "ELEVEN SPORTS",
+        "logo": "",
+        "url": "https://r.e.blueonline.tv/l/tvsmart/live/eds/Eleven_Sport_1/DHD/Manifest.mpd",
+        "type": "dash",
+        "group": "FIFA World Cup 2026",
+        "kid": "69021095220f3c0eae9bc24215fd692b",
+        "key": "eb58cfe0458ed0b48f7351fa3393ad59",
+        "useProxy": true
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/kjhfzua25.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "logo": "https://imglink.cc/cdn/Tf3GP8uGY_.jpg",
+        "group": "FIFA World Cup 2026",
+        "name": "TUDN B 1080 🇲🇽 Mexico",
+        "url": "https://streaming.alwaysdata.net/tudn.php",
+        "useProxy": false
+    },
+    {
+        "group": "FIFA World Cup 2026",
+        "name": "FS1 05",
+        "url": "http://wickediptv.xyz/Randall123/Randall321/53390",
+        "useProxy": false
+    },
+    {
+        "group": "FIFA World Cup 2026",
+        "name": "TSN1 CA 04",
+        "url": "http://wickediptv.xyz/Randall123/Randall321/53805",
+        "useProxy": false
+    },
+    {
+        "group": "FIFA World Cup 2026",
+        "name": "BBC One UK 04",
+        "url": "http://wickediptv.xyz/Randall123/Randall321/53842",
+        "useProxy": false
+    },
+    {
+        "group": "FIFA World Cup 2026",
+        "name": "ITV1 UK 01",
+        "url": "http://163.172.64.96:2017/live/GBa19qrcQYa3/u2c8FLfgkK/239.ts",
+        "useProxy": false
+    },
+    {
+        "group": "FIFA World Cup 2026",
+        "name": "FIFAWC 2026 GAME 01",
+        "url": "http://wickediptv.xyz/Randall123/Randall321/340018",
+        "useProxy": false
+    },
+    {
+        "group": "FIFA World Cup 2026",
+        "name": "FIFAWC 2026 GAME 02",
+        "url": "http://wickediptv.xyz/Randall123/Randall321/340019",
+        "useProxy": false
+    },
+    {
+        "group": "FIFA World Cup 2026",
+        "name": "FIFAWC 2026 GAME 03",
+        "url": "http://wickediptv.xyz/Randall123/Randall321/340017",
+        "useProxy": false
+    },
+    {
+        "group": "FIFA World Cup 2026",
+        "name": "FIFAWC 2026 GAME 04",
+        "url": "http://wickediptv.xyz/Randall123/Randall321/340016",
+        "useProxy": false
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/jnzkdzjfanch23.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream3.pro/hls/fskjanach24.m3u8?",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "NOW TV 4K [No VPN]",
+        "url": "http://starhub.pro/live/farhat-3379/67897-913379/745270.ts",
+        "useProxy": false,
+        "group": "FIFA World Cup 2026"
+    },
+    {
+        "name": "SP0TV HD",
+        "logo": "",
+        "url": "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/cg_spotvhd/default/index.mpd",
+        "type": "dash",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true
+    },
+    {
+        "name": "SP0TV2 HD",
+        "logo": "",
+        "url": "https://qp-pldt-live-grp-13-prod.akamaized.net/out/u/dr_spotv2hd.mpd",
+        "type": "dash",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true
+    },
+    {
+        "name": "EUROSPORT FHD",
+        "logo": "",
+        "url": "https://dash2.antik.sk/stream/nvidia_eurosport1/playlist_cenc.mpd",
+        "type": "dash",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true
+    },
+    {
+        "name": "EUROSPORT2 FHD",
+        "logo": "",
+        "url": "https://dash2.antik.sk/stream/nvidia_eurosport2/playlist_cenc.mpd",
+        "type": "dash",
+        "group": "FIFA World Cup 2026",
+        "useProxy": true
+    },
+    {
+        "name": "Match! Football 1",
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/6719.png",
+        "url": "https://bl.video.matchtv.ru/media/playlist/free_d46d0cf1712c0542ec7fd4f0808f600a_hd/17_89756005/1080/e6bef86de8a133cd7b27deb040758a00/4796141934.m3u8",
+        "group": "FIFA World Cup 2026",
+        "useProxy": false
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://chatgpt.hereisman.net/playlist/53209/load-playlist?",
+        "group": "SportzX",
+        "useProxy": true,
+        "referer": "https://gooz.aapmains.net"
+    },
+    {
+        "name": "WILLOW FHD",
+        "logo": "https://s21.q4cdn.com/819998841/files/doc_news/2024/May/Willow-logo-transparent-cb.png",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/aotzzbdadk/out/v1/8af31edf2d1f4ada9f496c3d7246eef8/cenc.mpd",
+        "type": "dash",
+        "group": "WILLOW",
+        "kid": "4a63f817e48857c820181f7a22e8a1b4",
+        "key": "e53140d61b7bb8c1697316c1ee7ddac8",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "WILLOW ALT",
+        "logo": "https://s21.q4cdn.com/819998841/files/doc_news/2024/May/Willow-logo-transparent-cb.png",
+        "url": "https://abfjk4haaaaaaaamkitc5445rybm6.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/aotzzbdadk/out/v1/8af31edf2d1f4ada9f496c3d7246eef8/cenc.mpd",
+        "type": "dash",
+        "group": "WILLOW",
+        "kid": "4a63f817e48857c820181f7a22e8a1b4",
+        "key": "e53140d61b7bb8c1697316c1ee7ddac8",
+        "useProxy": true
+    },
+    {
+        "name": "SKY MAIN EVENT",
+        "logo": "",
+        "url": "https://tmaxapp.site/8wirwjs76erftg/skysportsmainevent.m3u8",
+        "group": "SKY",
+        "useProxy": false
+    },
+    {
+        "name": "SKY SPORT NZ",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVqp1Plsy44x_6pIyvUttdbXc5LMugRMGfldjYKQbI9X_X7txzS2d7WPph",
+        "url": "https://tmaxapp.site/8wirwjs76erftg/skysport2nz.m3u8",
+        "group": "SKY",
+        "useProxy": false
+    },
+    {
+        "name": "WILLOW HD",
+        "logo": "https://s21.q4cdn.com/819998841/files/doc_news/2024/May/Willow-logo-transparent-cb.png",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/tll6uwepxa/out/v1/a7f67cbb33df46539312956427343886/cenc.mpd",
+        "type": "dash",
+        "group": "WILLOW",
+        "kid": "290e09c837da78d5cd961978d390515c",
+        "key": "b748836c71e6a4ca68ef5b5652db6247",
+        "useProxy": true
+    },
+    {
+        "name": "SONY TEN 3 - IN",
+        "logo": "",
+        "url": "https://dishmt.slivcdn.com/hls/live/2020591/TEN3HD/master.m3u8?hdnea=exp=1783800057~acl=/*~id=86e9774078e3c2ecd9ffa0bed9c78f04-1783756853945~hmac=d44c91ce6e9cb985bd62fd2b51efe516ac712b8eaf890aa72df20df90ae5b751",
+        "group": "SONY",
+        "useProxy": false
+    },
+    {
+        "name": "SONY TEN 4 - IN",
+        "logo": "",
+        "url": "https://dishmt.slivcdn.com/hls/live/2020589/ten4hd/master.m3u8?hdnea=exp=1783800057~acl=/*~id=86e9774078e3c2ecd9ffa0bed9c78f04-1783756853945~hmac=d44c91ce6e9cb985bd62fd2b51efe516ac712b8eaf890aa72df20df90ae5b751",
+        "group": "SONY",
+        "useProxy": false
+    },
+    {
+        "name": "ITV SPORTS FHD",
+        "logo": "",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/0eiyyz8qzm/out/v1/dd17af8835fe4bd087d1a4e359b635d7/cenc.mpd",
+        "type": "dash",
+        "group": "ITV",
+        "kid": "30089c52924f037b225b82c616fee2a5",
+        "key": "f55dc8b66ed4fc6753d6035ae7e17144",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "SKY SPORTS SD",
+        "logo": "",
+        "url": "https://tmaxapp.site/8wirwjs76erftg/skysport1nz.m3u8",
+        "group": "SKY",
+        "useProxy": false
+    },
+    {
+        "name": "ITV SPORTS FHD",
+        "logo": "",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/dash/enc/ffwqzsa0zr/out/v1/752ac25588ff4607b45f3876a8e89223/cenc.mpd",
+        "type": "dash",
+        "group": "ITV",
+        "kid": "ea178e28af00ed57e7101255f977c222",
+        "key": "f29602a280f41950d1935f0c6816dc12",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "RTE SPORTS FHD",
+        "logo": "https://r2.thesportsdb.com/images/media/channel/logo/syptrs1458515379.png",
+        "url": "https://dai.google.com/linear/dash/pa/event/oPeAYQs9T9yTHS98aR1EjQ/stream/0d80be88-2ffb-4548-8db3-a64235332b23:GRQ/manifest.mpd",
+        "type": "dash",
+        "group": "RTE",
+        "kid": "d816287e21496989eae1312925a423c5",
+        "key": "00da00f13180e7e6cd5ce87d1c974e8d",
+        "useProxy": true
+    },
+    {
+        "name": "TVE La 1 FHD",
+        "logo": "https://r2.thesportsdb.com/images/media/channel/logo/p19tzj1781340041.png",
+        "url": "https://otte.cache.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/c7di7zkdor/out/v1/f7d5b356e048494a8325563e8916d50b/cenc.mpd",
+        "type": "dash",
+        "group": "TVE",
+        "kid": "745cd6ec34a58f2f7ac2af35dc3da6d2",
+        "key": "ae008f1e47e6567fe4201a6ff8f1ae54",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "TSN4 SPORTS FHD",
+        "logo": "https://cdn.livesoccertv.com/images/channels/thumbnails/televisa.gif",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/ihys8nw4wv/out/v1/fde190f369484bc6b6117cc16cd82a9f/cenc.mpd",
+        "type": "dash",
+        "group": "TSN",
+        "kid": "abc5b2883121012850ebda05b528c5ec",
+        "key": "e5250924f4b738905f7163a0134587a7",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "CTV SPORTS FHD",
+        "logo": "https://www.bellmedia.ca/lede/wp-content/uploads/2024/09/18581592_10155403529061055_8240563011649656197_n.jpg",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/fyfcwdbtmr/out/v1/02411c3777274c9eb5d572a0fb22a5b4/cenc.mpd",
+        "type": "dash",
+        "group": "CTV",
+        "kid": "51a4a5ab615c381304b8dd795282fd7e",
+        "key": "1e6f4096000b31668c11d5cd339d8cac",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "CAZE TV FHD",
+        "logo": "https://duckduckgo.com/i/dab0d6887915781c.png",
+        "url": "https://otte.cache.aiv-cdn.net/gru-nitro/live/clients/dash/enc/iayg0kyrof/out/v1/91dc04907f56415b897faccfa9d252da/cenc.mpd",
+        "type": "dash",
+        "group": "CAZE",
+        "kid": "1223d5105392cabf1bb9c2c1fdf6539a",
+        "key": "340b409f4b8f78a343e0363a7938df38",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "FOX ONE HDR",
+        "logo": "https://r2.thesportsdb.com/images/media/channel/logo/sonnfj1629403437.png",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/rgmw19qjux/out/v1/c6ac7e638a9d4998891ae85aba377c59/cenc.mpd",
+        "type": "dash",
+        "group": "FOX",
+        "kid": "48afc63fa0ecccc3a71f46d3fda20249",
+        "key": "c7cd8801e238a263fe4349a95682b83b",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "FOX SPORTS 4K",
+        "logo": "https://images.seeklogo.com/logo-png/28/1/fox-sports-logo-png_seeklogo-284763.png",
+        "url": "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/enc/lsilniwjf7/out/v1/fc40f22f10374517a2784e1d97cb23f4/cenc.mpd",
+        "type": "dash",
+        "group": "4K",
+        "kid": "1f68713028d439ec03be07f56c1d6213",
+        "key": "20093db6455160fffed4c394def3193d",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "FOX ONE HD",
+        "logo": "https://images.seeklogo.com/logo-png/28/1/fox-sports-logo-png_seeklogo-284763.png",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/cizlveblk4/out/v1/e5c36c41621e4384b80427d87199433a/cenc.mpd",
+        "type": "dash",
+        "group": "FOX",
+        "kid": "d7d78ea2021a29541136bd5dc8352fe7",
+        "key": "6425ac4c0cdf906fe0cce5cf40dc8933",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "IRIB 4K",
+        "logo": "",
+        "url": "https://ncdn.telewebion.ir/faratar/live/playlist.m3u8",
+        "group": "4K",
+        "useProxy": false
+    },
+    {
+        "name": "TSports HD",
+        "logo": "",
+        "url": "http://103.165.93.31:8095/tsports/tracks-v1a1/mono.m3u8",
+        "group": "TSports",
+        "useProxy": false
+    },
+    {
+        "name": "BTV BDIX HD",
+        "logo": "https://www.btvlive.gov.bd/_next/image?url=https%3A%2F%2Fd38ll44lbmt52p.cloudfront.net%2Fcms%2Fchannel_poster%2F1677040358634_BTVogo.png&w=2048&q=75",
+        "url": "http://103.165.93.31:8095/btv/tracks-v1a1/mono.m3u8",
+        "group": "BTV",
+        "useProxy": false
+    },
+    {
+        "name": "SOMOY TV HD",
+        "logo": "",
+        "url": "http://103.165.93.31:8095/somoyTv/tracks-v1a1/mono.m3u8",
+        "group": "SOMOY",
+        "useProxy": false
+    },
+    {
+        "name": "FOX ONE - AQ",
+        "logo": "https://images.seeklogo.com/logo-png/28/1/fox-sports-logo-png_seeklogo-284763.png",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
+        "type": "dash",
+        "group": "FOX",
+        "kid": "f6564ec2aee819046328a0e153be574d",
+        "key": "ff46a8a1031eb27ef22576a077c98ab7",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "FOX SPORTS HD",
+        "logo": "https://images.seeklogo.com/logo-png/28/1/fox-sports-logo-png_seeklogo-284763.png",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/zpfs5hlgya/out/v1/84b1d591a23640178a8e8aa43c6e59a7/cenc.mpd",
+        "type": "dash",
+        "group": "FOX",
+        "kid": "0cc2f872759c96de70237e6fa6de03d0",
+        "key": "a879b1d38ed002d4018bce96f9219b8d",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "beiN SPORTS FR",
+        "logo": "https://play-lh.googleusercontent.com/jBDZq3aBmCXuvtuJHEasqsdYPRxMBGzYmEha4dMlgoIk19Zlh6BGQC08Zt6Ifrmzhg",
+        "url": "http://193.47.62.59/hls/QJMMMCZckkkq.m3u8?",
+        "group": "beIN",
+        "useProxy": true,
+        "referer": "http://www.fawanews.sc/",
+        "origin": "http://www.fawanews.sc/"
+    },
+    {
+        "name": "SomoyTV BDIX",
+        "logo": "",
+        "url": "http://103.165.93.31:8095/somoyTv/index.m3u8",
+        "group": "SOMOY",
+        "useProxy": false
+    },
+    {
+        "name": "TIPIK FR FHD",
+        "logo": "",
+        "url": "https://c9851ec-rbm-hilv-fsly.cdn.redbee.live/L26/6b640fa2/a765d074.isml/dash/.mpd",
+        "type": "dash",
+        "group": "Tipik",
+        "kid": "adca25b8779e4168a0cd710f59f61ccf",
+        "key": "be5383ed3cd8079f4ffe78ad067f476a",
+        "useProxy": true
+    },
+    {
+        "name": "CTV SPORTS FHD",
+        "logo": "https://r2.thesportsdb.com/images/media/channel/logo/wwr35d1665918725.png",
+        "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/enc/72sjo8hygl/out/v1/3079be34d72a4985852d299a02406a0c/cenc.mpd",
+        "type": "dash",
+        "group": "CTV",
+        "kid": "d185684e2330de5bea436daa094a5e86",
+        "key": "014f0116154f5bf0050e03a6b0a23157",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "SportzX MLB",
+        "logo": "",
+        "url": "https://chatgpt.hereisman.net/playlist/53205/load-playlist?",
+        "group": "SportzX",
+        "useProxy": true,
+        "referer": "https://gooz.aapmains.net"
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "http://193.47.62.41/hls/PPPPQQQQQ.m3u8",
+        "group": "SportzX",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0",
+        "referer": "http://www.fawanews.sc/",
+        "origin": "http://www.fawanews.sc/"
+    },
+    {
+        "name": "FANCODE FHD",
+        "logo": "https://m.media-amazon.com/images/I/21K+HipHr6L.png",
+        "url": "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/fdb3pubmek/out/v1/aefca6420f944a9482e117f315de535f/cenc.mpd",
+        "type": "dash",
+        "group": "FANCODE",
+        "kid": "7e9239c1982d984a002df3ed049d0756",
+        "key": "1b8a17598129a3618535c8fb05f103fe",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "TNT SPORTS HD",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI2NSvkyk8Fx2UMBXFdEXS36TNepD6Uy8pMQveJnYRbDnXedcg2tttKHz3&s=10",
+        "url": "https://tmaxapp.site/8wirwjs76erftg/tntsports4.m3u8",
+        "group": "TNT",
+        "useProxy": false
+    },
+    {
+        "name": "FANCODE SD",
+        "logo": "https://m.media-amazon.com/images/I/21K+HipHr6L.png",
+        "url": "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash-sd/enc/qddnwqthpp/out/v1/6c25cddab58043a6ace0ac64d97983f0/cenc-sd.mpd",
+        "type": "dash",
+        "group": "FANCODE",
+        "kid": "709c812e1b4174002605df1d17d34a4c",
+        "key": "0bbee6c9c20a0f065bf8369d54cbf83e",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "LOW SERVER",
+        "logo": "",
+        "url": "http://193.47.62.41/hls/tatataqQQQQQ.m3u8?",
+        "group": "LOW",
+        "useProxy": true,
+        "referer": "http://www.fawanews.sc/",
+        "origin": "http://www.fawanews.sc/"
+    },
+    {
+        "name": "WILLOW FHD",
+        "logo": "https://s21.q4cdn.com/819998841/files/doc_news/2024/May/Willow-logo-transparent-cb.png",
+        "url": "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/il6abt14ce/out/v1/7973ad2adc6341dcb785e9960bdf1c0c/cenc.mpd",
+        "type": "dash",
+        "group": "WILLOW",
+        "kid": "1d63df11bb77a72701ae3233bdbfa1ab",
+        "key": "95598b0c96d8c75ec60041e9151c1b11",
+        "useProxy": true,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+    },
+    {
+        "name": "WILLOW - ALT",
+        "logo": "https://s21.q4cdn.com/819998841/files/doc_news/2024/May/Willow-logo-transparent-cb.png",
+        "url": "https://abfjk4haaaaaaaamkitc5445rybm6.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/il6abt14ce/out/v1/7973ad2adc6341dcb785e9960bdf1c0c/cenc.mpd",
+        "type": "dash",
+        "group": "WILLOW",
+        "kid": "1d63df11bb77a72701ae3233bdbfa1ab",
+        "key": "95598b0c96d8c75ec60041e9151c1b11",
+        "useProxy": true
+    },
+    {
+        "name": "SportzX Live",
+        "logo": "",
+        "url": "https://edgestream2.pro/hls/fdgsqdfawa73.m3u8?",
+        "group": "SportzX",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "SportzX LIVE",
+        "logo": "",
+        "url": "https://edgestream1.pro/hls/kjhfzua25.m3u8?",
+        "group": "SportzX",
+        "useProxy": true,
+        "referer": "https://streamscenter.online/",
+        "origin": "https://streamscenter.online"
+    },
+    {
+        "name": "TSN 4",
+        "group": "world cup hub",
+        "url": "https://proxy.futuredesh.com/api/proxy?url=http%3A%2F%2F213.152.185.148%2Ftsn4%2Ftracks-v1a1%2Fmono.ts.m3u8",
+        "useNativeVideo": true,
+        "useProxy": false
+    },
+    {
+        "name": "PTV",
+        "group": "world cup hub",
+        "url": "https://proxy.futuredesh.com/api/proxy?url=http://103.165.93.31:8095/ptv/tracks-v1a1/mono.m3u8",
+        "useNativeVideo": true,
+        "useProxy": false
     }
 ]

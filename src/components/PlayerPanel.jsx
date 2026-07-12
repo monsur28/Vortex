@@ -187,9 +187,9 @@ export default function PlayerPanel({
       
       // For MPEG-TS, it's a single file stream.
       // We only proxy it if it's HTTP, to avoid Mixed Content errors. If it's HTTPS, we can play it directly!
-      const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (rawUrl && rawUrl.includes('pages.dev'));
+      const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (rawUrl && rawUrl.includes('pages.dev')) || (rawUrl && rawUrl.startsWith('http://'));
       // Skip this early proxy rewrite for dynamic streams because Bitmovin handles it in preprocessHttpRequest
-      if (!activeChannel.dynamicConfig && ((isMpegTs && rawUrl.startsWith('http://')) || needsProxy)) {
+      if (!activeChannel.dynamicConfig && needsProxy) {
         streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&url=${encodeURIComponent(rawUrl)}&t=${Date.now()}`;
       }
 
@@ -350,7 +350,7 @@ export default function PlayerPanel({
                     }
                 }
 
-                const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (target && target.includes('pages.dev'));
+                const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (target && target.includes('pages.dev')) || (target && target.startsWith('http://'));
                 if (needsProxy) {
                     if (target && target.startsWith('http') && !target.includes('/api/proxy')) {
                         target = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(target)}`;
