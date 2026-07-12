@@ -32,7 +32,8 @@
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "shaka-player": "^5.2.0"
   },
   "devDependencies": {
     "@capacitor/cli": "^8.4.0",

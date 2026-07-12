@@ -22,6 +22,7 @@ export default function PlayerPanel({
   const [errorMsg, setErrorMsg] = useState('');
   const [bitmovinInstance, setBitmovinInstance] = useState(null);
   const [mpegtsInstance, setMpegtsInstance] = useState(null);
+  const [shakaInstance, setShakaInstance] = useState(null);
   const [levels, setLevels] = useState([]);
   const [currentLevel, setCurrentLevel] = useState(-1); // -1 means Auto
   const [autoHeight, setAutoHeight] = useState('');
@@ -130,6 +131,7 @@ export default function PlayerPanel({
     let newBitmovin = null;
     let localMpegts = null;
     let localHls = null;
+    let localShaka = null;
     let currentUrlIndex = 0;
     const urlCount = activeChannel.urlCount || (Array.isArray(activeChannel.url) ? activeChannel.url.length : 1);
 
@@ -204,6 +206,10 @@ export default function PlayerPanel({
       if (localHls) {
         localHls.destroy();
         localHls = null;
+      }
+      if (localShaka) {
+        localShaka.destroy();
+        localShaka = null;
       }
 
       try {
@@ -501,12 +507,140 @@ export default function PlayerPanel({
 
       } catch (err) {
         console.error('Error loading bitmovin', err);
-        if (currentUrlIndex < urlCount - 1) {
-          currentUrlIndex++;
-          initPlayer(currentUrlIndex);
-        } else {
-          setErrorMsg('Failed to load stream');
+        
+        // Fallback to Shaka Player
+        try {
+          console.log('Falling back to Shaka Player...');
+          const shakaModule = await import('shaka-player');
+          const shaka = shakaModule.default || shakaModule;
+          
+          if (!shaka.Player.isBrowserSupported()) {
+            throw new Error('Shaka Player is not supported in this browser.');
+          }
+
+          // Restore video element visibility if Bitmovin hid it
+          if (videoRef.current) {
+            videoRef.current.style.display = 'block';
+          }
+          const bmContainer = document.getElementById('bm-container');
+          if (bmContainer) bmContainer.style.display = 'none';
+
+          localShaka = new shaka.Player(video);
+          
+          localShaka.addEventListener('error', (event) => {
+             console.error('Shaka Error', event.detail);
+             if (currentUrlIndex < urlCount - 1) {
+               currentUrlIndex++;
+               initPlayer(currentUrlIndex);
+             } else {
+               setErrorMsg('Stream Error: ' + (event.detail.message || 'Playback failed'));
+               setBuffering(false);
+             }
+          });
+
+          // Configure DRM for Shaka
+          const clearKeysConfig = {};
+          let hasDrmConfig = false;
+          
+          if (activeChannel.hasDrm || activeChannel.drm) {
+            let clearKeys = [];
+            if (activeChannel.drm && activeChannel.drm.key) {
+              let keyStr = activeChannel.drm.key;
+              if (keyStr.startsWith('{')) {
+                try {
+                  let parsed = JSON.parse(keyStr);
+                  if (parsed.keys) {
+                    parsed.keys.forEach(k => clearKeys.push({ kid: k.kid, key: k.k }));
+                  }
+                } catch(e) {}
+              } else if (keyStr.includes(':')) {
+                let [kidHex, keyHex] = keyStr.split(':');
+                clearKeys.push({ kid: kidHex, key: keyHex });
+              }
+            }
+
+            if (clearKeys.length > 0) {
+                clearKeys.forEach(k => {
+                    clearKeysConfig[k.kid] = k.key;
+                });
+                hasDrmConfig = true;
+            } else if (activeChannel.hasDrm) {
+               // Fetch DRM keys if needed
+               const resp = await fetch(`${window.location.origin}/api/clearkey?id=${activeChannel.id}`, { 
+                 method: 'POST', 
+                 headers: { 'Content-Type': 'application/json' },
+                 body: JSON.stringify({}) 
+               });
+               if (resp.ok) {
+                 const data = await resp.json();
+                 if (data.keys && data.keys.length > 0) {
+                   data.keys.forEach(k => {
+                      clearKeysConfig[k.kid] = k.k;
+                   });
+                   hasDrmConfig = true;
+                 }
+               }
+            }
+          }
+
+          if (hasDrmConfig) {
+             localShaka.configure({
+                drm: { clearKeys: clearKeysConfig }
+             });
+          }
+          
+          // Request filter for Shaka
+          localShaka.getNetworkingEngine().registerRequestFilter((type, request) => {
+             let target = request.uris[0];
+             if (dynamicToken) {
+                 const tokenToAppend = dynamicToken.substring(1);
+                 if (!target.includes(tokenToAppend)) {
+                     target = target + (target.includes('?') ? '&' : '?') + tokenToAppend;
+                 }
+             }
+
+             const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (target && target.includes('pages.dev')) || (target && target.startsWith('http://'));
+             if (needsProxy) {
+                 if (target && target.startsWith('http') && !target.includes('/api/proxy')) {
+                     target = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(target)}`;
+                 }
+             }
+             request.uris[0] = target;
+          });
+
+          await localShaka.load(streamUrl);
+          
+          // Get available tracks for quality menu
+          const tracks = localShaka.getVariantTracks();
+          if (tracks && tracks.length > 0) {
+            const lvls = tracks
+              .map(t => {
+                let qName = `${t.height}p`;
+                if (t.height >= 2160) qName = '4K (UHD)';
+                else if (t.height >= 1440) qName = '2K (QHD)';
+                else if (t.height >= 1080) qName = '1080p (FHD)';
+                else if (t.height >= 720) qName = '720p (HD)';
+                return { index: t.id, height: t.height, name: qName };
+              })
+              .filter((v, i, a) => a.findIndex(t => (t.height === v.height)) === i)
+              .sort((a, b) => b.height - a.height);
+            setLevels(lvls);
+          }
+          
+          setShakaInstance(localShaka);
           setBuffering(false);
+          setIsPlaying(true);
+          video.play().catch(e => console.log('Shaka Autoplay blocked:', e));
+
+        } catch (shakaErr) {
+          console.error('Error loading Shaka fallback', shakaErr);
+          if (currentUrlIndex < urlCount - 1) {
+            currentUrlIndex++;
+            initPlayer(currentUrlIndex);
+          } else {
+            setErrorMsg('Failed to load stream');
+            setBuffering(false);
+          }
         }
       }
     };
@@ -552,6 +686,9 @@ export default function PlayerPanel({
         }
         if (localHls) {
           localHls.destroy();
+        }
+        if (localShaka) {
+          localShaka.destroy();
         }
         video.removeEventListener('waiting', onWaiting);
       video.removeEventListener('playing', onPlaying);
