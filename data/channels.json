@@ -1,5 +1,37 @@
 [
     {
+        "name": "Server 1",
+        "group": "FIFA World Cup 2026",
+        "url": "https://dfr80qz435crc.cloudfront.net/MNOP/Amagi/Caze/Caze_TV_BR/1080p-vtt/index.m3u8",
+        "useProxy": false
+    },
+    {
+        "name": "Server 2",
+        "group": "FIFA World Cup 2026",
+        "url": "http://starhub.pro/live/farhat-3379/67897-913379/742610.ts",
+        "bufferless": true,
+        "useProxy": false
+    },
+    {
+        "name": "Server 3",
+        "group": "FIFA World Cup 2026",
+        "url": "http://s.rocketdns.info:8080/live/monstercable/Dq6jjknxCr/3145.ts",
+        "bufferless": true,
+        "useProxy": false
+    },
+    {
+        "name": "Server 4",
+        "group": "FIFA World Cup 2026",
+        "url": "https://cp11.adabmedia.com/hls2/sport.m3u8?nocache=1782057214460",
+        "useProxy": false
+    },
+    {
+        "name": "Server 5",
+        "group": "FIFA World Cup 2026",
+        "url": "http://rgkkw.live/live/1Aoen7elp5/IgMJ60tmAa/748388.m3u8",
+        "useProxy": false
+    },
+    {
         "name": "FIFA 4k",
         "url": "https://fastshare1.com/live/25711345/late8airline/745269.ts",
         "group": "Sports",
@@ -110,9 +142,9 @@
     {
         "name": "TSPORTS HD",
         "logo": "",
-        "url": "https://flussonic.deltainfonet.com/01_Tsports_HD/tracks-v1a1/mono.m3u8",
+        "url": "https://backend.plusbox.tv/TSports/index.fmp4.m3u8?token=aea991c2b428c0f3d988025141560b0362584d8a-15fc69f8ff10f3225dca4525d32ee67b-1784062523-1784051723",
         "group": "Sports",
-        "useProxy": true
+        "useProxy": false
     },
     {
         "name": "FANCODE FHD",
@@ -176,7 +208,7 @@
     },
     {
         "name": "Somoy TV B",
-        "url": "https://live.thebosstv.com:30443/dwlive/Somoy-TV/chunks.m3u8",
+        "url": "https://backend.plusbox.tv/SomoyTv/tracks-v1/index.fmp4.m3u8?token=3f9b4cfc19a62763ddfa29b4c6b0756737dc83c5-eed4c59e860939b4ec1b66b8a3da3d2e-1784062408-1784051608",
         "logo": "https://imglink.cc/cdn/RY7jBwPKAr.jpg",
         "group": "Somoy TV B",
         "useProxy": false
@@ -248,10 +280,10 @@
     {
         "name": "Unite 8 Sports 1 HD",
         "group": "FIFA World Cup 2026",
-        "url": "http://starhub.pro/live/farhat-3379/67897-913379/741567.ts",
+        "url": "https://backend.plusbox.tv/UNITE8Sports1/tracks-a1/index.fmp4.m3u8?token=ed084fb8a954fb2cc31bc9dfdfee3289b0a5b479-e63f3d89a6c1bd7ee00e5020f20a3d0c-1784062470-1784051670",
         "bufferless": true,
-        "useProxy": true,
-        "proxySegments": true
+        "useProxy": false,
+        "proxySegments": false
     },
     {
         "name": "beIN SPORTS 1 UHD",
