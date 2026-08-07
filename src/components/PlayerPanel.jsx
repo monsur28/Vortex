@@ -238,7 +238,7 @@ export default function PlayerPanel({
           // Apply custom loader for proxying requests if needed
           const needsProxyForSegments = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || streamUrl.includes('pages.dev') || streamUrl.includes('owrcovcrpy.gpcdn.net');
           if (needsProxyForSegments) {
-            hlsConfig.pLoader = function (config) {
+            const ProxyLoader = function (config) {
               const loader = new Hls.DefaultConfig.loader(config);
               this.abort = () => loader.abort();
               this.destroy = () => loader.destroy();
@@ -255,6 +255,9 @@ export default function PlayerPanel({
                 loader.load(context, config, callbacks);
               };
             };
+            hlsConfig.loader = ProxyLoader;
+            hlsConfig.pLoader = ProxyLoader;
+            hlsConfig.fLoader = ProxyLoader;
           }
 
           const hls = new Hls(hlsConfig);
