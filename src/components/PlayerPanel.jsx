@@ -178,7 +178,7 @@ export default function PlayerPanel({
       const isMpegTs = rawUrl && (rawUrl.endsWith('.ts') || rawUrl.includes('.ts?'));
 
       // Proxy HTTP (mixed content) or explicitly-flagged streams through our API
-      const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (rawUrl && rawUrl.includes('pages.dev')) || (rawUrl && rawUrl.startsWith('http://'));
+      const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (rawUrl && rawUrl.includes('pages.dev')) || (rawUrl && rawUrl.includes('owrcovcrpy.gpcdn.net')) || (rawUrl && rawUrl.startsWith('http://'));
       if (!activeChannel.dynamicConfig && needsProxy) {
         streamUrl = `${window.location.origin}/api/proxy?url=${encodeURIComponent(rawUrl)}&t=${Date.now()}`;
         if (activeChannel.referer) streamUrl += `&ref=${encodeURIComponent(activeChannel.referer)}`;
@@ -236,7 +236,7 @@ export default function PlayerPanel({
           const hlsConfig = {};
           
           // Apply custom loader for proxying requests if needed
-          const needsProxyForSegments = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || streamUrl.includes('pages.dev');
+          const needsProxyForSegments = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || streamUrl.includes('pages.dev') || streamUrl.includes('owrcovcrpy.gpcdn.net');
           if (needsProxyForSegments) {
             hlsConfig.pLoader = function (config) {
               const loader = new Hls.DefaultConfig.loader(config);
