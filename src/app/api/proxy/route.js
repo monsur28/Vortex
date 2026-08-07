@@ -169,6 +169,17 @@ export async function GET(request) {
       console.warn(`Proxy upstream returned ${response.status} for ${targetUrl}`);
       headers.set('X-Debug-Upstream-Status', response.status.toString());
       headers.set('X-Debug-Target-Url', targetUrl);
+      
+      let errorBody = '';
+      try {
+        errorBody = await response.text();
+      } catch (e) {
+        errorBody = 'Upstream returned an error and body could not be read.';
+      }
+      return new NextResponse(errorBody, {
+        status: response.status,
+        headers
+      });
     }
 
     const contentType = (headers.get('content-type') || '').toLowerCase();
