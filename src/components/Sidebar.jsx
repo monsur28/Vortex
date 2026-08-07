@@ -7,7 +7,6 @@ import {
 } from 'lucide-react';
 
 const categoryIcons = {
-  'fifa world cup 2026': Trophy,
   'bangla': Languages,
   'hindi': Film,
   'english': Globe,
@@ -44,8 +43,6 @@ export default function Sidebar({
   const totalCount = channels.length;
   const favCount = favorites.length;
 
-  const isWcActive = currentCategory === 'FIFA World Cup 2026' && !showFavoritesOnly;
-
   const getIcon = (groupName) => {
     const IconComponent = categoryIcons[groupName.toLowerCase()] || Tv;
     return <IconComponent size={18} />;
@@ -67,7 +64,7 @@ export default function Sidebar({
             <circle cx="50" cy="50" r="40" stroke="url(#vortexGradSidebar)" strokeWidth="12" strokeDasharray="180 60" fill="none" strokeLinecap="round" />
             <circle cx="50" cy="50" r="20" fill="url(#vortexGradSidebar)" />
           </svg>
-          <span>WORLD CUP</span>
+          <span>IPTV PLAYER</span>
         </div>
       </div>
 
@@ -76,21 +73,6 @@ export default function Sidebar({
           <span>CATEGORIES</span>
         </div>
         <ul className="categories-list" id="categories-list">
-          {/* World Cup 2026 */}
-          <li 
-            className={`category-item ${isWcActive ? 'active' : ''}`} 
-            onClick={() => onSelectCategory('FIFA World Cup 2026')}
-            style={{ 
-              borderLeft: '3px solid var(--wc-green)', 
-              background: isWcActive ? 'linear-gradient(90deg, rgba(0, 223, 137, 0.15) 0%, transparent 100%)' : 'transparent' 
-            }}
-          >
-            <div className="category-item-left" style={{ color: 'var(--wc-green)', fontWeight: 700 }}>
-              <Trophy size={18} />
-              <span>World Cup 2026</span>
-            </div>
-            <span className="category-count" style={{ backgroundColor: 'rgba(0, 223, 137, 0.15)', color: 'var(--wc-green)', fontWeight: 700 }}>LIVE</span>
-          </li>
 
           {/* All Channels */}
           <li 
@@ -138,8 +120,7 @@ export default function Sidebar({
       </nav>
 
       <div className="sidebar-footer" style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'stretch', padding: '12px 16px' }}>
-
-        <p style={{ fontSize: '10px', color: 'var(--text-muted)', textAlign: 'center', margin: '2px 0 0' }}>World Cup Player v1.0.0</p>
+        <p style={{ fontSize: '10px', color: 'var(--text-muted)', textAlign: 'center', margin: '2px 0 0' }}>IPTV Player v1.0.0</p>
       </div>
     </aside>
   );

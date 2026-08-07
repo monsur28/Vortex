@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MPD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:mpeg:dash:schema:mpd:2011" xmlns:scte35="urn:scte:scte35:2013:xml" xmlns:mspr="urn:microsoft:playready" xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 http://standards.iso.org/ittf/PubliclyAvailableStandards/MPEG-DASH_schema_files/DASH-MPD.xsd" id="201" type="dynamic" publishTime="2026-07-19T17:37:09+00:00" minimumUpdatePeriod="PT5S" availabilityStartTime="2025-11-11T19:13:08+00:00" minBufferTime="PT30S" suggestedPresentationDelay="PT2.000S" timeShiftBufferDepth="PT299.000S" profiles="urn:mpeg:dash:profile:isoff-live:2011">
+  <BaseURL>https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/fyfcwdbtmr/out/v1/02411c3777274c9eb5d572a0fb22a5b4/</BaseURL>
+  <Period start="PT21593931.561S" id="11073753" duration="PT30.433S">
+    
+    <SupplementalProperty schemeIdUri="urn:scte:dash:utc-time" value="2026-07-19T17:31:55.030Z"/>
+  </Period>
+  <Period start="PT21593961.994S" id="11073769" duration="PT30.433S">
+    
+    <SupplementalProperty schemeIdUri="urn:scte:dash:utc-time" value="2026-07-19T17:32:25.463Z"/>
+  </Period>
+  <Period start="PT21593992.428S" id="11073785" duration="PT30.433S">
+    
+    <SupplementalProperty schemeIdUri="urn:scte:dash:utc-time" value="2026-07-19T17:32:55.897Z"/>
+  </Period>
+  <Period start="PT21594022.861S" id="11073801" duration="PT30.433S">
+    
+    <SupplementalProperty schemeIdUri="urn:scte:dash:utc-time" value="2026-07-19T17:33:26.330Z"/>
+  </Period>
+  <Period start="PT21594053.294S" id="11073817" duration="PT15.200S">
+    
+    <SupplementalProperty schemeIdUri="urn:scte:dash:utc-time" value="2026-07-19T17:33:56.763Z"/>
+  </Period>
+  <Period start="PT21594068.494S" id="11073825" duration="PT15.933S">
+    <EventStream timescale="90000" schemeIdUri="urn:scte:scte35:2013:xml">
+      <Event duration="1368000">
+        <scte35:SpliceInfoSection protocolVersion="0" ptsAdjustment="8571946112" tier="4095">
+          <scte35:TimeSignal>
+            <scte35:SpliceTime ptsTime="2158935208"/>
+          </scte35:TimeSignal>
+          <scte35:SegmentationDescriptor segmentationEventId="650945" segmentationEventCancelIndicator="false" segmentationDuration="1368000" segmentationTypeId="49" segmentNum="0" segmentsExpected="0">
+            <scte35:SegmentationUpid segmentationUpidType="12" segmentationUpidLength="85" segmentationTypeId="49" segmentNum="0" segmentsExpected="0">42454C4C7B2261223A31352E32322C2270223A22372F37222C2269223A223635303834313134322F3131323937313439222C2262223A2230303A30333A30323B3138222C2263223A2243464346222C2274223A317D</scte35:SegmentationUpid>
+          </scte35:SegmentationDescriptor>
+        </scte35:SpliceInfoSection>
+      </Event>
+    </EventStream>
+    
+    <SupplementalProperty schemeIdUri="urn:scte:dash:utc-time" value="2026-07-19T17:34:11.964Z"/>
+  </Period>
+  <Period start="PT21594084.428S" id="11073833">
+    
+    <SupplementalProperty schemeIdUri="urn:scte:dash:utc-time" value="2026-07-19T17:34:27.897Z"/>
+  </Period>
+</MPD>

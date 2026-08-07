@@ -9,14 +9,12 @@ import {
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import PlayerPanel from './components/PlayerPanel';
-import WorldCupHub from './components/WorldCupHub';
 import GlobalTVHub from './components/GlobalTVHub';
 import ChannelGrid from './components/ChannelGrid';
 import DownloadApp from './components/DownloadApp';
 import { database, ref, onValue, onDisconnect, set, push } from './firebase';
 
 const categoryIcons = {
-  'fifa world cup 2026': Trophy,
   'all': Layers,
   'favorites': Star,
   'bangla': Tv,
@@ -47,7 +45,7 @@ export default function App({ initialChannels = [] }) {
       setFavorites(stored);
     }
   }, []);
-  const [currentCategory, setCurrentCategory] = useState('FIFA World Cup 2026');
+  const [currentCategory, setCurrentCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const [activeChannel, setActiveChannel] = useState(null);
@@ -70,12 +68,16 @@ export default function App({ initialChannels = [] }) {
     const unsubscribeConnected = onValue(connectedRef, (snap) => {
       if (snap.val() === true) {
         // We're connected (or reconnected)!
-        newConnectionRef = push(myConnectionsRef);
-        // When I disconnect, remove this device
-        onDisconnect(newConnectionRef).remove().then(() => {
-          // Add this device to my connections list
-          set(newConnectionRef, true);
-        });
+        try {
+          newConnectionRef = push(myConnectionsRef);
+          // When I disconnect, remove this device
+          onDisconnect(newConnectionRef).remove().then(() => {
+            // Add this device to my connections list
+            set(newConnectionRef, true).catch(e => console.warn('Firebase set error:', e.message));
+          }).catch(e => console.warn('Firebase onDisconnect error:', e.message));
+        } catch (e) {
+          console.warn('Firebase push error:', e.message);
+        }
       }
     });
 
@@ -85,13 +87,17 @@ export default function App({ initialChannels = [] }) {
       } else {
         setLiveVisitors(0);
       }
+    }, (error) => {
+      console.warn("Firebase visitors read error:", error.message);
     });
 
     return () => {
       unsubscribeConnected();
       unsubscribeVisitors();
       if (newConnectionRef) {
-        set(newConnectionRef, null); // Remove on unmount
+        try {
+          set(newConnectionRef, null).catch(() => {}); // Remove on unmount
+        } catch(e) {}
       }
     };
   }, []);
@@ -165,8 +171,6 @@ export default function App({ initialChannels = [] }) {
       );
     } else if (showFavoritesOnly) {
       filtered = filtered.filter(ch => favorites.includes(ch.name));
-    } else if (currentCategory === 'FIFA World Cup 2026') {
-      filtered = filtered.filter(ch => ch.group === 'Sports');
     } else if (currentCategory !== 'All') {
       filtered = filtered.filter(ch => ch.group === currentCategory);
     }
@@ -253,42 +257,6 @@ export default function App({ initialChannels = [] }) {
     }
   };
 
-  // Watch Live from World Cup Hub
-  const handleWatchLiveHub = (targetChannelName) => {
-    let channel = null;
-
-    if (targetChannelName === "Fox Sports 1") {
-      channel = channels.find(c => c.name === "Fox Sports (720p)") || 
-                channels.find(c => c.name.toLowerCase().includes("fox sports")) ||
-                channels.find(c => c.name.toLowerCase().includes("fox"));
-    } else if (targetChannelName === "Rai 1") {
-      channel = channels.find(c => c.name === "Rai 1 (720p)") || 
-                channels.find(c => c.name.toLowerCase().includes("rai 1")) ||
-                channels.find(c => c.name.toLowerCase().includes("rai"));
-    } else {
-      channel = channels.find(c => c.name.toLowerCase() === targetChannelName.toLowerCase()) ||
-                channels.find(c => c.name.toLowerCase().includes(targetChannelName.toLowerCase()));
-      // Fallback search with single words if not found
-      if (!channel) {
-        const words = targetChannelName.split(' ');
-        for (const word of words) {
-          if (word.length > 2 && word.toLowerCase() !== 'sports' && word.toLowerCase() !== 'hd') {
-            channel = channels.find(c => c.name.toLowerCase().includes(word.toLowerCase()));
-            if (channel) break;
-          }
-        }
-      }
-    }
-
-    if (channel) {
-      handleSelectChannel(channel);
-    } else {
-      triggerToast(`"${targetChannelName}" stream not active. Loading fallback Sports channel...`);
-      const fallback = channels.find(c => c.group === 'Sports');
-      if (fallback) handleSelectChannel(fallback);
-    }
-  };
-
   // Dynamically compute header title & channel counts
   const getHeaderTitle = () => {
     if (searchQuery.trim() !== '') {
@@ -320,8 +288,6 @@ export default function App({ initialChannels = [] }) {
   const totalCount = channels.length;
   const favCount = favorites.length;
 
-  const isWcActive = currentCategory === 'FIFA World Cup 2026' && !showFavoritesOnly;
-
   return (
     <div className={`app-container ${isTheaterMode ? 'theater-mode' : ''}`}>
       {/* Sidebar Desktop */}
@@ -350,14 +316,6 @@ export default function App({ initialChannels = [] }) {
 
         {/* Mobile horizontal categories bar */}
         <div className="mobile-categories-bar">
-          <div 
-            className={`category-chip ${isWcActive ? 'active' : ''}`}
-            onClick={() => handleSelectCategory('FIFA World Cup 2026')}
-            style={{ borderColor: 'rgba(0, 223, 137, 0.4)' }}
-          >
-            <Trophy size={14} style={{ color: 'var(--wc-green)', marginRight: '4px' }} />
-            <span style={{ color: 'var(--wc-green)', fontWeight: 600 }}>World Cup</span>
-          </div>
           <div 
             className={`category-chip ${currentCategory === 'All' && !showFavoritesOnly ? 'active' : ''}`}
             onClick={() => handleSelectCategory('All')}
@@ -418,14 +376,6 @@ export default function App({ initialChannels = [] }) {
               <DownloadApp />
             ) : (
               <>
-                {/* World Cup Hub */}
-                {currentCategory === 'FIFA World Cup 2026' && searchQuery.trim() === '' && !showFavoritesOnly && (
-                  <WorldCupHub 
-                    isPlayerOpen={activeChannel !== null}
-                    onWatchLive={handleWatchLiveHub}
-                  />
-                )}
-
                 {/* Xtream TV Hub */}
                 
 
@@ -453,8 +403,8 @@ export default function App({ initialChannels = [] }) {
       {/* Mobile Bottom Navigation */}
       <nav className="mobile-bottom-nav">
         <button 
-          className={`nav-item ${currentCategory === 'FIFA World Cup 2026' && !showFavoritesOnly ? 'active' : ''}`}
-          onClick={() => handleSelectCategory('FIFA World Cup 2026')}
+          className={`nav-item ${currentCategory === 'All' && !showFavoritesOnly ? 'active' : ''}`}
+          onClick={() => handleSelectCategory('All')}
         >
           <Home size={20} />
           <span>Home</span>
@@ -495,16 +445,6 @@ export default function App({ initialChannels = [] }) {
           </div>
           <div className="bottom-sheet-body">
             <ul className="categories-list-mobile">
-              <li 
-                className={`category-item ${isWcActive ? 'active' : ''}`}
-                onClick={() => handleSelectCategory('FIFA World Cup 2026')}
-              >
-                <div className="category-item-left" style={{ color: 'var(--wc-green)', fontWeight: 700 }}>
-                  <Trophy size={18} />
-                  <span>World Cup 2026</span>
-                </div>
-                <span className="category-count" style={{ backgroundColor: 'rgba(0, 223, 137, 0.15)', color: 'var(--wc-green)', fontWeight: 700 }}>LIVE</span>
-              </li>
               <li 
                 className={`category-item ${currentCategory === 'All' && !showFavoritesOnly ? 'active' : ''}`}
                 onClick={() => handleSelectCategory('All')}

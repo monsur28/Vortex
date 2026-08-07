@@ -1,11 +1,11 @@
 "use client";
-import React, { useRef, useEffect, useState } from 'react';
-import { X, Play, Pause, Square, Volume2, VolumeX, ExternalLink, Monitor, Maximize, WifiOff, Settings, Check, Star, ChevronLeft, ChevronRight, RotateCcw, RotateCw } from 'lucide-react';
+import { useRef, useEffect, useState } from 'react';
+import { X, Play, Square, Volume2, VolumeX, Monitor, Maximize, WifiOff, Star, Settings, Check } from 'lucide-react';
 
-export default function PlayerPanel({ 
-  activeChannel, 
-  favorites, 
-  onToggleFavorite, 
+export default function PlayerPanel({
+  activeChannel,
+  favorites,
+  onToggleFavorite,
   onClose,
   isTheaterMode,
   onToggleTheaterMode,
@@ -14,21 +14,20 @@ export default function PlayerPanel({
 }) {
   const videoRef = useRef(null);
   const videoWrapperRef = useRef(null);
-  const destroyPromiseRef = useRef(Promise.resolve());
+  const hlsRef = useRef(null);
+  const mpegtsRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(1);
   const [buffering, setBuffering] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  const [bitmovinInstance, setBitmovinInstance] = useState(null);
-  const [mpegtsInstance, setMpegtsInstance] = useState(null);
-  const [shakaInstance, setShakaInstance] = useState(null);
+  const [showControls, setShowControls] = useState(true);
+  const [delaySeconds, setDelaySeconds] = useState(0);
   const [levels, setLevels] = useState([]);
   const [currentLevel, setCurrentLevel] = useState(-1); // -1 means Auto
   const [autoHeight, setAutoHeight] = useState('');
   const [showQualityMenu, setShowQualityMenu] = useState(false);
-  const [showControls, setShowControls] = useState(true);
-  const [delaySeconds, setDelaySeconds] = useState(0);
+  const [isDirectSource, setIsDirectSource] = useState(false);
   const controlsTimeoutRef = useRef(null);
 
   const resetControlsTimeout = () => {
@@ -48,16 +47,10 @@ export default function PlayerPanel({
     };
   }, [isPlaying]);
 
+  // Track live delay from the native seekable range
   useEffect(() => {
     const interval = setInterval(() => {
-      if (bitmovinInstance && bitmovinInstance.isLive && bitmovinInstance.isLive()) {
-        const shift = bitmovinInstance.getTimeShift();
-        if (shift < -15) {
-          setDelaySeconds(Math.abs(Math.round(shift)));
-        } else {
-          setDelaySeconds(0);
-        }
-      } else if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
+      if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
         const seekableEnd = videoRef.current.seekable.end(videoRef.current.seekable.length - 1);
         const current = videoRef.current.currentTime;
         const delay = Math.round(seekableEnd - current);
@@ -69,26 +62,27 @@ export default function PlayerPanel({
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [bitmovinInstance]);
+  }, []);
 
-  // Helper for converting hex DRM keys to base64url
-  const hexToBase64Url = (hexString) => {
-    if (hexString.length % 2 !== 0) return hexString;
-    try {
-      const hexArray = hexString.match(/.{1,2}/g).map(byte => parseInt(byte, 16));
-      const bytes = new Uint8Array(hexArray);
-      let binaryString = '';
-      for (let i = 0; i < bytes.length; i++) {
-        binaryString += String.fromCharCode(bytes[i]);
-      }
-      const base64 = btoa(binaryString);
-      return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-    } catch(e) {
-      return hexString;
-    }
+
+
+  const buildQualityLevels = (tracks) => {
+    if (!tracks || tracks.length === 0) return [];
+    return tracks
+      .filter(t => t.height)
+      .map(t => {
+        let name = `${t.height}p`;
+        if (t.height >= 2160) name = '4K (UHD)';
+        else if (t.height >= 1440) name = '2K (QHD)';
+        else if (t.height >= 1080) name = '1080p (FHD)';
+        else if (t.height >= 720) name = '720p (HD)';
+        return { index: t.id, height: t.height, name };
+      })
+      .filter((v, i, a) => a.findIndex(t => t.height === v.height) === i)
+      .sort((a, b) => b.height - a.height);
   };
 
-  // Initialize and attach Shaka Player
+  // Initialize playback with HLS.js (HLS) or mpegts.js (raw .ts)
   useEffect(() => {
     if (!activeChannel) return;
 
@@ -100,6 +94,7 @@ export default function PlayerPanel({
     setCurrentLevel(-1);
     setAutoHeight('');
     setShowQualityMenu(false);
+    setIsDirectSource(false);
 
     // If it's a popup/iframe channel, just stop buffering and do nothing else
     if (activeChannel.iframeUrl) {
@@ -111,43 +106,43 @@ export default function PlayerPanel({
     const video = videoRef.current;
     if (!video) return;
 
-    if (activeChannel.useNativeVideo) {
-      setBuffering(false);
-      setIsPlaying(true);
-      
-      const onPlaying = () => setIsPlaying(true);
-      const onPause = () => setIsPlaying(false);
-      
-      video.addEventListener('playing', onPlaying);
-      video.addEventListener('pause', onPause);
-      
-      return () => {
-        video.removeEventListener('playing', onPlaying);
-        video.removeEventListener('pause', onPause);
-      };
-    }
-
     let isCancelled = false;
-    let newBitmovin = null;
-    let localMpegts = null;
-    let localHls = null;
-    let localShaka = null;
+    let lagTimeout = null;
     let currentUrlIndex = 0;
     const urlCount = activeChannel.urlCount || (Array.isArray(activeChannel.url) ? activeChannel.url.length : 1);
 
-    const initPlayer = async (index, retryCount = 0) => {
-      // Wait for any previous player to finish destroying before creating a new one
-      await destroyPromiseRef.current;
-      if (isCancelled || !videoRef.current) return; // Component unmounted or channel switched
-
-      // Reset video element to clear any previous MediaErrors
-      if (videoRef.current) {
-        videoRef.current.removeAttribute('src');
-        videoRef.current.load();
+    const teardown = async () => {
+      if (mpegtsRef.current) {
+        try { mpegtsRef.current.destroy(); } catch (e) {}
+        mpegtsRef.current = null;
       }
+      if (hlsRef.current) {
+        try { hlsRef.current.destroy(); } catch (e) {}
+        hlsRef.current = null;
+      }
+    };
+
+    const advanceOrFail = (message) => {
+      if (isCancelled) return;
+      if (currentUrlIndex < urlCount - 1) {
+        currentUrlIndex++;
+        loadSource(currentUrlIndex);
+      } else {
+        setErrorMsg(message || 'Failed to load stream');
+        setBuffering(false);
+      }
+    };
+
+    const loadSource = async (index, retryCount = 0) => {
+      await teardown();
+      if (isCancelled || !videoRef.current) return;
+
+      // Clear any previous source/MediaError
+      video.removeAttribute('src');
+      video.load();
 
       let rawUrl = Array.isArray(activeChannel.url) ? activeChannel.url[index] : activeChannel.url;
-      
+
       // Interpolate Xtream variables if they exist in the URL
       if (rawUrl && typeof rawUrl === 'string') {
         rawUrl = rawUrl
@@ -157,504 +152,187 @@ export default function PlayerPanel({
       }
 
       let streamUrl = rawUrl;
-      let dynamicToken = null;
 
+      // Resolve dynamic-config streams to a concrete URL
       if (activeChannel.dynamicConfig) {
         setBuffering(true);
         try {
           const res = await fetch(activeChannel.dynamicConfig);
-          if (!res.ok) {
-            throw new Error(`API returned ${res.status}`);
-          }
+          if (!res.ok) throw new Error(`API returned ${res.status}`);
           const data = await res.json();
           if (data.url) {
-            dynamicToken = data.token;
             streamUrl = data.url + (data.token || '');
             rawUrl = streamUrl;
-            if (data.drmKey) {
-              activeChannel.drm = { key: data.drmKey };
-            }
+            if (data.drmKey) activeChannel.drm = { key: data.drmKey };
           } else {
             throw new Error('No URL returned from dynamic config');
           }
         } catch (e) {
           console.error("Failed to fetch dynamic config", e);
-          setErrorMsg('Failed to load stream configuration (404/500). Please ensure the Next.js dev server is restarted so it picks up the new API route.');
+          setErrorMsg('Failed to load stream configuration.');
           setBuffering(false);
           return;
         }
       }
-      
+
       const isMpegTs = rawUrl && (rawUrl.endsWith('.ts') || rawUrl.includes('.ts?'));
-      
-      // For MPEG-TS, it's a single file stream.
-      // We only proxy it if it's HTTP, to avoid Mixed Content errors. If it's HTTPS, we can play it directly!
+
+      // Proxy HTTP (mixed content) or explicitly-flagged streams through our API
       const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (rawUrl && rawUrl.includes('pages.dev')) || (rawUrl && rawUrl.startsWith('http://'));
-      // Skip this early proxy rewrite for dynamic streams because Bitmovin handles it in preprocessHttpRequest
       if (!activeChannel.dynamicConfig && needsProxy) {
-        streamUrl = `${window.location.origin}/api/proxy?id=${activeChannel.id}&idx=${index}&url=${encodeURIComponent(rawUrl)}&t=${Date.now()}`;
+        streamUrl = `${window.location.origin}/api/proxy?url=${encodeURIComponent(rawUrl)}&t=${Date.now()}`;
+        if (activeChannel.referer) streamUrl += `&ref=${encodeURIComponent(activeChannel.referer)}`;
+        if (activeChannel.origin) streamUrl += `&origin=${encodeURIComponent(activeChannel.origin)}`;
+        if (activeChannel['user-agent']) streamUrl += `&ua=${encodeURIComponent(activeChannel['user-agent'])}`;
+        if (activeChannel.id !== undefined) streamUrl += `&id=${activeChannel.id}&idx=${index}`;
       }
 
-      if (newBitmovin) {
-        await newBitmovin.destroy();
-        newBitmovin = null;
-      }
-      if (localMpegts) {
-        localMpegts.destroy();
-        localMpegts = null;
-      }
-      if (localHls) {
-        localHls.destroy();
-        localHls = null;
-      }
-      if (localShaka) {
-        localShaka.destroy();
-        localShaka = null;
-      }
+      if (isCancelled) return;
 
       try {
-        // If it's a raw .ts stream (like Xtream Codes), use mpegts.js instead of Shaka
-        if (rawUrl && (rawUrl.endsWith('.ts') || rawUrl.includes('.ts?'))) {
-          const mpegts = await import('mpegts.js');
-          if (mpegts.default.LoggingControl) {
-            mpegts.default.LoggingControl.enableAll = false;
-            mpegts.default.LoggingControl.enableDebug = false;
-            mpegts.default.LoggingControl.enableInfo = false;
-            mpegts.default.LoggingControl.enableWarn = false;
+        // --- Raw MPEG-TS (Xtream) streams: mpegts.js ---
+        if (isMpegTs) {
+          const mpegtsModule = await import('mpegts.js');
+          const mpegts = mpegtsModule.default || mpegtsModule;
+          if (mpegts.LoggingControl) {
+            mpegts.LoggingControl.enableAll = false;
+            mpegts.LoggingControl.enableDebug = false;
+            mpegts.LoggingControl.enableInfo = false;
+            mpegts.LoggingControl.enableWarn = false;
           }
-          if (mpegts.default.getFeatureList().mseLivePlayback) {
-            const player = mpegts.default.createPlayer({
-              type: 'mse',
-              isLive: true,
-              url: streamUrl
-            });
-            player.attachMediaElement(video);
-            player.load();
-            player.play().catch(e => console.log('MPEGTS Autoplay blocked:', e));
-            localMpegts = player;
-            setMpegtsInstance(player);
-            setBuffering(false);
-            
-            player.on(mpegts.default.Events.ERROR, (errorType, errorDetail, errorInfo) => {
-              console.error('MPEG-TS Error', errorType, errorDetail, errorInfo);
-              if (retryCount < 5) {
-                console.log(`Stream dropped or MSE Error. Reconnecting... (Attempt ${retryCount + 1})`);
-                setBuffering(true);
-                setTimeout(() => {
-                  if (!isCancelled) initPlayer(index, retryCount + 1);
-                }, 3000);
-              } else if (currentUrlIndex < urlCount - 1) {
-                currentUrlIndex++;
-                initPlayer(currentUrlIndex, 0);
-              } else {
-                setErrorMsg('Stream Error: ' + errorDetail);
-                setBuffering(false);
-              }
-            });
-          } else {
+          if (isCancelled) return;
+          if (!mpegts.getFeatureList().mseLivePlayback) {
             setErrorMsg('MPEG-TS playback is not supported in this browser.');
             setBuffering(false);
+            return;
           }
-          return; // Stop here, don't init Shaka
-        }
-
-        // If it's a standard HLS stream without ClearKey DRM, use hls.js
-        if (rawUrl && (rawUrl.endsWith('.m3u8') || rawUrl.includes('.m3u8?')) && !activeChannel.clearkeys && !activeChannel.drm) {
-          const HlsModule = await import('hls.js');
-          const Hls = HlsModule.default || HlsModule;
-          
-          if (Hls.isSupported()) {
-            localHls = new Hls({
-              debug: false,
-              enableWorker: true,
-              capLevelToPlayerSize: true,
-              abrEwmaDefaultEstimate: 500000,
-              maxBufferLength: 15
-            });
-            localHls.loadSource(streamUrl);
-            localHls.attachMedia(video);
-            
-            localHls.on(Hls.Events.MANIFEST_PARSED, function() {
-              video.play().catch(e => console.log('HLS Autoplay prevented:', e));
-              setBuffering(false);
-            });
-            
-            localHls.on(Hls.Events.ERROR, function(event, data) {
-              if (data.fatal) {
-                switch (data.type) {
-                  case Hls.ErrorTypes.NETWORK_ERROR:
-                    localHls.startLoad();
-                    break;
-                  case Hls.ErrorTypes.MEDIA_ERROR:
-                    localHls.recoverMediaError();
-                    break;
-                  default:
-                    localHls.destroy();
-                    setErrorMsg('HLS Fatal Error: ' + data.details);
-                    break;
-                }
-              }
-            });
-          } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            // Safari / Native HLS
-            video.src = streamUrl;
-            video.addEventListener('loadedmetadata', function() {
-              video.play().catch(e => console.log(e));
-              setBuffering(false);
-            });
-          } else {
-            setErrorMsg('HLS playback is not supported in this browser.');
-            setBuffering(false);
-          }
-          return; // Stop here
-        }
-
-        const bitmovinModule = await import('bitmovin-player');
-        const bitmovin = bitmovinModule.default || bitmovinModule;
-        const Player = bitmovin.Player || bitmovinModule.Player;
-        const PlayerEvent = bitmovin.PlayerEvent || bitmovinModule.PlayerEvent;
-        const HttpRequestType = bitmovin.HttpRequestType || bitmovinModule.HttpRequestType;
-
-        const config = {
-          key: 'a68001f0-1a8c-4347-b14e-d0a9481165bd',
-          playback: {
-            autoplay: true,
-            muted: isMuted,
-          },
-          ui: false,
-          tweaks: {
-            app_id: 'com.iptv.app',
-            startup_threshold: 4, // Wait for 4s of video to buffer before playing
-            max_buffer_level: 60 // Allow up to 60s of buffer ahead
-          },
-          buffer: {
-            video: {
-              forwardduration: 40,
-              backwardduration: 10
-            },
-            audio: {
-              forwardduration: 40,
-              backwardduration: 10
-            }
-          },
-          adaptation: {
-            desktop: {
-              startupBitrate: 800000 // Start at a low bitrate to instantly load chunks
-            },
-            mobile: {
-              startupBitrate: 500000
-            }
-          },
-          network: {
-            preprocessHttpRequest: (type, request) => {
-                let target = request.url;
-                
-                if (dynamicToken) {
-                    const tokenToAppend = dynamicToken.substring(1);
-                    if (!target.includes(tokenToAppend)) {
-                        target = target + (target.includes('?') ? '&' : '?') + tokenToAppend;
-                    }
-                }
-
-                const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (target && target.includes('pages.dev')) || (target && target.startsWith('http://'));
-                if (needsProxy) {
-                    if (target && target.startsWith('http') && !target.includes('/api/proxy')) {
-                        target = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(target)}`;
-                    }
-                }
-
-                request.url = target;
-                return Promise.resolve(request);
-            }
-          }
-        };
-
-        if (activeChannel.bufferless) {
-            config.live = { lowLatency: true };
-            config.tweaks = { ...config.tweaks, max_buffer_level: 5 };
-        }
-
-        let container = document.getElementById('bm-container');
-        if (!container) {
-          container = document.createElement('div');
-          container.id = 'bm-container';
-          container.style.position = 'absolute';
-          container.style.inset = '0';
-          container.style.zIndex = '0';
-          videoRef.current.parentNode.insertBefore(container, videoRef.current);
-          videoRef.current.style.display = 'none';
-        }
-
-        newBitmovin = new Player(container, config);
-
-        const source = {
-            title: activeChannel.name
-        };
-
-        if (activeChannel.clearkeys) {
-            source.drm = {
-                clearkey: activeChannel.clearkeys
-            };
-        }
-        
-        if (streamUrl.includes('.mpd')) {
-            source.dash = streamUrl;
-        } else if (streamUrl.includes('.m3u8')) {
-            source.hls = streamUrl;
-        } else {
-            source.hls = streamUrl; 
-        }
-
-        if (activeChannel.hasDrm || activeChannel.drm) {
-          try {
-            let clearKeys = [];
-            
-            // Extract keys directly from the channel object to avoid a network request
-            if (activeChannel.drm && activeChannel.drm.key) {
-              let keyStr = activeChannel.drm.key;
-              if (keyStr.startsWith('{')) {
-                try {
-                  let parsed = JSON.parse(keyStr);
-                  if (parsed.keys) {
-                    parsed.keys.forEach(k => clearKeys.push({ kid: k.kid, key: k.k }));
-                  }
-                } catch(e) {}
-              } else if (keyStr.includes(':')) {
-                let [kidHex, keyHex] = keyStr.split(':');
-                clearKeys.push({ kid: kidHex, key: keyHex });
-              }
-            }
-
-            if (clearKeys.length > 0) {
-              source.drm = {
-                clearkey: clearKeys
-              };
-            } else if (activeChannel.hasDrm) {
-              // Fallback network request only if embedded keys are missing
-              const resp = await fetch(`${window.location.origin}/api/clearkey?id=${activeChannel.id}`, { 
-                method: 'POST', 
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({}) 
-              });
-              if (resp.ok) {
-                const data = await resp.json();
-                if (data.keys && data.keys.length > 0) {
-                  source.drm = {
-                      clearkey: data.keys.map(k => ({
-                          kid: k.kid,
-                          key: k.k
-                      }))
-                  };
-                }
-              }
-            }
-          } catch(e) {
-            console.error('Failed to parse DRM keys', e);
-          }
-        }
-
-        newBitmovin.on(PlayerEvent.Error, (event) => {
-          console.error('Bitmovin Error', event);
-          if (currentUrlIndex < urlCount - 1) {
-            currentUrlIndex++;
-            initPlayer(currentUrlIndex);
-          } else {
-            setErrorMsg('Stream Error: ' + (event.message || 'Playback failed'));
-            setBuffering(false);
-          }
-        });
-
-        // Request filter has been moved to config.network.preprocessHttpRequest
-        newBitmovin.on(PlayerEvent.VideoPlaybackQualityChanged, (e) => {
-           if (e.targetQuality && e.targetQuality.height) {
-              let hName = e.targetQuality.height + 'p';
-              if (e.targetQuality.height >= 2160) hName = '4K';
-              else if (e.targetQuality.height >= 1440) hName = '2K';
-              setAutoHeight(hName);
-           }
-        });
-
-        await newBitmovin.load(source);
-        
-        setBuffering(false);
-        setIsPlaying(true);
-        newBitmovin.play().catch(e => {
-            console.log('Autoplay blocked:', e);
-            setIsPlaying(false);
-        });
-
-        const tracks = newBitmovin.getAvailableVideoQualities();
-        if (tracks && tracks.length > 0) {
-          const lvls = tracks
-            .map(t => {
-              let qName = `${t.height}p`;
-              if (t.height >= 2160) qName = '4K (UHD)';
-              else if (t.height >= 1440) qName = '2K (QHD)';
-              else if (t.height >= 1080) qName = '1080p (FHD)';
-              else if (t.height >= 720) qName = '720p (HD)';
-              return {
-                index: t.id,
-                height: t.height,
-                name: qName
-              };
-            })
-            .filter((v, i, a) => a.findIndex(t => (t.height === v.height)) === i)
-            .sort((a, b) => b.height - a.height);
-          setLevels(lvls);
-        }
-
-        setBitmovinInstance(newBitmovin);
-
-      } catch (err) {
-        console.error('Error loading bitmovin', err);
-        
-        // Fallback to Shaka Player
-        try {
-          console.log('Falling back to Shaka Player...');
-          const shakaModule = await import('shaka-player');
-          const shaka = shakaModule.default || shakaModule;
-          
-          if (!shaka.Player.isBrowserSupported()) {
-            throw new Error('Shaka Player is not supported in this browser.');
-          }
-
-          // Restore video element visibility if Bitmovin hid it
-          if (videoRef.current) {
-            videoRef.current.style.display = 'block';
-          }
-          const bmContainer = document.getElementById('bm-container');
-          if (bmContainer) bmContainer.style.display = 'none';
-
-          localShaka = new shaka.Player(video);
-          
-          localShaka.addEventListener('error', (event) => {
-             console.error('Shaka Error', event.detail);
-             if (currentUrlIndex < urlCount - 1) {
-               currentUrlIndex++;
-               initPlayer(currentUrlIndex);
-             } else {
-               setErrorMsg('Stream Error: ' + (event.detail.message || 'Playback failed'));
-               setBuffering(false);
-             }
-          });
-
-          // Configure DRM for Shaka
-          const clearKeysConfig = {};
-          let hasDrmConfig = false;
-          
-          if (activeChannel.hasDrm || activeChannel.drm) {
-            let clearKeys = [];
-            if (activeChannel.drm && activeChannel.drm.key) {
-              let keyStr = activeChannel.drm.key;
-              if (keyStr.startsWith('{')) {
-                try {
-                  let parsed = JSON.parse(keyStr);
-                  if (parsed.keys) {
-                    parsed.keys.forEach(k => clearKeys.push({ kid: k.kid, key: k.k }));
-                  }
-                } catch(e) {}
-              } else if (keyStr.includes(':')) {
-                let [kidHex, keyHex] = keyStr.split(':');
-                clearKeys.push({ kid: kidHex, key: keyHex });
-              }
-            }
-
-            if (clearKeys.length > 0) {
-                clearKeys.forEach(k => {
-                    clearKeysConfig[k.kid] = k.key;
-                });
-                hasDrmConfig = true;
-            } else if (activeChannel.hasDrm) {
-               // Fetch DRM keys if needed
-               const resp = await fetch(`${window.location.origin}/api/clearkey?id=${activeChannel.id}`, { 
-                 method: 'POST', 
-                 headers: { 'Content-Type': 'application/json' },
-                 body: JSON.stringify({}) 
-               });
-               if (resp.ok) {
-                 const data = await resp.json();
-                 if (data.keys && data.keys.length > 0) {
-                   data.keys.forEach(k => {
-                      clearKeysConfig[k.kid] = k.k;
-                   });
-                   hasDrmConfig = true;
-                 }
-               }
-            }
-          }
-
-          if (hasDrmConfig) {
-             localShaka.configure({
-                drm: { clearKeys: clearKeysConfig }
-             });
-          }
-          
-          // Request filter for Shaka
-          localShaka.getNetworkingEngine().registerRequestFilter((type, request) => {
-             let target = request.uris[0];
-             if (dynamicToken) {
-                 const tokenToAppend = dynamicToken.substring(1);
-                 if (!target.includes(tokenToAppend)) {
-                     target = target + (target.includes('?') ? '&' : '?') + tokenToAppend;
-                 }
-             }
-
-             const needsProxy = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || (target && target.includes('pages.dev')) || (target && target.startsWith('http://'));
-             if (needsProxy) {
-                 if (target && target.startsWith('http') && !target.includes('/api/proxy')) {
-                     target = `${window.location.origin}/api/proxy?id=${activeChannel.id}&url=${encodeURIComponent(target)}`;
-                 }
-             }
-             request.uris[0] = target;
-          });
-
-          await localShaka.load(streamUrl);
-          
-          // Get available tracks for quality menu
-          const tracks = localShaka.getVariantTracks();
-          if (tracks && tracks.length > 0) {
-            const lvls = tracks
-              .map(t => {
-                let qName = `${t.height}p`;
-                if (t.height >= 2160) qName = '4K (UHD)';
-                else if (t.height >= 1440) qName = '2K (QHD)';
-                else if (t.height >= 1080) qName = '1080p (FHD)';
-                else if (t.height >= 720) qName = '720p (HD)';
-                return { index: t.id, height: t.height, name: qName };
-              })
-              .filter((v, i, a) => a.findIndex(t => (t.height === v.height)) === i)
-              .sort((a, b) => b.height - a.height);
-            setLevels(lvls);
-          }
-          
-          setShakaInstance(localShaka);
+          const player = mpegts.createPlayer({ type: 'mse', isLive: true, url: streamUrl });
+          player.attachMediaElement(video);
+          player.load();
+          player.play().catch(e => console.log('MPEGTS autoplay blocked:', e));
+          mpegtsRef.current = player;
+          setIsDirectSource(true);
           setBuffering(false);
-          setIsPlaying(true);
-          video.play().catch(e => console.log('Shaka Autoplay blocked:', e));
 
-        } catch (shakaErr) {
-          console.error('Error loading Shaka fallback', shakaErr);
-          if (currentUrlIndex < urlCount - 1) {
-            currentUrlIndex++;
-            initPlayer(currentUrlIndex);
-          } else {
-            setErrorMsg('Failed to load stream');
-            setBuffering(false);
-          }
+          player.on(mpegts.Events.ERROR, (errType, errDetail) => {
+            console.error('MPEG-TS Error', errType, errDetail);
+            if (isCancelled) return;
+            if (retryCount < 5) {
+              setBuffering(true);
+              setTimeout(() => { if (!isCancelled) loadSource(index, retryCount + 1); }, 3000);
+            } else {
+              advanceOrFail('Stream Error: ' + errDetail);
+            }
+          });
+          return;
         }
+
+        // --- HLS: HLS.js ---
+        const hlsModule = await import('hls.js');
+        const Hls = hlsModule.default || hlsModule;
+        if (isCancelled) return;
+        
+        if (Hls.isSupported()) {
+          const hlsConfig = {};
+          
+          // Apply custom loader for proxying requests if needed
+          const needsProxyForSegments = activeChannel.proxy || activeChannel.useProxy || activeChannel.proxySegments || streamUrl.includes('pages.dev');
+          if (needsProxyForSegments) {
+            hlsConfig.pLoader = function (config) {
+              const loader = new Hls.DefaultConfig.loader(config);
+              this.abort = () => loader.abort();
+              this.destroy = () => loader.destroy();
+              this.load = (context, config, callbacks) => {
+                let target = context.url;
+                if (target && target.startsWith('http') && !target.includes('/api/proxy')) {
+                  target = `${window.location.origin}/api/proxy?url=${encodeURIComponent(target)}`;
+                  if (activeChannel.referer) target += `&ref=${encodeURIComponent(activeChannel.referer)}`;
+                  if (activeChannel.origin) target += `&origin=${encodeURIComponent(activeChannel.origin)}`;
+                  if (activeChannel['user-agent']) target += `&ua=${encodeURIComponent(activeChannel['user-agent'])}`;
+                  if (activeChannel.id !== undefined) target += `&id=${activeChannel.id}`;
+                  context.url = target;
+                }
+                loader.load(context, config, callbacks);
+              };
+            };
+          }
+
+          const hls = new Hls(hlsConfig);
+          hlsRef.current = hls;
+
+          hls.loadSource(streamUrl);
+          hls.attachMedia(video);
+
+          hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+            if (isCancelled) return;
+            const hlsLevels = data.levels.map((l, idx) => ({ id: idx, height: l.height }));
+            setLevels(buildQualityLevels(hlsLevels));
+            setBuffering(false);
+            setIsPlaying(true);
+            video.play().catch(e => console.log('Hls autoplay blocked:', e));
+          });
+
+          hls.on(Hls.Events.LEVEL_SWITCHED, function (event, data) {
+            const level = hls.levels[data.level];
+            if (level && level.height) {
+              let h = level.height + 'p';
+              if (level.height >= 2160) h = '4K';
+              else if (level.height >= 1440) h = '2K';
+              setAutoHeight(h);
+            }
+          });
+
+          hls.on(Hls.Events.ERROR, function (event, data) {
+            if (data.fatal) {
+              switch (data.type) {
+                case Hls.ErrorTypes.NETWORK_ERROR:
+                  console.error('fatal network error encountered, try to recover');
+                  hls.startLoad();
+                  break;
+                case Hls.ErrorTypes.MEDIA_ERROR:
+                  console.error('fatal media error encountered, try to recover');
+                  hls.recoverMediaError();
+                  break;
+                default:
+                  hls.destroy();
+                  advanceOrFail('Stream Error: ' + data.details);
+                  break;
+              }
+            } else {
+               console.warn('HLS Non-fatal error:', data);
+            }
+          });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          // Native HLS support (Safari)
+          video.src = streamUrl;
+          video.addEventListener('loadedmetadata', function () {
+            if (isCancelled) return;
+            setBuffering(false);
+            setIsPlaying(true);
+            video.play().catch(e => console.log('Native autoplay blocked:', e));
+          });
+          video.addEventListener('error', function () {
+            advanceOrFail('Stream Error: Native playback failed');
+          });
+        } else {
+          setErrorMsg('This browser does not support HLS.');
+          setBuffering(false);
+          return;
+        }
+      } catch (err) {
+        console.error('Playback init failed', err);
+        advanceOrFail('Failed to load stream');
       }
     };
 
-    initPlayer(0);
-
-    let lagTimeout = null;
+    loadSource(0);
 
     const onWaiting = () => {
       setBuffering(true);
       if (urlCount > 1) {
         lagTimeout = setTimeout(() => {
           currentUrlIndex = (currentUrlIndex + 1) % urlCount;
-          initPlayer(currentUrlIndex);
+          loadSource(currentUrlIndex);
         }, 6000);
       }
     };
@@ -678,35 +356,22 @@ export default function PlayerPanel({
     return () => {
       isCancelled = true;
       if (lagTimeout) clearTimeout(lagTimeout);
-      if (newBitmovin) {
-        destroyPromiseRef.current = newBitmovin.destroy().catch(() => {});
-      }
-        if (localMpegts) {
-          localMpegts.destroy();
-        }
-        if (localHls) {
-          localHls.destroy();
-        }
-        if (localShaka) {
-          localShaka.destroy();
-        }
-        video.removeEventListener('waiting', onWaiting);
+      video.removeEventListener('waiting', onWaiting);
       video.removeEventListener('playing', onPlaying);
       video.removeEventListener('pause', onPause);
+      teardown();
+      video.removeAttribute('src');
+      video.load();
     };
   }, [activeChannel]);
 
   // Sync volume state to video ref
   useEffect(() => {
-    if (bitmovinInstance) {
-      bitmovinInstance.setVolume(volume * 100);
-      if (isMuted) bitmovinInstance.mute(); else bitmovinInstance.unmute();
-    }
     if (videoRef.current) {
       videoRef.current.volume = volume;
       videoRef.current.muted = isMuted;
     }
-  }, [volume, isMuted, bitmovinInstance]);
+  }, [volume, isMuted]);
 
   // Hotkeys handling
   useEffect(() => {
@@ -731,16 +396,6 @@ export default function PlayerPanel({
   if (!activeChannel) return null;
 
   const togglePlay = () => {
-    if (bitmovinInstance) {
-      if (isPlaying) {
-        bitmovinInstance.pause();
-        setIsPlaying(false);
-      } else {
-        bitmovinInstance.play();
-        setIsPlaying(true);
-      }
-      return;
-    }
     const video = videoRef.current;
     if (!video) return;
     if (isPlaying) {
@@ -811,33 +466,32 @@ export default function PlayerPanel({
     }
   };
 
-  const skipForward = (e) => {
-    if (e) e.stopPropagation();
-    if (bitmovinInstance) { bitmovinInstance.seek(bitmovinInstance.getCurrentTime() + 10); return; }
-    if (videoRef.current) videoRef.current.currentTime += 10;
-  };
-
-  const skipBackward = (e) => {
-    if (e) e.stopPropagation();
-    if (bitmovinInstance) { bitmovinInstance.seek(Math.max(0, bitmovinInstance.getCurrentTime() - 10)); return; }
-    if (videoRef.current) videoRef.current.currentTime -= 10;
-  };
-
   const jumpToLive = () => {
-    if (bitmovinInstance && bitmovinInstance.isLive && bitmovinInstance.isLive()) {
-      bitmovinInstance.timeShift(0);
-    } else if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
+    if (videoRef.current && videoRef.current.seekable && videoRef.current.seekable.length > 0) {
       videoRef.current.currentTime = videoRef.current.seekable.end(videoRef.current.seekable.length - 1);
     }
     setDelaySeconds(0);
     if (!isPlaying) togglePlay();
   };
 
+  const selectQuality = (levelIndex) => {
+    const hls = hlsRef.current;
+    if (hls) {
+      if (levelIndex === -1) {
+        hls.currentLevel = -1; // Auto
+      } else {
+        hls.currentLevel = levelIndex;
+      }
+      setCurrentLevel(levelIndex);
+    }
+    setShowQualityMenu(false);
+  };
+
   const isFav = favorites.includes(activeChannel.name);
 
   return (
     <div className="fullscreen-player-overlay" id="player-panel">
-      <div 
+      <div
         className={`player-container ${!showControls && isPlaying ? 'controls-hidden' : ''}`}
         onMouseMove={resetControlsTimeout}
         onClick={resetControlsTimeout}
@@ -846,9 +500,9 @@ export default function PlayerPanel({
         <div className="video-wrapper" ref={videoWrapperRef}>
           {activeChannel.iframeUrl ? (
             activeChannel.iframeInline ? (
-              <iframe 
-                src={activeChannel.iframeUrl} 
-                style={{ width: '100%', height: '100%', border: 'none', backgroundColor: '#000' }} 
+              <iframe
+                src={activeChannel.iframeUrl}
+                style={{ width: '100%', height: '100%', border: 'none', backgroundColor: '#000' }}
                 allowFullScreen
                 allow="autoplay; encrypted-media"
                 referrerPolicy="no-referrer"
@@ -856,10 +510,10 @@ export default function PlayerPanel({
             ) : (
               <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center', justifyContent: 'center', backgroundColor: '#000', color: 'white' }}>
                 <p style={{ marginBottom: '20px', fontSize: '14px', color: 'var(--text-secondary)' }}>This channel requires opening in a separate window due to network security.</p>
-                <button 
+                <button
                   onClick={() => {
-                    const targetUrl = activeChannel.iframeUrl.startsWith('roarzone://') 
-                      ? `https://tv.roarzone.net/player.php?stream=${activeChannel.iframeUrl.replace('roarzone://', '')}` 
+                    const targetUrl = activeChannel.iframeUrl.startsWith('roarzone://')
+                      ? `https://tv.roarzone.net/player.php?stream=${activeChannel.iframeUrl.replace('roarzone://', '')}`
                       : activeChannel.iframeUrl;
                     window.open(targetUrl, '_blank', 'width=800,height=600');
                   }}
@@ -869,19 +523,17 @@ export default function PlayerPanel({
                 </button>
               </div>
             )
-          ) : activeChannel.useNativeVideo ? (
-            <video id="video-player" ref={videoRef} autoPlay playsInline style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'black' }} src={activeChannel.url}></video>
           ) : (
-            <video id="video-player" playsInline ref={videoRef}></video>
+            <video id="video-player" ref={videoRef} autoPlay playsInline style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'black' }}></video>
           )}
 
           {/* Top Header Overlay inside Player */}
           <div className="player-top-overlay">
             <div className="player-top-left">
               {activeChannel.logo && activeChannel.logo.trim() !== '' && (
-                <img 
-                  src={activeChannel.logo} 
-                  alt={activeChannel.name} 
+                <img
+                  src={activeChannel.logo}
+                  alt={activeChannel.name}
                   className="player-channel-logo"
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
@@ -901,8 +553,6 @@ export default function PlayerPanel({
             </div>
           </div>
 
-          {/* Center Controls & Side Arrows Overlay (Removed for sportzify style) */}
-          
           {/* Bottom Custom Controls */}
           {!activeChannel.iframeUrl && (
             <div className="player-controls" id="player-controls" style={{ background: '#080808', padding: '12px 20px', paddingBottom: '16px' }}>
@@ -910,7 +560,7 @@ export default function PlayerPanel({
                 <span style={{ color: delaySeconds > 0 ? '#94a3b8' : '#ff0000', fontSize: '12px', marginRight: '6px', transition: 'color 0.3s' }}>●</span>
                 <span style={{ color: delaySeconds > 0 ? '#94a3b8' : 'white', fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.5px', marginRight: '10px', transition: 'color 0.3s' }}>LIVE</span>
                 {delaySeconds > 0 && (
-                  <button 
+                  <button
                     onClick={jumpToLive}
                     style={{ background: 'rgba(255,0,0,0.1)', border: '1px solid #ff0000', borderRadius: '4px', padding: '2px 6px', fontSize: '10px', color: '#ff0000', cursor: 'pointer', fontWeight: 'bold', transition: 'all 0.2s' }}
                     onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255,0,0,0.2)'; }}
@@ -929,32 +579,32 @@ export default function PlayerPanel({
                   <button className="volume-btn" onClick={toggleMute} style={{ color: 'white' }}>
                     {isMuted || volume === 0 ? <VolumeX size={18} /> : <Volume2 size={18} />}
                   </button>
-                  <input 
-                    type="range" 
-                    className="volume-slider sportzify-slider" 
-                    min="0" 
-                    max="1" 
-                    step="0.05" 
+                  <input
+                    type="range"
+                    className="volume-slider sportzify-slider"
+                    min="0"
+                    max="1"
+                    step="0.05"
                     value={isMuted ? 0 : volume}
                     onChange={handleVolumeChange}
                   />
                 </div>
               </div>
               <div className="controls-right" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                {(levels.length > 0 || mpegtsInstance) && (
+                {(levels.length > 0 || isDirectSource) && (
                   <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                    <button 
-                      className={`pip-btn ${showQualityMenu && levels.length > 0 ? 'active' : ''}`} 
-                      title={mpegtsInstance ? "Direct Source Stream" : "Video Quality"} 
+                    <button
+                      className={`pip-btn ${showQualityMenu && levels.length > 0 ? 'active' : ''}`}
+                      title={isDirectSource ? "Direct Source Stream" : "Video Quality"}
                       onClick={() => levels.length > 0 && setShowQualityMenu(!showQualityMenu)}
-                      style={{ padding: '0 6px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', fontWeight: '700', borderRadius: '4px', height: '28px', color: showQualityMenu && levels.length > 0 ? 'var(--color-accent)' : 'white', cursor: mpegtsInstance ? 'default' : 'pointer' }}
+                      style={{ padding: '0 6px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', fontWeight: '700', borderRadius: '4px', height: '28px', color: showQualityMenu && levels.length > 0 ? 'var(--color-accent)' : 'white', cursor: isDirectSource ? 'default' : 'pointer' }}
                     >
                       <Settings size={16} />
                       <span style={{ fontSize: '11px' }}>
-                        {mpegtsInstance 
-                          ? 'Source' 
-                          : (currentLevel === -1 
-                            ? `Auto${autoHeight ? ` (${autoHeight})` : ''}` 
+                        {isDirectSource
+                          ? 'Source'
+                          : (currentLevel === -1
+                            ? `Auto${autoHeight ? ` (${autoHeight})` : ''}`
                             : levels.find(l => l.index === currentLevel)?.name || 'HD')}
                       </span>
                     </button>
@@ -976,14 +626,8 @@ export default function PlayerPanel({
                         maxHeight: '200px',
                         overflowY: 'auto'
                       }}>
-                        <button 
-                          onClick={() => {
-                            if (bitmovinInstance) {
-                              bitmovinInstance.setVideoQuality('auto');
-                              setCurrentLevel(-1);
-                            }
-                            setShowQualityMenu(false);
-                          }}
+                        <button
+                          onClick={() => selectQuality(-1)}
                           style={{
                             background: 'none',
                             border: 'none',
@@ -1004,15 +648,9 @@ export default function PlayerPanel({
                           {currentLevel === -1 && <Check size={14} />}
                         </button>
                         {levels.map(level => (
-                          <button 
+                          <button
                             key={level.index}
-                            onClick={() => {
-                              if (bitmovinInstance) {
-                                bitmovinInstance.setVideoQuality(level.index);
-                                setCurrentLevel(level.index);
-                              }
-                              setShowQualityMenu(false);
-                            }}
+                            onClick={() => selectQuality(level.index)}
                             style={{
                               background: 'none',
                               border: 'none',

@@ -18,7 +18,7 @@ export async function GET(request) {
 
   if (token) {
     try {
-      targetUrl = decryptUrl(token);
+      targetUrl = await decryptUrl(token);
     } catch (e) {
       console.error('Failed to decrypt token:', e);
     }
@@ -89,13 +89,31 @@ export async function GET(request) {
     'Accept': '*/*'
   };
 
+  const rangeHeader = request.headers.get('range');
+  if (rangeHeader) {
+    fetchHeaders['Range'] = rangeHeader;
+  }
+
+  // Handle dynamically passed headers from query parameters (crucial for LiveSportsHub streams)
+  const refParam = url.searchParams.get('ref');
+  const uaParam = url.searchParams.get('ua');
+  const originParam = url.searchParams.get('origin');
+  
+  if (refParam) fetchHeaders['Referer'] = refParam;
+  if (uaParam && uaParam.length > 20) fetchHeaders['User-Agent'] = uaParam;
+  if (originParam) fetchHeaders['Origin'] = originParam;
 
   // Apply custom headers from channel config (e.g. Referer, Origin)
   if (id !== null) {
     try {
       const channel = channelsData[parseInt(id, 10)];
-      if (channel && channel.headers) {
-        Object.assign(fetchHeaders, channel.headers);
+      if (channel) {
+        if (channel.headers) {
+          Object.assign(fetchHeaders, channel.headers);
+        }
+        if (channel.referer) fetchHeaders['Referer'] = channel.referer;
+        if (channel.origin) fetchHeaders['Origin'] = channel.origin;
+        if (channel['user-agent']) fetchHeaders['User-Agent'] = channel['user-agent'];
       }
     } catch (e) { /* ignore */ }
   }
@@ -161,34 +179,34 @@ export async function GET(request) {
       const bodyText = await response.text();
       const baseUrl = new URL(targetUrl);
 
+      // Build a proxied /api/proxy URL for an absolute upstream URL (encryption is async)
+      const toProxiedUrl = async (absoluteUrl) => {
+        const tokenStr = await encryptUrl(absoluteUrl);
+        const extMatch = absoluteUrl.match(/(\.[a-z0-9]+)(?:[\?#]|$)/i);
+        const hashExt = extMatch ? `#${extMatch[1]}` : '';
+        return `/api/proxy?token=${encodeURIComponent(tokenStr)}${isStalker ? '&stalker=true' : ''}${id !== null ? `&id=${id}` : ''}${hashExt}`;
+      };
+
       const lines = bodyText.split('\n');
-      const rewrittenLines = lines.map(line => {
+      const rewrittenLines = await Promise.all(lines.map(async line => {
         const trimmed = line.trim();
         if (!trimmed) return line;
 
         if (trimmed.startsWith('#')) {
-          if (trimmed.includes('URI="')) {
-            return line.replace(/URI="([^"]+)"/, (match, uri) => {
-              if (uri.startsWith('data:')) return match;
-              const absoluteUrl = new URL(uri, baseUrl.href).href;
-              
-              const tokenStr = encryptUrl(absoluteUrl);
-              const extMatch = absoluteUrl.match(/(\.[a-z0-9]+)(?:[\?#]|$)/i);
-              const hashExt = extMatch ? `#${extMatch[1]}` : '';
-              const proxiedUrl = `/api/proxy?token=${encodeURIComponent(tokenStr)}${isStalker ? '&stalker=true' : ''}${id !== null ? `&id=${id}` : ''}${hashExt}`;
-              return `URI="${proxiedUrl}"`;
-            });
+          const uriMatch = trimmed.match(/URI="([^"]+)"/);
+          if (uriMatch) {
+            const uri = uriMatch[1];
+            if (uri.startsWith('data:')) return line;
+            const absoluteUrl = new URL(uri, baseUrl.href).href;
+            const proxiedUrl = await toProxiedUrl(absoluteUrl);
+            return line.replace(/URI="([^"]+)"/, `URI="${proxiedUrl}"`);
           }
           return line;
         }
 
         const absoluteUrl = new URL(trimmed, baseUrl.href).href;
-        
-        const tokenStr = encryptUrl(absoluteUrl);
-        const extMatch = absoluteUrl.match(/(\.[a-z0-9]+)(?:[\?#]|$)/i);
-        const hashExt = extMatch ? `#${extMatch[1]}` : '';
-        return `/api/proxy?token=${encodeURIComponent(tokenStr)}${isStalker ? '&stalker=true' : ''}${id !== null ? `&id=${id}` : ''}${hashExt}`;
-      });
+        return await toProxiedUrl(absoluteUrl);
+      }));
 
       return new NextResponse(rewrittenLines.join('\n'), {
         status: response.status,
@@ -248,7 +266,7 @@ export async function POST(request) {
   const token = url.searchParams.get('token');
 
   if (token) {
-    targetUrl = decryptUrl(token);
+    targetUrl = await decryptUrl(token);
   }
 
   if (!targetUrl) {

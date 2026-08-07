@@ -11,7 +11,7 @@ const nextConfig = {
 
       {
         source: '/stream-proxy/:path*',
-        destination: 'http://198.195.239.50:8095/:path*',
+        destination: process.env.STREAM_PROXY_URL || 'http://198.195.239.50:8095/:path*',
       },
     ]
   },

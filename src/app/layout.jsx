@@ -1,5 +1,4 @@
 import { Inter, Outfit } from 'next/font/google';
-import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 import '../../style.css';
 
@@ -26,7 +25,6 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning>
         {children}
         <Analytics />
-        <Script src="https://cdn.jsdelivr.net/npm/hls.js@latest" strategy="beforeInteractive" />
       </body>
     </html>
   );
